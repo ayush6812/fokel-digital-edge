@@ -148,9 +148,9 @@ const GenesLecoanetCaseStudy = () => {
         </motion.h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
-            { number: "180", label: "Ad Creatives Deployed" },
+            { number: "232", label: "Ad Creatives Deployed" },
             { number: "4.8L", label: "Total Impressions" },
-            { number: "23%", label: "Organic Follower Growth" },
+            { number: "18%", label: "Organic Follower Growth" },
             { number: "0.6%", label: "Average CTR" },
           ].map((stat, i) => (
             <motion.div
