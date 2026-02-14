@@ -6,9 +6,9 @@ const Hero = () => {
   return (
     <section className="min-h-screen flex items-center relative bg-background overflow-hidden">
       <div className="max-w-7xl mx-auto w-full px-4 lg:px-6 pt-24 pb-16">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-end">
           {/* Left — Content */}
-          <div className="flex flex-col gap-8">
+           <div className="flex flex-col gap-8">
             <motion.h1
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
