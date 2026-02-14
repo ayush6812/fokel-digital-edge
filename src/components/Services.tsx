@@ -1,32 +1,68 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, type Transition } from "framer-motion";
 import { useRef } from "react";
-import { ArrowUpRight } from "lucide-react";
+
+import digitalMarketing from "@/assets/services/digital-marketing.png";
+import webDesign from "@/assets/services/web-design.png";
+import digitalStrategy from "@/assets/services/digital-strategy.png";
+import brandIdentity from "@/assets/services/brand-identity.png";
 
 const services = [
   {
-    number: "01",
     title: "Digital Marketing",
     description:
       "Performance marketing, SEO, social media, and content strategies that drive measurable growth and engagement for your brand.",
+    image: digitalMarketing,
+    animation: {
+      y: [0, -15, 0],
+      rotate: [0, 5, 0],
+      transition: { duration: 4, repeat: Infinity, ease: "easeInOut" as const },
+    },
   },
   {
-    number: "02",
     title: "Web Design & Development",
     description:
       "Beautiful, conversion-focused websites and digital experiences built with modern technology and meticulous attention to detail.",
+    image: webDesign,
+    animation: {
+      y: [0, -10, 0],
+      scale: [1, 1.05, 1],
+      transition: { duration: 3.5, repeat: Infinity, ease: "easeInOut" as const },
+    },
   },
   {
-    number: "03",
     title: "Digital Strategy",
     description:
       "Data-driven digital roadmaps that align business goals with market opportunities, positioning your brand as the undisputed authority.",
+    image: digitalStrategy,
+    animation: {
+      rotate: [0, 360],
+      transition: { duration: 12, repeat: Infinity, ease: "linear" as const },
+    },
   },
   {
-    number: "04",
     title: "Brand Identity",
     description:
       "Comprehensive brand development — from naming and visual identity to messaging frameworks that resonate with your target audience.",
+    image: brandIdentity,
+    animation: {
+      y: [0, -12, 0],
+      rotate: [0, -8, 0],
+      transition: { duration: 5, repeat: Infinity, ease: "easeInOut" as const },
+    },
   },
+];
+
+const marqueeItems = [
+  "Digital Marketing",
+  "Web Design",
+  "SEO",
+  "Branding",
+  "Strategy",
+  "Development",
+  "UI/UX",
+  "Content",
+  "Analytics",
+  "Growth",
 ];
 
 const Services = () => {
@@ -34,8 +70,23 @@ const Services = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="services" className="py-16 bg-secondary" ref={ref}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+    <section id="services" className="bg-primary text-primary-foreground" ref={ref}>
+      {/* Marquee */}
+      <div className="py-5 border-y border-primary-foreground/10 overflow-hidden">
+        <div className="animate-marquee flex whitespace-nowrap items-center">
+          {[...marqueeItems, ...marqueeItems, ...marqueeItems, ...marqueeItems].map((item, i) => (
+            <span
+              key={i}
+              className="flex-shrink-0 mx-8 text-sm font-medium tracking-[0.2em] uppercase text-primary-foreground/40"
+            >
+              {item}
+              <span className="ml-8 text-accent">✦</span>
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -48,35 +99,40 @@ const Services = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight text-foreground mb-20"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight mb-16"
         >
           Services<span className="text-accent">.</span>
         </motion.h2>
 
-        <div className="space-y-0">
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, i) => (
             <motion.div
-              key={service.number}
-              initial={{ opacity: 0, y: 30 }}
+              key={service.title}
+              initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }}
-              className="group border-t border-border py-6 lg:py-10 flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-16 cursor-pointer hover:bg-background/50 transition-colors px-4 -mx-4"
+              className="group bg-primary-foreground/5 border border-primary-foreground/10 p-6 lg:p-8 flex flex-col justify-between min-h-[400px] hover:bg-primary-foreground/10 transition-colors duration-300"
             >
-              <span className="text-sm text-muted-foreground font-medium tracking-wider">
-                {service.number}
-              </span>
-              <div className="flex-1">
-                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground tracking-tight flex items-center gap-4">
+              <div>
+                <h3 className="text-xl lg:text-2xl font-bold tracking-tight mb-4">
                   {service.title}
-                  <ArrowUpRight className="w-6 h-6 opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-1 group-hover:-translate-y-1 text-accent" />
                 </h3>
+                <p className="text-sm text-primary-foreground/60 leading-relaxed">
+                  {service.description}
+                </p>
               </div>
-              <p className="lg:max-w-sm text-muted-foreground leading-relaxed">
-                {service.description}
-              </p>
+
+              <div className="flex items-center justify-center pt-8">
+                <motion.img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-40 h-40 object-contain"
+                  animate={service.animation}
+                />
+              </div>
             </motion.div>
           ))}
-          <div className="border-t border-border" />
         </div>
       </div>
     </section>
