@@ -70,7 +70,7 @@ const JourneyEndsHere = () => {
               </a>
               <a
                 href="#work"
-                className="inline-flex items-center gap-3 border border-primary-foreground/30 text-primary-foreground px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-primary-foreground/10 transition-colors"
+                className="border border-primary-foreground/30 text-primary-foreground px-6 py-2.5 text-sm font-semibold rounded-full hover:bg-primary-foreground/10 transition-colors inline-flex items-center gap-2"
               >
                 View Our Work
               </a>
