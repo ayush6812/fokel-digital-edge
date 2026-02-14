@@ -1,6 +1,6 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
-import { Plus, Minus } from "lucide-react";
+import { Plus } from "lucide-react";
 
 const faqs = [
   {
@@ -30,69 +30,212 @@ const faqs = [
   },
 ];
 
+// Animation variants for accordion content
+const contentVariants = {
+  collapsed: {
+    height: 0,
+    opacity: 0,
+    transition: {
+      height: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] },
+      opacity: { duration: 0.2 },
+    },
+  },
+  expanded: {
+    height: "auto",
+    opacity: 1,
+    transition: {
+      height: { duration: 0.4, ease: [0.25, 0.1, 0.25, 1] },
+      opacity: { duration: 0.3, delay: 0.1 },
+    },
+  },
+};
+
 const FAQ = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
 
   return (
-    <section id="faq" className="py-24 md:py-32 bg-background" ref={ref}>
+    <section id="faq" className="py-24 md:py-32 bg-background overflow-hidden" ref={ref}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <motion.p
+        {/* Section label with animated line */}
+        <div className="flex items-center gap-4 mb-6">
+          <motion.div
+            initial={{ width: 0 }}
+            animate={isInView ? { width: 40 } : {}}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            className="h-[2px] bg-accent"
+          />
+          <motion.p
+            initial={{ opacity: 0, x: -20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-sm font-medium tracking-[0.3em] uppercase text-accent"
+          >
+            FAQ
+          </motion.p>
+        </div>
+
+        {/* Animated heading */}
+        <div className="overflow-hidden mb-16">
+          <motion.h2
+            initial={{ y: "100%" }}
+            animate={isInView ? { y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-[-0.02em] text-foreground"
+            style={{ fontFamily: "var(--font-heading)" }}
+          >
+            Any more <span className="text-accent italic font-normal">questions</span>?
+          </motion.h2>
+        </div>
+
+        {/* FAQ Items */}
+        <div className="space-y-0">
+          {faqs.map((faq, i) => {
+            const isOpen = openIndex === i;
+            const isHovered = hoveredIndex === i;
+            const number = String(i + 1).padStart(2, '0');
+
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.2 + i * 0.08 }}
+                className="relative"
+                onMouseEnter={() => setHoveredIndex(i)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                {/* Animated background on hover/open */}
+                <motion.div
+                  className="absolute inset-0 bg-accent/5 rounded-xl -mx-4 px-4"
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ 
+                    opacity: isOpen || isHovered ? 1 : 0,
+                    scale: isOpen || isHovered ? 1 : 0.98,
+                  }}
+                  transition={{ duration: 0.3 }}
+                />
+
+                {/* Border line */}
+                <div className="relative border-b border-border">
+                  {/* Animated accent border */}
+                  <motion.div
+                    className="absolute bottom-0 left-0 h-[2px] bg-accent"
+                    initial={{ width: "0%" }}
+                    animate={{ width: isOpen ? "100%" : "0%" }}
+                    transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                  />
+
+                  <button
+                    onClick={() => toggle(i)}
+                    className="relative w-full flex items-center gap-4 md:gap-6 py-6 md:py-8 text-left group"
+                  >
+                    {/* Number indicator */}
+                    <motion.span
+                      className="hidden md:flex items-center justify-center text-sm font-medium text-muted-foreground w-8"
+                      animate={{ 
+                        color: isOpen ? "hsl(var(--accent))" : isHovered ? "hsl(var(--accent))" : "hsl(var(--muted-foreground))",
+                      }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {number}
+                    </motion.span>
+
+                    {/* Question text */}
+                    <motion.span 
+                      className="flex-1 text-lg md:text-xl font-semibold text-foreground pr-4"
+                      style={{ fontFamily: "var(--font-heading)" }}
+                      animate={{ 
+                        color: isOpen ? "hsl(var(--accent))" : "hsl(var(--foreground))",
+                        x: isHovered && !isOpen ? 4 : 0,
+                      }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {faq.question}
+                    </motion.span>
+
+                    {/* Toggle icon with rotation */}
+                    <motion.span 
+                      className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full border-2 flex items-center justify-center transition-colors duration-300"
+                      animate={{
+                        borderColor: isOpen ? "hsl(var(--accent))" : isHovered ? "hsl(var(--accent))" : "hsl(var(--border))",
+                        backgroundColor: isOpen ? "hsl(var(--accent))" : "transparent",
+                      }}
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <motion.div
+                        animate={{ rotate: isOpen ? 45 : 0 }}
+                        transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                      >
+                        <Plus 
+                          className="w-5 h-5 transition-colors duration-300" 
+                          style={{ 
+                            color: isOpen ? "hsl(var(--background))" : isHovered ? "hsl(var(--accent))" : "currentColor" 
+                          }}
+                        />
+                      </motion.div>
+                    </motion.span>
+                  </button>
+
+                  {/* Expandable content */}
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        variants={contentVariants}
+                        initial="collapsed"
+                        animate="expanded"
+                        exit="collapsed"
+                        className="overflow-hidden"
+                      >
+                        <motion.div
+                          initial={{ y: -10 }}
+                          animate={{ y: 0 }}
+                          transition={{ duration: 0.3, delay: 0.1 }}
+                          className="pb-8 md:pl-14"
+                        >
+                          <p className="text-muted-foreground leading-relaxed max-w-3xl text-base md:text-lg">
+                            {faq.answer}
+                          </p>
+                          
+                          {/* Decorative element */}
+                          <motion.div
+                            className="flex items-center gap-2 mt-4"
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.2 }}
+                          >
+                            <div className="w-6 h-[2px] bg-accent/50" />
+                            <span className="text-xs text-accent/70 uppercase tracking-wider">Fokel</span>
+                          </motion.div>
+                        </motion.div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Bottom CTA hint */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-sm font-medium tracking-[0.3em] uppercase text-accent mb-6"
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mt-12 text-center"
         >
-          FAQ
-        </motion.p>
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight text-foreground mb-16"
-        >
-          Any more <span className="text-accent">questions</span>?
-        </motion.h2>
-
-        <div className="space-y-0">
-          {faqs.map((faq, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.2 + i * 0.05 }}
-              className="border-b border-border"
-            >
-              <button
-                onClick={() => toggle(i)}
-                className="w-full flex items-center justify-between py-6 md:py-8 text-left group"
-              >
-                <span className="text-lg md:text-xl font-semibold text-foreground pr-8 group-hover:text-accent transition-colors">
-                  {faq.question}
-                </span>
-                <span className="flex-shrink-0 w-10 h-10 border border-border flex items-center justify-center group-hover:border-accent group-hover:text-accent transition-colors">
-                  {openIndex === i ? (
-                    <Minus className="w-5 h-5" />
-                  ) : (
-                    <Plus className="w-5 h-5" />
-                  )}
-                </span>
-              </button>
-              <div
-                className={`overflow-hidden transition-all duration-300 ${
-                  openIndex === i ? "max-h-96 pb-8" : "max-h-0"
-                }`}
-              >
-                <p className="text-muted-foreground leading-relaxed max-w-3xl">
-                  {faq.answer}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+          <p className="text-muted-foreground text-sm">
+            Still have questions?{" "}
+            <a href="#contact" className="text-accent hover:underline font-medium">
+              Get in touch
+            </a>
+          </p>
+        </motion.div>
       </div>
     </section>
   );

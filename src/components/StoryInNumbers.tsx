@@ -1,4 +1,4 @@
-import { motion, useInView, useSpring, useTransform } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 
 const stats = [
@@ -8,84 +8,62 @@ const stats = [
   { number: 2.5, suffix: "x", label: "ROI" },
 ];
 
-const DIGIT_HEIGHT = 80; // px per digit
-
-const RollingDigit = ({ digit, delay }: { digit: number; delay: number }) => {
+const AnimatedCounter = ({
+  target,
+  suffix,
+  duration = 2000,
+  delay = 0,
+}: {
+  target: number;
+  suffix: string;
+  duration?: number;
+  delay?: number;
+}) => {
+  const [count, setCount] = useState(0);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-
-  const springValue = useSpring(0, {
-    stiffness: 50,
-    damping: 20,
-    mass: 1,
-  });
+  const isInView = useInView(ref, { once: false, margin: "-100px" });
 
   useEffect(() => {
     if (isInView) {
-      const timeout = setTimeout(() => {
-        springValue.set(digit);
-      }, delay);
-      return () => clearTimeout(timeout);
+      setCount(0); // Reset to 0 when coming into view
+      
+      const startTime = Date.now() + delay;
+      const isDecimal = target % 1 !== 0;
+      let animationId: number;
+      
+      const animate = () => {
+        const now = Date.now();
+        if (now < startTime) {
+          animationId = requestAnimationFrame(animate);
+          return;
+        }
+        
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Easing function for smooth deceleration
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const currentValue = easeOut * target;
+        
+        setCount(isDecimal ? Math.round(currentValue * 10) / 10 : Math.round(currentValue));
+        
+        if (progress < 1) {
+          animationId = requestAnimationFrame(animate);
+        }
+      };
+      
+      animationId = requestAnimationFrame(animate);
+      
+      return () => cancelAnimationFrame(animationId);
     }
-  }, [isInView, digit, delay, springValue]);
-
-  const y = useTransform(springValue, (v) => -v * DIGIT_HEIGHT);
+  }, [isInView, target, duration, delay]);
 
   return (
-    <div
-      ref={ref}
-      className="relative overflow-hidden"
-      style={{ height: DIGIT_HEIGHT, width: "0.65em" }}
-    >
-      <motion.div style={{ y }} className="flex flex-col">
-        {Array.from({ length: 10 }, (_, i) => (
-          <span
-            key={i}
-            className="block text-center font-bold leading-none text-foreground"
-            style={{ height: DIGIT_HEIGHT, lineHeight: `${DIGIT_HEIGHT}px` }}
-          >
-            {i}
-          </span>
-        ))}
-      </motion.div>
-    </div>
-  );
-};
-
-const AnimatedNumber = ({
-  number,
-  suffix,
-  delay: baseDelay,
-}: {
-  number: number;
-  suffix: string;
-  delay: number;
-}) => {
-  const parts = String(number).split("");
-
-  return (
-    <div className="flex items-center text-5xl md:text-7xl lg:text-8xl">
-      {parts.map((part, i) =>
-        part === "." ? (
-          <span
-            key={i}
-            className="font-bold text-foreground leading-none"
-            style={{ lineHeight: `${DIGIT_HEIGHT}px` }}
-          >
-            .
-          </span>
-        ) : (
-          <RollingDigit
-            key={i}
-            digit={Number(part)}
-            delay={baseDelay + i * 150}
-          />
-        )
-      )}
-      <span
-        className="font-bold text-accent leading-none"
-        style={{ lineHeight: `${DIGIT_HEIGHT}px` }}
-      >
+    <div ref={ref} className="flex items-center text-5xl md:text-7xl lg:text-8xl">
+      <span className="font-bold text-foreground tabular-nums">
+        {count}
+      </span>
+      <span className="font-bold text-accent">
         {suffix}
       </span>
     </div>
@@ -123,10 +101,10 @@ const StoryInNumbers = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 + i * 0.15 }}
-              className="flex flex-col"
+              className="flex flex-col items-center text-center"
             >
-              <AnimatedNumber
-                number={stat.number}
+              <AnimatedCounter
+                target={stat.number}
                 suffix={stat.suffix}
                 delay={i * 200}
               />

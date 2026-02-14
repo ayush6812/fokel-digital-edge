@@ -22,20 +22,57 @@ const Marquee = () => {
           Trusted By
         </p>
       </div>
-      <div className="py-10 overflow-hidden">
-        <div className="animate-marquee flex whitespace-nowrap items-center">
-          {[...clients, ...clients, ...clients, ...clients].map((client, i) => (
-            <div
-              key={i}
-              className="flex-shrink-0 mx-10 md:mx-16 flex items-center justify-center"
-            >
-              <img
-                src={client.src}
-                alt={client.alt}
-                className="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 mix-blend-darken dark:mix-blend-lighten"
-              />
-            </div>
-          ))}
+
+      {/* Marquee container with gradient fade edges, pause on hover */}
+      <div className="relative py-10 overflow-hidden marquee-hover-pause">
+        {/* Left fade - masks the edge for smooth visual */}
+        <div
+          className="absolute left-0 top-0 bottom-0 w-24 md:w-32 z-10 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to right, hsl(var(--background)) 0%, hsl(var(--background) / 0) 100%)",
+          }}
+        />
+        {/* Right fade */}
+        <div
+          className="absolute right-0 top-0 bottom-0 w-24 md:w-32 z-10 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to left, hsl(var(--background)) 0%, hsl(var(--background) / 0) 100%)",
+          }}
+        />
+
+        {/* Infinite smooth scroll - duplicates content for seamless loop */}
+        <div className="animate-marquee py-4 will-change-transform flex min-w-max">
+          <div className="flex gap-12 md:gap-20 items-center pr-12 md:pr-20">
+            {clients.map((client, i) => (
+              <div
+                key={`${client.alt}-${i}`}
+                className="flex-shrink-0 flex items-center justify-center px-4"
+              >
+                <img
+                  src={client.src}
+                  alt={client.alt}
+                  className="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-500 ease-out mix-blend-darken dark:mix-blend-lighten opacity-70 hover:opacity-100"
+                />
+              </div>
+            ))}
+          </div>
+          {/* Duplicate for seamless infinite loop */}
+          <div className="flex gap-12 md:gap-20 items-center pl-12 md:pl-20" aria-hidden>
+            {clients.map((client, i) => (
+              <div
+                key={`dup-${client.alt}-${i}`}
+                className="flex-shrink-0 flex items-center justify-center px-4"
+              >
+                <img
+                  src={client.src}
+                  alt=""
+                  className="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-500 ease-out mix-blend-darken dark:mix-blend-lighten opacity-70 hover:opacity-100"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

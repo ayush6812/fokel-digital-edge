@@ -2,7 +2,7 @@ import { motion, useInView, useSpring, useTransform } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useRef, useEffect, useState } from "react";
-import genesHero from "@/assets/work-1.jpg";
+import blueLeopardHero from "@/assets/work-4.png";
 
 // Enhanced fade up animation
 const fadeUp = {
@@ -57,7 +57,7 @@ const parseStatValue = (value: string): { num: number; suffix: string; prefix: s
   return { prefix: "", num: 0, suffix: value };
 };
 
-const GenesLecoanetCaseStudy = () => {
+const Blueleopard = () => {
   return (
     <div className="bg-background min-h-screen overflow-hidden">
       {/* Back nav */}
@@ -114,7 +114,7 @@ const GenesLecoanetCaseStudy = () => {
               className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-[-0.02em] text-foreground leading-[1.05]"
               style={{ fontFamily: "var(--font-heading)" }}
             >
-              Genes Lecoanet Hemant<span className="text-accent">.</span>
+              Blue Leopard Media<span className="text-accent">.</span>
             </motion.h1>
           </div>
           
@@ -124,7 +124,8 @@ const GenesLecoanetCaseStudy = () => {
             transition={{ duration: 0.8, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
             className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed"
           >
-            End-of-Season Social Media Marketing Campaign for a Premium Luxury Fashion Label
+            Brand Strategy, Social Growth & Performance Marketing for a Modern Media Agency
+
           </motion.p>
         </div>
       </section>
@@ -148,8 +149,8 @@ const GenesLecoanetCaseStudy = () => {
             className="w-full h-full"
           >
             <motion.img
-              src={genesHero}
-              alt="Genes Lecoanet Hemant case study"
+              src={blueLeopardHero}
+              alt="Blue Leopard Media project"
               className="w-full h-full object-cover"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.8 }}
@@ -172,7 +173,7 @@ const GenesLecoanetCaseStudy = () => {
               Client
             </p>
             <p className="text-foreground font-medium">
-              Genes Lecoanet Hemant
+              Blue Leopard Media
             </p>
           </motion.div>
           <motion.div
@@ -186,7 +187,7 @@ const GenesLecoanetCaseStudy = () => {
               Services
             </p>
             <p className="text-foreground font-medium">
-              Social Media Marketing, Content Planning, Performance Marketing, Creative Production
+              Brand Strategy, Social Media Marketing, Performance Ads, Website Optimization, Creative Direction & Content Production
             </p>
           </motion.div>
           <motion.div
@@ -197,92 +198,11 @@ const GenesLecoanetCaseStudy = () => {
             custom={2}
           >
             <p className="text-sm font-semibold uppercase tracking-wider text-accent mb-4">
-              Duration
+              Timeline
             </p>
-            <p className="text-foreground font-medium">3-Month Campaign</p>
+            <p className="text-foreground font-medium">2025 — Ongoing</p>
           </motion.div>
         </div>
-      </section>
-
-      {/* Campaign Highlights with counting animation */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-12 mb-24">
-        <div className="flex items-center gap-4 mb-6">
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: 40 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="h-[2px] bg-accent"
-          />
-          <motion.p
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            custom={0}
-            className="text-sm font-semibold uppercase tracking-wider text-accent"
-          >
-            Campaign Highlights
-          </motion.p>
-        </div>
-        <div className="overflow-hidden mb-16">
-          <motion.h2
-            initial={{ y: "100%" }}
-            whileInView={{ y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="text-3xl md:text-4xl font-bold text-foreground tracking-[-0.02em]"
-            style={{ fontFamily: "var(--font-heading)" }}
-          >
-            Measurable growth across all metrics
-            <span className="text-accent">.</span>
-          </motion.h2>
-        </div>
-        <motion.div 
-          className="grid grid-cols-2 md:grid-cols-4 gap-8"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {[
-            { number: "232", label: "Ad Creatives Deployed" },
-            { number: "4.8L", label: "Total Impressions" },
-            { number: "18%", label: "Organic Follower Growth" },
-            { number: "0.6%", label: "Average CTR" },
-          ].map((stat, i) => {
-            const parsed = parseStatValue(stat.number);
-            return (
-              <motion.div
-                key={stat.label}
-                variants={fadeUp}
-                custom={i}
-                className="text-center group"
-              >
-                <motion.div
-                  className="relative"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <p className="text-4xl md:text-5xl lg:text-6xl font-bold text-accent mb-3" style={{ fontFamily: "var(--font-heading)" }}>
-                    {parsed.prefix}<AnimatedCounter value={parsed.num} />{parsed.suffix}
-                  </p>
-                  {/* Decorative dot */}
-                  <motion.div
-                    className="absolute -top-2 -right-2 w-2 h-2 rounded-full bg-accent/50"
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.5 + i * 0.1 }}
-                  />
-                </motion.div>
-                <p className="text-sm text-muted-foreground uppercase tracking-wider">
-                  {stat.label}
-                </p>
-              </motion.div>
-            );
-          })}
-        </motion.div>
       </section>
 
       {/* Challenge */}
@@ -296,10 +216,10 @@ const GenesLecoanetCaseStudy = () => {
             custom={0}
           >
             <p className="text-sm font-semibold uppercase tracking-wider text-accent mb-6">
-              The Challenge
+              The Background
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight leading-tight">
-              Maximize visibility and conversions during peak season
+              Building a recognizable digital-first media brand
               <span className="text-accent">.</span>
             </h2>
           </motion.div>
@@ -312,7 +232,8 @@ const GenesLecoanetCaseStudy = () => {
             className="flex items-end"
           >
             <p className="text-muted-foreground leading-relaxed text-lg">
-              Genes Lecoanet Hemant, a premium luxury fashion label, approached us to lead their End-of-Season social media marketing campaign. The objective was to drive engagement, increase brand visibility, and maximize conversions during this critical sales period. We needed to create a compelling, data-driven strategy that combined brand storytelling with high-performing creative assets.
+              Blue Leopard Media approached us with a strong vision but limited digital visibility. While the agency had solid creative capabilities, its online presence lacked strategic positioning, consistent branding, and scalable lead generation systems. The objective was to transform Blue Leopard Media into a recognizable digital-first brand, capable of attracting high-quality clients through a combination of branding, performance marketing, and streamlined digital experiences.
+
             </p>
           </motion.div>
         </div>
@@ -349,30 +270,30 @@ const GenesLecoanetCaseStudy = () => {
               className="text-3xl md:text-4xl font-bold text-foreground tracking-[-0.02em]"
               style={{ fontFamily: "var(--font-heading)" }}
             >
-              Structured strategy with performance-driven execution
+              Strategic branding, digital outreach & a cohesive tech ecosystem
               <span className="text-accent">.</span>
             </motion.h2>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {
-                title: "Strategic Roadmap",
-                desc: "Developed a structured 3-month roadmap covering strategy, content planning, and end-to-end execution with Instagram as the primary platform.",
+                title: "Brand Positioning & Visual Identity",
+                desc: "We refined the agency’s brand voice and visual identity to establish a premium and consistent presence across social platforms, website assets, and client-facing materials.",
                 num: "01"
               },
               {
-                title: "Creative Production",
-                desc: "Deployed 232 high-quality ad creatives, combining both static and video content to maintain consistent engagement throughout the campaign.",
+                title: "Social Media Growth System",
+                desc: "Developed a structured content strategy focused on authority-building posts, case-driven storytelling, and high-impact reels that improved audience engagement and brand recall.",
                 num: "02"
               },
               {
-                title: "Performance Marketing",
-                desc: "Executed continuous performance marketing supported by data-driven insights to optimize reach, engagement, and conversion rates.",
+                title: "Performance Marketing Framework",
+                desc: "Launched targeted ad campaigns optimized for awareness and lead generation, leveraging audience segmentation and conversion-focused landing pages.",
                 num: "03"
               },
               {
-                title: "Brand Storytelling",
-                desc: "Integrated brand narratives within performance marketing to strengthen visibility and create meaningful connections with the target audience.",
+                title: "Website Optimization & UX",
+                desc: "Redesigned key sections of the website to improve navigation, storytelling flow, and conversion paths, ensuring visitors clearly understood the agency’s value proposition.",
                 num: "04"
               },
             ].map((item, i) => (
@@ -415,6 +336,87 @@ const GenesLecoanetCaseStudy = () => {
         </div>
       </section>
 
+      {/* Results with counting animation */}
+      <section className="max-w-7xl mx-auto px-6 lg:px-12 mb-24">
+        <div className="flex items-center gap-4 mb-6">
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: 40 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            className="h-[2px] bg-accent"
+          />
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            custom={0}
+            className="text-sm font-semibold uppercase tracking-wider text-accent"
+          >
+            The Results
+          </motion.p>
+        </div>
+        <div className="overflow-hidden mb-16">
+          <motion.h2
+            initial={{ y: "100%" }}
+            whileInView={{ y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            className="text-3xl md:text-4xl font-bold text-foreground tracking-[-0.02em]"
+            style={{ fontFamily: "var(--font-heading)" }}
+          >
+            Measurable growth across every channel
+            <span className="text-accent">.</span>
+          </motion.h2>
+        </div>
+        <motion.div 
+          className="grid grid-cols-2 md:grid-cols-4 gap-8"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {[
+            { number: "42%", label: "Increase in Profile Reach" },
+            { number: "2.3x", label: "Higher Engagement Rate" },
+            { number: "3K", label: "New Audience Growth" },
+            { number: "1.1%", label: "Average Ad CTR" }
+          ].map((stat, i) => {
+            const parsed = parseStatValue(stat.number);
+            return (
+              <motion.div
+                key={stat.label}
+                variants={fadeUp}
+                custom={i}
+                className="text-center group"
+              >
+                <motion.div
+                  className="relative"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <p className="text-4xl md:text-5xl lg:text-6xl font-bold text-accent mb-3" style={{ fontFamily: "var(--font-heading)" }}>
+                    {parsed.prefix}<AnimatedCounter value={parsed.num} />{parsed.suffix}
+                  </p>
+                  {/* Decorative dot */}
+                  <motion.div
+                    className="absolute -top-2 -right-2 w-2 h-2 rounded-full bg-accent/50"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5 + i * 0.1 }}
+                  />
+                </motion.div>
+                <p className="text-sm text-muted-foreground uppercase tracking-wider">
+                  {stat.label}
+                </p>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </section>
+
       {/* CTA */}
       <section className="max-w-7xl mx-auto px-6 lg:px-12 pb-24">
         <motion.div
@@ -440,7 +442,7 @@ const GenesLecoanetCaseStudy = () => {
                 className="text-3xl md:text-4xl font-bold text-foreground tracking-[-0.02em]"
                 style={{ fontFamily: "var(--font-heading)" }}
               >
-                Ready to elevate your brand<span className="text-accent">?</span>
+                Want similar results<span className="text-accent">?</span>
               </motion.h2>
             </div>
             <motion.p
@@ -451,7 +453,7 @@ const GenesLecoanetCaseStudy = () => {
               custom={1}
               className="text-muted-foreground mb-8 max-w-lg mx-auto"
             >
-              Let's discuss how we can create a powerful social media strategy tailored to your luxury brand.
+              Let's discuss how we can elevate your brand with a tailored digital strategy.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -478,4 +480,4 @@ const GenesLecoanetCaseStudy = () => {
   );
 };
 
-export default GenesLecoanetCaseStudy;
+export default Blueleopard;
