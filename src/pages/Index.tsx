@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import StoryInNumbers from "@/components/StoryInNumbers";
-import Marquee from "@/components/Marquee";
+
 import Services from "@/components/Services";
 import FeaturedWork from "@/components/FeaturedWork";
 import Testimonials from "@/components/Testimonials";
@@ -20,7 +20,7 @@ const Index = () => {
       <About />
       <Services />
       <StoryInNumbers />
-      <Marquee />
+      
       <FeaturedWork />
       <Testimonials />
       <JourneyEndsHere />
