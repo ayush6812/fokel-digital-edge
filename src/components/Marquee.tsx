@@ -32,7 +32,7 @@ const Marquee = () => {
               <img
                 src={client.src}
                 alt={client.alt}
-                className="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                className="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 mix-blend-darken dark:mix-blend-lighten"
               />
             </div>
           ))}
