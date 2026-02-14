@@ -33,17 +33,13 @@ const services = [
   },
 ];
 
-const marqueeItems = [
+const marqueeServices = [
   "Digital Marketing",
   "Web Design",
-  "SEO",
   "Branding",
   "Strategy",
   "Development",
-  "UI/UX",
-  "Content",
-  "Analytics",
-  "Growth",
+  "UI/UX Design",
 ];
 
 const Services = () => {
@@ -52,16 +48,20 @@ const Services = () => {
 
   return (
     <section id="services" className="bg-primary text-primary-foreground" ref={ref}>
-      {/* Marquee */}
-      <div className="py-5 border-y border-primary-foreground/10 overflow-hidden">
+      {/* Large outlined text marquee */}
+      <div className="py-8 overflow-hidden border-b border-primary-foreground/10">
         <div className="animate-marquee flex whitespace-nowrap items-center">
-          {[...marqueeItems, ...marqueeItems, ...marqueeItems, ...marqueeItems].map((item, i) => (
+          {[...marqueeServices, ...marqueeServices, ...marqueeServices, ...marqueeServices].map((item, i) => (
             <span
               key={i}
-              className="flex-shrink-0 mx-8 text-sm font-medium tracking-[0.2em] uppercase text-primary-foreground/40"
+              className="flex-shrink-0 mx-4 text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight"
+              style={{
+                WebkitTextStroke: "1.5px hsl(var(--primary-foreground) / 0.3)",
+                WebkitTextFillColor: "transparent",
+              }}
             >
               {item}
-              <span className="ml-8 text-accent">✦</span>
+              <span className="mx-4 text-accent" style={{ WebkitTextFillColor: "hsl(var(--accent))" }}>•</span>
             </span>
           ))}
         </div>
