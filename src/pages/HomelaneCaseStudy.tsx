@@ -17,15 +17,23 @@ const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.2 }
-  }
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+  },
 };
 
-const AnimatedCounter = ({ value, suffix = "", duration = 2 }: { value: number; suffix?: string; duration?: number }) => {
+const AnimatedCounter = ({
+  value,
+  suffix = "",
+  duration = 2,
+}: {
+  value: number;
+  suffix?: string;
+  duration?: number;
+}) => {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
   const [hasAnimated, setHasAnimated] = useState(false);
-  
+
   const springValue = useSpring(0, { duration: duration * 1000, bounce: 0 });
   const displayValue = useTransform(springValue, (v) => Math.floor(v));
   const [display, setDisplay] = useState(0);
@@ -42,7 +50,12 @@ const AnimatedCounter = ({ value, suffix = "", duration = 2 }: { value: number; 
     return () => unsubscribe();
   }, [displayValue]);
 
-  return <span ref={ref}>{display}{suffix}</span>;
+  return (
+    <span ref={ref}>
+      {display}
+      {suffix}
+    </span>
+  );
 };
 
 const parseStatValue = (value: string): { num: number; suffix: string; prefix: string } => {
@@ -57,7 +70,7 @@ const HomelaneCaseStudy = () => {
   return (
     <div className="bg-background min-h-screen overflow-hidden">
       {/* Back nav */}
-      <motion.div 
+      <motion.div
         className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -68,11 +81,7 @@ const HomelaneCaseStudy = () => {
             to="/"
             className="group flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wider"
           >
-            <motion.span
-              className="inline-block"
-              whileHover={{ x: -4 }}
-              transition={{ duration: 0.2 }}
-            >
+            <motion.span className="inline-block" whileHover={{ x: -4 }} transition={{ duration: 0.2 }}>
               <ArrowLeft className="w-4 h-4" />
             </motion.span>
             Back
@@ -99,7 +108,7 @@ const HomelaneCaseStudy = () => {
               Case Study
             </motion.p>
           </div>
-          
+
           <div className="overflow-hidden mb-6">
             <motion.h1
               initial={{ y: "100%" }}
@@ -111,7 +120,7 @@ const HomelaneCaseStudy = () => {
               HomeLane<span className="text-accent">.</span>com
             </motion.h1>
           </div>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -130,7 +139,7 @@ const HomelaneCaseStudy = () => {
         transition={{ duration: 1, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
         className="max-w-7xl mx-auto px-6 lg:px-12 mb-24"
       >
-        <motion.div 
+        <motion.div
           className="aspect-[16/9] overflow-hidden bg-secondary rounded-2xl"
           whileHover={{ scale: 1.02 }}
           transition={{ duration: 0.6 }}
@@ -182,7 +191,12 @@ const HomelaneCaseStudy = () => {
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             className="h-[2px] bg-accent"
           />
-          <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            custom={0}
             className="text-sm font-semibold uppercase tracking-wider text-accent"
           >
             The Results
@@ -208,7 +222,7 @@ const HomelaneCaseStudy = () => {
           viewport={{ once: true }}
         >
           {[
-            { number: "340%", label: "Organic Traffic Growth" },
+            { number: "98%", label: "Organic Traffic Growth" },
             { number: "85", label: "Keywords on Page 1" },
             { number: "12x", label: "Vlog View Increase" },
             { number: "58%", label: "Bounce Rate Reduction" },
@@ -217,8 +231,13 @@ const HomelaneCaseStudy = () => {
             return (
               <motion.div key={stat.label} variants={fadeUp} custom={i} className="text-center group">
                 <motion.div className="relative" whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
-                  <p className="text-4xl md:text-5xl lg:text-6xl font-bold text-accent mb-3" style={{ fontFamily: "var(--font-heading)" }}>
-                    {parsed.prefix}<AnimatedCounter value={parsed.num} />{parsed.suffix}
+                  <p
+                    className="text-4xl md:text-5xl lg:text-6xl font-bold text-accent mb-3"
+                    style={{ fontFamily: "var(--font-heading)" }}
+                  >
+                    {parsed.prefix}
+                    <AnimatedCounter value={parsed.num} />
+                    {parsed.suffix}
                   </p>
                   <motion.div
                     className="absolute -top-2 -right-2 w-2 h-2 rounded-full bg-accent/50"
@@ -244,9 +263,19 @@ const HomelaneCaseStudy = () => {
               India's leading tech-enabled home interiors brand<span className="text-accent">.</span>
             </h2>
           </motion.div>
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={1} className="flex items-end">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            custom={1}
+            className="flex items-end"
+          >
             <p className="text-muted-foreground leading-relaxed text-lg">
-              HomeLane has grown into India's leading tech-enabled home interiors brand with a simple promise: to make designing a home easy, personalised, and dependable. Over the years, they've had the privilege of helping 55,000+ customers shape homes they love, across 42+ cities. With 600+ expert designers and 74+ Experience Centres, HomeLane takes pride in delivering beautiful spaces that their customers are proud to call home.
+              HomeLane has grown into India's leading tech-enabled home interiors brand with a simple promise: to make
+              designing a home easy, personalised, and dependable. Over the years, they've had the privilege of helping
+              55,000+ customers shape homes they love, across 42+ cities. With 600+ expert designers and 74+ Experience
+              Centres, HomeLane takes pride in delivering beautiful spaces that their customers are proud to call home.
             </p>
           </motion.div>
         </div>
@@ -263,7 +292,12 @@ const HomelaneCaseStudy = () => {
               transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
               className="h-[2px] bg-accent"
             />
-            <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}
+            <motion.p
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={0}
               className="text-sm font-semibold uppercase tracking-wider text-accent"
             >
               Our Approach
@@ -329,7 +363,10 @@ const HomelaneCaseStudy = () => {
                 </motion.span>
                 <div className="flex items-center gap-3 mb-4">
                   <item.icon className="w-5 h-5 text-accent" />
-                  <h3 className="text-xl font-bold text-foreground group-hover:text-accent transition-colors" style={{ fontFamily: "var(--font-heading)" }}>
+                  <h3
+                    className="text-xl font-bold text-foreground group-hover:text-accent transition-colors"
+                    style={{ fontFamily: "var(--font-heading)" }}
+                  >
                     {item.title}
                   </h3>
                 </div>
@@ -356,7 +393,12 @@ const HomelaneCaseStudy = () => {
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             className="h-[2px] bg-accent"
           />
-          <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            custom={0}
             className="text-sm font-semibold uppercase tracking-wider text-accent"
           >
             Content Funnel
@@ -382,21 +424,21 @@ const HomelaneCaseStudy = () => {
               icon: Search,
               keywords: ["home interior ideas", "kitchen design trends 2026", "best modular kitchen brands"],
               content: "Inspirational blog posts, design trend vlogs, Pinterest-optimised galleries",
-              result: "2.1M impressions/month"
+              result: "2.1M impressions/month",
             },
             {
               stage: "Mid Funnel",
               icon: Target,
               keywords: ["modular kitchen cost calculator", "2BHK interior design price", "HomeLane vs competitors"],
               content: "Comparison guides, cost calculators, customer testimonial vlogs",
-              result: "340% traffic increase"
+              result: "98% traffic increase",
             },
             {
               stage: "Bottom of Funnel",
               icon: TrendingUp,
               keywords: ["book HomeLane consultation", "HomeLane reviews", "HomeLane near me"],
               content: "City-specific landing pages, review aggregation, consultation CTAs",
-              result: "62% lead increase"
+              result: "62% lead increase",
             },
           ].map((item, i) => (
             <motion.div
@@ -455,7 +497,12 @@ const HomelaneCaseStudy = () => {
               transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
               className="h-[2px] bg-accent"
             />
-            <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}
+            <motion.p
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={0}
               className="text-sm font-semibold uppercase tracking-wider text-accent"
             >
               Vlog Strategy
@@ -477,7 +524,10 @@ const HomelaneCaseStudy = () => {
           <div className="grid md:grid-cols-2 gap-12 lg:gap-20">
             <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
               <p className="text-muted-foreground leading-relaxed text-lg mb-8">
-                We identified that video content—specifically vlogs—was a massively underutilised channel for HomeLane. By producing weekly vlogs that showcased real home transformations, designer tips, and material walkthroughs, we created a dual-purpose content engine that drove both YouTube visibility and on-site SEO performance.
+                We identified that video content—specifically vlogs—was a massively underutilised channel for HomeLane.
+                By producing weekly vlogs that showcased real home transformations, designer tips, and material
+                walkthroughs, we created a dual-purpose content engine that drove both YouTube visibility and on-site
+                SEO performance.
               </p>
               <div className="space-y-6">
                 {[
@@ -511,22 +561,22 @@ const HomelaneCaseStudy = () => {
                   {
                     step: "01",
                     title: "Keyword-First Scripting",
-                    desc: "Every vlog began with keyword research. Scripts were structured around search queries people actually typed into Google and YouTube."
+                    desc: "Every vlog began with keyword research. Scripts were structured around search queries people actually typed into Google and YouTube.",
                   },
                   {
                     step: "02",
                     title: "SEO-Optimised Metadata",
-                    desc: "Titles, descriptions, tags, and thumbnails were crafted for maximum click-through rate and search visibility on both platforms."
+                    desc: "Titles, descriptions, tags, and thumbnails were crafted for maximum click-through rate and search visibility on both platforms.",
                   },
                   {
                     step: "03",
                     title: "On-Page Embedding",
-                    desc: "Each vlog was embedded on a corresponding blog post or landing page, with full transcriptions to maximise crawlable content."
+                    desc: "Each vlog was embedded on a corresponding blog post or landing page, with full transcriptions to maximise crawlable content.",
                   },
                   {
                     step: "04",
                     title: "Cross-Platform Distribution",
-                    desc: "Clips were repurposed for Instagram Reels and YouTube Shorts, driving backlinks and social signals to boost domain authority."
+                    desc: "Clips were repurposed for Instagram Reels and YouTube Shorts, driving backlinks and social signals to boost domain authority.",
                   },
                 ].map((item, i) => (
                   <motion.div
@@ -559,7 +609,12 @@ const HomelaneCaseStudy = () => {
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             className="h-[2px] bg-accent"
           />
-          <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            custom={0}
             className="text-sm font-semibold uppercase tracking-wider text-accent"
           >
             Ranking Improvements
@@ -630,10 +685,8 @@ const HomelaneCaseStudy = () => {
           className="relative border border-border p-12 md:p-16 text-center rounded-2xl overflow-hidden group"
           whileHover={{ scale: 1.01 }}
         >
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-          />
-          
+          <motion.div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
           <div className="relative z-10">
             <div className="overflow-hidden mb-6">
               <motion.h2
