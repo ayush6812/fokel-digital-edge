@@ -27,38 +27,40 @@ const About = () => {
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="overflow-hidden mb-12 md:mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight text-primary-foreground">
-            Bold ideas,
-            <br />
-            disruptive
-            <br />
-            execution<span className="text-accent">.</span>
-          </h2>
-        </motion.div>
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="mb-12 md:mb-0"
+          >
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight text-primary-foreground">
+              Bold ideas,
+              <br />
+              disruptive
+              <br />
+              execution<span className="text-accent">.</span>
+            </h2>
+          </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.25 }}
-          className="max-w-2xl"
-        >
-          <p className="text-lg md:text-xl text-primary-foreground/70 leading-relaxed">
-            At Fokel, our mission is to bring your business into the market focus 
-            with a bold, disruptive edge. We combine strategic thinking with creative 
-            excellence to craft digital experiences that captivate audiences and drive 
-            measurable results. Our vision is to redefine the digital landscape by setting 
-            a new gold standard for B2B growth, where every brand we touch becomes the 
-            undisputed authority in its niche.
-          </p>
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.25 }}
+            className="flex items-end"
+          >
+            <p className="text-lg md:text-xl text-primary-foreground/70 leading-relaxed">
+              At Fokel, our mission is to bring your business into the market focus 
+              with a bold, disruptive edge. We combine strategic thinking with creative 
+              excellence to craft digital experiences that captivate audiences and drive 
+              measurable results. Our vision is to redefine the digital landscape by setting 
+              a new gold standard for B2B growth, where every brand we touch becomes the 
+              undisputed authority in its niche.
+            </p>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
