@@ -68,7 +68,7 @@ const parseStatValue = (value: string): {num: number;suffix: string;prefix: stri
 
 const HomelaneCaseStudy = () => {
   return (
-    <div className="bg-background min-h-screen overflow-hidden">
+    <div className="bg-background min-h-screen overflow-hidden text-foreground">
       {/* Back nav */}
       <motion.div
         className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border"
@@ -77,9 +77,9 @@ const HomelaneCaseStudy = () => {
         transition={{ duration: 0.6, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center">
-          <Link
-            to="/"
-            className="group flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wider">
+            <Link
+              to="/"
+              className="group flex items-center gap-2 text-sm font-medium text-foreground/70 hover:text-foreground transition-colors uppercase tracking-wider">
 
             <motion.span className="inline-block" whileHover={{ x: -4 }} transition={{ duration: 0.2 }}>
               <ArrowLeft className="w-4 h-4" />
@@ -125,7 +125,7 @@ const HomelaneCaseStudy = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
+            className="text-lg md:text-xl text-foreground/60 max-w-2xl leading-relaxed">
 
             SEO-driven content strategy to dominate Google rankings for India's leading home interiors platform
           </motion.p>
@@ -247,7 +247,7 @@ const HomelaneCaseStudy = () => {
                     transition={{ delay: 0.5 + i * 0.1 }} />
 
                 </motion.div>
-                <p className="text-sm text-muted-foreground uppercase tracking-wider">{stat.label}</p>
+                <p className="text-sm text-foreground/60 uppercase tracking-wider">{stat.label}</p>
               </motion.div>);
 
           })}
@@ -271,7 +271,7 @@ const HomelaneCaseStudy = () => {
             custom={1}
             className="flex items-end">
 
-            <p className="text-muted-foreground leading-relaxed text-lg">
+            <p className="text-foreground/60 leading-relaxed text-lg">
               HomeLane has grown into India's leading tech-enabled home interiors brand with a simple promise: to make
               designing a home easy, personalised, and dependable. Over the years, they've had the privilege of helping
               55,000+ customers shape homes they love, across 42+ cities. With 600+ expert designers and 74+ Experience
@@ -370,7 +370,7 @@ const HomelaneCaseStudy = () => {
                     {item.title}
                   </h3>
                 </div>
-                <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
+                <p className="text-foreground/60 leading-relaxed">{item.desc}</p>
                 <motion.div
                 className="absolute bottom-0 left-6 right-6 h-[2px] bg-accent origin-left"
                 initial={{ scaleX: 0 }}
@@ -464,7 +464,7 @@ const HomelaneCaseStudy = () => {
                 <p className="text-xs font-semibold uppercase tracking-wider text-accent mb-3">Target Keywords</p>
                 <div className="flex flex-wrap gap-2">
                   {item.keywords.map((kw) =>
-                <span key={kw} className="text-xs bg-secondary text-muted-foreground px-2.5 py-1 rounded-full">
+                <span key={kw} className="text-xs bg-secondary text-foreground/60 px-2.5 py-1 rounded-full">
                       {kw}
                     </span>
                 )}
@@ -473,7 +473,7 @@ const HomelaneCaseStudy = () => {
 
               <div className="mb-6">
                 <p className="text-xs font-semibold uppercase tracking-wider text-accent mb-3">Content Type</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">{item.content}</p>
+                <p className="text-sm text-foreground/60 leading-relaxed">{item.content}</p>
               </div>
 
               <div className="pt-4 border-t border-border">
@@ -547,15 +547,15 @@ const HomelaneCaseStudy = () => {
                 <p className="font-medium text-foreground text-sm md:text-base">{item.keyword}</p>
               </div>
               <div className="text-center">
-                <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Before</p>
-                <p className="text-lg font-bold text-muted-foreground">#{item.before}</p>
+                <p className="text-xs text-foreground/60 uppercase tracking-wider mb-1">Before</p>
+                <p className="text-lg font-bold text-foreground/60">#{item.before}</p>
               </div>
               <div className="text-center">
-                <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">After</p>
+                <p className="text-xs text-foreground/60 uppercase tracking-wider mb-1">After</p>
                 <p className="text-lg font-bold text-accent">#{item.after}</p>
               </div>
               <div className="text-center hidden md:block">
-                <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Monthly Volume</p>
+                <p className="text-xs text-foreground/60 uppercase tracking-wider mb-1">Monthly Volume</p>
                 <p className="text-sm font-medium text-foreground">{item.volume}</p>
               </div>
             </motion.div>
@@ -594,7 +594,7 @@ const HomelaneCaseStudy = () => {
               whileInView="visible"
               viewport={{ once: true }}
               custom={1}
-              className="text-muted-foreground mb-8 max-w-lg mx-auto">
+              className="text-foreground/60 mb-8 max-w-lg mx-auto">
 
               Let's build an SEO strategy that puts your brand at the top of search results.
             </motion.p>
