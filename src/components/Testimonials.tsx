@@ -55,11 +55,9 @@ const slideVariants = {
 };
 
 // Auto-play duration in ms
-<<<<<<< HEAD
+
 const AUTO_PLAY_INTERVAL = 3000;
-=======
 const AUTO_PLAY_INTERVAL = 6000;
->>>>>>> 87f75fca9afb605d6bc16848b8da0dac107fb7ff
 
 const Testimonials = () => {
   const ref = useRef(null);
