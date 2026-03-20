@@ -3,6 +3,7 @@ import { ArrowLeft, Search, TrendingUp, Video, FileText, BarChart3, Target } fro
 import { Link } from "react-router-dom";
 import { useRef, useEffect, useState } from "react";
 import homelaneHero from "@/assets/work-homelane.png";
+import SEO from "@/components/SEO";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -68,7 +69,15 @@ const parseStatValue = (value: string): {num: number;suffix: string;prefix: stri
 
 const HomelaneCaseStudy = () => {
   return (
-    <div className="bg-background min-h-screen overflow-hidden text-foreground">
+    <>
+      <SEO
+        title="HomeLane SEO Case Study | Fokel"
+        description="Discover how Fokel helped HomeLane achieve 98% organic traffic growth and 85 keywords on Google Page 1 through strategic SEO and content marketing."
+        keywords="HomeLane SEO case study, SEO success story, digital marketing case study, organic traffic growth, Google ranking"
+        url="https://www.fokelworks.com/work/homelane"
+        type="article"
+      />
+      <div className="bg-background min-h-screen overflow-hidden text-foreground">
       {/* Back nav */}
       <motion.div
         className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border"
@@ -610,7 +619,9 @@ const HomelaneCaseStudy = () => {
           </div>
         </motion.div>
       </section>
-    </div>);
+    </div>
+    </>
+  );
 
 };
 

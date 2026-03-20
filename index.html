@@ -3,43 +3,131 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/favicon.png" type="image/png" />
-    <link rel="canonical" href="https://www.fokelworks.com/" />
-
-    <!-- Primary SEO -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/favicon.ico" />
+    
+    <!-- Primary Meta Tags -->
     <title>Fokel Creative Agency | Branding, Strategy & Digital Growth Studio</title>
+    <meta name="title" content="Fokel Creative Agency | Branding, Strategy & Digital Growth Studio" />
     <meta name="description" content="Fokel is a modern creative agency helping startups and businesses build powerful brand identities. We combine strategic thinking, bold design, and digital innovation to create impactful experiences that drive measurable growth and long-term success." />
+    <meta name="keywords" content="digital marketing agency, B2B digital marketing, creative digital studio, web design company India, SEO services, branding agency, content strategy, digital transformation, performance marketing, brand identity design, social media strategy" />
     <meta name="author" content="Fokel Creative Agency" />
-    <meta name="robots" content="index, follow" />
-
-    <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="bingbot" content="index, follow" />
+    <link rel="canonical" href="https://www.fokelworks.com/" />
+    
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.fokelworks.com/" />
     <meta property="og:title" content="Fokel Creative Agency | Branding & Digital Strategy Experts" />
     <meta property="og:description" content="At Fokel, we craft bold branding, strategic design, and digital experiences that elevate businesses above the competition. We turn ideas into powerful market presence." />
     <meta property="og:image" content="https://www.fokelworks.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Fokel Creative Agency" />
+    <meta property="og:locale" content="en_US" />
 
-    <!-- Twitter Card -->
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://www.fokelworks.com/" />
     <meta name="twitter:title" content="Fokel Creative Agency | Branding & Digital Strategy Experts" />
     <meta name="twitter:description" content="We help brands grow through strategy, creativity, and digital excellence. Discover how Fokel transforms vision into impact." />
     <meta name="twitter:image" content="https://www.fokelworks.com/og-image.jpg" />
+    <meta name="twitter:creator" content="@fokelworks" />
 
-    <!-- Structured Data for Google (Very Important) -->
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#FF6B14" />
+    <meta name="msapplication-TileColor" content="#FF6B14" />
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Fokel Creative Agency",
-      "alternateName": "Fokel",
-      "url": "https://www.fokelworks.com/",
-      "logo": "https://www.fokelworks.com/favicon.png",
-      "sameAs": [
-        "https://instagram.com/fokelworks",
-        "https://www.linkedin.com/company/fokelworks",
-        "https://facebook.com/fokelworks"
-      ]
-    }
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Fokel Creative Agency",
+        "alternateName": "Fokel",
+        "url": "https://www.fokelworks.com/",
+        "logo": "https://www.fokelworks.com/favicon.ico",
+        "description": "Fokel is a creative digital studio that transforms ambitious brands through strategic design, compelling storytelling, and measurable growth.",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+91-8950483522",
+          "contactType": "customer service",
+          "email": "info@fokelworks.com",
+          "availableLanguage": ["English", "Hindi"]
+        },
+        "sameAs": [
+          "https://instagram.com/fokelworks",
+          "https://www.linkedin.com/company/fokelworks",
+          "https://facebook.com/fokelworks"
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Fokel Digital Studio",
+        "image": "https://www.fokelworks.com/og-image.jpg",
+        "@id": "https://www.fokelworks.com",
+        "url": "https://www.fokelworks.com",
+        "telephone": "+918950483522",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "A77, Basement, A Block, East of Kailash",
+          "addressLocality": "New Delhi",
+          "addressRegion": "Delhi",
+          "postalCode": "110065",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 28.5535,
+          "longitude": 77.2435
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "10:00",
+          "closes": "19:00"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "url": "https://www.fokelworks.com",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://www.fokelworks.com/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.fokelworks.com"
+        },{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Work",
+          "item": "https://www.fokelworks.com/#work"
+        }]
+      }
+    ]
     </script>
   </head>
 

@@ -12,26 +12,36 @@ import FAQ from "@/components/FAQ";
 import Newsletter from "@/components/Newsletter";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 
 const Index = () => {
   return (
-    <div className="bg-background">
-      <Navbar />
-      <Hero />
-      <Marquee />
-      <StoryInNumbers />
-      <About />
-      <OurApproach />
-      <Services />
-      
-      <FeaturedWork />
-      <Testimonials />
-      <JourneyEndsHere />
-      <FAQ />
-      <Newsletter />
-      <Contact />
-      <Footer />
-    </div>
+    <>
+      <SEO
+        title="Fokel — Digital Studio | We Bring Your Brand Into Focus"
+        description="Fokel is a digital studio that brings your business into market focus with bold, disruptive strategies. We specialize in digital marketing, web design, SEO, and branding that drives measurable results for B2B companies."
+        keywords="digital marketing agency, web design company, SEO services, branding agency, social media marketing, digital strategy, B2B marketing, brand identity"
+        url="https://www.fokelworks.com"
+        type="website"
+      />
+      <div className="bg-background">
+        <Navbar />
+        <Hero />
+        <Marquee />
+        <StoryInNumbers />
+        <About />
+        <OurApproach />
+        <Services />
+        
+        <FeaturedWork />
+        <Testimonials />
+        <JourneyEndsHere />
+        <FAQ />
+        <Newsletter />
+        <Contact />
+        <Footer />
+      </div>
+    </>
   );
 };
 

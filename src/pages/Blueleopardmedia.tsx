@@ -3,6 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useRef, useEffect, useState } from "react";
 import blueLeopardHero from "@/assets/work-4.png";
+import SEO from "@/components/SEO";
 
 // Enhanced fade up animation
 const fadeUp = {
@@ -59,7 +60,15 @@ const parseStatValue = (value: string): { num: number; suffix: string; prefix: s
 
 const Blueleopard = () => {
   return (
-    <div className="bg-background min-h-screen overflow-hidden">
+    <>
+      <SEO
+        title="Blue Leopard Media Case Study | Fokel"
+        description="See how Fokel helped Blue Leopard Media establish a strong digital brand presence with creative web design and strategic media marketing."
+        keywords="Blue Leopard Media case study, media marketing, web design, brand development"
+        url="https://www.fokelworks.com/work/blue-leopard-media"
+        type="article"
+      />
+      <div className="bg-background min-h-screen overflow-hidden">
       {/* Back nav */}
       <motion.div 
         className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border"
@@ -477,6 +486,7 @@ const Blueleopard = () => {
         </motion.div>
       </section>
     </div>
+    </>
   );
 };
 

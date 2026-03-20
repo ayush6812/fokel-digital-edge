@@ -3,6 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useRef, useEffect, useState } from "react";
 import wtcHero from "@/assets/work-2.jpg";
+import SEO from "@/components/SEO";
 
 // Enhanced fade up animation
 const fadeUp = {
@@ -59,7 +60,15 @@ const parseStatValue = (value: string): { num: number; suffix: string; prefix: s
 
 const WtcCaseStudy = () => {
   return (
-    <div className="bg-background min-h-screen overflow-hidden">
+    <>
+      <SEO
+        title="WTC 2026 Case Study | Fokel"
+        description="See how Fokel helped WTC 2026 achieve remarkable digital transformation with innovative web design and strategic digital marketing solutions."
+        keywords="WTC case study, digital transformation, web design case study, digital marketing success"
+        url="https://www.fokelworks.com/work/wtc-2026"
+        type="article"
+      />
+      <div className="bg-background min-h-screen overflow-hidden">
       {/* Back nav */}
       <motion.div 
         className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border"
@@ -481,6 +490,7 @@ const WtcCaseStudy = () => {
         </motion.div>
       </section>
     </div>
+    </>
   );
 };
 

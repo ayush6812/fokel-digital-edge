@@ -3,6 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useRef, useEffect, useState } from "react";
 import genesHero from "@/assets/work-1.jpg";
+import SEO from "@/components/SEO";
 
 // Enhanced fade up animation
 const fadeUp = {
@@ -59,7 +60,15 @@ const parseStatValue = (value: string): { num: number; suffix: string; prefix: s
 
 const GenesLecoanetCaseStudy = () => {
   return (
-    <div className="bg-background min-h-screen overflow-hidden">
+    <>
+      <SEO
+        title="Genes Lecoanet Hemant Case Study | Fokel"
+        description="Discover how Fokel created a powerful digital presence for Genes Lecoanet Hemant with stunning web design and effective brand positioning strategy."
+        keywords="Genes Lecoanet case study, brand design, web development case study, luxury brand digital marketing"
+        url="https://www.fokelworks.com/work/genes-lecoanet-hemant"
+        type="article"
+      />
+      <div className="bg-background min-h-screen overflow-hidden">
       {/* Back nav */}
       <motion.div 
         className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border"
@@ -475,6 +484,7 @@ const GenesLecoanetCaseStudy = () => {
         </motion.div>
       </section>
     </div>
+    </>
   );
 };
 
