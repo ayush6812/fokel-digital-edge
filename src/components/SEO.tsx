@@ -9,17 +9,19 @@ type SEOProps = {
   type?: "website" | "article";
   publishedTime?: string;
   author?: string;
+  robots?: string;
 };
 
 const SEO = ({
   title = "Fokel — Digital Studio",
-  description = "Fokel is a digital studio that brings your business into market focus with bold, disruptive strategies. Expert digital marketing, web design, SEO, and branding services.",
-  keywords = "digital marketing agency, web design company, SEO services, branding agency, social media marketing, digital strategy",
+  description = "Fokel is a premium digital studio specializing in B2B marketing, strategic web design, and SEO-driven growth. We transform ambitious brands into market leaders.",
+  keywords = "digital marketing agency, B2B digital marketing, creative digital studio, web design company, SEO services, branding agency",
   image = "https://www.fokelworks.com/og-image.png",
   url,
   type = "website",
   publishedTime,
-  author,
+  author = "Fokel Digital",
+  robots = "index, follow",
 }: SEOProps) => {
   const fullUrl = url || "https://www.fokelworks.com";
   const fullTitle = title.includes("Fokel") ? title : `${title} | Fokel`;
@@ -29,6 +31,8 @@ const SEO = ({
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
+      <meta name="author" content={author} />
+      <meta name="robots" content={robots} />
       <link rel="canonical" href={fullUrl} />
 
       {/* Open Graph */}
@@ -38,6 +42,7 @@ const SEO = ({
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
       <meta property="og:site_name" content="Fokel" />
+      <meta property="og:locale" content="en_US" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -45,12 +50,13 @@ const SEO = ({
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
+      <meta name="twitter:creator" content="@fokelworks" />
 
       {/* Article specific */}
       {type === "article" && publishedTime && (
         <meta property="article:published_time" content={publishedTime} />
       )}
-      {type === "article" && author && (
+      {type === "article" && (
         <meta property="article:author" content={author} />
       )}
     </Helmet>

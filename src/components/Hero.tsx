@@ -150,28 +150,6 @@ const Hero = () => {
                 View our work
               </Link>
             </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.7 }}
-              className="flex items-center gap-8 pt-8 border-t border-border/50"
-            >
-              <div>
-                <p className="text-3xl font-bold text-foreground">20+</p>
-                <p className="text-sm text-muted-foreground">Projects Delivered</p>
-              </div>
-              <div className="w-px h-12 bg-border" />
-              <div>
-                <p className="text-3xl font-bold text-foreground">100%</p>
-                <p className="text-sm text-muted-foreground">Client Satisfaction</p>
-              </div>
-              <div className="w-px h-12 bg-border" />
-              <div>
-                <p className="text-3xl font-bold text-foreground">5+</p>
-                <p className="text-sm text-muted-foreground">Years Experience</p>
-              </div>
-            </motion.div>
           </div>
 
           <motion.div
@@ -212,6 +190,7 @@ const Hero = () => {
                   loop
                   playsInline
                   className="w-full h-full object-cover"
+                  title="Fokel Digital Studio - Creative Branding and SEO Process"
                 />
                 
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />

@@ -1,21 +1,19 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
+Disallow: /dist/
+Disallow: /node_modules/
 
 # Sitemap
 Sitemap: https://www.fokelworks.com/sitemap.xml
 
-# Crawl-delay for polite crawling
-Crawl-delay: 1
-
 # Specific bot permissions
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 1
+Disallow: /dist/
 
 User-agent: Bingbot
 Allow: /
-Crawl-delay: 1
 
 User-agent: Slurp
 Allow: /
@@ -27,6 +25,15 @@ User-agent: Baiduspider
 Allow: /
 
 User-agent: YandexBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: ia_archiver
+Allow: /
+
+User-agent: Twitterbot
 Allow: /
 
 # Block common bot traps and admin areas

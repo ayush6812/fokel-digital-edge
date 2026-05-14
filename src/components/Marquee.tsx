@@ -9,12 +9,12 @@ import inventeron from "@/assets/clients/inventeron.png";
 import hmo from "@/assets/clients/hmo.png";
 
 const clients = [
-  { src: homelane, alt: "HomeLane", height: "h-12 md:h-16" },
-  { src: wtc, alt: "WTC", height: "h-12 md:h-16" },
-  { src: genes, alt: "Genes", height: "h-12 md:h-16" },
-  { src: onsurity, alt: "Onsurity", height: "h-12 md:h-16" },
-  { src: inventeron, alt: "Inventeron", height: "h-12 md:h-16" },
-  { src: hmo, alt: "HMO Architects", height: "h-12 md:h-16" },
+  { src: homelane, alt: "HomeLane", height: "h-14 md:h-20" },
+  { src: wtc, alt: "WTC", height: "h-14 md:h-20" },
+  { src: genes, alt: "Genes", height: "h-14 md:h-20" },
+  { src: onsurity, alt: "Onsurity", height: "h-14 md:h-20" },
+  { src: inventeron, alt: "Inventeron", height: "h-14 md:h-20" },
+  { src: hmo, alt: "HMO Architects", height: "h-14 md:h-20" },
 ];
 
 const Marquee = () => {
@@ -72,11 +72,11 @@ const Marquee = () => {
         />
 
         <div className="animate-marquee py-2 will-change-transform flex min-w-max">
-          <div className="flex gap-16 md:gap-24 items-center pr-16 md:pr-24">
+          <div className="flex gap-20 md:gap-32 items-center pr-20 md:pr-32">
             {clients.map((client, i) => (
               <motion.div
                 key={`${client.alt}-${i}`}
-                className="flex-shrink-0 flex items-center justify-center px-4 h-28 md:h-32 cursor-default"
+                className="flex-shrink-0 flex items-center justify-center px-4 h-32 md:h-40 cursor-default"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
@@ -85,16 +85,16 @@ const Marquee = () => {
                 <img
                   src={client.src}
                   alt={client.alt}
-                  className={`${client.height} max-w-32 w-auto object-contain mix-blend-darken grayscale hover:grayscale-0 transition-all duration-500 ease-out opacity-80 hover:opacity-100`}
+                  className={`${client.height} max-w-40 md:max-w-48 w-auto object-contain mix-blend-darken grayscale hover:grayscale-0 transition-all duration-500 ease-out opacity-80 hover:opacity-100`}
                 />
               </motion.div>
             ))}
           </div>
-          <div className="flex gap-16 md:gap-24 items-center pl-16 md:pl-24" aria-hidden>
+          <div className="flex gap-20 md:gap-32 items-center pl-20 md:pl-32" aria-hidden>
             {clients.map((client, i) => (
               <motion.div
                 key={`dup-${client.alt}-${i}`}
-                className="flex-shrink-0 flex items-center justify-center px-4 h-28 md:h-32 cursor-default"
+                className="flex-shrink-0 flex items-center justify-center px-4 h-32 md:h-40 cursor-default"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
@@ -103,7 +103,7 @@ const Marquee = () => {
                 <img
                   src={client.src}
                   alt=""
-                  className={`${client.height} max-w-32 w-auto object-contain mix-blend-darken grayscale hover:grayscale-0 transition-all duration-500 ease-out opacity-80 hover:opacity-100`}
+                  className={`${client.height} max-w-40 md:max-w-48 w-auto object-contain mix-blend-darken grayscale hover:grayscale-0 transition-all duration-500 ease-out opacity-80 hover:opacity-100`}
                 />
               </motion.div>
             ))}

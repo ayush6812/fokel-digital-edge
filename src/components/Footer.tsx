@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowRight, Mail, Linkedin, Instagram } from "lucide-react";
 import logo from "@/assets/fokel-logo.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const ref = useRef(null);
@@ -133,9 +134,14 @@ const Footer = () => {
           <p className="text-sm text-background/40">
             © 2026 Fokel. All rights reserved.
           </p>
-          <p className="text-sm text-background/40">
-            Crafted with precision in India
-          </p>
+          <div className="flex items-center gap-4">
+            <Link to="/privacy-policy" className="text-sm text-background/40 hover:text-accent transition-colors">
+              Privacy Policy
+            </Link>
+            <p className="text-sm text-background/40">
+              Crafted with precision in India
+            </p>
+          </div>
         </motion.div>
       </div>
     </footer>

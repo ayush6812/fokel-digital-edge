@@ -63,28 +63,6 @@ const About = () => {
             </div>
           </motion.div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-primary-foreground/10"
-        >
-          {[
-            { value: "20+", label: "Projects Delivered" },
-            { value: "100%", label: "Client Satisfaction" },
-            { value: "5+", label: "Years of Experience" },
-            { value: "2.5x", label: "Average ROI" },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center">
-              <p className="text-3xl md:text-4xl font-bold text-primary-foreground mb-2" style={{ fontFamily: "var(--font-heading)" }}>
-                {stat.value}
-              </p>
-              <p className="text-sm text-primary-foreground/60">{stat.label}</p>
-            </div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );

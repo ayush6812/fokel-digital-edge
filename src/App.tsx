@@ -10,6 +10,7 @@ import WtcCaseStudy from "./pages/WtcCaseStudy";
 import GenesLecoanetCaseStudy from "./pages/GenesLecoanetCaseStudy";
 import Blueleopardmedia from "./pages/Blueleopardmedia";
 import NotFound from "./pages/NotFound";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/work/wtc-2026" element={<WtcCaseStudy />} />
           <Route path="/work/genes-lecoanet-hemant" element={<GenesLecoanetCaseStudy />} />
           <Route path="/work/blue-leopard-media" element={<Blueleopardmedia />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

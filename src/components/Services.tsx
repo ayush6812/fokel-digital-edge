@@ -4,8 +4,7 @@ import {
   Megaphone, 
   Globe,
   Target,
-  Palette,
-  ArrowUpRight
+  Palette
 } from "lucide-react";
 
 const services = [
@@ -140,19 +139,9 @@ const Services = () => {
                     {service.title}
                   </h3>
                   
-                  <p className="body-regular text-muted-foreground mb-6">
+                  <p className="body-regular text-muted-foreground">
                     {service.description}
                   </p>
-
-                  <motion.div
-                    className="flex items-center gap-2 text-sm font-medium text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    initial={{ y: 10, opacity: 0 }}
-                    whileHover={{ y: 0 }}
-                    animate={{ y: isHovered ? 0 : 10, opacity: isHovered ? 1 : 0 }}
-                  >
-                    <span>Learn more</span>
-                    <ArrowUpRight className="w-4 h-4" />
-                  </motion.div>
                 </div>
 
                 <motion.div
