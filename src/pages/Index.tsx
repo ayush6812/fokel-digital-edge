@@ -13,6 +13,7 @@ import Newsletter from "@/components/Newsletter";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 const Index = () => {
   return (
@@ -40,6 +41,7 @@ const Index = () => {
         <Newsletter />
         <Contact />
         <Footer />
+        <ScrollToTopButton />
       </div>
     </>
   );
