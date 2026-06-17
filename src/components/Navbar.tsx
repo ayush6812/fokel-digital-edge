@@ -10,6 +10,7 @@ const navLinks = [
   { label: "Services", href: "#services" },
   { label: "Work",     href: "#work"     },
   { label: "Contact",  href: "#contact"  },
+  { label: "Blog",     href: "#blog"     },
 ];
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
