@@ -20,7 +20,7 @@ const projects = [
     tags: ["B2B SEO", "Content Marketing", "Growth Strategy"],
     link: "/work/homelane",
     color: "from-emerald-500/80",
-    bgColorLight: "#ecfdf5",
+    bgColorLight: "#ffffff",
     bgColorDark: "#0a1f15",
   },
   {
@@ -31,7 +31,7 @@ const projects = [
     tags: ["Event Marketing", "Digital Strategy", "Branding"],
     link: "/work/wtc-2026",
     color: "from-blue-500/80",
-    bgColorLight: "#eff6ff",
+    bgColorLight: "#ffffff",
     bgColorDark: "#0a1220",
   },
   {
@@ -42,7 +42,7 @@ const projects = [
     tags: ["Luxury Marketing", "Social Media", "Performance"],
     link: "/work/genes-lecoanet-hemant",
     color: "from-purple-500/80",
-    bgColorLight: "#faf5ff",
+    bgColorLight: "#ffffff",
     bgColorDark: "#100a1f",
   },
   {
@@ -53,7 +53,7 @@ const projects = [
     tags: ["Commercial Real Estate", "B2B Lead Gen", "Web Directory"],
     link: "/work/sab-properties",
     color: "from-cyan-500/80",
-    bgColorLight: "#ecfeff",
+    bgColorLight: "#ffffff",
     bgColorDark: "#071518",
   },
 ];

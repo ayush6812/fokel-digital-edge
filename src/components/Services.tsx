@@ -63,7 +63,7 @@ const Services = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section id="services" className="py-24 lg:py-32 bg-secondary/50 overflow-hidden" ref={ref}>
+    <section id="services" className="py-24 lg:py-32 bg-secondary overflow-hidden" ref={ref}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

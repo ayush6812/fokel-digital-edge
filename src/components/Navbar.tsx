@@ -1,113 +1,16 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Menu, X, Sun, Moon } from "lucide-react";
+import { ArrowRight, Menu, X } from "lucide-react";
 import logo from "@/assets/fokel-logo.png";
 import logoBlack from "@/assets/fokel-logo-black.png";
 
-const STORAGE_KEY = "fokel-theme";
-
-/** Read the current theme from the live HTML element — single source of truth */
-function getCurrentTheme(): "dark" | "light" {
-  return document.documentElement.classList.contains("dark") ? "dark" : "light";
-}
-
-/** Apply a theme: toggle the class on <html> + persist to localStorage */
-function applyTheme(theme: "dark" | "light") {
-  const html = document.documentElement;
-  if (theme === "dark") {
-    html.classList.add("dark");
-  } else {
-    html.classList.remove("dark");
-  }
-  try { localStorage.setItem(STORAGE_KEY, theme); } catch {}
-}
-
+/* ─── Navbar ─────────────────────────────────────────────────────────────────── */
 const navLinks = [
   { label: "About",    href: "#about"    },
   { label: "Services", href: "#services" },
   { label: "Work",     href: "#work"     },
   { label: "Contact",  href: "#contact"  },
 ];
-
-/* ─── Purple Theme Toggle ────────────────────────────────────────────────────── */
-const ThemeToggle = ({ overHero }: { overHero: boolean }) => {
-  const [isDark, setIsDark] = useState(false);
-
-  // Sync with whatever the pre-React script already applied
-  useEffect(() => {
-    setIsDark(getCurrentTheme() === "dark");
-  }, []);
-
-  const toggle = () => {
-    const next: "dark" | "light" = isDark ? "light" : "dark";
-    applyTheme(next);
-    setIsDark(next === "dark");
-  };
-
-  return (
-    <motion.button
-      onClick={toggle}
-      aria-label="Toggle light/dark mode"
-      className="relative flex items-center rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500"
-      style={{
-        width: 58,
-        height: 30,
-        background: isDark
-          ? "rgba(139, 92, 246, 0.9)"
-          : overHero
-            ? "rgba(255,255,255,0.15)"
-            : "rgba(139, 92, 246, 0.15)",
-        border: isDark
-          ? "1.5px solid rgba(167,139,250,0.6)"
-          : overHero
-            ? "1.5px solid rgba(255,255,255,0.35)"
-            : "1.5px solid rgba(139,92,246,0.45)",
-        boxShadow: isDark
-          ? "0 0 16px rgba(139,92,246,0.35)"
-          : "0 0 10px rgba(139,92,246,0.1)",
-        transition: "background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease",
-      }}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-    >
-      {/* Sliding thumb */}
-      <motion.div
-        className="absolute rounded-full flex items-center justify-center"
-        style={{
-          width: 22,
-          height: 22,
-          top: 3,
-          background: isDark ? "white" : "rgba(109,40,217,1)",
-          boxShadow: isDark
-            ? "0 1px 6px rgba(0,0,0,0.25)"
-            : "0 1px 6px rgba(109,40,217,0.35)",
-        }}
-        animate={{ left: isDark ? 30 : 4 }}
-        transition={{ type: "spring", stiffness: 400, damping: 30 }}
-      >
-        <AnimatePresence mode="wait" initial={false}>
-          {isDark ? (
-            <motion.span key="moon"
-              initial={{ opacity: 0, rotate: -30 }} animate={{ opacity: 1, rotate: 0 }}
-              exit={{ opacity: 0, rotate: 30 }} transition={{ duration: 0.15 }}
-            >
-              <Moon className="w-3 h-3 text-purple-600" />
-            </motion.span>
-          ) : (
-            <motion.span key="sun"
-              initial={{ opacity: 0, rotate: 30 }} animate={{ opacity: 1, rotate: 0 }}
-              exit={{ opacity: 0, rotate: -30 }} transition={{ duration: 0.15 }}
-            >
-              <Sun className="w-3 h-3 text-white" />
-            </motion.span>
-          )}
-        </AnimatePresence>
-      </motion.div>
-    </motion.button>
-  );
-};
-
-/* ─── Navbar ─────────────────────────────────────────────────────────────────── */
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -237,15 +140,11 @@ const Navbar = () => {
             </span>
           </motion.a>
 
-          {/* Theme toggle — right of Get in Touch */}
-          <div className="ml-2">
-            <ThemeToggle overHero={isOverHero} />
-          </div>
+          {/* Get in Touch CTA */}
         </div>
 
-        {/* Mobile — theme toggle + hamburger */}
+        {/* Mobile — hamburger */}
         <div className="lg:hidden flex items-center gap-2">
-          <ThemeToggle overHero={isOverHero} />
           <motion.button
             onClick={() => setIsOpen(!isOpen)}
             className={`w-11 h-11 flex items-center justify-center rounded-full transition-colors ${

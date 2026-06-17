@@ -93,7 +93,6 @@ export default function HowWeWork() {
           transition={{ duration: 0.7, delay: 0.15 }}
         >
           How we work
-          <span style={{ color: ORANGE }}>.</span>
         </motion.h2>
 
         {/* Top border */}
