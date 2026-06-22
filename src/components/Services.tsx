@@ -43,7 +43,7 @@ const Services = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section id="services" className="py-24 lg:py-36 bg-secondary overflow-hidden" ref={ref}>
+    <section id="services" className="py-24 lg:py-36 bg-primary text-primary-foreground overflow-hidden" ref={ref}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
         {/* Header */}
@@ -59,7 +59,7 @@ const Services = () => {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="h-[2px] bg-accent"
           />
-          <p className="section-label">What We Do</p>
+          <p className="section-label text-primary-foreground/60">What We Do</p>
         </motion.div>
 
         <motion.div
@@ -68,7 +68,7 @@ const Services = () => {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-20"
         >
-          <h2 className="heading-section text-foreground max-w-xl">
+          <h2 className="heading-section text-primary-foreground max-w-xl">
             Crafting digital experiences that{" "}
             <DepthText
               text="transform"
@@ -77,7 +77,7 @@ const Services = () => {
             />{" "}
             brands
           </h2>
-          <p className="text-muted-foreground max-w-md lg:text-right">
+          <p className="text-primary-foreground/50 max-w-md lg:text-right">
             We combine strategic thinking with creative excellence to deliver results that exceed expectations.
           </p>
         </motion.div>
@@ -89,7 +89,7 @@ const Services = () => {
             initial={{ scaleX: 0 }}
             animate={isInView ? { scaleX: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-            className="h-px bg-border origin-left"
+            className="h-px bg-primary-foreground/10 origin-left"
           />
 
           {services.map((service, i) => {
@@ -111,42 +111,43 @@ const Services = () => {
               >
                 {/* Hover fill background */}
                 <motion.div
-                  className="absolute inset-0 bg-foreground pointer-events-none"
+                  className="absolute inset-0 bg-primary-foreground pointer-events-none"
                   initial={{ scaleY: 0 }}
                   animate={{ scaleY: isHovered ? 1 : 0 }}
                   style={{ originY: "bottom" }}
                   transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
                 />
 
-                <div className="relative z-10 grid grid-cols-12 items-center gap-4 lg:gap-8 py-7 lg:py-8 cursor-default">
+                <div className="relative z-10 flex items-center gap-6 lg:gap-10 py-8 lg:py-10 pl-6 lg:pl-10 cursor-default">
+
                   {/* Number */}
-                  <div className="col-span-2 lg:col-span-1">
+                  <div className="w-14 shrink-0">
                     <motion.span
-                      animate={{ color: isHovered ? "hsl(var(--accent))" : "hsl(var(--muted-foreground))" }}
+                      animate={{ color: isHovered ? "hsl(var(--accent))" : "hsl(var(--primary-foreground) / 0.35)" }}
                       transition={{ duration: 0.25 }}
-                      className="text-xs font-mono tracking-widest"
+                      className="text-base font-mono tracking-widest"
                     >
                       {service.number}
                     </motion.span>
                   </div>
 
                   {/* Subtitle (hidden on mobile) */}
-                  <div className="hidden lg:block col-span-2">
+                  <div className="hidden lg:block w-40 shrink-0">
                     <motion.span
-                      animate={{ color: isHovered ? "hsl(var(--accent))" : "hsl(var(--muted-foreground))" }}
+                      animate={{ color: isHovered ? "hsl(var(--accent))" : "hsl(var(--primary-foreground) / 0.4)" }}
                       transition={{ duration: 0.25 }}
-                      className="text-xs font-medium tracking-[0.2em] uppercase"
+                      className="text-xs font-semibold tracking-[0.22em] uppercase"
                     >
                       {service.subtitle}
                     </motion.span>
                   </div>
 
                   {/* Title */}
-                  <div className="col-span-7 lg:col-span-4">
+                  <div className="w-64 lg:w-80 shrink-0">
                     <motion.h3
-                      animate={{ color: isHovered ? "hsl(var(--secondary))" : "hsl(var(--foreground))" }}
+                      animate={{ color: isHovered ? "hsl(var(--primary))" : "hsl(var(--primary-foreground))" }}
                       transition={{ duration: 0.25 }}
-                      className="text-2xl lg:text-3xl font-bold tracking-tight leading-tight"
+                      className="text-2xl lg:text-3xl font-bold tracking-tight leading-snug"
                       style={{ fontFamily: "var(--font-heading)" }}
                     >
                       {service.title}
@@ -154,28 +155,28 @@ const Services = () => {
                   </div>
 
                   {/* Description */}
-                  <div className="hidden lg:block col-span-3">
+                  <div className="hidden lg:block flex-1 min-w-0">
                     <motion.p
-                      animate={{ color: isHovered ? "hsl(var(--secondary) / 0.7)" : "hsl(var(--muted-foreground))" }}
+                      animate={{ color: isHovered ? "hsl(var(--primary) / 0.75)" : "hsl(var(--primary-foreground) / 0.55)" }}
                       transition={{ duration: 0.25 }}
-                      className="text-sm leading-relaxed"
+                      className="text-base leading-relaxed"
                     >
                       {service.description}
                     </motion.p>
                   </div>
 
                   {/* Tags */}
-                  <div className="col-span-3 lg:col-span-2 flex flex-wrap justify-end gap-1.5">
+                  <div className="hidden lg:flex shrink-0 w-44 flex-wrap justify-end gap-1.5">
                     {service.tags.map((tag) => (
                       <motion.span
                         key={tag}
                         animate={{
-                          backgroundColor: isHovered ? "hsl(var(--accent) / 0.15)" : "hsl(var(--border))",
-                          color: isHovered ? "hsl(var(--accent))" : "hsl(var(--muted-foreground))",
-                          borderColor: isHovered ? "hsl(var(--accent) / 0.4)" : "transparent",
+                          backgroundColor: isHovered ? "hsl(var(--accent) / 0.12)" : "hsl(var(--primary-foreground) / 0.07)",
+                          color: isHovered ? "hsl(var(--accent))" : "hsl(var(--primary-foreground) / 0.55)",
+                          borderColor: isHovered ? "hsl(var(--accent) / 0.35)" : "hsl(var(--primary-foreground) / 0.12)",
                         }}
                         transition={{ duration: 0.25 }}
-                        className="text-[10px] font-medium tracking-wider uppercase px-2 py-0.5 rounded-full border"
+                        className="text-[11px] font-semibold tracking-wider uppercase px-3 py-1 rounded-full border"
                       >
                         {tag}
                       </motion.span>
@@ -183,15 +184,14 @@ const Services = () => {
                   </div>
 
                   {/* Arrow */}
-                  <div className="hidden lg:flex col-span-12 lg:col-span-0 justify-end absolute right-0 top-1/2 -translate-y-1/2">
+                  <div className="ml-auto shrink-0 hidden lg:block">
                     <motion.div
                       animate={{
                         opacity: isHovered ? 1 : 0,
-                        x: isHovered ? 0 : -8,
-                        color: "hsl(var(--accent))",
+                        x: isHovered ? 0 : -10,
                       }}
                       transition={{ duration: 0.25 }}
-                      className="text-accent text-lg font-light mr-2"
+                      className="text-accent text-xl"
                     >
                       →
                     </motion.div>
@@ -199,7 +199,7 @@ const Services = () => {
                 </div>
 
                 {/* Bottom border */}
-                <div className="h-px bg-border relative z-10" />
+                <div className="h-px bg-primary-foreground/10 relative z-10" />
               </motion.div>
             );
           })}
