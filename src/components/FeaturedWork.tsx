@@ -1,15 +1,11 @@
 import { motion, useInView, useSpring, useTransform, useMotionValue } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useTheme } from "next-themes";
 import { DepthText } from "@/components/ui/DepthText";
 import { Magnetic } from "@/components/ui/Magnetic";
 
-import work1 from "@/assets/work-1.jpg";
-import work2 from "@/assets/work-2.jpg";
 import work3 from "@/assets/work-homelane.png";
-import workSab from "@/assets/work-sab.png";
 
 const projects = [
   {
@@ -24,7 +20,7 @@ const projects = [
     bgColorDark: "#0a1f15",
   },
   {
-    image: work2,
+    image: "/its.png",
     title: "ITA-AITES WTC 2026",
     description:
       "Global digital strategy and event branding for the World Tunnel Congress, driving international visibility and attendee engagement.",
@@ -35,7 +31,7 @@ const projects = [
     bgColorDark: "#0a1220",
   },
   {
-    image: work1,
+    image: "/genes.png",
     title: "Genes Lecoanet Hemant",
     description:
       "Premium social media storytelling and brand performance marketing for one of India's most iconic luxury fashion houses.",
@@ -46,7 +42,7 @@ const projects = [
     bgColorDark: "#100a1f",
   },
   {
-    image: workSab,
+    image: "/sab.png",
     title: "SAB Properties",
     description:
       "Direct-to-client commercial property directory and automated B2B leasing pipeline for one of Delhi's premier estate agencies.",
@@ -62,8 +58,15 @@ const FeaturedWork = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const { resolvedTheme } = useTheme();
-  const isDark = resolvedTheme === "dark";
+  const [isDark, setIsDark] = useState(true);
+
+  useEffect(() => {
+    const checkTheme = () => setIsDark(document.documentElement.classList.contains("dark"));
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    return () => observer.disconnect();
+  }, []);
 
   const getBgColor = () => {
     if (hoveredIndex === null) return "hsl(var(--background))";
@@ -252,9 +255,9 @@ const ProjectCardContent = ({
       <motion.img
         src={project.image}
         alt={project.title}
-        className="w-full h-full object-cover"
+        className="w-full h-full object-contain p-4"
         animate={{
-          scale: isHovered ? 1.1 : 1,
+          scale: isHovered ? 1.05 : 1,
         }}
         transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] }}
       />
