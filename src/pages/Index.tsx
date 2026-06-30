@@ -9,6 +9,7 @@ import FeaturedWork from "@/components/FeaturedWork";
 import Testimonials from "@/components/Testimonials";
 import JourneyEndsHere from "@/components/JourneyEndsHere";
 import FAQ from "@/components/FAQ";
+import BlogSection from "@/components/BlogSection";
 import Newsletter from "@/components/Newsletter";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -41,6 +42,7 @@ const Index = () => {
         <FeaturedWork />
         <Testimonials />
         <JourneyEndsHere />
+        <BlogSection />
         <FAQ />
         <Newsletter />
         <Contact />

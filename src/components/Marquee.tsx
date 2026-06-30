@@ -25,7 +25,7 @@ const Marquee = () => {
 
   return (
     <section
-      className="bg-background overflow-hidden"
+      className="bg-primary text-primary-foreground overflow-hidden"
       ref={ref}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-16 pb-4">
@@ -62,14 +62,14 @@ const Marquee = () => {
           className="absolute left-0 top-0 bottom-0 w-24 md:w-40 z-10 pointer-events-none"
           style={{
             background:
-              "linear-gradient(to right, hsl(var(--background)) 0%, hsl(var(--background) / 0) 100%)",
+              "linear-gradient(to right, hsl(var(--primary)) 0%, hsl(var(--primary) / 0) 100%)",
           }}
         />
         <div
           className="absolute right-0 top-0 bottom-0 w-24 md:w-40 z-10 pointer-events-none"
           style={{
             background:
-              "linear-gradient(to left, hsl(var(--background)) 0%, hsl(var(--background) / 0) 100%)",
+              "linear-gradient(to left, hsl(var(--primary)) 0%, hsl(var(--primary) / 0) 100%)",
           }}
         />
 

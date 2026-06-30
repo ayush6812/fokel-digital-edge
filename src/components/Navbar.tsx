@@ -18,6 +18,8 @@ const Navbar = () => {
   const [isOverHero, setIsOverHero] = useState(true);
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
 
+  const [isDark, setIsDark] = useState(true);
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -26,7 +28,17 @@ const Navbar = () => {
     };
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    
+    // Theme detection for logo
+    const checkTheme = () => setIsDark(document.documentElement.classList.contains("dark"));
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      observer.disconnect();
+    };
   }, []);
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -46,20 +58,20 @@ const Navbar = () => {
   };
 
   const navBg = isOverHero
-    ? "bg-transparent"
-    : isScrolled
-      ? "bg-background/95 backdrop-blur-lg shadow-sm shadow-foreground/5"
-      : "bg-background/95 backdrop-blur-lg";
+    ? "bg-transparent border-transparent"
+    : "bg-background/30 backdrop-blur-xl border-b border-border/40 shadow-[0_4px_30px_rgba(0,0,0,0.1)]";
 
   const linkColor = isOverHero
-    ? "text-white/80 hover:text-white"
-    : "text-foreground/70 hover:text-foreground";
+    ? "text-white/90 hover:text-white"
+    : "text-foreground/80 hover:text-foreground";
 
-  const hoverBg = isOverHero ? "bg-white/10" : "bg-secondary";
+  const hoverBg = isOverHero ? "bg-white/10" : "bg-foreground/5";
+
+  const showWhiteLogo = isOverHero || isDark;
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navBg}`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b ${navBg}`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
@@ -90,14 +102,14 @@ const Navbar = () => {
               src={logoBlack}
               alt="Fokel"
               className="h-8 md:h-9 w-auto absolute top-0 left-0"
-              animate={{ opacity: isOverHero ? 1 : 0 }}
+              animate={{ opacity: showWhiteLogo ? 1 : 0 }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
             />
             <motion.img
               src={logo}
               alt="Fokel"
               className="h-8 md:h-9 w-auto"
-              animate={{ opacity: isOverHero ? 0 : 1 }}
+              animate={{ opacity: showWhiteLogo ? 0 : 1 }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
             />
           </div>

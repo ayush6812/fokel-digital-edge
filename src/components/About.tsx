@@ -6,7 +6,7 @@ const About = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="py-24 lg:py-32 bg-primary text-primary-foreground overflow-hidden" ref={ref}>
+    <section id="about" className="py-24 lg:py-32 bg-background text-foreground overflow-hidden" ref={ref}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -33,7 +33,7 @@ const About = () => {
             transition={{ duration: 0.7, delay: 0.15 }}
             className="mb-12 lg:mb-0"
           >
-            <h2 className="heading-section text-primary-foreground leading-tight">
+            <h2 className="heading-section text-foreground leading-tight">
               Bold ideas,<br />
               <span className="text-accent">disruptive</span><br />
               execution<span className="text-accent">.</span>
@@ -48,7 +48,7 @@ const About = () => {
             className="flex flex-col gap-8"
           >
             <div className="relative pl-6 border-l-2 border-accent/30">
-              <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed">
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
                 At Fokel, we believe exceptional digital experiences don't happen by accident. 
                 They emerge from the intersection of strategic thinking, creative vision, and 
                 relentless attention to detail.
@@ -56,7 +56,7 @@ const About = () => {
             </div>
             
             <div className="relative pl-6 border-l-2 border-accent/30">
-              <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed">
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
                 Our mission is simple: transform ambitious brands into undisputed market leaders 
                 through creative excellence and measurable results. We don't just create—we <span className="text-accent font-medium">execute</span>.
               </p>

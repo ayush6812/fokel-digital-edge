@@ -57,7 +57,7 @@ const AnimatedCounter = ({
     : count.toFixed(1);
 
   return (
-    <span ref={ref} className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
+    <span ref={ref} className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground">
       {displayValue}{suffix}
     </span>
   );
@@ -68,7 +68,7 @@ const StoryInNumbers = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-16 md:py-24 bg-secondary" ref={ref}>
+    <section className="py-16 md:py-24 bg-primary text-primary-foreground" ref={ref}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -90,7 +90,7 @@ const StoryInNumbers = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight text-foreground mb-16"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight text-primary-foreground mb-16"
         >
           In Numbers<span className="text-accent">.</span>
         </motion.h2>
@@ -118,7 +118,7 @@ const StoryInNumbers = () => {
                 />
               </div>
               <div className="mt-4 h-px w-16 md:w-full max-w-[80px] bg-border group-hover:bg-accent/30 transition-colors duration-300" />
-              <p className="mt-4 text-sm md:text-base text-muted-foreground uppercase tracking-[0.2em] group-hover:text-foreground transition-colors duration-300">
+              <p className="mt-4 text-sm md:text-base text-primary-foreground/70 uppercase tracking-[0.2em] group-hover:text-primary-foreground transition-colors duration-300">
                 {stat.label}
               </p>
             </motion.div>

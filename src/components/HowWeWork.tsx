@@ -86,13 +86,13 @@ export default function HowWeWork() {
 
         {/* Heading */}
         <motion.h2
-          className="heading-section text-primary-foreground"
+          className="heading-section text-white"
           style={{ marginBottom: 72 }}
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.15 }}
         >
-          How we work
+          How we <span className="text-accent">work</span><span className="text-accent">.</span>
         </motion.h2>
 
         {/* Top border */}

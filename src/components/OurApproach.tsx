@@ -46,7 +46,7 @@ const OurApproach = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="bg-primary text-primary-foreground overflow-hidden" ref={ref}>
+    <section className="bg-background text-foreground overflow-hidden" ref={ref}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-4 pb-16 md:pt-6 md:pb-24">
         {/* Section label with animated line */}
         <motion.div
@@ -77,10 +77,10 @@ const OurApproach = () => {
             initial={{ y: "100%", opacity: 0 }}
             animate={isInView ? { y: 0, opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-[-0.02em]"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-[-0.02em] text-white"
             style={{ fontFamily: "var(--font-heading)" }}
           >
-            How we work
+            How we <span className="text-accent">work</span><span className="text-accent">.</span>
           </motion.h2>
         </div>
 
@@ -100,7 +100,7 @@ const OurApproach = () => {
                 animate={isInView ? "visible" : "hidden"}
                 onMouseEnter={() => setHoveredIndex(i)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                className="group relative bg-primary-foreground/5 border border-primary-foreground/10 rounded-2xl p-6 lg:p-8 flex flex-col justify-between min-h-[320px] overflow-hidden cursor-pointer"
+                className="group relative bg-foreground/5 border border-foreground/10 rounded-2xl p-6 lg:p-8 flex flex-col justify-between min-h-[320px] overflow-hidden cursor-pointer"
                 whileHover={{ y: -8 }}
                 transition={{ duration: 0.3 }}
               >
@@ -142,11 +142,11 @@ const OurApproach = () => {
                       />
                     </motion.div>
                     <motion.span
-                      className="text-sm font-medium text-primary-foreground/30"
+                      className="text-sm font-medium text-foreground/30"
                       animate={{
                         color: isHovered
                           ? "hsl(var(--accent))"
-                          : "hsl(var(--primary-foreground) / 0.3)",
+                          : "hsl(var(--foreground) / 0.3)",
                       }}
                       transition={{ duration: 0.3 }}
                     >
@@ -160,13 +160,13 @@ const OurApproach = () => {
                     animate={{
                       color: isHovered
                         ? "hsl(var(--accent))"
-                        : "hsl(var(--primary-foreground))",
+                        : "hsl(var(--foreground))",
                     }}
                     transition={{ duration: 0.3 }}
                   >
                     {approach.title}
                   </motion.h3>
-                  <p className="text-sm text-primary-foreground/60 leading-relaxed">
+                  <p className="text-sm text-foreground/60 leading-relaxed">
                     {approach.description}
                   </p>
                 </div>

@@ -11,6 +11,8 @@ import GenesLecoanetCaseStudy from "./pages/GenesLecoanetCaseStudy";
 import SabPropertiesCaseStudy from "./pages/SabPropertiesCaseStudy";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import BlogStrategicPartner from "./pages/BlogStrategicPartner";
+import BlogIntegratedEcosystem from "./pages/BlogIntegratedEcosystem";
 import { ThemeProvider } from "next-themes";
 
 const queryClient = new QueryClient();
@@ -29,6 +31,8 @@ const App = () => (
             <Route path="/work/wtc-2026" element={<WtcCaseStudy />} />
             <Route path="/work/genes-lecoanet-hemant" element={<GenesLecoanetCaseStudy />} />
             <Route path="/work/sab-properties" element={<SabPropertiesCaseStudy />} />
+            <Route path="/blog/strategic-partner" element={<BlogStrategicPartner />} />
+            <Route path="/blog/integrated-ecosystem" element={<BlogIntegratedEcosystem />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
