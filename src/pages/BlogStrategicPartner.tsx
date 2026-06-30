@@ -46,11 +46,32 @@ const BlogStrategicPartner = () => {
               <span className="text-sm font-medium px-4 py-2 text-muted-foreground">
                 June 25, 2026
               </span>
+              <span className="text-sm font-medium px-4 py-2 text-muted-foreground">
+                6 min read
+              </span>
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
               Why Your Brand Needs a Strategic Digital Partner, Not Just a Vendor
             </h1>
+
+            {/* Hero Image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="relative w-full h-72 md:h-[480px] rounded-2xl overflow-hidden mb-12 shadow-2xl shadow-black/20"
+            >
+              <img
+                src="/blog-strategy-hero.jpg"
+                alt="Strategic business growth — climbing the bar chart to reach the top"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6">
+                <span className="text-xs font-bold uppercase tracking-widest text-white/70">Strategic Growth</span>
+              </div>
+            </motion.div>
             
             <div className="prose prose-lg dark:prose-invert prose-headings:font-bold max-w-none text-muted-foreground space-y-6">
               <p>
@@ -94,6 +115,18 @@ const BlogStrategicPartner = () => {
                 <div>
                   <h3 className="text-xl text-foreground font-bold mb-2">3. Proactive Thinking</h3>
                   <p>A vendor waits to be told what to do. A partner is constantly thinking about your brand's next move. They bring you fresh ideas, point out emerging trends or challenges, and help you pivot when necessary. This involves understanding your audience's needs and creating content that is crafted to engage and inform, not just to promote.</p>
+                </div>
+
+                {/* Inline Analytics Image */}
+                <div className="my-10 rounded-2xl overflow-hidden shadow-xl border border-border/50">
+                  <img
+                    src="/blog-strategy-analytics.jpg"
+                    alt="Data analytics dashboard with colorful charts and metrics"
+                    className="w-full object-cover"
+                  />
+                  <p className="text-xs text-center text-muted-foreground/60 py-3 px-4 bg-muted/30">
+                    A strategic partner translates complex data into actionable insights that drive real growth.
+                  </p>
                 </div>
                 
                 <div>

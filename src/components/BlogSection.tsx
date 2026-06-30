@@ -12,6 +12,9 @@ const blogs = [
     link: "/blog/strategic-partner",
     date: "June 25, 2026",
     category: "Strategy",
+    image: "/blog-strategy-hero.jpg",
+    imageAlt: "Strategic business growth with chess piece on bar chart",
+    readTime: "6 min read",
   },
   {
     title: "The Future of Brand Growth: Why an Integrated Digital Ecosystem Beats One-Off Tactics",
@@ -20,6 +23,9 @@ const blogs = [
     link: "/blog/integrated-ecosystem",
     date: "June 30, 2026",
     category: "Digital Growth",
+    image: "/blog-ecosystem-hero.jpg",
+    imageAlt: "Integrated digital ecosystem vs broken silos diagram",
+    readTime: "8 min read",
   },
 ];
 
@@ -75,35 +81,52 @@ const BlogSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 + idx * 0.1 }}
-              className="group relative flex flex-col h-full bg-card rounded-2xl overflow-hidden border border-border/50 hover:border-accent/50 transition-colors"
+              className="group relative flex flex-col h-full bg-card rounded-2xl overflow-hidden border border-border/50 hover:border-accent/50 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10 hover:-translate-y-1"
             >
-              <Link to={blog.link} className="flex flex-col h-full p-8 md:p-10">
-                <div className="flex justify-between items-center mb-6">
-                  <div className="flex gap-3">
-                    <span className="text-xs font-semibold px-3 py-1 bg-accent/10 text-accent rounded-full">
+              <Link to={blog.link} className="flex flex-col h-full">
+                {/* Hero Image */}
+                <div className="relative w-full h-56 md:h-64 overflow-hidden">
+                  <img
+                    src={blog.image}
+                    alt={blog.imageAlt}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent" />
+                  {/* Category badge over image */}
+                  <div className="absolute top-4 left-4">
+                    <span className="text-xs font-bold px-3 py-1.5 bg-accent text-white rounded-full tracking-wider uppercase shadow-lg">
                       {blog.category}
                     </span>
-                    <span className="text-xs font-medium px-3 py-1 text-muted-foreground">
-                      {blog.date}
-                    </span>
                   </div>
-                  <div className="w-10 h-10 rounded-full bg-background flex items-center justify-center border border-border group-hover:bg-accent group-hover:border-accent transition-colors duration-300">
-                    <ArrowUpRight className="w-5 h-5 text-foreground group-hover:text-primary-foreground transition-colors" />
+                  {/* Arrow button */}
+                  <div className="absolute top-4 right-4">
+                    <div className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center border border-white/20 group-hover:bg-accent group-hover:border-accent transition-all duration-300">
+                      <ArrowUpRight className="w-5 h-5 text-white" />
+                    </div>
                   </div>
                 </div>
 
-                <h3 className="text-2xl md:text-3xl font-bold mb-4 text-foreground group-hover:text-accent transition-colors">
-                  {blog.title}
-                </h3>
+                {/* Card Content */}
+                <div className="flex flex-col flex-grow p-6 md:p-8">
+                  <div className="flex items-center gap-3 mb-4 text-xs text-muted-foreground">
+                    <span>{blog.date}</span>
+                    <span className="w-1 h-1 rounded-full bg-muted-foreground/50" />
+                    <span>{blog.readTime}</span>
+                  </div>
 
-                <p className="text-muted-foreground text-lg mb-8 flex-grow">
-                  {blog.description}
-                </p>
+                  <h3 className="text-xl md:text-2xl font-bold mb-3 text-foreground group-hover:text-accent transition-colors duration-300 leading-snug">
+                    {blog.title}
+                  </h3>
 
-                <div className="mt-auto">
-                  <span className="font-medium inline-flex items-center gap-2 group-hover:text-accent transition-colors">
-                    Read Article
-                  </span>
+                  <p className="text-muted-foreground text-base mb-6 flex-grow leading-relaxed">
+                    {blog.description}
+                  </p>
+
+                  <div className="mt-auto flex items-center gap-2 text-sm font-semibold text-foreground group-hover:text-accent transition-colors duration-300">
+                    <span>Read Article</span>
+                    <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </div>
                 </div>
               </Link>
             </motion.div>

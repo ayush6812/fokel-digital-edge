@@ -46,11 +46,32 @@ const BlogIntegratedEcosystem = () => {
               <span className="text-sm font-medium px-4 py-2 text-muted-foreground">
                 June 30, 2026
               </span>
+              <span className="text-sm font-medium px-4 py-2 text-muted-foreground">
+                8 min read
+              </span>
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
               The Future of Brand Growth: Why an Integrated Digital Ecosystem Beats One-Off Tactics
             </h1>
+
+            {/* Hero Image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="relative w-full h-72 md:h-[480px] rounded-2xl overflow-hidden mb-12 shadow-2xl shadow-black/20"
+            >
+              <img
+                src="/blog-ecosystem-hero.jpg"
+                alt="The Broken Maze vs The Unified Path — silos confuse, integration connects"
+                className="w-full h-full object-cover bg-white"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6">
+                <span className="text-xs font-bold uppercase tracking-widest text-foreground/70">Integration Strategy</span>
+              </div>
+            </motion.div>
             
             <div className="prose prose-lg dark:prose-invert prose-headings:font-bold max-w-none text-muted-foreground space-y-6">
               <p>
@@ -77,6 +98,18 @@ const BlogIntegratedEcosystem = () => {
                   <h3 className="text-xl text-foreground font-bold mb-2">2. Search and Social Intelligence</h3>
                   <p>Search and social are no longer separate channels. Users now discover brands through AI-driven search experiences, social search on platforms like TikTok and YouTube, and traditional search engines. An integrated strategy combines traditional SEO with social search, ensuring your brand is visible wherever your audience is looking. This includes optimizing for emerging AI platforms like ChatGPT, which are increasingly becoming primary discovery tools.</p>
                 </div>
+
+                {/* Social Media Image */}
+                <div className="my-10 rounded-2xl overflow-hidden shadow-xl border border-border/50">
+                  <img
+                    src="/blog-ecosystem-social.jpg"
+                    alt="Social media icons floating from hands representing digital connectivity"
+                    className="w-full object-cover max-h-80"
+                  />
+                  <p className="text-xs text-center text-muted-foreground/60 py-3 px-4 bg-muted/30">
+                    An integrated brand shows up consistently across every social touchpoint your audience inhabits.
+                  </p>
+                </div>
                 
                 <div>
                   <h3 className="text-xl text-foreground font-bold mb-2">3. Performance Marketing with Purpose</h3>
@@ -86,6 +119,18 @@ const BlogIntegratedEcosystem = () => {
                 <div>
                   <h3 className="text-xl text-foreground font-bold mb-2">4. Data-Driven Decision Making</h3>
                   <p>Data is the glue that holds an integrated ecosystem together. By collecting and analyzing data from all touchpoints—website analytics, social media engagement, ad performance—you gain a holistic view of your customer journey. This data allows you to identify what's working, optimize underperforming channels, and personalize the customer experience, ensuring that your digital ecosystem is constantly improving and delivering results.</p>
+                </div>
+
+                {/* Growth Chart Image */}
+                <div className="my-10 rounded-2xl overflow-hidden shadow-xl border border-border/50">
+                  <img
+                    src="/blog-ecosystem-growth.jpg"
+                    alt="Digital holographic growth chart showing upward trend"
+                    className="w-full object-cover max-h-80"
+                  />
+                  <p className="text-xs text-center text-muted-foreground/60 py-3 px-4 bg-muted/30">
+                    When every channel works in sync, the compound effect on growth becomes unmistakable.
+                  </p>
                 </div>
               </div>
               
