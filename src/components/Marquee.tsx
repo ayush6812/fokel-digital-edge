@@ -10,13 +10,13 @@ import hmo from "@/assets/clients/hmo.png";
 import sabProperties from "@/assets/clients/sab-properties.png";
 
 const clients = [
-  { src: homelane, alt: "HomeLane", height: "h-14 md:h-20" },
-  { src: wtc, alt: "WTC", height: "h-14 md:h-20" },
-  { src: genes, alt: "Genes", height: "h-14 md:h-20" },
-  { src: onsurity, alt: "Onsurity", height: "h-14 md:h-20" },
-  { src: inventeron, alt: "Inventeron", height: "h-14 md:h-20" },
-  { src: hmo, alt: "HMO Architects", height: "h-14 md:h-20" },
-  { src: sabProperties, alt: "SAB Properties", height: "h-14 md:h-20" },
+  { src: homelane, alt: "HomeLane", height: "h-16 md:h-24" },
+  { src: wtc, alt: "WTC", height: "h-16 md:h-24" },
+  { src: genes, alt: "Genes", height: "h-16 md:h-24" },
+  { src: onsurity, alt: "Onsurity", height: "h-16 md:h-24" },
+  { src: inventeron, alt: "Inventeron", height: "h-16 md:h-24" },
+  { src: hmo, alt: "HMO Architects", height: "h-16 md:h-24" },
+  { src: sabProperties, alt: "SAB Properties", height: "h-16 md:h-24" },
 ];
 
 const Marquee = () => {
@@ -87,7 +87,7 @@ const Marquee = () => {
                 <img
                   src={client.src}
                   alt={client.alt}
-                  className={`${client.height} max-w-40 md:max-w-48 w-auto object-contain mix-blend-darken grayscale hover:grayscale-0 transition-all duration-500 ease-out opacity-80 hover:opacity-100`}
+                  className={`${client.height} max-w-48 md:max-w-56 w-auto object-contain mix-blend-darken grayscale hover:grayscale-0 transition-all duration-500 ease-out opacity-100`}
                 />
               </motion.div>
             ))}
@@ -105,7 +105,7 @@ const Marquee = () => {
                 <img
                   src={client.src}
                   alt=""
-                  className={`${client.height} max-w-40 md:max-w-48 w-auto object-contain mix-blend-darken grayscale hover:grayscale-0 transition-all duration-500 ease-out opacity-80 hover:opacity-100`}
+                  className={`${client.height} max-w-48 md:max-w-56 w-auto object-contain mix-blend-darken grayscale hover:grayscale-0 transition-all duration-500 ease-out opacity-100`}
                 />
               </motion.div>
             ))}
