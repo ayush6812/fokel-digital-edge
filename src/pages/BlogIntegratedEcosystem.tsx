@@ -57,16 +57,18 @@ const BlogIntegratedEcosystem = () => {
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="relative w-full h-72 md:h-[500px] rounded-2xl overflow-hidden mb-12 shadow-2xl shadow-black/20"
+              className="relative w-full h-72 md:h-[500px] rounded-3xl overflow-hidden mb-12 shadow-2xl shadow-black/20 group"
             >
               <img
-                src="/blog-ecosystem-hero.jpg"
-                alt="The Broken Maze vs The Unified Path — silos confuse, integration connects"
-                className="w-full h-full object-cover bg-white"
+                src="/blog-eco-img1.jpg"
+                alt="The Unified Path — integration connects"
+                className="w-full h-full object-cover bg-white group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6">
-                <span className="text-xs font-bold uppercase tracking-widest text-foreground/70">Integration Strategy</span>
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+              <div className="absolute bottom-8 left-8">
+                <div className="inline-flex items-center justify-center px-3 py-1.5 rounded-full bg-accent text-accent-foreground text-xs font-bold uppercase tracking-widest shadow-lg">
+                  Integration Strategy
+                </div>
               </div>
             </motion.div>
 
@@ -90,15 +92,15 @@ const BlogIntegratedEcosystem = () => {
             <div className="flex flex-col md:flex-row-reverse gap-10 md:gap-16 items-center">
               {/* Image right */}
               <div className="w-full md:w-2/5 flex-shrink-0">
-                <div className="relative rounded-2xl overflow-hidden shadow-xl border border-border/40 aspect-[4/3]">
+                <div className="relative rounded-3xl overflow-hidden shadow-xl border border-border/40 aspect-[4/3] group">
                   <img
-                    src="/blog-ecosystem-social.jpg"
+                    src="/blog-eco-img2.jpg"
                     alt="Fragmented silos vs integrated channels"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-br from-black/40 to-transparent" />
-                  <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm rounded-lg px-3 py-2">
-                    <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">The Shift</span>
+                  <div className="absolute inset-0 bg-gradient-to-br from-black/60 to-transparent" />
+                  <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-md rounded-xl px-4 py-2 border border-white/10 shadow-lg">
+                    <span className="text-xs font-bold uppercase tracking-widest text-foreground">The Shift</span>
                   </div>
                 </div>
               </div>
@@ -186,42 +188,30 @@ const BlogIntegratedEcosystem = () => {
           >
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {/* Tall left image */}
-              <div className="col-span-2 md:col-span-1 row-span-2 relative rounded-2xl overflow-hidden shadow-xl border border-border/40 aspect-square md:aspect-auto">
+              <div className="col-span-2 md:col-span-1 row-span-2 relative rounded-3xl overflow-hidden shadow-xl border border-border/40 aspect-square md:aspect-auto group">
                 <img
-                  src="/blog-ecosystem-social.jpg"
+                  src="/blog-eco-img3.jpg"
                   alt="Social media connectivity"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                <p className="absolute bottom-4 left-4 right-4 text-xs text-white/80 font-medium">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <p className="absolute bottom-6 left-6 right-6 text-sm text-white/90 font-medium leading-relaxed">
                   An integrated brand shows up consistently across every platform.
                 </p>
               </div>
               {/* Top right image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-xl border border-border/40 aspect-video">
+              <div className="col-span-2 relative rounded-3xl overflow-hidden shadow-xl border border-border/40 aspect-video group">
                 <img
-                  src="/blog-ecosystem-growth.jpg"
+                  src="/blog-eco-img4.jpg"
                   alt="Growth chart"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/30 to-transparent" />
               </div>
               {/* Stat card */}
-              <div className="rounded-2xl bg-accent p-6 flex flex-col justify-center text-white shadow-xl shadow-accent/20">
-                <div className="text-5xl font-black mb-2">∞</div>
-                <p className="text-sm font-medium text-white/80">compound growth effect when all channels are in sync</p>
-              </div>
-              {/* Bottom right image */}
-              <div className="col-span-2 relative rounded-2xl overflow-hidden shadow-xl border border-border/40 aspect-video">
-                <img
-                  src="/blog-ecosystem-growth.jpg"
-                  alt="Digital holographic growth chart showing upward trend"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                <p className="absolute bottom-4 left-4 right-4 text-xs text-white/80 font-medium">
-                  When every channel works in sync, the compound effect on growth becomes unmistakable.
-                </p>
+              <div className="col-span-2 rounded-3xl bg-gradient-to-br from-accent to-accent/80 p-8 flex flex-col justify-center text-white shadow-xl shadow-accent/20 border border-white/10">
+                <div className="text-6xl font-black mb-3 text-white">∞</div>
+                <p className="text-lg font-medium text-white/90">compound growth effect when all channels are in sync</p>
               </div>
             </div>
           </motion.div>
@@ -237,14 +227,14 @@ const BlogIntegratedEcosystem = () => {
             <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
               {/* Image left */}
               <div className="w-full md:w-2/5 flex-shrink-0">
-                <div className="relative rounded-2xl overflow-hidden shadow-xl border border-border/40 aspect-[4/3]">
+                <div className="relative rounded-3xl overflow-hidden shadow-xl border border-border/40 aspect-[4/3] group">
                   <img
-                    src="/blog-ecosystem-hero.jpg"
+                    src="/blog-eco-img5.jpg"
                     alt="Fokel integrated approach"
-                    className="w-full h-full object-cover bg-white"
+                    className="w-full h-full object-cover bg-white group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-tl from-accent/20 to-transparent" />
-                  <div className="absolute bottom-4 right-4 bg-accent text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-widest">
+                  <div className="absolute inset-0 bg-gradient-to-tl from-accent/30 to-transparent mix-blend-overlay" />
+                  <div className="absolute bottom-6 right-6 bg-accent text-white text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest shadow-lg">
                     Fokel Approach
                   </div>
                 </div>
