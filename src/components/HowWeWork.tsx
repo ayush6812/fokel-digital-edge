@@ -93,7 +93,7 @@ export default function HowWeWork() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.15 }}
         >
-          How we <span className="text-accent">work</span><span className="text-accent">.</span>
+          How we <span className="text-accent">work</span>
         </motion.h2>
 
         {/* Top border */}

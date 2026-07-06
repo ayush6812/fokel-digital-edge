@@ -108,7 +108,7 @@ const WtcCaseStudy = () => {
               className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-[-0.02em] text-foreground leading-[1.05]"
               style={{ fontFamily: "var(--font-heading)" }}
             >
-              ITA-AITES WTC 2026<span className="text-accent">.</span>
+              ITA-AITES WTC 2026
             </motion.h1>
           </div>
           
@@ -213,7 +213,7 @@ const WtcCaseStudy = () => {
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight leading-tight">
               Scaling a proven success to new heights
-              <span className="text-accent">.</span>
+              
             </h2>
           </motion.div>
           <motion.div
@@ -269,7 +269,7 @@ const WtcCaseStudy = () => {
               style={{ fontFamily: "var(--font-heading)" }}
             >
               Strategic branding, digital outreach & a cohesive tech ecosystem
-              <span className="text-accent">.</span>
+              
             </motion.h2>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
@@ -365,7 +365,7 @@ const WtcCaseStudy = () => {
             style={{ fontFamily: "var(--font-heading)" }}
           >
             Measurable growth across every channel
-            <span className="text-accent">.</span>
+            
           </motion.h2>
         </div>
         <motion.div 

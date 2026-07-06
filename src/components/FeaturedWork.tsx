@@ -108,7 +108,7 @@ const FeaturedWork = () => {
           className="overflow-hidden mb-10 md:mb-16"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.05] tracking-[-0.03em] text-primary-foreground">
-            Featured <DepthText text="Work" className="text-primary-foreground inline-block font-semibold" glowColor="rgba(255, 107, 20, 0.45)" /><span className="text-accent">.</span>
+            Featured <DepthText text="Work" className="text-primary-foreground inline-block font-semibold" glowColor="rgba(255, 107, 20, 0.45)" />
           </h2>
         </motion.div>
 

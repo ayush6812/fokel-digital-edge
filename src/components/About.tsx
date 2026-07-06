@@ -36,7 +36,7 @@ const About = () => {
             <h2 className="heading-section text-foreground leading-tight">
               Bold ideas,<br />
               <span className="text-accent">disruptive</span><br />
-              execution<span className="text-accent">.</span>
+              execution
             </h2>
           </motion.div>
 

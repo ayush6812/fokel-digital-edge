@@ -92,7 +92,7 @@ const StoryInNumbers = () => {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight text-primary-foreground mb-16"
         >
-          In Numbers<span className="text-accent">.</span>
+          In Numbers
         </motion.h2>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6">

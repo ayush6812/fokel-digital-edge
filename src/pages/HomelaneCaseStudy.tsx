@@ -209,7 +209,7 @@ const HomelaneCaseStudy = () => {
             className="text-3xl md:text-4xl font-bold text-foreground tracking-[-0.02em]"
             style={{ fontFamily: "var(--font-heading)" }}>
 
-            Measurable growth across every channel<span className="text-accent">.</span>
+            Measurable growth across every channel
           </motion.h2>
         </div>
         <motion.div
@@ -258,7 +258,7 @@ const HomelaneCaseStudy = () => {
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
             <p className="text-sm font-semibold uppercase tracking-wider text-accent mb-6">About HomeLane</p>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight leading-tight">
-              India's leading tech-enabled home interiors brand<span className="text-accent">.</span>
+              India's leading tech-enabled home interiors brand
             </h2>
           </motion.div>
           <motion.div
@@ -310,7 +310,7 @@ const HomelaneCaseStudy = () => {
               className="text-3xl md:text-4xl font-bold text-foreground tracking-[-0.02em]"
               style={{ fontFamily: "var(--font-heading)" }}>
 
-              A multi-pronged SEO & content strategy<span className="text-accent">.</span>
+              A multi-pronged SEO & content strategy
             </motion.h2>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
@@ -411,7 +411,7 @@ const HomelaneCaseStudy = () => {
             className="text-3xl md:text-4xl font-bold text-foreground tracking-[-0.02em]"
             style={{ fontFamily: "var(--font-heading)" }}>
 
-            Keyword-to-conversion pipeline<span className="text-accent">.</span>
+            Keyword-to-conversion pipeline
           </motion.h2>
         </div>
 
@@ -515,7 +515,7 @@ const HomelaneCaseStudy = () => {
             className="text-3xl md:text-4xl font-bold text-foreground tracking-[-0.02em]"
             style={{ fontFamily: "var(--font-heading)" }}>
 
-            Keyword position gains<span className="text-accent">.</span>
+            Keyword position gains
           </motion.h2>
         </div>
 

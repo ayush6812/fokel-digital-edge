@@ -108,7 +108,7 @@ const GenesLecoanetCaseStudy = () => {
               className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-[-0.02em] text-foreground leading-[1.05]"
               style={{ fontFamily: "var(--font-heading)" }}
             >
-              Genes Lecoanet Hemant<span className="text-accent">.</span>
+              Genes Lecoanet Hemant
             </motion.h1>
           </div>
           
@@ -229,7 +229,7 @@ const GenesLecoanetCaseStudy = () => {
             style={{ fontFamily: "var(--font-heading)" }}
           >
             Measurable growth across all metrics
-            <span className="text-accent">.</span>
+            
           </motion.h2>
         </div>
         <motion.div 
@@ -294,7 +294,7 @@ const GenesLecoanetCaseStudy = () => {
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight leading-tight">
               Maximize visibility and conversions during peak season
-              <span className="text-accent">.</span>
+              
             </h2>
           </motion.div>
           <motion.div
@@ -344,7 +344,7 @@ const GenesLecoanetCaseStudy = () => {
               style={{ fontFamily: "var(--font-heading)" }}
             >
               Structured strategy with performance-driven execution
-              <span className="text-accent">.</span>
+              
             </motion.h2>
           </div>
           <div className="grid md:grid-cols-2 gap-8">

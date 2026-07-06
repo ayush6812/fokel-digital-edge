@@ -108,7 +108,7 @@ const SabPropertiesCaseStudy = () => {
               className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-[-0.02em] text-foreground leading-[1.05]"
               style={{ fontFamily: "var(--font-heading)" }}
             >
-              SAB Properties<span className="text-accent">.</span>
+              SAB Properties
             </motion.h1>
           </div>
           
@@ -213,7 +213,7 @@ const SabPropertiesCaseStudy = () => {
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight leading-tight">
               Bridging Legacy Commercial Expertise with Modern Digital B2B Demand
-              <span className="text-accent">.</span>
+              
             </h2>
           </motion.div>
           <motion.div
@@ -263,7 +263,7 @@ const SabPropertiesCaseStudy = () => {
               style={{ fontFamily: "var(--font-heading)" }}
             >
               Commission-free corporate listings & intuitive discovery
-              <span className="text-accent">.</span>
+              
             </motion.h2>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
@@ -359,7 +359,7 @@ const SabPropertiesCaseStudy = () => {
             style={{ fontFamily: "var(--font-heading)" }}
           >
             Unprecedented commercial performance
-            <span className="text-accent">.</span>
+            
           </motion.h2>
         </div>
         <motion.div 

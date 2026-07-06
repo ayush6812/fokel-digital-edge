@@ -9,7 +9,7 @@ const WhatsAppIcon = () => (
   </svg>
 );
 
-const WHATSAPP_NUMBER = "+918950483522";
+const WHATSAPP_NUMBER = "+918076085566";
 const WHATSAPP_MSG = encodeURIComponent("Hi, I'd like to start a project with Fokel.");
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MSG}`;
 

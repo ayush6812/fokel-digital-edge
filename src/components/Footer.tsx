@@ -77,7 +77,7 @@ const Footer = () => {
               Navigation
             </motion.p>
             <div className="flex flex-col gap-4">
-              {["About", "Services", "Work", "Contact"].map((link, i) => (
+              {["About", "Services", "Work", "Contact", "Blog"].map((link, i) => (
                 <motion.button
                   key={link}
                   onClick={() => scrollToSection(`#${link.toLowerCase()}`)}
@@ -114,14 +114,14 @@ const Footer = () => {
                   info@fokelworks.com
                 </motion.a>
                 <motion.a
-                  href="tel:+918950483522"
+                  href="tel:+919289539957"
                   initial={{ opacity: 0, y: 15 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: 0.17 }}
                   className="inline-flex items-center gap-3 text-white/70 hover:text-accent transition-all duration-300 hover:translate-x-1"
                 >
                   <Phone className="w-5 h-5 shrink-0" />
-                  +91 89504 83522
+                  +91 92895 39957
                 </motion.a>
                 <motion.div
                   initial={{ opacity: 0, y: 15 }}

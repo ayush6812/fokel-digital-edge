@@ -5,14 +5,6 @@ import { DepthText } from "@/components/ui/DepthText";
 const services = [
   {
     number: "01",
-    title: "Digital Marketing",
-    subtitle: "Drive Growth",
-    description:
-      "Performance-driven campaigns that deliver measurable ROI. From SEO to social media, we engineer digital experiences that convert browsers into loyal customers.",
-    tags: ["SEO", "Paid Ads", "Social Media", "Analytics"],
-  },
-  {
-    number: "02",
     title: "Web Design & Development",
     subtitle: "Build Experiences",
     description:
@@ -20,7 +12,23 @@ const services = [
     tags: ["UI/UX", "React", "Performance", "CMS"],
   },
   {
+    number: "02",
+    title: "AI Agents",
+    subtitle: "Automate Intelligently",
+    description:
+      "Custom AI agents designed to automate workflows, engage customers, and scale operations seamlessly, unlocking new levels of efficiency.",
+    tags: ["Automation", "LLMs", "Chatbots", "Integration"],
+  },
+  {
     number: "03",
+    title: "Digital Marketing",
+    subtitle: "Drive Growth",
+    description:
+      "Performance-driven campaigns that deliver measurable ROI. From SEO to social media, we engineer digital experiences that convert browsers into loyal customers.",
+    tags: ["SEO", "Paid Ads", "Social Media", "Analytics"],
+  },
+  {
+    number: "04",
     title: "Digital Strategy",
     subtitle: "Define Direction",
     description:
@@ -28,7 +36,7 @@ const services = [
     tags: ["Consulting", "Research", "Roadmapping", "KPIs"],
   },
   {
-    number: "04",
+    number: "05",
     title: "Brand Identity",
     subtitle: "Tell Your Story",
     description:
