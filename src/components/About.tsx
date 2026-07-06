@@ -58,7 +58,7 @@ const About = () => {
             <div className="relative pl-6 border-l-2 border-accent/30">
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
                 Our mission is simple: transform ambitious brands into undisputed market leaders 
-                through creative excellence and measurable results. We don't just create—we <span className="text-accent font-medium">execute</span>.
+                through creative excellence and measurable results. We don't just create—we <span className="text-accent font-medium">execute</span>
               </p>
             </div>
           </motion.div>

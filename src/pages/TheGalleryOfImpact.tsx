@@ -300,9 +300,7 @@ const TheGalleryOfImpact = () => {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-[-0.03em] mb-10 font-heading"
           >
-            The Gallery{" "}
-            <br />
-            of <span className="text-accent italic">Impact</span>.
+            The Gallery of <span className="text-accent italic">Impact</span>
           </motion.h1>
 
           <motion.div
@@ -354,7 +352,7 @@ const TheGalleryOfImpact = () => {
               <span className="text-sm uppercase tracking-widest font-bold text-accent">What Sets Our Work Apart</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight">
-              Excellence is <span className="text-accent italic">non-negotiable</span>.
+              Excellence is <span className="text-accent italic">non-negotiable</span>
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-10 max-w-3xl">
               Every project we undertake is approached with the same level of dedication, craftsmanship, and attention to detail. Whether we're building a bold new brand identity, designing a high-performance website, or crafting a digital experience that captivates audiences, we never settle for "good enough."
@@ -389,7 +387,7 @@ const TheGalleryOfImpact = () => {
               <span className="text-sm font-medium tracking-[0.3em] uppercase text-accent">Featured Projects</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight font-heading">
-              Work that <span className="text-accent italic">moves the needle</span>.
+              Work that <span className="text-accent italic">moves the needle</span>
             </h2>
           </motion.div>
 
@@ -415,7 +413,7 @@ const TheGalleryOfImpact = () => {
               <div className="h-[2px] w-8 bg-accent rounded-full" />
             </div>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight font-heading mb-4">
-              Awards & <span className="text-accent italic">Accolades</span>.
+              Awards & <span className="text-accent italic">Accolades</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               We're proud to have our work celebrated by industry leaders and peers. These accolades reflect our commitment to excellence.

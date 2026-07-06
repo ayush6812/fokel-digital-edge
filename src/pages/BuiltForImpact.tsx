@@ -269,7 +269,7 @@ const BuiltForImpact = () => {
             >
               <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[1.02] tracking-[-0.035em] font-heading">
                 Built for{" "}
-                <span className="text-accent italic">Impact</span>.
+                <span className="text-accent italic">Impact</span>
               </h1>
             </motion.div>
 
@@ -326,7 +326,7 @@ const BuiltForImpact = () => {
                     Ready to bring your brand into focus?
                   </div>
                   <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] font-heading">
-                    Now that you understand our process, let's make it yours.
+                    Now that you understand our process, let's make it yours
                   </h2>
                 </div>
                 <div className="flex flex-col justify-end gap-5">

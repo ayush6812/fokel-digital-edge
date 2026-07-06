@@ -69,7 +69,7 @@ const Newsletter = () => {
               >
                 Subscribe to
                 <br />
-                our <span className="text-accent italic font-normal">newsletter</span>.
+                our <span className="text-accent italic font-normal">newsletter</span>
               </motion.h2>
             </div>
 

@@ -296,7 +296,7 @@ const TheExecutionEngine = () => {
             >
               The{" "}
               <span className="text-accent italic">Execution</span>
-              <br /> Engine.
+              <br /> Engine
             </motion.h1>
 
             <motion.div
@@ -342,7 +342,7 @@ const TheExecutionEngine = () => {
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight font-heading">
               Why our workflow{" "}
-              <span className="text-accent italic">works</span>.
+              <span className="text-accent italic">works</span>
             </h2>
           </motion.div>
 
