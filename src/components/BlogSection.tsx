@@ -34,7 +34,7 @@ const BlogSection = () => {
   useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="blog" className="relative py-16 md:py-24 overflow-hidden bg-background" ref={ref}>
+    <section id="blog" className="relative py-16 md:py-24 overflow-hidden bg-primary text-primary-foreground" ref={ref}>
       <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -64,7 +64,7 @@ const BlogSection = () => {
           <DepthText
             text="BEYOND"
             glowColor="hsl(var(--muted))"
-            className="text-foreground text-4xl md:text-7xl lg:text-8xl font-black mb-2 -ml-2"
+            className="text-primary-foreground text-4xl md:text-7xl lg:text-8xl font-black mb-2 -ml-2"
           />
           <DepthText
             text="THE BRIEF"
@@ -81,7 +81,7 @@ const BlogSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 + idx * 0.1 }}
-              className="group relative flex flex-col h-full bg-card rounded-2xl overflow-hidden border border-border/50 hover:border-accent/50 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10 hover:-translate-y-1"
+              className="group relative flex flex-col h-full bg-card text-card-foreground rounded-2xl overflow-hidden border border-border/50 hover:border-accent/50 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10 hover:-translate-y-1"
             >
               <Link to={blog.link} className="flex flex-col h-full">
                 {/* Hero Image */}

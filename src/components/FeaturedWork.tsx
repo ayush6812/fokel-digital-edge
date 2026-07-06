@@ -77,10 +77,8 @@ const FeaturedWork = () => {
   return (
     <motion.section
       id="work"
-      className="relative py-16 md:py-24 overflow-hidden"
+      className="relative py-16 md:py-24 overflow-hidden bg-primary text-primary-foreground"
       ref={ref}
-      animate={{ backgroundColor: getBgColor() }}
-      transition={{ duration: 0.5, ease: "easeInOut" }}
     >
       <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-12">
         <motion.div
@@ -109,8 +107,8 @@ const FeaturedWork = () => {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="overflow-hidden mb-10 md:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.05] tracking-[-0.03em] text-foreground">
-            Featured <DepthText text="Work" className="text-foreground inline-block font-semibold" glowColor="rgba(255, 107, 20, 0.45)" /><span className="text-accent">.</span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.05] tracking-[-0.03em] text-primary-foreground">
+            Featured <DepthText text="Work" className="text-primary-foreground inline-block font-semibold" glowColor="rgba(255, 107, 20, 0.45)" /><span className="text-accent">.</span>
           </h2>
         </motion.div>
 
@@ -306,7 +304,7 @@ const ProjectCardContent = ({
       >
         <Magnetic strength={0.4} range={45}>
         <div className="w-10 md:w-12 h-10 md:h-12 rounded-full bg-white dark:bg-zinc-800 flex items-center justify-center shadow-lg">
-            <ArrowUpRight className="w-4 md:w-5 h-4 md:h-5 text-foreground" />
+            <ArrowUpRight className="w-4 md:w-5 h-4 md:h-5 text-zinc-950 dark:text-zinc-50" />
           </div>
         </Magnetic>
       </motion.div>
@@ -337,7 +335,7 @@ const ProjectCardContent = ({
 
     <div className="mt-4 md:mt-6 flex items-start justify-between">
       <div className="flex-1 pr-4">
-        <h3 className="text-xl md:text-2xl font-semibold text-foreground tracking-[-0.02em]">
+        <h3 className="text-xl md:text-2xl font-semibold text-primary-foreground tracking-[-0.02em]">
           {project.title}
         </h3>
         <motion.div
@@ -350,12 +348,12 @@ const ProjectCardContent = ({
         />
       </div>
 
-      <span className="text-sm font-medium text-muted-foreground">
+      <span className="text-sm font-medium text-primary-foreground/60">
         <span className="text-accent font-bold">{projectNumber}</span>
       </span>
     </div>
 
-    <p className="mt-2 md:hidden text-sm text-muted-foreground line-clamp-2">
+    <p className="mt-2 md:hidden text-sm text-primary-foreground/60 line-clamp-2">
       {project.description}
     </p>
   </>

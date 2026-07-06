@@ -8,10 +8,10 @@ const JourneyEndsHere = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="bg-primary text-primary-foreground overflow-hidden" ref={ref}>
+    <section className="bg-background text-foreground overflow-hidden" ref={ref}>
 
       {/* CTA content */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-20 md:py-28">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-12 md:pt-16 pb-20 md:pb-28">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -33,7 +33,7 @@ const JourneyEndsHere = () => {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="flex flex-col gap-6"
           >
-            <p className="text-lg text-primary-foreground/70 leading-relaxed">
+            <p className="text-lg text-foreground/70 leading-relaxed">
               We've helped brands across industries transform their digital presence.
               Whether you need a complete brand overhaul or targeted digital campaigns,
               our team is ready to deliver results that matter.
@@ -48,7 +48,7 @@ const JourneyEndsHere = () => {
               </a>
               <a
                 href="#work"
-                className="border border-primary-foreground/30 text-primary-foreground px-6 py-2.5 text-sm font-semibold rounded-full hover:bg-primary-foreground/10 transition-colors inline-flex items-center gap-2"
+                className="border border-foreground/30 text-foreground px-6 py-2.5 text-sm font-semibold rounded-full hover:bg-foreground/10 transition-colors inline-flex items-center gap-2"
               >
                 View Our Work
               </a>
