@@ -60,16 +60,18 @@ const BlogSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
+          className="mb-12 md:mb-16 -ml-2"
         >
           <DepthText
             text="BEYOND"
             glowColor="hsl(var(--muted))"
-            className="text-primary-foreground text-4xl md:text-7xl lg:text-8xl font-black mb-2 -ml-2"
+            className="text-primary-foreground text-4xl md:text-7xl lg:text-8xl font-black"
           />
+          {" "}
           <DepthText
             text="THE BRIEF"
             glowColor="hsla(var(--accent), 0.5)"
-            className="text-accent text-4xl md:text-7xl lg:text-8xl font-black mb-16 -ml-2"
+            className="text-accent text-4xl md:text-7xl lg:text-8xl font-black"
           />
         </motion.div>
 

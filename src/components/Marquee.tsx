@@ -82,12 +82,11 @@ const Marquee = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
-                whileHover={{ scale: 1.05 }}
               >
                 <img
                   src={client.src}
                   alt={client.alt}
-                  className={`${client.height} max-w-48 md:max-w-56 w-auto object-contain mix-blend-darken grayscale hover:grayscale-0 transition-all duration-500 ease-out opacity-100`}
+                  className={`${client.height} max-w-48 md:max-w-56 w-auto object-contain mix-blend-darken transition-all duration-500 ease-out opacity-100`}
                 />
               </motion.div>
             ))}
@@ -100,12 +99,11 @@ const Marquee = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
-                whileHover={{ scale: 1.05 }}
               >
                 <img
                   src={client.src}
                   alt=""
-                  className={`${client.height} max-w-48 md:max-w-56 w-auto object-contain mix-blend-darken grayscale hover:grayscale-0 transition-all duration-500 ease-out opacity-100`}
+                  className={`${client.height} max-w-48 md:max-w-56 w-auto object-contain mix-blend-darken transition-all duration-500 ease-out opacity-100`}
                 />
               </motion.div>
             ))}

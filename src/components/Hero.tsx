@@ -224,21 +224,6 @@ const Hero = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
               </motion.div>
 
-              <Tilt className="absolute -bottom-6 -right-6 z-20" max={15}>
-                <motion.div
-                  className="bg-card rounded-2xl p-6 shadow-xl border border-border/50 cursor-pointer"
-                  initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 1.8 }}
-                >
-                  <p className="text-sm font-medium text-foreground mb-1">Latest Project</p>
-                  <p className="text-xs text-muted-foreground">HomeLane SEO Strategy</p>
-                  <div className="mt-3 flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-green-500" />
-                    <span className="text-xs text-muted-foreground">+98% Traffic</span>
-                  </div>
-                </motion.div>
-              </Tilt>
             </div>
           </motion.div>
         </div>
