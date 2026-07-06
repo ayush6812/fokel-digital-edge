@@ -1,9 +1,15 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { ArrowRight, Zap, Map, Layers, Rocket, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
+
+import imgIgnite from "@/assets/exec-ignite.jpg";
+import imgBlueprint from "@/assets/exec-blueprint.jpg";
+import imgBuild from "@/assets/exec-build.jpg";
+import imgLaunch from "@/assets/exec-launch.jpg";
 
 const steps = [
   {
@@ -12,8 +18,11 @@ const steps = [
     title: "Initial Brief & Insight",
     tagline: "Speed starts with clarity.",
     icon: Zap,
-    color: "from-amber-500/20 to-transparent",
-    accentColor: "#F59E0B",
+    img: imgIgnite,
+    imgAlt: "Hand holding a glowing network of connected people icons",
+    imgCaption: "Connecting ideas at the speed of light.",
+    imgSide: "right" as const,
+    color: "#F59E0B", // Amber
     intro:
       "The fastest way to get somewhere is to know exactly where you're going. That's why our workflow begins with a focused, high-energy discovery session designed to extract the essential information we need to move forward—fast.\n\nWe don't bog you down with endless questionnaires or drawn-out meetings. Instead, we dive straight into what matters most: your core objectives, your target audience, and your key messages.",
     expect: [
@@ -30,8 +39,11 @@ const steps = [
     title: "Agile Strategy & Design",
     tagline: "Turning insights into action.",
     icon: Map,
-    color: "from-blue-500/20 to-transparent",
-    accentColor: "#3B82F6",
+    img: imgBlueprint,
+    imgAlt: "Floating mobile phone UI screens",
+    imgCaption: "Rapid wireframing and concepting.",
+    imgSide: "left" as const,
+    color: "#3B82F6", // Blue
     intro:
       "With a solid foundation in place, we transition seamlessly into the creative phase. But we don't operate in silos or take weeks to deliver a single concept. Instead, we work in rapid, iterative sprints that keep the momentum alive and the ideas flowing.\n\nOur team translates your mission into tangible creative assets—initial concepts, wireframes, mood boards, and visual directions. We present early and often, gathering your feedback in real-time to refine and evolve the work.",
     expect: [
@@ -46,10 +58,13 @@ const steps = [
     num: "03",
     label: "Build & Refine",
     title: "Parallel Workflows",
-    tagline: "This is where speed meets sophistication.",
+    tagline: "Where speed meets sophistication.",
     icon: Layers,
-    color: "from-violet-500/20 to-transparent",
-    accentColor: "#8B5CF6",
+    img: imgBuild,
+    imgAlt: "Hand pointing at a branching software flowchart",
+    imgCaption: "Simultaneous execution.",
+    imgSide: "right" as const,
+    color: "#8B5CF6", // Violet
     intro:
       "Most agencies work in a linear fashion—design first, then develop. This old-school approach creates bottlenecks, delays, and inefficiencies. We don't operate that way. Our workflow is built on parallel execution, where multiple streams of work happen simultaneously.\n\nWhile our designers are putting the final polish on your visual identity, our developers are already building the technical foundation. While content is being refined, our QA team is preparing testing protocols.",
     expect: [
@@ -66,8 +81,11 @@ const steps = [
     title: "Final Polish & Deploy",
     tagline: "The finish line is just the beginning.",
     icon: Rocket,
-    color: "from-accent/20 to-transparent",
-    accentColor: "#E05A28",
+    img: imgLaunch,
+    imgAlt: "Finished website running on laptop and mobile with glassmorphism stats",
+    imgCaption: "Going live with impact.",
+    imgSide: "left" as const,
+    color: "#E05A28", // Orange/Accent
     intro:
       "The final stage is all about flawless execution. We bring everything together—design, content, functionality—and put it through rigorous testing to ensure every element performs exactly as intended. We cross every 't,' dot every 'i,' and leave no stone unturned.\n\nWhen we're confident that everything is perfect, we handle the deployment with precision and care. But our commitment doesn't end at launch.",
     expect: [
@@ -103,6 +121,148 @@ const pillars = [
   },
 ];
 
+const StepSection = ({ step, index }: { step: typeof steps[0]; index: number }) => {
+  const isLeft = step.imgSide === "left";
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const imgY = useTransform(scrollYProgress, [0, 1], [40, -40]);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.6 }}
+      className={`grid lg:grid-cols-2 gap-0 rounded-[2.5rem] overflow-hidden border border-border/40 bg-secondary/20 backdrop-blur-sm ${
+        isLeft ? "lg:[grid-template-areas:'img_text']" : "lg:[grid-template-areas:'text_img']"
+      }`}
+      style={{ gridTemplateAreas: undefined }}
+    >
+      {/* ── Image column ── */}
+      <div
+        className={`relative min-h-[320px] md:min-h-[500px] overflow-hidden ${
+          isLeft ? "lg:order-first" : "lg:order-last"
+        }`}
+      >
+        <motion.img
+          src={step.img}
+          alt={step.imgAlt}
+          style={{ y: imgY }}
+          className="absolute inset-0 w-full h-full object-cover scale-[1.15]"
+        />
+        {/* Soft radial overlay to ensure caption legibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+        
+        {/* Blending edge */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: isLeft
+              ? "linear-gradient(to right, transparent 70%, hsl(var(--secondary)/0.5) 100%)"
+              : "linear-gradient(to left, transparent 70%, hsl(var(--secondary)/0.5) 100%)",
+          }}
+        />
+
+        {/* Huge glowing number */}
+        <div
+          className="absolute -top-10 -left-10 text-[12rem] font-black leading-none select-none pointer-events-none blur-[2px]"
+          style={{ color: `${step.color}15` }}
+        >
+          {step.num}
+        </div>
+
+        {/* Caption floating card */}
+        <div className="absolute bottom-6 left-6 right-6 lg:left-10 lg:bottom-10">
+          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-2xl backdrop-blur-xl border bg-black/40 shadow-2xl" style={{ borderColor: `${step.color}40` }}>
+            <div className="w-8 h-8 rounded-full flex items-center justify-center bg-black/50" style={{ color: step.color }}>
+              <step.icon className="w-4 h-4" />
+            </div>
+            <span className="text-sm font-medium text-white tracking-wide">
+              {step.imgCaption}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Text column ── */}
+      <div
+        className={`flex flex-col justify-center p-8 md:p-12 lg:p-16 ${
+          isLeft ? "lg:order-last" : "lg:order-first"
+        }`}
+      >
+        <div className="flex items-center gap-4 mb-6">
+          <span className="text-sm font-black tracking-[0.2em] uppercase font-mono" style={{ color: step.color }}>
+            {step.num}
+          </span>
+          <div className="h-px flex-1 max-w-[50px]" style={{ background: `${step.color}60` }} />
+          <span
+            className="text-xs font-bold tracking-[0.15em] uppercase px-3 py-1.5 rounded-full border"
+            style={{
+              color: step.color,
+              borderColor: `${step.color}30`,
+              background: `${step.color}10`,
+            }}
+          >
+            {step.label}
+          </span>
+        </div>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight mb-4"
+        >
+          {step.title}
+        </motion.h2>
+        
+        <p className="text-lg md:text-xl font-medium italic mb-6" style={{ color: step.color }}>
+          {step.tagline}
+        </p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-muted-foreground leading-relaxed text-base md:text-lg mb-8 whitespace-pre-line"
+        >
+          {step.intro}
+        </motion.p>
+
+        <div className="bg-background/50 rounded-2xl p-6 border border-white/5 mb-6">
+          <h3 className="text-xs uppercase tracking-widest font-bold mb-4 flex items-center gap-2" style={{ color: step.color }}>
+            <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: step.color }} />
+            What to expect
+          </h3>
+          <ul className="flex flex-col gap-3">
+            {step.expect.map((item, i) => (
+              <motion.li
+                key={i}
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.2 + i * 0.1 }}
+                className="flex items-start gap-3"
+              >
+                <CheckCircle2 className="w-4 h-4 mt-1 shrink-0" style={{ color: step.color }} />
+                <span className="text-sm md:text-base text-foreground/80 leading-relaxed">{item}</span>
+              </motion.li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="border-l-[3px] pl-5 py-1" style={{ borderColor: step.color }}>
+          <h3 className="text-xs uppercase tracking-widest font-bold mb-2 text-foreground/50">The Result</h3>
+          <p className="text-foreground/90 font-medium text-base md:text-lg leading-snug">{step.result}</p>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 const TheExecutionEngine = () => {
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-accent/30 selection:text-white">
@@ -127,131 +287,39 @@ const TheExecutionEngine = () => {
             </span>
           </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-[-0.03em] mb-10 font-heading"
-          >
-            The{" "}
-            <span className="text-accent italic">Execution</span>
-            <br />
-            Engine.
-          </motion.h1>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-end">
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="text-6xl md:text-7xl lg:text-[6.5rem] font-bold leading-[1.02] tracking-[-0.035em] font-heading"
+            >
+              The{" "}
+              <span className="text-accent italic">Execution</span>
+              <br /> Engine.
+            </motion.h1>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="max-w-3xl"
-          >
-            <p className="text-xl md:text-2xl text-foreground/80 leading-relaxed mb-6 font-medium">
-              We build for impact—not just for the sake of being busy. In a world where speed often comes at the expense of quality, we've engineered a workflow that refuses to compromise.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              "Fast execution" isn't just a claim we make; it's a promise we keep—built on a streamlined, agile process that turns your vision into reality with precision, purpose, and pace.
-            </p>
-          </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.25 }}
+              className="flex flex-col gap-6"
+            >
+              <p className="text-xl md:text-2xl text-foreground/90 leading-relaxed font-medium">
+                We build for impact—not just for the sake of being busy. 
+              </p>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                In a world where speed often comes at the expense of quality, we've engineered a workflow that refuses to compromise. "Fast execution" isn't just a claim we make; it's a promise we keep—built on a streamlined, agile process that turns your vision into reality with precision, purpose, and pace.
+              </p>
+            </motion.div>
+          </div>
         </section>
 
         {/* ── Steps ── */}
-        <section className="px-6 lg:px-12 max-w-5xl mx-auto">
-          <div className="flex flex-col gap-16 md:gap-24 lg:gap-32">
-            {steps.map((step, idx) => (
-              <motion.div
-                key={step.num}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.7 }}
-                className="grid md:grid-cols-[120px_1fr] gap-8 md:gap-12 relative"
-              >
-                {/* Connector line */}
-                {idx !== steps.length - 1 && (
-                  <div className="hidden md:block absolute left-[59px] top-24 bottom-[-100px] w-[2px] bg-border/40 z-0" />
-                )}
-
-                {/* Step badge */}
-                <div className="flex flex-col items-start relative z-10">
-                  <div
-                    className="w-20 h-20 md:w-[120px] md:h-[120px] rounded-full flex items-center justify-center border-4 border-background mb-4 relative overflow-hidden"
-                    style={{ background: `hsl(var(--secondary))` }}
-                  >
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br ${step.color}`}
-                    />
-                    <step.icon
-                      className="w-8 h-8 md:w-11 md:h-11 relative z-10"
-                      style={{ color: step.accentColor }}
-                    />
-                  </div>
-                  <span
-                    className="font-bold text-xl md:text-2xl font-mono tracking-widest pl-2"
-                    style={{ color: step.accentColor }}
-                  >
-                    {step.num}
-                  </span>
-                </div>
-
-                {/* Content */}
-                <div className="pt-2 md:pt-6 relative z-10">
-                  {/* Label pill */}
-                  <div
-                    className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-4 border"
-                    style={{
-                      color: step.accentColor,
-                      borderColor: `${step.accentColor}40`,
-                      background: `${step.accentColor}12`,
-                    }}
-                  >
-                    <step.icon className="w-3 h-3" />
-                    {step.label}
-                  </div>
-
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 tracking-tight">
-                    {step.title}
-                  </h2>
-                  <p className="text-lg text-accent font-semibold italic mb-6">
-                    {step.tagline}
-                  </p>
-                  <p className="text-base md:text-lg text-foreground/80 leading-relaxed mb-8 whitespace-pre-line">
-                    {step.intro}
-                  </p>
-
-                  {/* Expect + Result card */}
-                  <div className="bg-secondary/50 rounded-3xl p-6 md:p-10 border border-border/50">
-                    <div className="mb-8">
-                      <h3 className="text-sm uppercase tracking-widest text-accent font-bold mb-5 flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-accent" />
-                        What you can expect
-                      </h3>
-                      <ul className="flex flex-col gap-3">
-                        {step.expect.map((item, i) => (
-                          <li key={i} className="flex items-start gap-3">
-                            <CheckCircle2
-                              className="w-5 h-5 mt-0.5 shrink-0"
-                              style={{ color: step.accentColor }}
-                            />
-                            <span className="text-muted-foreground leading-relaxed text-base">
-                              {item}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="border-t border-border/40 pt-6">
-                      <h3 className="text-sm uppercase tracking-widest text-accent font-bold mb-3 flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-accent" />
-                        The result
-                      </h3>
-                      <p className="text-foreground/90 font-medium leading-relaxed text-base">
-                        {step.result}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
+        <section className="px-6 lg:px-12 max-w-7xl mx-auto">
+          <div className="flex flex-col gap-8 md:gap-12">
+            {steps.map((step, index) => (
+              <StepSection key={step.num} step={step} index={index} />
             ))}
           </div>
         </section>
@@ -263,13 +331,14 @@ const TheExecutionEngine = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="mb-16"
+            className="text-center max-w-3xl mx-auto mb-16 lg:mb-24"
           >
-            <div className="flex items-center gap-4 mb-6">
-              <div className="h-[2px] w-8 bg-accent rounded-full" />
+            <div className="inline-flex items-center justify-center gap-3 mb-6">
+              <div className="h-[2px] w-6 bg-accent rounded-full" />
               <span className="text-sm font-medium tracking-[0.3em] uppercase text-accent">
                 The Difference
               </span>
+              <div className="h-[2px] w-6 bg-accent rounded-full" />
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight font-heading">
               Why our workflow{" "}
@@ -285,13 +354,13 @@ const TheExecutionEngine = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="bg-secondary/50 border border-border/50 rounded-2xl p-6 md:p-8 flex flex-col gap-5 hover:border-accent/40 transition-colors duration-300 group"
+                className="bg-secondary/30 backdrop-blur-sm border border-border/50 rounded-[2rem] p-8 flex flex-col gap-6 hover:bg-secondary/50 hover:border-accent/30 transition-all duration-300 group"
               >
-                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-colors duration-300">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center text-accent group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-inner">
                   <pillar.icon className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold mb-2">{pillar.title}</h3>
+                  <h3 className="text-xl font-bold mb-3">{pillar.title}</h3>
                   <p className="text-muted-foreground leading-relaxed text-sm">
                     {pillar.desc}
                   </p>
@@ -308,30 +377,50 @@ const TheExecutionEngine = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="bg-primary text-primary-foreground rounded-[2.5rem] md:rounded-[3.5rem] p-10 md:p-20 text-center relative overflow-hidden"
+            className="relative rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-accent/25 via-transparent to-transparent" />
-            <div className="absolute -top-32 -right-32 w-64 h-64 rounded-full bg-accent/10 blur-3xl" />
-            <div className="absolute -bottom-32 -left-32 w-64 h-64 rounded-full bg-accent/10 blur-3xl" />
+            {/* Background */}
+            <div className="absolute inset-0 bg-primary" />
+            <div className="absolute inset-0 bg-gradient-to-br from-accent/30 via-transparent to-transparent" />
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-accent/10 blur-[120px] -translate-y-1/2 translate-x-1/4" />
+            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-accent/8 blur-[100px] translate-y-1/2 -translate-x-1/4" />
 
-            <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/20 border border-accent/30 text-accent text-sm font-semibold mb-8">
-                <Zap className="w-4 h-4" />
-                Ready to accelerate?
+            <div className="relative z-10 p-8 md:p-16 lg:p-20 text-primary-foreground">
+              <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+                <div>
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/20 border border-accent/30 text-accent text-xs font-semibold mb-6">
+                    <Zap className="w-3.5 h-3.5" />
+                    Ready to accelerate?
+                  </div>
+                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] font-heading mb-6 text-balance">
+                    Ready to see our speed in action?
+                  </h2>
+                  <p className="text-lg md:text-xl text-primary-foreground/70 leading-relaxed mb-10 max-w-lg">
+                    Let's talk about how our workflow can accelerate your project and bring your brand into focus—faster than you thought possible.
+                  </p>
+                  <Link
+                    to="/#contact"
+                    className="btn-primary inline-flex items-center gap-2 w-fit px-8 py-4 text-lg shadow-xl shadow-accent/20 hover:scale-105 transition-transform"
+                  >
+                    Start a Project
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                </div>
+                
+                {/* Visual element on right for CTA */}
+                <div className="hidden lg:flex justify-end">
+                  <div className="relative w-full aspect-square max-w-[400px]">
+                    <div className="absolute inset-0 rounded-full border border-white/10 flex items-center justify-center">
+                      <div className="absolute inset-[20%] rounded-full border border-white/20 flex items-center justify-center">
+                        <div className="absolute inset-[25%] rounded-full bg-accent/20 blur-xl animate-pulse" />
+                        <div className="w-24 h-24 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center shadow-2xl relative z-10">
+                          <Rocket className="w-10 h-10 text-white" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-8 font-heading text-balance">
-                Ready to see our speed in action?
-              </h2>
-              <p className="text-lg md:text-xl text-primary-foreground/70 mb-10 max-w-xl text-balance">
-                Now that you understand how we work, let's talk about how our workflow can accelerate your project and bring your brand into focus—faster than you thought possible.
-              </p>
-              <Link
-                to="/#contact"
-                className="btn-primary inline-flex items-center gap-2 text-lg px-8 py-4 shadow-xl shadow-accent/20 hover:scale-105 transition-transform"
-              >
-                Let's Talk
-                <ArrowRight className="w-5 h-5" />
-              </Link>
             </div>
           </motion.div>
         </section>

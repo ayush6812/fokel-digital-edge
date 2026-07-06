@@ -22,28 +22,28 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    
+
     <TooltipProvider>
       <Toaster />
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/work/homelane" element={<HomelaneCaseStudy />} />
-            <Route path="/work/wtc-2026" element={<WtcCaseStudy />} />
-            <Route path="/work/genes-lecoanet-hemant" element={<GenesLecoanetCaseStudy />} />
-            <Route path="/work/sab-properties" element={<SabPropertiesCaseStudy />} />
-            <Route path="/blog/strategic-partner" element={<BlogStrategicPartner />} />
-            <Route path="/blog/integrated-ecosystem" element={<BlogIntegratedEcosystem />} />
-            <Route path="/built-for-impact" element={<BuiltForImpact />} />
-            <Route path="/the-execution-engine" element={<TheExecutionEngine />} />
-            <Route path="/the-gallery-of-impact" element={<TheGalleryOfImpact />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
+          <Route path="/" element={<Index />} />
+          <Route path="/work/homelane" element={<HomelaneCaseStudy />} />
+          <Route path="/work/wtc-2026" element={<WtcCaseStudy />} />
+          <Route path="/work/genes-lecoanet-hemant" element={<GenesLecoanetCaseStudy />} />
+          <Route path="/work/sab-properties" element={<SabPropertiesCaseStudy />} />
+          <Route path="/blog/strategic-partner" element={<BlogStrategicPartner />} />
+          <Route path="/blog/integrated-ecosystem" element={<BlogIntegratedEcosystem />} />
+          <Route path="/built-for-impact" element={<BuiltForImpact />} />
+          <Route path="/the-execution-engine" element={<TheExecutionEngine />} />
+          <Route path="/the-gallery-of-impact" element={<TheGalleryOfImpact />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </TooltipProvider>
   </QueryClientProvider>
 );
 
