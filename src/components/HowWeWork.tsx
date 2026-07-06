@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const SPRING = "cubic-bezier(0.16,1,0.3,1)";
 const DUR = "0.42s";
@@ -18,8 +19,8 @@ const rows = [
     title: "Mission-Driven",
     description:
       "Every project starts with a deep understanding of your purpose. We align strategies with your core mission to create authentic, impactful digital experiences.",
-    linkLabel: "↗ Our process",
-    linkHref: "/about#process",
+    linkLabel: "↗ Built for Impact",
+    linkHref: "/built-for-impact",
   },
   {
     step: "02",
@@ -31,8 +32,8 @@ const rows = [
     title: "Fast Execution",
     description:
       "Speed without compromise. Our agile workflows and streamlined processes ensure rapid delivery while maintaining the highest standards of quality.",
-    linkLabel: "↗ See our workflow",
-    linkHref: "/services#workflow",
+    linkLabel: "↗ The Execution Engine",
+    linkHref: "/the-execution-engine",
   },
   {
     step: "03",
@@ -45,8 +46,8 @@ const rows = [
     title: "Award-Winning Quality",
     description:
       "Excellence is non-negotiable. Our work consistently earns recognition for its creativity, innovation, and measurable impact on business growth.",
-    linkLabel: "↗ View our work",
-    linkHref: "/work",
+    linkLabel: "↗ The Gallery of Impact",
+    linkHref: "/the-gallery-of-impact",
   },
 ];
 
@@ -209,8 +210,8 @@ export default function HowWeWork() {
                   </p>
 
                   {/* Link tag */}
-                  <a
-                    href={row.linkHref}
+                  <Link
+                    to={row.linkHref}
                     style={{
                       fontSize: 11,
                       fontWeight: 700,
@@ -229,7 +230,7 @@ export default function HowWeWork() {
                     }}
                   >
                     {row.linkLabel}
-                  </a>
+                  </Link>
                 </div>
               </motion.div>
 

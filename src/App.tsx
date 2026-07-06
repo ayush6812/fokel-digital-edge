@@ -13,6 +13,9 @@ import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import BlogStrategicPartner from "./pages/BlogStrategicPartner";
 import BlogIntegratedEcosystem from "./pages/BlogIntegratedEcosystem";
+import BuiltForImpact from "./pages/BuiltForImpact";
+import TheExecutionEngine from "./pages/TheExecutionEngine";
+import TheGalleryOfImpact from "./pages/TheGalleryOfImpact";
 import { ThemeProvider } from "next-themes";
 
 const queryClient = new QueryClient();
@@ -33,6 +36,9 @@ const App = () => (
             <Route path="/work/sab-properties" element={<SabPropertiesCaseStudy />} />
             <Route path="/blog/strategic-partner" element={<BlogStrategicPartner />} />
             <Route path="/blog/integrated-ecosystem" element={<BlogIntegratedEcosystem />} />
+            <Route path="/built-for-impact" element={<BuiltForImpact />} />
+            <Route path="/the-execution-engine" element={<TheExecutionEngine />} />
+            <Route path="/the-gallery-of-impact" element={<TheGalleryOfImpact />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
