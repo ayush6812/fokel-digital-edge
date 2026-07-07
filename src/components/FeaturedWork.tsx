@@ -8,7 +8,7 @@ import { Magnetic } from "@/components/ui/Magnetic";
 import workHomelane from "@/assets/work-homelane.png";
 import workWtc from "@/assets/work-wtc.png";
 import workGenes from "@/assets/work-genes.png";
-import workSab from "@/assets/work-sab.png";
+import workSab from "@/assets/work-sab-collage.jpg";
 
 const projects = [
   {

@@ -8,7 +8,7 @@ import SEO from "@/components/SEO";
 
 // Assets
 import workHomelane from "@/assets/work-homelane.png";
-import workSab from "@/assets/work-sab.png";
+import workSab from "@/assets/work-sab-collage.jpg";
 import work22workspace from "@/assets/work-22workspace.svg";
 import genesLogo from "@/assets/clients/genes.png";
 import wtcLogo from "@/assets/clients/wtc.png";
