@@ -23,6 +23,14 @@ const routes = [
   '/work/prithivi-grid',
   '/blog/strategic-partner',
   '/blog/integrated-ecosystem',
+  '/blog/real-estate-seo-india',
+  '/blog/b2b-lead-generation-autopilot',
+  '/blog/brand-identity-startups',
+  '/blog/ai-agents-marketing-india',
+  '/blog/local-seo-delhi-guide',
+  '/blog/luxury-brand-marketing-india',
+  '/blog/edtech-content-marketing-india',
+  '/blog/infrastructure-branding-india',
   '/privacy-policy'
 ];
 
