@@ -144,16 +144,16 @@ const Contact = () => {
                   Fill out the form below and we'll get back to you shortly.
                 </DialogDescription>
               </DialogHeader>
-              
+
               <form onSubmit={handleSubmit} className="space-y-4 mt-4">
                 <div className="space-y-2">
                   <Label htmlFor="name" className="text-background/80 flex items-center gap-2">
                     <User className="w-4 h-4" /> Your Name
                   </Label>
-                  <Input 
-                    id="name" 
-                    name="name" 
-                    placeholder="John Doe" 
+                  <Input
+                    id="name"
+                    name="name"
+                    placeholder="Your Name"
                     value={formData.name}
                     onChange={handleChange}
                     className="bg-background/10 border-background/20 text-background placeholder:text-background/30 focus-visible:ring-accent"
@@ -164,11 +164,11 @@ const Contact = () => {
                   <Label htmlFor="email" className="text-background/80 flex items-center gap-2">
                     <Mail className="w-4 h-4" /> Email
                   </Label>
-                  <Input 
-                    id="email" 
-                    name="email" 
-                    type="email" 
-                    placeholder="john@example.com" 
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="Your Email"
                     value={formData.email}
                     onChange={handleChange}
                     className="bg-background/10 border-background/20 text-background placeholder:text-background/30 focus-visible:ring-accent"
@@ -179,19 +179,19 @@ const Contact = () => {
                   <Label htmlFor="phone" className="text-background/80 flex items-center gap-2">
                     <Phone className="w-4 h-4" /> Phone Number
                   </Label>
-                  <Input 
-                    id="phone" 
-                    name="phone" 
-                    type="tel" 
-                    placeholder="+1 (555) 000-0000" 
+                  <Input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="Your Phone Number"
                     value={formData.phone}
                     onChange={handleChange}
                     className="bg-background/10 border-background/20 text-background placeholder:text-background/30 focus-visible:ring-accent"
                     required
                   />
                 </div>
-                <Button 
-                  type="submit" 
+                <Button
+                  type="submit"
                   disabled={isLoading}
                   className="w-full mt-4 bg-accent text-accent-foreground hover:bg-accent/90"
                 >
