@@ -1,4 +1,4 @@
-import puppeteer from 'puppeteer-core';
+import puppeteer from 'puppeteer';
 import express from 'express';
 import path from 'path';
 import fs from 'fs';
@@ -53,8 +53,7 @@ async function prerender() {
     let browser;
     try {
       browser = await puppeteer.launch({
-        executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-        headless: "new",
+        headless: true,
         args: ['--no-sandbox', '--disable-setuid-sandbox']
       });
 
