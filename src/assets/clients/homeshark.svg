@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <rect width="200" height="200" rx="16" fill="#0D3349"/>
+  <!-- House with shark fin top -->
+  <!-- Roof with fin -->
+  <polygon points="100,45 140,85 60,85" fill="#00C9A7"/>
+  <!-- Shark fin accent -->
+  <polygon points="100,45 115,65 100,70" fill="#FFFFFF" opacity="0.3"/>
+  <!-- House body -->
+  <rect x="68" y="85" width="64" height="45" rx="2" fill="none" stroke="#00C9A7" stroke-width="3"/>
+  <!-- Door -->
+  <rect x="90" y="100" width="20" height="30" rx="2" fill="#00C9A7" opacity="0.8"/>
+  <!-- Windows -->
+  <rect x="74" y="92" width="10" height="10" rx="1" fill="#00C9A7" opacity="0.6"/>
+  <rect x="116" y="92" width="10" height="10" rx="1" fill="#00C9A7" opacity="0.6"/>
+  <!-- Text -->
+  <text x="100" y="153" font-family="Arial Black, sans-serif" font-size="15" font-weight="900" text-anchor="middle" fill="#FFFFFF" letter-spacing="2">HOME</text>
+  <text x="100" y="171" font-family="Arial Black, sans-serif" font-size="15" font-weight="900" text-anchor="middle" fill="#00C9A7" letter-spacing="2">SHARK</text>
+</svg>

@@ -5,11 +5,14 @@ import { Link } from "react-router-dom";
 import { DepthText } from "@/components/ui/DepthText";
 import { Magnetic } from "@/components/ui/Magnetic";
 
-import work3 from "@/assets/work-homelane.png";
+import workHomelane from "@/assets/work-homelane.png";
+import workWtc from "@/assets/work-wtc.png";
+import workGenes from "@/assets/work-genes.png";
+import workSab from "@/assets/work-sab.png";
 
 const projects = [
   {
-    image: work3,
+    image: workHomelane,
     title: "HomeLane.com",
     description:
       "Strategic SEO & Content Marketing strategy that delivered 98% organic growth and dominated competitive keywords for India's interior design leader.",
@@ -20,7 +23,7 @@ const projects = [
     bgColorDark: "#0a1f15",
   },
   {
-    image: "/its.png",
+    image: workWtc,
     title: "ITA-AITES WTC 2026",
     description:
       "Global digital strategy and event branding for the World Tunnel Congress, driving international visibility and attendee engagement.",
@@ -31,7 +34,7 @@ const projects = [
     bgColorDark: "#0a1220",
   },
   {
-    image: "/genes.png",
+    image: workGenes,
     title: "Genes Lecoanet Hemant",
     description:
       "Premium social media storytelling and brand performance marketing for one of India's most iconic luxury fashion houses.",
@@ -42,7 +45,7 @@ const projects = [
     bgColorDark: "#100a1f",
   },
   {
-    image: "/sab.png",
+    image: workSab,
     title: "SAB Properties",
     description:
       "Direct-to-client commercial property directory and automated B2B leasing pipeline for one of Delhi's premier estate agencies.",
@@ -124,6 +127,22 @@ const FeaturedWork = () => {
             />
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-12 md:mt-16 text-center"
+        >
+          <Link
+            to="/the-gallery-of-impact"
+            className="inline-flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-wider text-primary-foreground hover:text-accent transition-colors group"
+          >
+            View all 9 projects
+            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </Link>
+        </motion.div>
       </div>
     </motion.section>
   );

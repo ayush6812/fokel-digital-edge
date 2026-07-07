@@ -27,6 +27,17 @@ const blogs = [
     imageAlt: "Integrated digital ecosystem vs broken silos diagram",
     readTime: "8 min read",
   },
+  {
+    title: "The Ultimate SEO Guide for Real Estate Developers in India (2026)",
+    description:
+      "Learn how Indian real estate developers can dominate search rankings, bypass expensive aggregators, and generate high-intent property leads.",
+    link: "/blog/real-estate-seo-india",
+    date: "July 07, 2026",
+    category: "Real Estate SEO",
+    image: "/process-discover.jpg",
+    imageAlt: "Real estate digital marketing and SEO growth",
+    readTime: "8 min read",
+  },
 ];
 
 const BlogSection = () => {
@@ -75,7 +86,7 @@ const BlogSection = () => {
           />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
           {blogs.map((blog, idx) => (
             <motion.div
               key={blog.title}

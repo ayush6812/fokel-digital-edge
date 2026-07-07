@@ -6,11 +6,11 @@ import logoBlack from "@/assets/fokel-logo-black.png";
 
 /* ─── Navbar ─────────────────────────────────────────────────────────────────── */
 const navLinks = [
-  { label: "About",    href: "#about"    },
+  { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
-  { label: "Work",     href: "#work"     },
-  { label: "Contact",  href: "#contact"  },
-  { label: "Blog",     href: "#blog"     },
+  { label: "Work", href: "#work" },
+  { label: "Contact", href: "#contact" },
+  { label: "Blog", href: "#blog" },
 ];
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,13 +28,13 @@ const Navbar = () => {
     };
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    
+
     // Theme detection for logo
     const checkTheme = () => setIsDark(document.documentElement.classList.contains("dark"));
     checkTheme();
     const observer = new MutationObserver(checkTheme);
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
-    
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
       observer.disconnect();
@@ -91,9 +91,8 @@ const Navbar = () => {
         )}
       </AnimatePresence>
 
-      <div className={`relative max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between transition-all duration-300 ${
-        isScrolled && !isOverHero ? "h-16" : "h-20 lg:h-24"
-      }`}>
+      <div className={`relative max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between transition-all duration-300 ${isScrolled && !isOverHero ? "h-16" : "h-20 lg:h-24"
+        }`}>
 
         {/* Logo */}
         <motion.a href="#" className="relative group" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
@@ -164,11 +163,10 @@ const Navbar = () => {
         <div className="lg:hidden flex items-center gap-2">
           <motion.button
             onClick={() => setIsOpen(!isOpen)}
-            className={`w-11 h-11 flex items-center justify-center rounded-full transition-colors ${
-              isOverHero
+            className={`w-11 h-11 flex items-center justify-center rounded-full transition-colors ${isOverHero
                 ? "bg-white/15 hover:bg-white/25 text-white"
                 : "bg-secondary hover:bg-secondary/80 text-foreground"
-            }`}
+              }`}
             whileTap={{ scale: 0.95 }}
           >
             {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}

@@ -9,10 +9,16 @@ import SEO from "@/components/SEO";
 // Assets
 import workHomelane from "@/assets/work-homelane.png";
 import workSab from "@/assets/work-sab.png";
+import work22workspace from "@/assets/work-22workspace.svg";
 import genesLogo from "@/assets/clients/genes.png";
 import wtcLogo from "@/assets/clients/wtc.png";
 import homelane from "@/assets/clients/homelane.png";
 import sabProperties from "@/assets/clients/sab-properties.png";
+import workspace22Logo from "@/assets/clients/22workspace.svg";
+import corporateBuildconLogo from "@/assets/clients/corporate-buildcon.svg";
+import homesharkLogo from "@/assets/clients/homeshark.svg";
+import aurumEducationLogo from "@/assets/clients/aurum-education.svg";
+import prithiviGridLogo from "@/assets/clients/prithivi-grid.svg";
 
 const projects = [
   {
@@ -102,6 +108,116 @@ const projects = [
     quote:
       "Fokel built exactly what we envisioned—a digital presence that matches the calibre of the properties we represent.",
     quotePerson: "Principal, SAB Properties",
+  },
+  {
+    id: "22workspace",
+    client: "22workspace",
+    logo: workspace22Logo,
+    image: work22workspace,
+    industry: "Coworking / Managed Workspaces",
+    accentColor: "#FF6B00",
+    tags: ["Brand Identity", "Digital Marketing", "Lead Generation"],
+    link: "/work/22workspace",
+    challenge:
+      "22workspace, a premium coworking brand in Central Delhi, had a strong physical presence but no cohesive digital strategy. Their online footprint was fragmented, limiting their ability to attract startups, SMEs, and corporate clients in a rapidly growing flexible-workspace market.",
+    solution:
+      "We built a full-stack digital brand engine—redesigning their web presence, crafting a compelling brand narrative, and deploying targeted lead-generation campaigns that spoke directly to their core audience of entrepreneurs and corporate decision-makers.",
+    results: [
+      { stat: "3×", label: "Increase in Online Enquiries" },
+      { stat: "60%", label: "Occupancy Rate Growth" },
+      { stat: "Top 3", label: "Local SEO Rankings in Delhi" },
+    ],
+    quote:
+      "Fokel gave 22workspace the digital identity it always deserved. Our enquiries tripled within months—results we couldn't have imagined before.",
+    quotePerson: "Founder, 22workspace",
+  },
+  {
+    id: "corporate-buildcon",
+    client: "Corporate Buildcon",
+    logo: corporateBuildconLogo,
+    image: null,
+    industry: "Construction / Real Estate Development",
+    accentColor: "#4A90D9",
+    tags: ["Construction Marketing", "B2B Branding", "Digital Presence"],
+    link: "/work/corporate-buildcon",
+    challenge:
+      "Corporate Buildcon, a growing Delhi-based construction and real estate developer, operated without any meaningful digital infrastructure. Their brand equity was invisible online, costing them high-value contracts and qualified developer partnerships.",
+    solution:
+      "We established their end-to-end digital brand—from a professional corporate website and portfolio showcasing completed projects, to a targeted B2B outreach strategy designed to attract institutional clients, investors, and premium project collaborations.",
+    results: [
+      { stat: "0→1", label: "Complete Digital Brand Built" },
+      { stat: "40%", label: "Rise in Inbound Project Enquiries" },
+      { stat: "2×", label: "Growth in Partnership Pipeline" },
+    ],
+    quote:
+      "We went from invisible to credible in the digital space. Fokel understood the construction industry and built us a brand that commands trust.",
+    quotePerson: "Director, Corporate Buildcon",
+  },
+  {
+    id: "homeshark",
+    client: "Home Shark",
+    logo: homesharkLogo,
+    image: null,
+    industry: "Real Estate / Property Sales",
+    accentColor: "#00C9A7",
+    tags: ["Real Estate Marketing", "Performance Ads", "Social Strategy"],
+    link: "/work/homeshark",
+    challenge:
+      "Home Shark, an emerging real estate brand, struggled to differentiate itself in India's crowded residential property market. Despite competitive pricing and inventory, their digital channels were generating poor-quality leads and weak brand recognition.",
+    solution:
+      "We repositioned Home Shark as a buyer-first, transparent real estate brand—revamping their social media identity, launching hyper-targeted performance campaigns on Meta and Google, and building a conversion-optimised web experience that turned casual browsers into serious buyers.",
+    results: [
+      { stat: "5×", label: "Qualified Lead Volume Growth" },
+      { stat: "65%", label: "Reduction in Cost Per Lead" },
+      { stat: "180%", label: "Increase in Social Engagement" },
+    ],
+    quote:
+      "Our lead quality transformed completely. Fokel didn't just run ads—they built a brand we're proud of and a pipeline that actually converts.",
+    quotePerson: "CEO, Home Shark",
+  },
+  {
+    id: "aurum-education",
+    client: "Aurum Education",
+    logo: aurumEducationLogo,
+    image: null,
+    industry: "Education / EdTech",
+    accentColor: "#D4AF37",
+    tags: ["EdTech Marketing", "Student Acquisition", "Content Strategy"],
+    link: "/work/aurum-education",
+    challenge:
+      "Aurum Education, a premium coaching and education consultancy, faced intense competition for student attention in the digital-first EdTech era. Their enrolment funnels were manual, their brand positioning unclear, and organic discoverability near-zero.",
+    solution:
+      "We crafted a premium brand identity and content strategy that positioned Aurum as a trusted academic partner—deploying SEO-led blog content, YouTube strategy, and a high-converting admissions landing page system that automated their entire student acquisition pipeline.",
+    results: [
+      { stat: "220%", label: "Increase in Student Enquiries" },
+      { stat: "#1", label: "Local SEO Rankings for Key Courses" },
+      { stat: "4×", label: "Social Follower Growth" },
+    ],
+    quote:
+      "Fokel transformed how students find and trust Aurum. Our enrolments are at an all-time high, and our brand finally reflects the quality of education we deliver.",
+    quotePerson: "Director, Aurum Education",
+  },
+  {
+    id: "prithivi-grid",
+    client: "Prithivi Grid Construction",
+    logo: prithiviGridLogo,
+    image: null,
+    industry: "Infrastructure / Grid Construction",
+    accentColor: "#E8610A",
+    tags: ["Infrastructure Branding", "Corporate Identity", "Digital Strategy"],
+    link: "/work/prithivi-grid",
+    challenge:
+      "Prithivi Grid Construction, a specialist infrastructure firm, operated in a high-stakes B2B market where reputation and credibility are everything—yet had no formal digital presence to showcase their technical capabilities, project portfolio, or bid for premium government and private contracts.",
+    solution:
+      "We built a commanding corporate digital identity—an authoritative website showcasing engineering capabilities and past projects, combined with a thought-leadership content strategy and LinkedIn presence that positioned Prithivi Grid as a credible, tier-one infrastructure partner.",
+    results: [
+      { stat: "0→1", label: "Full Corporate Digital Presence" },
+      { stat: "3×", label: "Growth in RFP & Tender Inquiries" },
+      { stat: "Top 5", label: "Industry Search Rankings" },
+    ],
+    quote:
+      "In infrastructure, credibility wins contracts. Fokel gave us the digital presence to walk into any boardroom with confidence. Our RFPs have tripled.",
+    quotePerson: "Managing Director, Prithivi Grid Construction",
   },
 ];
 

@@ -38,6 +38,9 @@ const About = () => {
               <span className="text-accent">disruptive</span><br />
               execution
             </h2>
+            <p className="mt-8 text-lg md:text-xl text-muted-foreground leading-relaxed">
+              A Delhi-based creative agency, Fokel partners with ambitious brands across India to build digital presence that compounds over time — combining strategic brand identity, SEO, performance marketing, and web development into a single, integrated growth system.
+            </p>
           </motion.div>
 
           <motion.div
@@ -49,16 +52,13 @@ const About = () => {
           >
             <div className="relative pl-6 border-l-2 border-accent/30">
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                At Fokel, we believe exceptional digital experiences don't happen by accident. 
-                They emerge from the intersection of strategic thinking, creative vision, and 
-                relentless attention to detail.
+                We've spent years in the trenches of Indian digital marketing — navigating everything from luxury fashion to grid construction.
               </p>
             </div>
             
             <div className="relative pl-6 border-l-2 border-accent/30">
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                Our mission is simple: transform ambitious brands into undisputed market leaders 
-                through creative excellence and measurable results. We don't just create—we <span className="text-accent font-medium">execute</span>
+                Our work doesn't just look good in a presentation. It shows up in your analytics. We don't just create—we <span className="text-accent font-medium">execute</span>.
               </p>
             </div>
           </motion.div>

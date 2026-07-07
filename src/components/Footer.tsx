@@ -42,8 +42,8 @@ const Footer = () => {
               transition={{ duration: 0.6 }}
             >
               <img src={logo} alt="Fokel" className="h-10 w-auto mb-3" />
-              <p className="text-xs text-white/50 mb-6 font-medium tracking-wide">
-                Strategic Design. Digital Growth.
+              <p className="text-xs text-white/50 mb-6 font-medium tracking-wide uppercase">
+                Built in India. Built to compete globally.
               </p>
               <h3 className="text-3xl lg:text-4xl xl:text-5xl font-extrabold text-white leading-tight mb-4 tracking-tight" style={{ fontFamily: "var(--font-heading)" }}>
                 Ready to bring your brand into <br className="hidden sm:inline" />

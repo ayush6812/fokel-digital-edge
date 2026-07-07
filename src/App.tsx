@@ -13,9 +13,15 @@ import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import BlogStrategicPartner from "./pages/BlogStrategicPartner";
 import BlogIntegratedEcosystem from "./pages/BlogIntegratedEcosystem";
+import BlogRealEstateSEO from "./pages/BlogRealEstateSEO";
 import BuiltForImpact from "./pages/BuiltForImpact";
 import TheExecutionEngine from "./pages/TheExecutionEngine";
 import TheGalleryOfImpact from "./pages/TheGalleryOfImpact";
+import Workspace22CaseStudy from "./pages/Workspace22CaseStudy";
+import CorporateBuildconCaseStudy from "./pages/CorporateBuildconCaseStudy";
+import HomesharkCaseStudy from "./pages/HomesharkCaseStudy";
+import AurumEducationCaseStudy from "./pages/AurumEducationCaseStudy";
+import PrithiviGridCaseStudy from "./pages/PrithiviGridCaseStudy";
 import { ThemeProvider } from "next-themes";
 
 const queryClient = new QueryClient();
@@ -36,9 +42,15 @@ const App = () => (
           <Route path="/work/sab-properties" element={<SabPropertiesCaseStudy />} />
           <Route path="/blog/strategic-partner" element={<BlogStrategicPartner />} />
           <Route path="/blog/integrated-ecosystem" element={<BlogIntegratedEcosystem />} />
+          <Route path="/blog/real-estate-seo-india" element={<BlogRealEstateSEO />} />
           <Route path="/built-for-impact" element={<BuiltForImpact />} />
           <Route path="/the-execution-engine" element={<TheExecutionEngine />} />
           <Route path="/the-gallery-of-impact" element={<TheGalleryOfImpact />} />
+          <Route path="/work/22workspace" element={<Workspace22CaseStudy />} />
+          <Route path="/work/corporate-buildcon" element={<CorporateBuildconCaseStudy />} />
+          <Route path="/work/homeshark" element={<HomesharkCaseStudy />} />
+          <Route path="/work/aurum-education" element={<AurumEducationCaseStudy />} />
+          <Route path="/work/prithivi-grid" element={<PrithiviGridCaseStudy />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

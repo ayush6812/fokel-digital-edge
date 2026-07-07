@@ -145,7 +145,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 1.3, ease: [0.25, 0.1, 0.25, 1] }}
               className="text-lg md:text-xl text-white/80 max-w-lg leading-relaxed"
             >
-              A creative digital studio that transforms ambitious brands through strategic design, compelling storytelling, and measurable growth.
+              Fokel is a Delhi-based digital marketing agency helping real estate, fashion, EdTech, and infrastructure brands build authority, generate qualified leads, and dominate organic search — with bold strategy and measurable results.
             </motion.p>
 
             <motion.div
