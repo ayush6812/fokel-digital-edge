@@ -256,7 +256,7 @@ const ProjectCardContent = ({
 }) => (
   <>
     <motion.div
-      className="relative overflow-hidden rounded-xl md:rounded-2xl aspect-[4/3] bg-secondary"
+      className="relative overflow-hidden rounded-xl md:rounded-2xl aspect-video bg-secondary"
       style={{
         rotateX: isHovered ? rotateX : 0,
         rotateY: isHovered ? rotateY : 0,
@@ -272,7 +272,7 @@ const ProjectCardContent = ({
       <motion.img
         src={project.image}
         alt={project.title}
-        className="w-full h-full object-contain p-4"
+        className="w-full h-full object-cover"
         animate={{
           scale: isHovered ? 1.05 : 1,
         }}
