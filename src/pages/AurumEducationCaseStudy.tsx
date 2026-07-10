@@ -3,6 +3,7 @@ import { ArrowLeft, TrendingUp, Users, Search, Video, FileText, BookOpen } from 
 import { Link } from "react-router-dom";
 import { useRef, useEffect, useState } from "react";
 import aurumEducationLogo from "@/assets/clients/aurum-education.svg";
+import aurumBanner from "@/assets/clients/Aurum Education banner.png";
 import SEO from "@/components/SEO";
 import NeuralNetworkCanvas from "@/components/ui/NeuralNetworkCanvas";
 import GlassLensCursor from "@/components/ui/GlassLensCursor";

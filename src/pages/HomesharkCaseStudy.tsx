@@ -3,6 +3,7 @@ import { ArrowLeft, TrendingUp, Users, Target, Megaphone, Star, BarChart3 } from
 import { Link } from "react-router-dom";
 import { useRef, useEffect, useState } from "react";
 import homesharkLogo from "@/assets/clients/homeshark.svg";
+import homesharkBanner from "@/assets/clients/Homesharkbanner.png";
 import SEO from "@/components/SEO";
 import NeuralNetworkCanvas from "@/components/ui/NeuralNetworkCanvas";
 import GlassLensCursor from "@/components/ui/GlassLensCursor";

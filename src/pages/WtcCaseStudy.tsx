@@ -2,7 +2,7 @@ import { motion, useInView, useSpring, useTransform } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useRef, useEffect, useState } from "react";
-import wtcHero from "@/assets/work-2.jpg";
+import wtcHero from "@/assets/clients/WTCbannerimage.jpg";
 import SEO from "@/components/SEO";
 import NeuralNetworkCanvas from "@/components/ui/NeuralNetworkCanvas";
 import GlassLensCursor from "@/components/ui/GlassLensCursor";

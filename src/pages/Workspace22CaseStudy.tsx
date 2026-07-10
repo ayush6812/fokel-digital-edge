@@ -2,8 +2,8 @@ import { motion, useInView, useSpring, useTransform } from "framer-motion";
 import { ArrowLeft, Building2, TrendingUp, Users, Search, Target, Megaphone } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useRef, useEffect, useState } from "react";
-import workspace22Logo from "@/assets/clients/22workspace.svg";
-import workImage from "@/assets/work-22workspace-real.jpg";
+import workspace22Logo from "@/assets/clients/22workspacenew.png";
+import workImage from "@/assets/clients/22workspacebanner.jpeg";
 import SEO from "@/components/SEO";
 import NeuralNetworkCanvas from "@/components/ui/NeuralNetworkCanvas";
 import GlassLensCursor from "@/components/ui/GlassLensCursor";
@@ -143,8 +143,8 @@ const Workspace22CaseStudy = () => {
               />
             </motion.div>
             {/* Logo overlay */}
-            <div className="absolute bottom-6 left-6 bg-black/60 backdrop-blur-md rounded-xl p-3 border border-white/10">
-              <img src={workspace22Logo} alt="22workspace logo" className="h-8" />
+            <div className="absolute bottom-6 left-6 bg-black/60 backdrop-blur-md rounded-xl p-3 border border-white/10 overflow-hidden">
+              <img src={workspace22Logo} alt="22workspace logo" className="h-8 scale-[1.3]" />
             </div>
           </div>
         </motion.section>

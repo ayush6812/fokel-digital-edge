@@ -2,7 +2,7 @@ import { motion, useInView, useSpring, useTransform } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useRef, useEffect, useState } from "react";
-import genesHero from "@/assets/work-1.jpg";
+import genesHero from "@/assets/clients/Genes-Lecoanet-Hemant_1_mobile.png";
 import SEO from "@/components/SEO";
 import NeuralNetworkCanvas from "@/components/ui/NeuralNetworkCanvas";
 import GlassLensCursor from "@/components/ui/GlassLensCursor";

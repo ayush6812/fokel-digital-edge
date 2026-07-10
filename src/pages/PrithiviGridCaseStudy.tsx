@@ -2,7 +2,8 @@ import { motion, useInView, useSpring, useTransform } from "framer-motion";
 import { ArrowLeft, TrendingUp, Award, Search, Briefcase, Globe, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useRef, useEffect, useState } from "react";
-import prithiviGridLogo from "@/assets/clients/prithivi-grid.svg";
+import prithiviGridLogo from "@/assets/clients/prithvilogo.png";
+import workImage from "@/assets/clients/prithvigridbanner.avif";
 import SEO from "@/components/SEO";
 import NeuralNetworkCanvas from "@/components/ui/NeuralNetworkCanvas";
 import GlassLensCursor from "@/components/ui/GlassLensCursor";
@@ -151,7 +152,7 @@ const PrithiviGridCaseStudy = () => {
               }}
             />
             <div className="relative z-10 flex flex-col items-center gap-8">
-              <img src={prithiviGridLogo} alt="Prithivi Grid Construction logo" className="h-20 md:h-28 opacity-90" />
+              <img src={prithiviGridLogo} alt="Prithivi Grid Construction logo" className="h-20 md:h-28 opacity-90 scale-150" />
               <div className="flex gap-3 flex-wrap justify-center">
                 {["Infrastructure Branding", "Corporate Identity", "Digital Strategy"].map((tag) => (
                   <span

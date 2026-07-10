@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ArrowRight, ArrowUpRight, Trophy, Star, Zap, Users, TrendingUp, Award } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Trophy, Star, Zap, Users, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -9,16 +9,22 @@ import SEO from "@/components/SEO";
 // Assets
 import workHomelane from "@/assets/work-homelane.png";
 import workSab from "@/assets/work-sab-collage.jpg";
-import work22workspace from "@/assets/work-22workspace.svg";
+import work22workspace from "@/assets/clients/22workspacebanner.jpeg";
 import genesLogo from "@/assets/clients/genes.png";
+import genesBanner from "@/assets/clients/Genes-Lecoanet-Hemant_1_mobile.png";
 import wtcLogo from "@/assets/clients/wtc.png";
+import wtcBanner from "@/assets/clients/WTCbannerimage.jpg";
 import homelane from "@/assets/clients/homelane.png";
 import sabProperties from "@/assets/clients/sab-properties.png";
-import workspace22Logo from "@/assets/clients/22workspace.svg";
+import workspace22Logo from "@/assets/clients/22workspacenew.png";
 import corporateBuildconLogo from "@/assets/clients/corporate-buildcon.svg";
+import corporateBuildconBanner from "@/assets/clients/Coorporate buildcon banner.jpg";
 import homesharkLogo from "@/assets/clients/homeshark.svg";
+import homesharkBanner from "@/assets/clients/Homesharkbanner.png";
 import aurumEducationLogo from "@/assets/clients/aurum-education.svg";
-import prithiviGridLogo from "@/assets/clients/prithivi-grid.svg";
+import aurumEducationBanner from "@/assets/clients/Aurum Education banner.png";
+import prithiviGridLogo from "@/assets/clients/prithvilogo.png";
+import prithiviGridBanner from "@/assets/clients/prithvigridbanner.avif";
 
 const projects = [
   {
@@ -47,7 +53,7 @@ const projects = [
     id: "wtc",
     client: "ITA-AITES WTC 2026",
     logo: wtcLogo,
-    image: null,
+    image: wtcBanner,
     industry: "Global Events / Engineering",
     accentColor: "#3B82F6",
     tags: ["Event Marketing", "Digital Strategy", "International Branding"],
@@ -69,7 +75,7 @@ const projects = [
     id: "genes",
     client: "Genes Lecoanet Hemant",
     logo: genesLogo,
-    image: null,
+    image: genesBanner,
     industry: "Luxury Fashion / Couture",
     accentColor: "#8B5CF6",
     tags: ["Luxury Marketing", "Social Media", "Performance Campaigns"],
@@ -135,7 +141,7 @@ const projects = [
     id: "corporate-buildcon",
     client: "Corporate Buildcon",
     logo: corporateBuildconLogo,
-    image: null,
+    image: corporateBuildconBanner,
     industry: "Construction / Real Estate Development",
     accentColor: "#4A90D9",
     tags: ["Construction Marketing", "B2B Branding", "Digital Presence"],
@@ -157,7 +163,7 @@ const projects = [
     id: "homeshark",
     client: "Home Shark",
     logo: homesharkLogo,
-    image: null,
+    image: homesharkBanner,
     industry: "Real Estate / Property Sales",
     accentColor: "#00C9A7",
     tags: ["Real Estate Marketing", "Performance Ads", "Social Strategy"],
@@ -179,7 +185,7 @@ const projects = [
     id: "aurum-education",
     client: "Aurum Education",
     logo: aurumEducationLogo,
-    image: null,
+    image: aurumEducationBanner,
     industry: "Education / EdTech",
     accentColor: "#D4AF37",
     tags: ["EdTech Marketing", "Student Acquisition", "Content Strategy"],
@@ -201,7 +207,7 @@ const projects = [
     id: "prithivi-grid",
     client: "Prithivi Grid Construction",
     logo: prithiviGridLogo,
-    image: null,
+    image: prithiviGridBanner,
     industry: "Infrastructure / Grid Construction",
     accentColor: "#E8610A",
     tags: ["Infrastructure Branding", "Corporate Identity", "Digital Strategy"],
@@ -218,29 +224,6 @@ const projects = [
     quote:
       "In infrastructure, credibility wins contracts. Fokel gave us the digital presence to walk into any boardroom with confidence. Our RFPs have tripled.",
     quotePerson: "Managing Director, Prithivi Grid Construction",
-  },
-];
-
-const pillars = [
-  {
-    icon: Trophy,
-    title: "Strategic Depth",
-    desc: "We don't just design—we think. Every decision is rooted in a deep understanding of your brand, audience, and goals.",
-  },
-  {
-    icon: Star,
-    title: "Creative Excellence",
-    desc: "Our work is bold, beautiful, and built to stand out. We craft experiences that capture attention and inspire action.",
-  },
-  {
-    icon: Award,
-    title: "Award-Winning Standards",
-    desc: "We hold ourselves to the highest standards of quality. Our track record of recognition reflects that commitment.",
-  },
-  {
-    icon: Users,
-    title: "Partnership, Not Transaction",
-    desc: "We're invested in your success. Your growth is our growth, and we go the extra mile to ensure you achieve your vision.",
   },
 ];
 
@@ -271,7 +254,19 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
             alt={project.client}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+          {/* Multi-stop gradient for clean fade into card */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+          {/* Accent color tint at top */}
+          <div
+            className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent"
+          />
+          {/* Left vignette for depth */}
+          <div className="absolute inset-0 bg-gradient-to-r from-background/30 via-transparent to-transparent" />
+          {/* Accent glow at bottom edge */}
+          <div
+            className="absolute bottom-0 left-0 right-0 h-1"
+            style={{ background: `linear-gradient(90deg, transparent, ${project.accentColor}60, transparent)` }}
+          />
           <div className="absolute top-4 left-4 flex gap-2 flex-wrap">
             {project.tags.map((tag) => (
               <span
@@ -295,13 +290,19 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
         <div className="flex items-start justify-between gap-4 mb-6">
           <div className="flex items-center gap-4">
             <div
-              className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center p-2 shrink-0 shadow-lg"
+              className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center p-2 shrink-0 shadow-lg overflow-hidden"
               style={{ boxShadow: `0 4px 20px ${project.accentColor}30` }}
             >
               <img
                 src={project.logo}
                 alt={`${project.client} logo`}
-                className="w-full h-full object-contain"
+                className={`w-full h-full object-contain ${
+                  project.id === "22workspace"
+                    ? "scale-150"
+                    : project.id === "prithivi-grid"
+                    ? "scale-[1.4]"
+                    : ""
+                }`}
               />
             </div>
             <div>
@@ -514,89 +515,6 @@ const TheGalleryOfImpact = () => {
           </div>
         </section>
 
-        {/* ── Awards & Recognition ── */}
-        <section className="px-6 lg:px-12 max-w-7xl mx-auto mb-20 lg:mb-32">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="text-center mb-12"
-          >
-            <div className="flex items-center justify-center gap-4 mb-4">
-              <div className="h-[2px] w-8 bg-accent rounded-full" />
-              <span className="text-sm font-medium tracking-[0.3em] uppercase text-accent">Recognition</span>
-              <div className="h-[2px] w-8 bg-accent rounded-full" />
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight font-heading mb-4">
-              Awards & <span className="text-accent italic">Accolades</span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We're proud to have our work celebrated by industry leaders and peers. These accolades reflect our commitment to excellence.
-            </p>
-          </motion.div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              { year: "2025", award: "Best Digital Campaign", category: "Real Estate Marketing" },
-              { year: "2025", award: "Excellence in SEO", category: "B2B Growth Strategy" },
-              { year: "2024", award: "Top Creative Agency", category: "Luxury Brand Marketing" },
-              { year: "2024", award: "Innovation Award", category: "International Events Digital" },
-            ].map((a, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-secondary/40 border border-border/50 rounded-2xl p-6 text-center hover:border-accent/30 transition-colors duration-300 group"
-              >
-                <Trophy className="w-8 h-8 text-accent mx-auto mb-3 group-hover:scale-110 transition-transform" />
-                <p className="text-2xl font-black text-accent mb-1">{a.year}</p>
-                <p className="font-bold text-sm mb-1">{a.award}</p>
-                <p className="text-xs text-muted-foreground">{a.category}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* ── Why Clients Choose Us ── */}
-        <section className="px-6 lg:px-12 max-w-7xl mx-auto mb-20 lg:mb-32">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="mb-12"
-          >
-            <div className="flex items-center gap-4 mb-4">
-              <div className="h-[2px] w-8 bg-accent rounded-full" />
-              <span className="text-sm font-medium tracking-[0.3em] uppercase text-accent">Why Us</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight font-heading">
-              Why clients <span className="text-accent italic">choose</span> us.
-            </h2>
-          </motion.div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {pillars.map((p, i) => (
-              <motion.div
-                key={p.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-secondary/40 border border-border/50 rounded-2xl p-6 md:p-8 flex flex-col gap-4 hover:border-accent/40 transition-colors duration-300 group"
-              >
-                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-colors duration-300">
-                  <p.icon className="w-6 h-6" />
-                </div>
-                <h3 className="font-bold text-base">{p.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
 
         {/* ── CTA ── */}
         <section className="px-6 lg:px-12 max-w-7xl mx-auto">
