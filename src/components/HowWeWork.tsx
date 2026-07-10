@@ -65,7 +65,7 @@ export default function HowWeWork() {
         overflow: "hidden",
       }}
     >
-      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 48px" }}>
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12">
 
         {/* Eyebrow */}
         <motion.div
@@ -87,8 +87,7 @@ export default function HowWeWork() {
 
         {/* Heading */}
         <motion.h2
-          className="heading-section text-white"
-          style={{ marginBottom: 72 }}
+          className="heading-section text-white mb-10 md:mb-[72px]"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.15 }}
@@ -121,13 +120,8 @@ export default function HowWeWork() {
                   delay: 0.3 + i * 0.08,
                   // For the hover dim/undim, we override via style transition below
                 }}
+                className="grid grid-cols-[48px_1fr] md:grid-cols-[64px_1fr_1fr] items-start md:items-center gap-x-4 gap-y-8 md:gap-[40px] py-8 md:py-10 cursor-default"
                 style={{
-                  display: "grid",
-                  gridTemplateColumns: "64px 1fr 1fr",
-                  alignItems: "center",
-                  gap: "0 40px",
-                  padding: "40px 0",
-                  cursor: "default",
                   transform: isHovered
                     ? "translateX(6px) scaleY(1)"
                     : isDimmed
@@ -195,7 +189,7 @@ export default function HowWeWork() {
                 </div>
 
                 {/* Col 3 — Description + link */}
-                <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                <div className="col-span-2 md:col-span-1 flex flex-col gap-5">
                   <p
                     style={{
                       fontSize: 15,

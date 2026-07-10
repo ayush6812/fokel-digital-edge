@@ -35,14 +35,6 @@ const services = [
       "Data-informed roadmaps that align your digital presence with business objectives. We transform market insights into actionable growth strategies.",
     tags: ["Consulting", "Research", "Roadmapping", "KPIs"],
   },
-  {
-    number: "05",
-    title: "Brand Identity",
-    subtitle: "Tell Your Story",
-    description:
-      "Comprehensive brand systems that capture essence and inspire connection. From visual identity to messaging frameworks, we build brands that resonate.",
-    tags: ["Logo", "Typography", "Visual System", "Messaging"],
-  },
 ];
 
 const Services = () => {
