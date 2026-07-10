@@ -65,6 +65,17 @@ export default function HowWeWork() {
         overflow: "hidden",
       }}
     >
+      {/* Mobile-only: always show the link tags */}
+      <style>{`
+        @media (max-width: 767px) {
+          .howwework-link {
+            opacity: 1 !important;
+            transform: translateY(0px) !important;
+            pointer-events: auto !important;
+          }
+        }
+      `}</style>
+
       <div className="max-w-[1280px] mx-auto px-6 md:px-12">
 
         {/* Eyebrow */}
@@ -118,7 +129,6 @@ export default function HowWeWork() {
                 transition={{
                   duration: 0.6,
                   delay: 0.3 + i * 0.08,
-                  // For the hover dim/undim, we override via style transition below
                 }}
                 className="grid grid-cols-[48px_1fr] md:grid-cols-[64px_1fr_1fr] items-start md:items-center gap-x-4 gap-y-8 md:gap-[40px] py-8 md:py-10 cursor-default"
                 style={{
@@ -203,9 +213,10 @@ export default function HowWeWork() {
                     {row.description}
                   </p>
 
-                  {/* Link tag */}
+                  {/* Link tag — hidden on desktop until hover, always visible on mobile */}
                   <Link
                     to={row.linkHref}
+                    className="howwework-link"
                     style={{
                       fontSize: 11,
                       fontWeight: 700,

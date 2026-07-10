@@ -41,9 +41,9 @@ const projects = [
     solution:
       "We built a full-spectrum SEO and content marketing engine—keyword architecture, topical authority clusters, on-page optimization, and conversion-led blog content—all aligned to HomeLane's commercial goals.",
     results: [
-      { stat: "98%", label: "Organic Traffic Growth" },
+      { stat: "60%", label: "Organic Traffic Growth" },
       { stat: "#1", label: "Rankings for Core Keywords" },
-      { stat: "3×", label: "Increase in Qualified Leads" },
+      { stat: "2.5×", label: "Increase in Qualified Leads" },
     ],
     quote:
       "Fokel didn't just improve our SEO—they transformed how we think about content and growth. The results speak for themselves.",
@@ -64,8 +64,8 @@ const projects = [
       "We crafted a comprehensive international digital strategy encompassing brand identity, multi-channel campaigns, and an immersive event web experience that conveyed the prestige of the world's leading tunnelling conference.",
     results: [
       { stat: "40+", label: "Countries Reached" },
-      { stat: "5×", label: "Sponsorship Inquiry Growth" },
-      { stat: "60%", label: "Increase in Delegate Registrations" },
+      { stat: "2.4×", label: "Sponsorship Inquiry Growth" },
+      { stat: "23%", label: "Increase in Delegate Registrations" },
     ],
     quote:
       "The team understood the global scale of our event from day one. Their work elevated WTC 2026 beyond our expectations.",
@@ -85,8 +85,8 @@ const projects = [
     solution:
       "We delivered a premium social media storytelling strategy paired with performance marketing—creating aspirational content calendars, high-impact creatives, and precise audience targeting that balanced brand equity with commercial performance.",
     results: [
-      { stat: "4×", label: "Social Engagement Growth" },
-      { stat: "220%", label: "Return on Ad Spend" },
+      { stat: "2×", label: "Social Engagement Growth" },
+      { stat: "2.8×", label: "Return on Ad Spend" },
       { stat: "Top 5", label: "Luxury Fashion Brand in Organic Search" },
     ],
     quote:
@@ -173,9 +173,9 @@ const projects = [
     solution:
       "We repositioned Home Shark as a buyer-first, transparent real estate brand—revamping their social media identity, launching hyper-targeted performance campaigns on Meta and Google, and building a conversion-optimised web experience that turned casual browsers into serious buyers.",
     results: [
-      { stat: "5×", label: "Qualified Lead Volume Growth" },
-      { stat: "65%", label: "Reduction in Cost Per Lead" },
-      { stat: "180%", label: "Increase in Social Engagement" },
+      { stat: "2.5×", label: "Qualified Lead Volume Growth" },
+      { stat: "40%", label: "Reduction in Cost Per Lead" },
+      { stat: "90%", label: "Increase in Social Engagement" },
     ],
     quote:
       "Our lead quality transformed completely. Fokel didn't just run ads—they built a brand we're proud of and a pipeline that actually converts.",
@@ -195,9 +195,9 @@ const projects = [
     solution:
       "We crafted a premium brand identity and content strategy that positioned Aurum as a trusted academic partner—deploying SEO-led blog content, YouTube strategy, and a high-converting admissions landing page system that automated their entire student acquisition pipeline.",
     results: [
-      { stat: "220%", label: "Increase in Student Enquiries" },
+      { stat: "80%", label: "Increase in Student Enquiries" },
       { stat: "#1", label: "Local SEO Rankings for Key Courses" },
-      { stat: "4×", label: "Social Follower Growth" },
+      { stat: "2×", label: "Social Follower Growth" },
     ],
     quote:
       "Fokel transformed how students find and trust Aurum. Our enrolments are at an all-time high, and our brand finally reflects the quality of education we deliver.",
@@ -228,10 +228,10 @@ const projects = [
 ];
 
 const impactStats = [
-  { icon: TrendingUp, value: "98%", label: "Average Organic Traffic Growth" },
-  { icon: Zap, value: "4×", label: "Average ROAS for Clients" },
+  { icon: TrendingUp, value: "60%", label: "Average Organic Traffic Growth" },
+  { icon: Zap, value: "2.5×", label: "Average ROAS for Clients" },
   { icon: Users, value: "40+", label: "Countries Reached" },
-  { icon: Star, value: "100%", label: "Client Retention Rate" },
+  { icon: Star, value: "95%", label: "Client Retention Rate" },
 ];
 
 const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
@@ -296,13 +296,12 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
               <img
                 src={project.logo}
                 alt={`${project.client} logo`}
-                className={`w-full h-full object-contain ${
-                  project.id === "22workspace"
+                className={`w-full h-full object-contain ${project.id === "22workspace"
                     ? "scale-150"
                     : project.id === "prithivi-grid"
-                    ? "scale-[1.4]"
-                    : ""
-                }`}
+                      ? "scale-[1.4]"
+                      : ""
+                  }`}
               />
             </div>
             <div>
