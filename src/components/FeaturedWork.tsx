@@ -218,20 +218,20 @@ const ProjectCard = ({
     >
       {project.link ? (
         <Link to={project.link} className="block">
-          <ProjectCardContent 
-            project={project} 
-            isHovered={isHovered} 
-            rotateX={rotateX} 
+          <ProjectCardContent
+            project={project}
+            isHovered={isHovered}
+            rotateX={rotateX}
             rotateY={rotateY}
             projectNumber={projectNumber}
           />
         </Link>
       ) : (
         <div className="block">
-          <ProjectCardContent 
-            project={project} 
-            isHovered={isHovered} 
-            rotateX={rotateX} 
+          <ProjectCardContent
+            project={project}
+            isHovered={isHovered}
+            rotateX={rotateX}
             rotateY={rotateY}
             projectNumber={projectNumber}
           />
@@ -241,12 +241,12 @@ const ProjectCard = ({
   );
 };
 
-const ProjectCardContent = ({ 
-  project, 
-  isHovered, 
-  rotateX, 
+const ProjectCardContent = ({
+  project,
+  isHovered,
+  rotateX,
   rotateY,
-  projectNumber 
+  projectNumber
 }: {
   project: (typeof projects)[0];
   isHovered: boolean;
@@ -322,7 +322,7 @@ const ProjectCardContent = ({
         transition={{ duration: 0.3 }}
       >
         <Magnetic strength={0.4} range={45}>
-        <div className="w-10 md:w-12 h-10 md:h-12 rounded-full bg-white dark:bg-zinc-800 flex items-center justify-center shadow-lg">
+          <div className="w-10 md:w-12 h-10 md:h-12 rounded-full bg-white dark:bg-zinc-800 flex items-center justify-center shadow-lg">
             <ArrowUpRight className="w-4 md:w-5 h-4 md:h-5 text-zinc-950 dark:text-zinc-50" />
           </div>
         </Magnetic>

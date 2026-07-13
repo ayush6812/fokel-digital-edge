@@ -1,8 +1,7 @@
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 import { ArrowRight, Sparkles } from "lucide-react";
-import heroVideo from "@/assets/hero-video.mp4";
 import bgVideo from "@/assets/bg-video.mp4";
 import { Magnetic } from "@/components/ui/Magnetic";
 import { Tilt } from "@/components/ui/Tilt";
@@ -34,7 +33,6 @@ const AnimatedWord = ({
 
 const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const videoContainerRef = useRef<HTMLDivElement>(null);
   const [showPageReveal, setShowPageReveal] = useState(false);
 
   useEffect(() => {
@@ -45,20 +43,7 @@ const Hero = () => {
     }
   }, []);
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"]
-  });
 
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
-
-  const videoScale = useTransform(smoothProgress, [0, 0.5], [1, 0.8]);
-  const videoY = useTransform(smoothProgress, [0, 0.5], [0, 80]);
-  const videoOpacity = useTransform(smoothProgress, [0, 0.6, 0.8], [1, 1, 0]);
 
   return (
     <section ref={sectionRef} className="relative min-h-screen overflow-hidden">
@@ -99,9 +84,9 @@ const Hero = () => {
         </>
       )}
 
-      <div className="relative max-w-7xl mx-auto w-full px-6 lg:px-12 pt-32 lg:pt-40 pb-20 min-h-screen flex items-center" style={{ zIndex: 2 }}>
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full">
-          <div className="flex flex-col gap-10">
+      <div className="relative max-w-7xl mx-auto w-full px-6 lg:px-12 pt-32 lg:pt-40 pb-20 min-h-screen flex items-center justify-center" style={{ zIndex: 2 }}>
+        <div className="w-full flex flex-col items-center justify-center">
+          <div className="flex flex-col gap-10 items-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -113,7 +98,7 @@ const Hero = () => {
             </motion.div>
 
             <h1
-              className="text-[clamp(3rem,7vw,6rem)] font-bold leading-[0.95] tracking-[-0.03em] text-white"
+              className="text-[clamp(3rem,7vw,6rem)] font-bold leading-[0.95] tracking-[-0.03em] text-white text-center"
               style={{ fontFamily: "var(--font-heading)" }}
             >
               <AnimatedWord delay={0.6}>We</AnimatedWord>{" "}
@@ -143,7 +128,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.3, ease: [0.25, 0.1, 0.25, 1] }}
-              className="text-lg md:text-xl text-white/80 max-w-lg leading-relaxed"
+              className="text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed text-center"
             >
               Fokel is a Delhi-based digital marketing agency helping real estate, fashion, EdTech, and infrastructure brands build authority, generate qualified leads, and dominate organic search — with bold strategy and measurable results.
             </motion.p>
@@ -152,7 +137,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.5, ease: [0.25, 0.1, 0.25, 1] }}
-              className="flex flex-wrap items-center gap-4"
+              className="flex flex-wrap justify-center items-center gap-4"
             >
               <Magnetic strength={0.22} range={70}>
                 <Link
@@ -178,54 +163,6 @@ const Hero = () => {
                 </Link>
               </Magnetic>
             </motion.div>
-          </div>
-
-          <motion.div
-            ref={videoContainerRef}
-            initial={{ opacity: 0, scale: 0.9, y: 60 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{
-              duration: 1.2,
-              delay: 0.8,
-              ease: [0.25, 0.1, 0.25, 1]
-            }}
-            className="relative"
-            style={{
-              scale: videoScale,
-              y: videoY,
-              opacity: videoOpacity,
-            }}
-          >
-            <div className="relative aspect-[4/5] max-h-[85vh] mx-auto">
-              <div className="absolute -inset-4 bg-gradient-to-b from-accent/20 via-transparent to-transparent rounded-[3rem] blur-2xl opacity-60" />
-
-              <motion.div
-                className="relative w-full h-full rounded-[2.5rem] overflow-hidden shadow-2xl shadow-accent/10"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.5 }}
-              >
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-transparent"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 1, delay: 1.5 }}
-                />
-
-                <video
-                  src={heroVideo}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="w-full h-full object-cover"
-                  title="Fokel Digital Studio - Creative Branding and SEO Process"
-                />
-
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-              </motion.div>
-
-            </div>
-          </motion.div>
         </div>
       </div>
 
