@@ -102,11 +102,9 @@ const Hero = () => {
               style={{ fontFamily: "var(--font-heading)" }}
             >
               <AnimatedWord delay={0.6}>We</AnimatedWord>{" "}
-              <AnimatedWord delay={0.7}>Bring</AnimatedWord>
-              <br />
+              <AnimatedWord delay={0.7}>Bring</AnimatedWord>{" "}
               <AnimatedWord delay={0.8}>Your</AnimatedWord>{" "}
-              <AnimatedWord delay={0.9}>Brand</AnimatedWord>
-              <br />
+              <AnimatedWord delay={0.9}>Brand</AnimatedWord>{" "}
               <AnimatedWord delay={1.0}>Into</AnimatedWord>{" "}
               <span className="inline-block overflow-hidden">
                 <motion.span
@@ -128,7 +126,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.3, ease: [0.25, 0.1, 0.25, 1] }}
-              className="text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed text-center"
+              className="text-lg md:text-xl text-white/80 max-w-4xl leading-relaxed text-center"
             >
               Fokel is a Delhi-based digital marketing agency helping real estate, fashion, EdTech, and infrastructure brands build authority, generate qualified leads, and dominate organic search — with bold strategy and measurable results.
             </motion.p>
@@ -163,6 +161,7 @@ const Hero = () => {
                 </Link>
               </Magnetic>
             </motion.div>
+          </div>
         </div>
       </div>
 
