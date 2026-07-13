@@ -128,10 +128,18 @@ const StepSection = ({ step, index }: { step: typeof steps[0]; index: number }) 
           }}
         />
 
-        {/* Step number watermark */}
+        {/* Step number overlay on image */}
         <div
-          className="absolute top-6 left-6 text-8xl font-black leading-none select-none pointer-events-none"
-          style={{ color: `${step.color}22` }}
+          className="absolute top-5 left-5 text-7xl md:text-8xl font-black leading-none select-none pointer-events-none"
+          style={{
+            background: `linear-gradient(135deg, ${step.color}cc 0%, rgba(255,255,255,0.55) 100%)`,
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+            fontVariantNumeric: "tabular-nums",
+            letterSpacing: "-0.04em",
+            filter: "drop-shadow(0 2px 12px rgba(0,0,0,0.5))",
+          }}
         >
           {step.num}
         </div>
@@ -317,9 +325,9 @@ const BuiltForImpact = () => {
             <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-accent/10 blur-[120px] -translate-y-1/2 translate-x-1/4" />
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-accent/8 blur-[100px] translate-y-1/2 -translate-x-1/4" />
 
-            <div className="relative z-10 p-8 md:p-14 text-primary-foreground">
+            <div className="relative z-10 p-8 md:p-10 text-primary-foreground">
               {/* Top: headline + intro side by side */}
-              <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start mb-12">
+              <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-6">
                 <div>
                   <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/20 border border-accent/30 text-accent text-xs font-semibold mb-6">
                     <Rocket className="w-3.5 h-3.5" />
@@ -344,7 +352,7 @@ const BuiltForImpact = () => {
               </div>
 
               {/* Divider */}
-              <div className="h-px w-full bg-white/10 mb-10" />
+              <div className="h-px w-full bg-white/10 mb-6" />
 
               {/* 4-step recap grid */}
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">

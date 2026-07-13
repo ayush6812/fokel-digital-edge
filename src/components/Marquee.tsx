@@ -74,7 +74,7 @@ const Marquee = () => {
         />
 
         <div className="animate-marquee py-2 will-change-transform flex min-w-max">
-          <div className="flex gap-20 md:gap-32 items-center pr-20 md:pr-32">
+          <div className="flex gap-20 md:gap-32 items-center pr-8 md:pr-12">
             {clients.map((client, i) => (
               <motion.div
                 key={`${client.alt}-${i}`}
@@ -91,7 +91,7 @@ const Marquee = () => {
               </motion.div>
             ))}
           </div>
-          <div className="flex gap-20 md:gap-32 items-center pl-20 md:pl-32" aria-hidden>
+          <div className="flex gap-20 md:gap-32 items-center pl-8 md:pl-12" aria-hidden>
             {clients.map((client, i) => (
               <motion.div
                 key={`dup-${client.alt}-${i}`}
