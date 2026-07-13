@@ -22,9 +22,9 @@ const steps = [
     imgCaption: "The moment connection begins.",
     imgSide: "right" as const,
     color: "#3B82F6",
-    headline: "Every great project starts with understanding.",
+    headline: "Every successful venture begins with an understanding.",
     subheadline: "We listen first, then lead.",
-    body: "This first phase is all about listening, asking the right questions, and getting to the heart of your purpose. We dive deep into your business, your audience, and your goals. We review existing materials and consult with key stakeholders to understand your core mission.",
+    body: "Our initial stage focuses on listening, asking the relevant questions, and finding out what your vision is all about. Our team explores your company, your target market, and your objectives. Our team analyzes the current material and consults with stakeholders for a full understanding of your mission.",
     expect: [
       "We'll challenge you to think about what you want to achieve.",
       "You'll see us turn your goals and insights into a clear, strategic foundation.",
@@ -101,16 +101,14 @@ const StepSection = ({ step, index }: { step: typeof steps[0]; index: number }) 
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.6 }}
-      className={`grid lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden border border-border/50 bg-secondary/30 ${
-        isLeft ? "lg:[grid-template-areas:'img_text']" : "lg:[grid-template-areas:'text_img']"
-      }`}
+      className={`grid lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden border border-border/50 bg-secondary/30 ${isLeft ? "lg:[grid-template-areas:'img_text']" : "lg:[grid-template-areas:'text_img']"
+        }`}
       style={{ gridTemplateAreas: undefined }}
     >
       {/* ── Image column ── */}
       <div
-        className={`relative min-h-[320px] md:min-h-[480px] overflow-hidden ${
-          isLeft ? "lg:order-first" : "lg:order-last"
-        }`}
+        className={`relative min-h-[320px] md:min-h-[480px] overflow-hidden ${isLeft ? "lg:order-first" : "lg:order-last"
+          }`}
       >
         <motion.img
           src={step.img}
@@ -162,9 +160,8 @@ const StepSection = ({ step, index }: { step: typeof steps[0]; index: number }) 
 
       {/* ── Text column ── */}
       <div
-        className={`flex flex-col justify-center p-8 md:p-12 lg:p-14 ${
-          isLeft ? "lg:order-last" : "lg:order-first"
-        }`}
+        className={`flex flex-col justify-center p-8 md:p-12 lg:p-14 ${isLeft ? "lg:order-last" : "lg:order-first"
+          }`}
       >
         {/* Label + step */}
         <div className="flex items-center gap-3 mb-6">
@@ -291,7 +288,7 @@ const BuiltForImpact = () => {
                 We believe the best digital experiences are built on a foundation of clarity and purpose.
               </p>
               <p className="text-base text-muted-foreground leading-relaxed">
-                "Bringing your brand into focus" isn't just a tagline—it's the goal of our entire process. Our proven 4-step approach ensures we stay aligned with your mission from the very first conversation to the final launch, and beyond.
+                "Not just putting your brand in focus, but getting it there." That's not only a slogan but our objective for everything we do. Our well-established 4-step formula makes sure that we never lose sight of your objectives from start to finish.
               </p>
               <div className="flex items-center gap-2 text-sm text-accent font-semibold mt-2">
                 <ArrowDown className="w-4 h-4 animate-bounce" />
