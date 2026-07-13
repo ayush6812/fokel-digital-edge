@@ -14,7 +14,7 @@ const AnimatedWord = ({
   delay: number;
 }) => {
   return (
-    <span className="inline-block overflow-hidden">
+    <span className="inline-block overflow-hidden pb-[0.2em] -mb-[0.2em]">
       <motion.span
         className="inline-block"
         initial={{ y: "100%", opacity: 0 }}
@@ -106,7 +106,7 @@ const Hero = () => {
               <AnimatedWord delay={0.8}>Your</AnimatedWord>{" "}
               <AnimatedWord delay={0.9}>Brand</AnimatedWord>{" "}
               <AnimatedWord delay={1.0}>Into</AnimatedWord>{" "}
-              <span className="inline-block overflow-hidden">
+              <span className="inline-block overflow-hidden pb-[0.2em] -mb-[0.2em]">
                 <motion.span
                   className="inline-block text-accent"
                   initial={{ y: "100%", opacity: 0 }}
