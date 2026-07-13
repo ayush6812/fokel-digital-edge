@@ -84,9 +84,9 @@ const Hero = () => {
         </>
       )}
 
-      <div className="relative max-w-7xl mx-auto w-full px-6 lg:px-12 pt-32 lg:pt-40 pb-20 min-h-screen flex items-center justify-center" style={{ zIndex: 2 }}>
+      <div className="relative max-w-7xl mx-auto w-full px-6 lg:px-12 pt-28 lg:pt-40 pb-16 min-h-screen flex items-center justify-center" style={{ zIndex: 2 }}>
         <div className="w-full flex flex-col items-center justify-center">
-          <div className="flex flex-col gap-10 items-center">
+          <div className="flex flex-col gap-6 md:gap-10 items-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -126,7 +126,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.3, ease: [0.25, 0.1, 0.25, 1] }}
-              className="text-lg md:text-xl text-white/80 max-w-4xl leading-relaxed text-center"
+              className="text-base md:text-xl text-white/80 max-w-4xl leading-relaxed text-left md:text-center"
             >
               Fokel is a Delhi-based digital marketing agency helping real estate, fashion, EdTech, and infrastructure brands build authority, generate qualified leads, and dominate organic search — with bold strategy and measurable results.
             </motion.p>
@@ -135,12 +135,12 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.5, ease: [0.25, 0.1, 0.25, 1] }}
-              className="flex flex-wrap justify-center items-center gap-4"
+              className="flex flex-col sm:flex-row flex-wrap justify-center items-stretch sm:items-center gap-3 w-full md:w-auto"
             >
               <Magnetic strength={0.22} range={70}>
                 <Link
                   to="/#contact"
-                  className="btn-primary group"
+                  className="btn-primary group w-full sm:w-auto justify-center"
                 >
                   Start a Project
                   <motion.span
@@ -154,10 +154,9 @@ const Hero = () => {
               <Magnetic strength={0.18} range={60}>
                 <Link
                   to="/#work"
-                  className="inline-flex items-center gap-2 text-white/80 hover:text-white px-6 py-3 text-sm font-medium transition-all duration-300 group relative"
+                  className="inline-flex items-center justify-center gap-2 text-white/80 hover:text-white border border-white/20 md:border-transparent rounded-full px-6 py-3 text-sm font-medium transition-all duration-300 w-full sm:w-auto"
                 >
                   View our work
-                  <span className="absolute bottom-2 left-6 right-6 h-px bg-white/40 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                 </Link>
               </Magnetic>
             </motion.div>
