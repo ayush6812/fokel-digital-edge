@@ -279,24 +279,26 @@ const CtaSection = () => {
     const vw = window.innerWidth;
     const vh = window.innerHeight;
 
-    // Generate a single large loop path covering almost the entire page
-    // We want it to start from the rocket's current position (ox, oy).
-    const cx = vw * 0.45; // center of screen slightly to the left
-    const cy = vh * 0.45;
+    // Generate a smooth sweeping arc that cuts across the page and dives to the contact section
+    // Start point: rocket button
+    const p0 = { x: ox, y: oy };
+    // Control point: swoop up and towards the center
+    const p1 = { x: vw * 0.5, y: -vh * 0.1 };
+    // End point: straight down to the center bottom (contact section)
+    const p2 = { x: vw * 0.5, y: vh * 1.2 };
     
-    const startAngle = Math.atan2(oy - cy, ox - cx);
-    const rx = Math.abs(ox - cx) || vw * 0.4;
-    const ry = Math.max(vh * 0.4, Math.abs(oy - cy) * 1.5);
-    
-    // 120 points for a perfectly smooth single loop (1 loop = 360 degrees)
+    // 120 points for a perfectly smooth Bezier curve
     const pts = Array.from({ length: 121 }, (_, i) => {
-      // Counter-clockwise loop: angle decreases
-      const angle = startAngle - (2 * Math.PI * i) / 120;
-      return { x: cx + rx * Math.cos(angle), y: cy + ry * Math.sin(angle), scale: 1 };
+      const t = i / 120;
+      const mt = 1 - t;
+      // Quadratic Bezier formula
+      const x = Math.pow(mt, 2) * p0.x + 2 * mt * t * p1.x + Math.pow(t, 2) * p2.x;
+      const y = Math.pow(mt, 2) * p0.y + 2 * mt * t * p1.y + Math.pow(t, 2) * p2.y;
+      
+      // Accelerating scale effect at the very end
+      const scale = 1 + (11 * Math.pow(t, 6)); // final scale = 12
+      return { x, y, scale };
     });
-
-    // Add a final point flying towards the center of the screen and scaling moderately
-    pts.push({ x: vw / 2, y: vh / 2, scale: 12 });
     
     const half = ROCKET_SIZE / 2;
     const xs = pts.map(p => p.x - half);
@@ -332,21 +334,18 @@ const CtaSection = () => {
     }
 
     const numPoints = pts.length;
-    const times = pts.map((_, i) => {
-      if (i === numPoints - 1) return 1;
-      // The circle takes 75% of the animation time, the final zoom takes the last 25%
-      return (i / (numPoints - 2)) * 0.75;
-    });
+    // Standard linear time spacing, we will use an ease curve on the motion.div instead
+    const times = pts.map((_, i) => i / (numPoints - 1));
 
     setLaunchPath({ xs, ys, rots, scales, times });
     setLaunching(true);
 
-    // Navigate after animation finishes (2.6 s)
+    // Navigate after animation finishes (1.8 s)
     setTimeout(() => {
       setLaunching(false);
       setLaunchPath(null);
       navigate("/#contact");
-    }, 2600);
+    }, 1800);
   };
 
   return (
