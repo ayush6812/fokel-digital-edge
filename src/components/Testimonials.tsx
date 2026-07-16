@@ -1,6 +1,6 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect, useCallback } from "react";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 
 const testimonials = [
   {
@@ -37,18 +37,21 @@ const slideVariants = {
   enter: (direction: number) => ({
     x: direction > 0 ? 50 : -50,
     opacity: 0,
+    scale: 0.98,
   }),
   center: {
     x: 0,
     opacity: 1,
+    scale: 1,
   },
   exit: (direction: number) => ({
     x: direction < 0 ? 50 : -50,
     opacity: 0,
+    scale: 0.98,
   }),
 };
 
-const AUTO_PLAY_INTERVAL = 5000;
+const AUTO_PLAY_INTERVAL = 6000;
 
 const Testimonials = () => {
   const ref = useRef(null);
@@ -82,52 +85,50 @@ const Testimonials = () => {
   }, [isAutoPlaying, paginate]);
 
   return (
-    <section className="pt-24 lg:pt-32 pb-12 lg:pb-16 bg-secondary overflow-hidden" ref={ref}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+    <section className="py-24 lg:py-32 relative overflow-hidden" ref={ref}>
+      {/* Background ambient glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex items-center gap-4 mb-6"
+          className="flex flex-col items-center text-center mb-16 lg:mb-24"
         >
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: 40 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="h-[2px] bg-accent"
-          />
-          <p className="section-label">Client Stories</p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="mb-12 lg:mb-16"
-        >
-          <h2 className="heading-section text-foreground max-w-2xl">
-            What our clients <span className="text-accent italic">say</span>
+          <div className="flex items-center gap-4 mb-6">
+            <div className="h-[2px] w-8 bg-accent rounded-full" />
+            <p className="section-label tracking-[0.2em]">Client Stories</p>
+            <div className="h-[2px] w-8 bg-accent rounded-full" />
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground max-w-3xl font-heading">
+            Voices of <span className="text-accent italic">impact</span>
           </h2>
         </motion.div>
 
+        {/* Carousel Container */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative"
+          className="relative max-w-5xl mx-auto"
           onMouseEnter={() => setIsAutoPlaying(false)}
           onMouseLeave={() => setIsAutoPlaying(true)}
         >
-          <div className="relative bg-background rounded-3xl p-6 md:p-12 lg:p-16 shadow-lg shadow-foreground/5 border border-border/50">
-            <div className="absolute top-4 right-4 md:top-8 md:right-8 text-accent/10 pointer-events-none">
-              <Quote className="w-16 h-16 md:w-28 md:h-28" />
+          {/* Main Card */}
+          <div className="relative bg-secondary/40 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-14 lg:p-20 shadow-2xl border border-white/5 overflow-hidden group">
+            
+            {/* Elegant large quote watermark */}
+            <div className="absolute -top-6 right-8 md:right-16 text-[12rem] md:text-[18rem] leading-none font-serif text-accent/10 pointer-events-none select-none transition-transform duration-700 group-hover:scale-110 group-hover:rotate-6">
+              &rdquo;
             </div>
+            
+            {/* Bottom glow accent inside card */}
+            <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-accent/15 rounded-full blur-[80px] pointer-events-none" />
 
-            {/* Content — no fixed height, grows with text */}
             <div className="relative z-10">
               <AnimatePresence initial={false} custom={direction} mode="wait">
                 <motion.div
@@ -139,25 +140,35 @@ const Testimonials = () => {
                   exit="exit"
                   transition={{
                     x: { type: "spring", stiffness: 300, damping: 30 },
-                    opacity: { duration: 0.3 },
+                    opacity: { duration: 0.4 },
+                    scale: { duration: 0.4 }
                   }}
-                  className="flex flex-col gap-6"
+                  className="flex flex-col"
                 >
-                  <p className="text-base md:text-xl lg:text-2xl font-medium leading-relaxed text-foreground/90 text-pretty">
+                  {/* Star Rating */}
+                  <div className="flex items-center gap-1.5 mb-8 md:mb-10">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 md:w-6 md:h-6 fill-accent text-accent drop-shadow-[0_0_8px_rgba(249,115,22,0.4)]" />
+                    ))}
+                  </div>
+
+                  {/* Quote text */}
+                  <p className="text-xl md:text-3xl lg:text-4xl font-medium leading-[1.4] tracking-tight text-foreground/95 text-balance font-heading mb-12">
                     "{testimonials[current].quote}"
                   </p>
                   
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 md:w-14 md:h-14 flex-shrink-0 rounded-full bg-accent/10 flex items-center justify-center">
-                      <span className="text-accent font-bold text-base md:text-lg">
+                  {/* Author Profile */}
+                  <div className="flex items-center gap-5 mt-auto">
+                    <div className="w-14 h-14 md:w-16 md:h-16 flex-shrink-0 rounded-full bg-gradient-to-br from-accent to-accent/60 flex items-center justify-center shadow-lg shadow-accent/20 border border-accent/20">
+                      <span className="text-white font-bold text-lg md:text-xl tracking-wider">
                         {testimonials[current].initials}
                       </span>
                     </div>
-                    <div>
-                      <p className="text-base md:text-lg font-semibold text-foreground">
+                    <div className="flex flex-col">
+                      <p className="text-lg md:text-xl font-bold text-foreground tracking-tight">
                         {testimonials[current].name}
                       </p>
-                      <p className="text-xs md:text-sm text-muted-foreground">
+                      <p className="text-sm md:text-base text-accent font-medium mt-0.5">
                         {testimonials[current].role}
                       </p>
                     </div>
@@ -167,25 +178,27 @@ const Testimonials = () => {
             </div>
           </div>
 
-          <div className="flex items-center justify-between mt-8">
+          {/* Navigation Controls */}
+          <div className="flex items-center justify-between mt-10 md:mt-12 px-4 md:px-8">
             <div className="flex items-center gap-4">
               <button
                 onClick={() => paginate(-1)}
-                className="w-12 h-12 rounded-full border border-border flex items-center justify-center hover:border-accent hover:text-accent transition-colors"
+                className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-border flex items-center justify-center hover:border-accent hover:bg-accent hover:text-white transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-accent/25 hover:-translate-y-0.5"
                 aria-label="Previous testimonial"
               >
-                <ChevronLeft className="w-5 h-5" />
+                <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
               </button>
               <button
                 onClick={() => paginate(1)}
-                className="w-12 h-12 rounded-full border border-border flex items-center justify-center hover:border-accent hover:text-accent transition-colors"
+                className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-border flex items-center justify-center hover:border-accent hover:bg-accent hover:text-white transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-accent/25 hover:-translate-y-0.5"
                 aria-label="Next testimonial"
               >
-                <ChevronRight className="w-5 h-5" />
+                <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
               </button>
             </div>
 
-            <div className="flex items-center gap-2">
+            {/* Dots */}
+            <div className="flex items-center gap-2.5">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
@@ -194,10 +207,10 @@ const Testimonials = () => {
                     setCurrent(index);
                     setPage([index, newDirection]);
                   }}
-                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                  className={`h-2.5 rounded-full transition-all duration-500 ${
                     index === current 
-                      ? "bg-accent w-8" 
-                      : "bg-border hover:bg-foreground/30"
+                      ? "bg-accent w-10 shadow-[0_0_10px_rgba(249,115,22,0.4)]" 
+                      : "bg-border w-2.5 hover:bg-foreground/40"
                   }`}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />

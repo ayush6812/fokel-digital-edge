@@ -137,10 +137,10 @@ const FeaturedWork = () => {
         >
           <Link
             to="/the-gallery-of-impact"
-            className="inline-flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-wider text-primary-foreground hover:text-accent transition-colors group"
+            className="inline-flex items-center justify-center gap-2 text-base md:text-lg font-semibold uppercase tracking-wider text-primary-foreground hover:text-accent transition-colors group"
           >
             View all 9 projects
-            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </Link>
         </motion.div>
       </div>
