@@ -159,10 +159,18 @@ const StepSection = ({ step, index }: { step: typeof steps[0]; index: number }) 
           }}
         />
 
-        {/* Step number watermark */}
+        {/* Step number overlay on image */}
         <div
-          className="absolute -top-6 -left-4 text-[9rem] font-black leading-none select-none pointer-events-none blur-[1px]"
-          style={{ color: `${step.color}18` }}
+          className="absolute top-5 left-5 text-7xl md:text-8xl font-black leading-none select-none pointer-events-none"
+          style={{
+            background: `linear-gradient(135deg, ${step.color}cc 0%, rgba(255,255,255,0.55) 100%)`,
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+            fontVariantNumeric: "tabular-nums",
+            letterSpacing: "-0.04em",
+            filter: "drop-shadow(0 2px 12px rgba(0,0,0,0.5))",
+          }}
         >
           {step.num}
         </div>
