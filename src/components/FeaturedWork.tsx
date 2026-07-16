@@ -1,4 +1,4 @@
-import { motion, useInView, useSpring, useTransform, useMotionValue } from "framer-motion";
+import { motion, useInView, useSpring, useTransform, useMotionValue, MotionValue } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -250,8 +250,8 @@ const ProjectCardContent = ({
 }: {
   project: (typeof projects)[0];
   isHovered: boolean;
-  rotateX: any;
-  rotateY: any;
+  rotateX: MotionValue<number>;
+  rotateY: MotionValue<number>;
   projectNumber: string;
 }) => (
   <>

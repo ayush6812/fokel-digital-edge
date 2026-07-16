@@ -13,14 +13,6 @@ import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import BlogStrategicPartner from "./pages/BlogStrategicPartner";
 import BlogIntegratedEcosystem from "./pages/BlogIntegratedEcosystem";
-import BlogRealEstateSEO from "./pages/BlogRealEstateSEO";
-import BlogB2BLeadGen from "./pages/BlogB2BLeadGen";
-import BlogBrandIdentity from "./pages/BlogBrandIdentity";
-import BlogAIMarketing from "./pages/BlogAIMarketing";
-import BlogLocalSEO from "./pages/BlogLocalSEO";
-import BlogLuxuryMarketing from "./pages/BlogLuxuryMarketing";
-import BlogEdTechMarketing from "./pages/BlogEdTechMarketing";
-import BlogInfrastructureBranding from "./pages/BlogInfrastructureBranding";
 import BuiltForImpact from "./pages/BuiltForImpact";
 import TheExecutionEngine from "./pages/TheExecutionEngine";
 import TheGalleryOfImpact from "./pages/TheGalleryOfImpact";
@@ -49,14 +41,6 @@ const App = () => (
           <Route path="/work/sab-properties" element={<SabPropertiesCaseStudy />} />
           <Route path="/blog/strategic-partner" element={<BlogStrategicPartner />} />
           <Route path="/blog/integrated-ecosystem" element={<BlogIntegratedEcosystem />} />
-          <Route path="/blog/real-estate-seo-india" element={<BlogRealEstateSEO />} />
-          <Route path="/blog/b2b-lead-generation-autopilot" element={<BlogB2BLeadGen />} />
-          <Route path="/blog/brand-identity-startups" element={<BlogBrandIdentity />} />
-          <Route path="/blog/ai-agents-marketing-india" element={<BlogAIMarketing />} />
-          <Route path="/blog/local-seo-delhi-guide" element={<BlogLocalSEO />} />
-          <Route path="/blog/luxury-brand-marketing-india" element={<BlogLuxuryMarketing />} />
-          <Route path="/blog/edtech-content-marketing-india" element={<BlogEdTechMarketing />} />
-          <Route path="/blog/infrastructure-branding-india" element={<BlogInfrastructureBranding />} />
           <Route path="/built-for-impact" element={<BuiltForImpact />} />
           <Route path="/the-execution-engine" element={<TheExecutionEngine />} />
           <Route path="/the-gallery-of-impact" element={<TheGalleryOfImpact />} />

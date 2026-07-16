@@ -40,9 +40,9 @@ const steps = [
     imgCaption: "Ideas take shape before pixels do.",
     imgSide: "left" as const,
     color: "#F59E0B",
-    headline: "We translate your mission into a tangible digital experience.",
+    headline: "Your purpose is turned into a real digital experience.",
     subheadline: "Bold thinking, collaborative crafting.",
-    body: "We brainstorm, sketch, and design. This involves defining your brand's voice and feel, creating wireframes, and crafting visual concepts that are both authentic and impactful. It's a collaborative and iterative process where we refine ideas until they resonate.",
+    body: "Our ideation, concepting, and design include setting the tone and look of your brand, wireframes, and developing visual ideas that are genuine and meaningful. It is an iterative and collaborative process in which we keep refining our ideas.",
     expect: [
       "You'll see your brand come to life through initial concepts.",
       "We'll show you early drafts and designs, keeping you on the right track.",
@@ -58,9 +58,9 @@ const steps = [
     imgCaption: "Where ideas become reality.",
     imgSide: "right" as const,
     color: "#8B5CF6",
-    headline: "Designs become a fully functional, polished digital experience.",
+    headline: "",
     subheadline: "Quality and precision at every pixel.",
-    body: "Our team builds and develops the project, carefully crafting every element to align with the strategy. We load content, integrate features, and ensure everything works flawlessly. A crucial part of this stage is rigorous testing to guarantee a seamless user experience.",
+    body: "This is when our team creates the project and develops it. Content is uploaded, features are added, and all is made to work seamlessly together. Testing is very important at this point.",
     expect: [
       "Clear communication about timelines and milestones.",
       "Opportunities to review work and ensure it meets your expectations.",
@@ -78,7 +78,7 @@ const steps = [
     color: "#E05A28",
     headline: "We're committed to your long-term success.",
     subheadline: "A partner in it for the long haul.",
-    body: "We handle the final launch with care, ensuring a smooth and successful deployment. After launch, we don't disappear. We provide training, support, and ongoing maintenance to keep your digital presence performing at its best.",
+    body: "The final rollout will be done carefully and will ensure a successful implementation. After the rollout, we do not vanish from the scene. We offer training and maintenance services to guarantee optimal performance of your online image.",
     expect: [
       "You'll have a partner who is invested in your brand's future.",
       "We'll equip you with the knowledge and tools to manage your platform.",

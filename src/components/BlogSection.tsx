@@ -27,94 +27,6 @@ const blogs = [
     imageAlt: "Integrated digital ecosystem vs broken silos diagram",
     readTime: "8 min read",
   },
-  {
-    title: "The Ultimate SEO Guide for Real Estate Developers in India (2026)",
-    description:
-      "Learn how Indian real estate developers can dominate search rankings, bypass expensive aggregators, and generate high-intent property leads.",
-    link: "/blog/real-estate-seo-india",
-    date: "July 07, 2026",
-    category: "Real Estate SEO",
-    image: "/process-discover.jpg",
-    imageAlt: "Real estate digital marketing and SEO growth",
-    readTime: "8 min read",
-  },
-  {
-    title: "How to Build a B2B Lead Generation System That Runs on Autopilot",
-    description:
-      "Stop chasing individual leads. Learn how to build a compound B2B lead generation engine using SEO, content, and marketing automation.",
-    link: "/blog/b2b-lead-generation-autopilot",
-    date: "July 07, 2026",
-    category: "B2B Growth",
-    image: "/blog-strat-chart.jpg",
-    imageAlt: "B2B lead generation funnel and marketing automation",
-    readTime: "7 min read",
-  },
-  {
-    title: "Brand Identity for Startups: What to Get Right Before You Spend on Ads",
-    description:
-      "Running ads without a brand is like pouring water into a leaking bucket. Here's what Indian startups must build first — and why it's the highest-ROI investment you'll make.",
-    link: "/blog/brand-identity-startups",
-    date: "July 07, 2026",
-    category: "Brand Strategy",
-    image: "/blog-strategy-analytics.jpg",
-    imageAlt: "Brand identity design process for Indian startups",
-    readTime: "6 min read",
-  },
-  {
-    title: "AI Agents in Marketing: What Indian SMEs Need to Know in 2026",
-    description:
-      "AI marketing agents are automating tasks that used to require entire teams. Here's what to adopt now — and what to avoid — to stay competitive.",
-    link: "/blog/ai-agents-marketing-india",
-    date: "July 07, 2026",
-    category: "AI & Technology",
-    image: "/blog-eco-img1.jpg",
-    imageAlt: "AI marketing agents automating digital workflows",
-    readTime: "7 min read",
-  },
-  {
-    title: "Local SEO for Service Businesses in Delhi: A Step-by-Step Guide",
-    description:
-      "Over 76% of 'near me' searchers visit a business within 24 hours. If you're not in Delhi's Local Pack, you're invisible to the majority of your market.",
-    link: "/blog/local-seo-delhi-guide",
-    date: "July 07, 2026",
-    category: "Local SEO",
-    image: "/blog-eco-img2.jpg",
-    imageAlt: "Local SEO strategy for Delhi NCR service businesses",
-    readTime: "6 min read",
-  },
-  {
-    title: "Luxury Brand Marketing in India: Why Less Is Always More",
-    description:
-      "Luxury brands in India are failing online by doing too much. Here's why restraint, exclusivity, and storytelling outperform aggressive performance marketing every time.",
-    link: "/blog/luxury-brand-marketing-india",
-    date: "July 07, 2026",
-    category: "Luxury Marketing",
-    image: "/blog-eco-img3.jpg",
-    imageAlt: "Luxury brand digital marketing strategy",
-    readTime: "6 min read",
-  },
-  {
-    title: "The Content Marketing Playbook for EdTech Brands in India",
-    description:
-      "EdTech is the most competitive digital market in India. Here's how to build a content strategy that attracts students, earns parental trust, and reduces cost-per-enrolment.",
-    link: "/blog/edtech-content-marketing-india",
-    date: "July 07, 2026",
-    category: "EdTech Marketing",
-    image: "/blog-eco-img4.jpg",
-    imageAlt: "EdTech content marketing and student acquisition strategy",
-    readTime: "7 min read",
-  },
-  {
-    title: "Why Construction & Infrastructure Firms Need a Digital Brand in 2026",
-    description:
-      "India's infrastructure sector is worth ₹111 lakh crore. Yet most construction firms are invisible online. Here's why that's costing them tenders, contracts, and talent.",
-    link: "/blog/infrastructure-branding-india",
-    date: "July 07, 2026",
-    category: "Infrastructure Branding",
-    image: "/blog-eco-img5.jpg",
-    imageAlt: "Construction and infrastructure company digital branding",
-    readTime: "6 min read",
-  },
 ];
 
 const BlogSection = () => {
@@ -163,7 +75,7 @@ const BlogSection = () => {
           />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {blogs.map((blog, idx) => (
             <motion.div
               key={blog.title}
