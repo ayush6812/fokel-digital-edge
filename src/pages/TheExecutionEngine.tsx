@@ -295,8 +295,8 @@ const CtaSection = () => {
       return { x: cx + rx * Math.cos(angle), y: cy + ry * Math.sin(angle), scale: 1 };
     });
 
-    // Add a final point flying towards the center of the screen and scaling massively
-    pts.push({ x: vw / 2, y: vh / 2, scale: 30 });
+    // Add a final point flying towards the center of the screen and scaling moderately
+    pts.push({ x: vw / 2, y: vh / 2, scale: 12 });
     
     const half = ROCKET_SIZE / 2;
     const xs = pts.map(p => p.x - half);
@@ -357,7 +357,7 @@ const CtaSection = () => {
           <motion.div
             key="flying-rocket"
             className="fixed z-[9999] pointer-events-none"
-            style={{ left: 0, top: 0, width: ROCKET_SIZE, height: ROCKET_SIZE, willChange: "transform" }}
+            style={{ left: 0, top: 0, width: ROCKET_SIZE, height: ROCKET_SIZE }}
             initial={{ x: launchPath.xs[0], y: launchPath.ys[0], rotate: launchPath.rots[0], scale: launchPath.scales[0], opacity: 1 }}
             animate={{ x: launchPath.xs, y: launchPath.ys, rotate: launchPath.rots, scale: launchPath.scales, opacity: 1 }}
             exit={{ opacity: 0, transition: { duration: 0.2 } }}
