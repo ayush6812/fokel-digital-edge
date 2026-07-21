@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { DepthText } from "@/components/ui/DepthText";
+import { Link } from "react-router-dom";
 
 const services = [
   {
@@ -10,6 +11,7 @@ const services = [
     description:
       "Pixel-perfect websites that marry aesthetic excellence with functional brilliance. Every interaction crafted to engage, every page designed to convert.",
     tags: ["UI/UX", "React", "Performance", "CMS"],
+    link: null,
   },
   {
     number: "02",
@@ -18,6 +20,7 @@ const services = [
     description:
       "Custom AI agents designed to automate workflows, engage customers, and scale operations seamlessly, unlocking new levels of efficiency.",
     tags: ["Automation", "LLMs", "Chatbots", "Integration"],
+    link: "/services/ai-agents",
   },
   {
     number: "03",
@@ -26,6 +29,7 @@ const services = [
     description:
       "Performance-driven campaigns that deliver measurable ROI. From SEO to social media, we engineer digital experiences that convert browsers into loyal customers.",
     tags: ["SEO", "Paid Ads", "Social Media", "Analytics"],
+    link: "/services/digital-marketing",
   },
   {
     number: "04",
@@ -34,6 +38,7 @@ const services = [
     description:
       "Data-informed roadmaps that align your digital presence with business objectives. We transform market insights into actionable growth strategies.",
     tags: ["Consulting", "Research", "Roadmapping", "KPIs"],
+    link: "/services/digital-strategy",
   },
 ];
 
@@ -107,7 +112,7 @@ const Services = () => {
                 }}
                 onMouseEnter={() => setHoveredIndex(i)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                className="group relative"
+                className={`group relative ${service.link ? "cursor-pointer" : "cursor-default"}`}
               >
                 {/* Hover fill background */}
                 <motion.div
@@ -118,10 +123,10 @@ const Services = () => {
                   transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
                 />
 
-                <div className="relative z-10 flex items-center gap-6 lg:gap-10 py-8 lg:py-10 pl-6 lg:pl-10 cursor-default">
+                <div className="relative z-10 flex items-center gap-6 lg:gap-8 py-8 lg:py-10 px-6 lg:px-10">
 
                   {/* Number */}
-                  <div className="w-14 shrink-0">
+                  <div className="w-12 shrink-0">
                     <motion.span
                       animate={{ color: isHovered ? "hsl(var(--accent))" : "hsl(var(--primary-foreground) / 0.35)" }}
                       transition={{ duration: 0.25 }}
@@ -132,18 +137,18 @@ const Services = () => {
                   </div>
 
                   {/* Subtitle (hidden on mobile) */}
-                  <div className="hidden lg:block w-40 shrink-0">
+                  <div className="hidden lg:block w-36 shrink-0">
                     <motion.span
                       animate={{ color: isHovered ? "hsl(var(--accent))" : "hsl(var(--primary-foreground) / 0.4)" }}
                       transition={{ duration: 0.25 }}
-                      className="text-xs font-semibold tracking-[0.22em] uppercase"
+                      className="text-[11px] font-semibold tracking-[0.22em] uppercase"
                     >
                       {service.subtitle}
                     </motion.span>
                   </div>
 
                   {/* Title */}
-                  <div className="w-64 lg:w-80 shrink-0">
+                  <div className="w-56 lg:w-64 shrink-0">
                     <motion.h3
                       animate={{ color: isHovered ? "hsl(var(--primary))" : "hsl(var(--primary-foreground))" }}
                       transition={{ duration: 0.25 }}
@@ -155,18 +160,18 @@ const Services = () => {
                   </div>
 
                   {/* Description */}
-                  <div className="hidden lg:block flex-1 min-w-0">
+                  <div className="hidden lg:block flex-1 max-w-sm">
                     <motion.p
                       animate={{ color: isHovered ? "hsl(var(--primary) / 0.75)" : "hsl(var(--primary-foreground) / 0.55)" }}
                       transition={{ duration: 0.25 }}
-                      className="text-base leading-relaxed"
+                      className="text-[15px] leading-relaxed"
                     >
                       {service.description}
                     </motion.p>
                   </div>
 
                   {/* Tags */}
-                  <div className="hidden lg:flex shrink-0 w-44 flex-wrap justify-end gap-1.5">
+                  <div className="hidden xl:flex shrink-0 w-44 flex-wrap justify-end gap-1.5 ml-auto">
                     {service.tags.map((tag) => (
                       <motion.span
                         key={tag}
@@ -176,7 +181,7 @@ const Services = () => {
                           borderColor: isHovered ? "hsl(var(--accent) / 0.35)" : "hsl(var(--primary-foreground) / 0.12)",
                         }}
                         transition={{ duration: 0.25 }}
-                        className="text-[11px] font-semibold tracking-wider uppercase px-3 py-1 rounded-full border"
+                        className="text-[10px] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full border"
                       >
                         {tag}
                       </motion.span>
@@ -184,7 +189,7 @@ const Services = () => {
                   </div>
 
                   {/* Arrow */}
-                  <div className="ml-auto shrink-0 hidden lg:block">
+                  <div className="shrink-0 hidden lg:block pr-2 xl:ml-0 ml-auto">
                     <motion.div
                       animate={{
                         opacity: isHovered ? 1 : 0,
@@ -193,13 +198,26 @@ const Services = () => {
                       transition={{ duration: 0.25 }}
                       className="text-accent text-xl"
                     >
-                      →
+                      {service.link ? (
+                        <span className="inline-flex items-center gap-1 text-sm font-semibold whitespace-nowrap">View Page →</span>
+                      ) : (
+                        "→"
+                      )}
                     </motion.div>
                   </div>
                 </div>
 
                 {/* Bottom border */}
                 <div className="h-px bg-primary-foreground/10 relative z-10" />
+
+                {/* Clickable overlay for linked services */}
+                {service.link && (
+                  <Link
+                    to={service.link}
+                    className="absolute inset-0 z-20"
+                    aria-label={`View ${service.title} page`}
+                  />
+                )}
               </motion.div>
             );
           })}

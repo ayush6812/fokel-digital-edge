@@ -21,6 +21,9 @@ import CorporateBuildconCaseStudy from "./pages/CorporateBuildconCaseStudy";
 import HomesharkCaseStudy from "./pages/HomesharkCaseStudy";
 import AurumEducationCaseStudy from "./pages/AurumEducationCaseStudy";
 import PrithiviGridCaseStudy from "./pages/PrithiviGridCaseStudy";
+import AiAgents from "./pages/AiAgents";
+import DigitalMarketing from "./pages/DigitalMarketing";
+import DigitalStrategy from "./pages/DigitalStrategy";
 import { ThemeProvider } from "next-themes";
 
 const queryClient = new QueryClient();
@@ -49,6 +52,9 @@ const App = () => (
           <Route path="/work/homeshark" element={<HomesharkCaseStudy />} />
           <Route path="/work/aurum-education" element={<AurumEducationCaseStudy />} />
           <Route path="/work/prithivi-grid" element={<PrithiviGridCaseStudy />} />
+          <Route path="/services/ai-agents" element={<AiAgents />} />
+          <Route path="/services/digital-marketing" element={<DigitalMarketing />} />
+          <Route path="/services/digital-strategy" element={<DigitalStrategy />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
