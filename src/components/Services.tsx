@@ -148,7 +148,7 @@ const Services = () => {
                   </div>
 
                   {/* Title */}
-                  <div className="w-56 lg:w-64 shrink-0">
+                  <div className="flex-1 lg:flex-none lg:w-64 lg:shrink-0">
                     <motion.h3
                       animate={{ color: isHovered ? "hsl(var(--primary))" : "hsl(var(--primary-foreground))" }}
                       transition={{ duration: 0.25 }}
@@ -157,6 +157,15 @@ const Services = () => {
                     >
                       {service.title}
                     </motion.h3>
+                  </div>
+
+                  {/* Mobile Arrow */}
+                  <div className="shrink-0 block lg:hidden text-accent">
+                    {service.link && (
+                      <span className="text-[10px] font-bold tracking-widest uppercase whitespace-nowrap flex items-center gap-1">
+                        View <span className="text-sm leading-none">→</span>
+                      </span>
+                    )}
                   </div>
 
                   {/* Description */}
