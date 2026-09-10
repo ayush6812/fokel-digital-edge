@@ -88,14 +88,14 @@ const Hero = () => {
         <div className="w-full flex flex-col items-center justify-center">
           <div className="flex flex-col gap-6 md:gap-10 items-center">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 border border-accent/40 w-fit backdrop-blur-sm"
-            >
-              <Sparkles className="w-4 h-4 text-accent" />
-              <span className="text-xs font-medium tracking-wide text-accent">Creative Digital Agency</span>
-            </motion.div>
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-6"
+          >
+            <Sparkles className="w-4 h-4 text-accent" />
+            <span className="text-xs font-medium tracking-wide text-accent">Premium Tech Partner</span>
+          </motion.div>
 
             <h1
               className="text-[clamp(3rem,7vw,6rem)] font-bold leading-[0.95] tracking-[-0.03em] text-white text-center"
@@ -128,7 +128,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 1.3, ease: [0.25, 0.1, 0.25, 1] }}
               className="text-base md:text-xl text-white/80 max-w-4xl leading-relaxed text-left md:text-center"
             >
-              Fokel is a Delhi-based digital marketing agency helping real estate, fashion, EdTech, and infrastructure brands build authority, generate qualified leads, and dominate organic search — with bold strategy and measurable results.
+              Fokel is a premier technology solutions firm. We empower real estate, fashion, EdTech, and infrastructure brands with scalable software, innovative engineering, and measurable tech results to accelerate their business.
             </motion.p>
 
             <motion.div
