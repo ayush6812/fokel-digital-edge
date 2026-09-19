@@ -34,18 +34,17 @@ const Index = () => {
         <Navbar />
         <Hero />
         <Marquee />
-        <StoryInNumbers />
         <About />
-        <HowWeWork />
         <Services />
-        
         <FeaturedWork />
+        <StoryInNumbers />
         <Testimonials />
         <JourneyEndsHere />
         <BlogSection />
-        <FAQ />
+        <HowWeWork />
         <Newsletter />
         <Contact />
+        <FAQ />
         <Footer />
         <ScrollToTopButton />
       </div>
