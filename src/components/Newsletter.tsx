@@ -1,17 +1,9 @@
-import { motion, useInView, useReducedMotion } from "framer-motion";
-import { useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
+import { useState } from "react";
 
 const Newsletter = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const prefersReducedMotion = useReducedMotion();
-
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
-
-  const duration = prefersReducedMotion ? 0 : 0.8;
-  const delay = (d: number) => (prefersReducedMotion ? 0 : d);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,139 +14,55 @@ const Newsletter = () => {
   };
 
   return (
-    <section
-      className="relative py-24 md:py-32 bg-secondary overflow-hidden"
-      ref={ref}
-    >
-      {/* Ambient floating glow (same vibe as Contact/Testimonial section) */}
-      <motion.div
-        className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-accent/5 blur-3xl pointer-events-none"
-        animate={
-          prefersReducedMotion
-            ? {}
-            : {
-                scale: [1, 1.05, 1],
-                y: [0, -15, 0],
-              }
-        }
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* LEFT CONTENT */}
-          <div>
-            {/* Label */}
-            <motion.p
-              initial={{ opacity: 0, x: -20 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6 }}
-              className="text-sm font-medium tracking-[0.3em] uppercase text-accent mb-6"
-            >
-              Stay Updated
-            </motion.p>
-
-            {/* Heading with reveal animation (Testimonials style) */}
-            <div className="overflow-hidden">
-              <motion.h2
-                initial={{ y: "100%" }}
-                animate={isInView ? { y: 0 } : {}}
-                transition={{
-                  duration: 0.8,
-                  delay: delay(0.1),
-                  ease: [0.25, 0.1, 0.25, 1],
-                }}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight text-foreground"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                Subscribe to
-                <br />
-                our <span className="text-accent italic font-normal">newsletter</span>
-              </motion.h2>
-            </div>
-
-            {/* Description */}
-            <motion.p
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration, delay: delay(0.25) }}
-              className="mt-6 text-muted-foreground leading-relaxed max-w-md"
-            >
-              Get the latest insights on digital strategy, branding trends, and
-              marketing tips delivered straight to your inbox.
-            </motion.p>
+    <section className="bg-background py-24 md:py-32 relative overflow-hidden border-b border-white/10">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-8">
+        
+        <div className="rounded-[3rem] border border-white/10 p-10 md:p-16 lg:p-24 grid lg:grid-cols-2 gap-12 lg:gap-24 bg-white/[0.02] items-center relative overflow-hidden group hover:border-accent/30 transition-colors duration-700">
+          
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[100px] pointer-events-none group-hover:bg-accent/10 transition-colors duration-1000" />
+          
+          <div className="relative z-10">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-white/70 font-mono text-[10px] uppercase tracking-widest mb-6">
+              STAY SHARP
+            </span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-none text-white mb-6">
+              SUBSCRIBE TO <br /> OUR <span className="text-accent italic">INSIGHTS</span>
+            </h2>
+            <p className="text-white/50 font-medium text-lg max-w-md">
+              Get the latest insights on digital strategy, branding trends, and engineering architectures delivered straight to your inbox.
+            </p>
           </div>
 
-          {/* RIGHT FORM */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration, delay: delay(0.3) }}
-          >
+          <div className="relative z-10">
             {submitted ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4 }}
-                className="border border-accent bg-accent/5 p-8 rounded-xl"
-              >
-                <p className="text-lg font-semibold text-foreground">
-                  Thank you for subscribing!
+              <div className="border border-accent/30 p-8 rounded-3xl bg-accent/5 text-center">
+                <p className="text-xl font-black uppercase text-accent mb-2">THANK YOU</p>
+                <p className="text-white/70 font-mono text-sm uppercase tracking-widest">
+                  YOU HAVE SUCCESSFULLY SUBSCRIBED.
                 </p>
-                <p className="text-sm text-muted-foreground mt-2">
-                  You'll hear from us soon with the latest updates.
-                </p>
-              </motion.div>
+              </div>
             ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                {/* Input with subtle focus animation */}
-                <motion.input
-                  whileFocus={
-                    prefersReducedMotion
-                      ? {}
-                      : {
-                          scale: 1.01,
-                          borderColor: "hsl(var(--accent))",
-                        }
-                  }
-                  type="email"
-                  placeholder="Enter your email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="w-full bg-transparent border border-border px-6 py-5 text-foreground placeholder:text-muted-foreground focus:outline-none transition-colors text-sm rounded-lg"
-                />
-
-                {/* CTA Button (premium hover like Testimonials buttons) */}
-                <motion.button
+              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
+                <div className="relative flex-1">
+                  <input
+                    type="email"
+                    placeholder="ENTER YOUR EMAIL"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="w-full bg-white/5 border border-white/20 rounded-full px-8 py-5 text-white placeholder:text-white/30 focus:outline-none focus:border-accent focus:bg-white/10 font-mono text-sm uppercase tracking-widest transition-all duration-300"
+                  />
+                </div>
+                <button
                   type="submit"
-                  className="inline-flex items-center justify-center gap-3 bg-accent text-accent-foreground px-8 py-5 text-sm font-semibold uppercase tracking-wider rounded-full"
-                  whileHover={
-                    prefersReducedMotion
-                      ? {}
-                      : {
-                          scale: 1.07,
-                          y: -3,
-                          boxShadow:
-                            "0 16px 48px -12px hsl(var(--accent) / 0.5)",
-                          transition: {
-                            duration: 0.3,
-                            ease: [0.25, 0.1, 0.25, 1],
-                          },
-                        }
-                  }
-                  whileTap={
-                    prefersReducedMotion
-                      ? {}
-                      : { scale: 0.96, transition: { duration: 0.15 } }
-                  }
+                  className="bg-accent text-black rounded-full py-5 px-10 shrink-0 font-mono text-sm font-bold uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(255,85,0,0.15)]"
                 >
-                  Subscribe
-                  <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
-                </motion.button>
+                  SUBSCRIBE <ArrowUpRight className="w-5 h-5" />
+                </button>
               </form>
             )}
-          </motion.div>
+          </div>
+
         </div>
       </div>
     </section>

@@ -28,24 +28,89 @@ const Index = () => {
         url="https://www.fokelworks.com"
         type="website"
       />
-      <div className="bg-background">
-        <NeuralNetworkCanvas />
+      <div className="bg-background relative">
         <GlassLensCursor />
+        
+        {/* Navbar */}
         <Navbar />
+        
+        {/* Original Hero */}
         <Hero />
-        <Marquee />
-        <About />
+
+        {/* Brutalist sections wrapped in Dark Mode and Inter font for accuracy */}
+        <div className="dark bg-background text-foreground" style={{ fontFamily: "'Inter', sans-serif" }}>
+          
+          <style>{`
+            .dark h2, .dark h3, .dark h4 {
+              font-family: 'Inter', sans-serif;
+            }
+            .dark .font-mono {
+              font-family: 'JetBrains Mono', monospace;
+            }
+            .dark .btn-primary {
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              gap: 0.5rem;
+              background-color: hsl(var(--accent));
+              color: black;
+              padding: 1rem 1.5rem;
+              font-size: 0.75rem;
+              font-family: 'JetBrains Mono', monospace;
+              font-weight: 700;
+              text-transform: uppercase;
+              letter-spacing: 0.1em;
+              border: 1px solid hsl(var(--accent));
+              transition: all 0.3s ease;
+            }
+            .dark .btn-primary:hover {
+              background-color: white;
+              color: black;
+              border-color: white;
+            }
+            .dark .btn-secondary {
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              gap: 0.5rem;
+              background-color: transparent;
+              color: white;
+              border: 1px solid rgba(255,255,255,0.2);
+              padding: 1rem 1.5rem;
+              font-size: 0.75rem;
+              font-family: 'JetBrains Mono', monospace;
+              font-weight: 700;
+              text-transform: uppercase;
+              letter-spacing: 0.1em;
+              transition: all 0.3s ease;
+            }
+            .dark .btn-secondary:hover {
+              background-color: white;
+              color: black;
+            }
+          `}</style>
+          
+          <Marquee />
+          <About />
+        </div>
+
+        {/* Original Services */}
         <Services />
-        <FeaturedWork />
-        <StoryInNumbers />
-        <Testimonials />
-        <JourneyEndsHere />
-        <HowWeWork />
-        <BlogSection />
-        <Newsletter />
-        <Contact />
-        <FAQ />
-        <Footer />
+
+        {/* Continue Brutalist sections */}
+        <div className="dark bg-background text-foreground" style={{ fontFamily: "'Inter', sans-serif" }}>
+          <FeaturedWork />
+          <StoryInNumbers />
+          <HowWeWork />
+          <Testimonials />
+          <BlogSection />
+          <Newsletter />
+          <FAQ />
+          <Contact />
+          <JourneyEndsHere />
+          <Footer />
+        </div>
+        
         <ScrollToTopButton />
       </div>
     </>

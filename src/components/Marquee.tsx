@@ -1,6 +1,3 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-
 import homelane from "@/assets/clients/homelane.png";
 import wtc from "@/assets/clients/wtc.png";
 import genes from "@/assets/clients/genes.png";
@@ -10,106 +7,50 @@ import hmo from "@/assets/clients/hmo.png";
 import sabProperties from "@/assets/clients/sab-properties.png";
 
 const clients = [
-  { src: homelane, alt: "HomeLane", height: "h-16 md:h-24" },
-  { src: wtc, alt: "WTC", height: "h-16 md:h-24" },
-  { src: genes, alt: "Genes", height: "h-16 md:h-24" },
-  { src: onsurity, alt: "Onsurity", height: "h-16 md:h-24" },
-  { src: inventeron, alt: "Inventeron", height: "h-16 md:h-24" },
-  { src: hmo, alt: "HMO Architects", height: "h-16 md:h-24" },
-  { src: sabProperties, alt: "SAB Properties", height: "h-16 md:h-24" },
+  { src: homelane, alt: "HomeLane", height: "h-8 md:h-12" },
+  { src: wtc, alt: "WTC", height: "h-8 md:h-12" },
+  { src: genes, alt: "Genes", height: "h-8 md:h-12" },
+  { src: onsurity, alt: "Onsurity", height: "h-8 md:h-12" },
+  { src: inventeron, alt: "Inventeron", height: "h-8 md:h-12" },
+  { src: hmo, alt: "HMO Architects", height: "h-8 md:h-12" },
+  { src: sabProperties, alt: "SAB Properties", height: "h-8 md:h-12" },
 ];
 
 const Marquee = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-
   return (
-    <section
-      className="bg-primary text-primary-foreground overflow-hidden"
-      ref={ref}
-    >
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-16 pb-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="flex items-center gap-4"
-        >
-          <motion.div
-            initial={{ width: 0 }}
-            animate={isInView ? { width: 40 } : {}}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="h-[2px] bg-accent"
-          />
-          <motion.p
-            initial={{ opacity: 0, x: -20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-sm font-medium tracking-[0.3em] uppercase text-accent"
-          >
-            Trusted By
-          </motion.p>
-        </motion.div>
-      </div>
-
-      <motion.div
-        className="relative py-8 overflow-hidden"
-        initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : {}}
-        transition={{ duration: 0.8, delay: 0.3 }}
-      >
-        <div
-          className="absolute left-0 top-0 bottom-0 w-24 md:w-40 z-10 pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to right, hsl(var(--primary)) 0%, hsl(var(--primary) / 0) 100%)",
-          }}
-        />
-        <div
-          className="absolute right-0 top-0 bottom-0 w-24 md:w-40 z-10 pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to left, hsl(var(--primary)) 0%, hsl(var(--primary) / 0) 100%)",
-          }}
-        />
-
-        <div className="animate-marquee py-2 will-change-transform flex min-w-max">
+    <section className="bg-background border-b border-white/10 overflow-hidden py-12">
+      <div className="relative overflow-hidden">
+        <div className="animate-marquee py-2 flex min-w-max">
           <div className="flex gap-20 md:gap-32 items-center pr-8 md:pr-12">
             {clients.map((client, i) => (
-              <motion.div
+              <div
                 key={`${client.alt}-${i}`}
-                className="flex-shrink-0 flex items-center justify-center px-4 h-32 md:h-40 cursor-default"
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
+                className="flex-shrink-0 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300"
               >
                 <img
                   src={client.src}
                   alt={client.alt}
-                  className={`${client.height} max-w-48 md:max-w-56 w-auto object-contain mix-blend-darken transition-all duration-500 ease-out opacity-100`}
+                  className={`${client.height} w-auto object-contain opacity-50 hover:opacity-100 invert`}
                 />
-              </motion.div>
+              </div>
             ))}
           </div>
           <div className="flex gap-20 md:gap-32 items-center pl-8 md:pl-12" aria-hidden>
             {clients.map((client, i) => (
-              <motion.div
+              <div
                 key={`dup-${client.alt}-${i}`}
-                className="flex-shrink-0 flex items-center justify-center px-4 h-32 md:h-40 cursor-default"
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
+                className="flex-shrink-0 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300"
               >
                 <img
                   src={client.src}
-                  alt=""
-                  className={`${client.height} max-w-48 md:max-w-56 w-auto object-contain mix-blend-darken transition-all duration-500 ease-out opacity-100`}
+                  alt={client.alt}
+                  className={`${client.height} w-auto object-contain opacity-50 hover:opacity-100 invert`}
                 />
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };

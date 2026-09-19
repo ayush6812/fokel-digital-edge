@@ -1,381 +1,124 @@
-import { motion, useInView, useSpring, useTransform, useMotionValue, MotionValue } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
-import { ArrowUpRight } from "lucide-react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { DepthText } from "@/components/ui/DepthText";
-import { Magnetic } from "@/components/ui/Magnetic";
+import { ArrowRight, Play } from "lucide-react";
 
 import workHomelane from "@/assets/work-homelane.png";
 import workWtc from "@/assets/work-wtc.png";
 import workGenes from "@/assets/work-genes.png";
 import workSab from "@/assets/work-sab-collage.jpg";
+import work22Workspace from "@/assets/work-22workspace-real.jpg";
 
 const projects = [
   {
     image: workHomelane,
-    title: "HomeLane.com",
-    description:
-      "Strategic SEO & Content Marketing strategy that delivered 98% organic growth and dominated competitive keywords for India's interior design leader.",
-    tags: ["B2B SEO", "Content Marketing", "Growth Strategy"],
+    title: "HOMELANE.COM",
+    number: "01",
+    description: "Strategic SEO & Content Marketing strategy that delivered 98% organic growth and dominated competitive keywords for India's interior design leader.",
+    tags: ["B2B SEO", "GROWTH STRATEGY"],
     link: "/work/homelane",
-    color: "from-emerald-500/80",
-    bgColorLight: "#ffffff",
-    bgColorDark: "#0a1f15",
+    className: "lg:col-span-7",
   },
   {
     image: workWtc,
-    title: "ITA-AITES WTC 2026",
-    description:
-      "Global digital strategy and event branding for the World Tunnel Congress, driving international visibility and attendee engagement.",
-    tags: ["Event Marketing", "Digital Strategy", "Branding"],
+    title: "WORLD TUNNEL CONGRESS",
+    number: "02",
+    description: "Global digital strategy and event branding for the World Tunnel Congress, driving international visibility and attendee engagement.",
+    tags: ["EVENT MARKETING", "DIGITAL STRATEGY"],
     link: "/work/wtc-2026",
-    color: "from-blue-500/80",
-    bgColorLight: "#ffffff",
-    bgColorDark: "#0a1220",
-  },
-  {
-    image: workGenes,
-    title: "Genes Lecoanet Hemant",
-    description:
-      "Premium social media storytelling and brand performance marketing for one of India's most iconic luxury fashion houses.",
-    tags: ["Luxury Marketing", "Social Media", "Performance"],
-    link: "/work/genes-lecoanet-hemant",
-    color: "from-purple-500/80",
-    bgColorLight: "#ffffff",
-    bgColorDark: "#100a1f",
+    className: "lg:col-span-5",
   },
   {
     image: workSab,
-    title: "SAB Properties",
-    description:
-      "Direct-to-client commercial property directory and automated B2B leasing pipeline for one of Delhi's premier estate agencies.",
-    tags: ["Commercial Real Estate", "B2B Lead Gen", "Web Directory"],
+    title: "SAB PROPERTIES",
+    number: "03",
+    description: "Direct-to-client commercial property directory and automated B2B leasing pipeline for one of Delhi's premier estate agencies.",
+    tags: ["REAL ESTATE", "B2B LEAD GEN"],
     link: "/work/sab-properties",
-    color: "from-cyan-500/80",
-    bgColorLight: "#ffffff",
-    bgColorDark: "#071518",
+    className: "lg:col-span-5",
   },
+  {
+    image: work22Workspace,
+    title: "22WORKSPACE",
+    number: "04",
+    description: "Premium co-working and enterprise office space digital strategy, capturing high-intent enterprise clients.",
+    tags: ["BRANDING", "REAL ESTATE"],
+    link: "/work/22workspace",
+    className: "lg:col-span-7",
+  }
 ];
 
 const FeaturedWork = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [isDark, setIsDark] = useState(true);
-
-  useEffect(() => {
-    const checkTheme = () => setIsDark(document.documentElement.classList.contains("dark"));
-    checkTheme();
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
-    return () => observer.disconnect();
-  }, []);
-
-  const getBgColor = () => {
-    if (hoveredIndex === null) return "hsl(var(--background))";
-    const p = projects[hoveredIndex];
-    return isDark ? p.bgColorDark : p.bgColorLight;
-  };
-
   return (
-    <motion.section
-      id="work"
-      className="relative py-16 md:py-24 overflow-hidden bg-primary text-primary-foreground"
-      ref={ref}
-    >
-      <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="flex items-center gap-4 mb-6"
-        >
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: 40 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="h-[2px] bg-accent"
-          />
-          <p className="text-sm font-medium tracking-[0.3em] uppercase text-accent">
-            Selected Projects
-          </p>
-        </motion.div>
+    <section id="work" className="bg-background border-b border-white/10">
+      <div className="max-w-[1600px] mx-auto px-4 md:px-8 py-24">
+        
+        {/* Header */}
+        <div className="mb-16">
+          <span className="font-mono text-[10px] sm:text-xs text-accent uppercase tracking-widest mb-6 block">
+            03. FEATURED WORK
+          </span>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-none text-white">
+              FEATURED WORK
+            </h2>
+            <button className="border border-white/10 px-6 py-3 font-mono text-[10px] uppercase tracking-widest hover:bg-white/5 transition-colors flex items-center gap-2">
+              VIEW ALL CASE STUDIES <ArrowRight className="w-3 h-3" />
+            </button>
+          </div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="overflow-hidden mb-10 md:mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.05] tracking-[-0.03em] text-primary-foreground">
-            Featured <DepthText text="Work" className="text-primary-foreground inline-block font-semibold" glowColor="rgba(255, 107, 20, 0.45)" />
-          </h2>
-        </motion.div>
+        {/* Dynamic Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+          {projects.map((project) => (
+            <Link key={project.title} to={project.link} className={`group cursor-pointer flex flex-col ${project.className}`}>
+              
+              {/* Image box with small tags on top left */}
+              <div className="border border-white/10 p-2 bg-white/5 relative mb-6">
+                <div className="absolute top-6 left-6 flex gap-2 z-20">
+                  <span className="bg-black text-accent text-[10px] font-mono px-3 py-1 uppercase tracking-widest border border-white/10">
+                    VIEW CASE STUDY
+                  </span>
+                </div>
+                <div className="overflow-hidden bg-black relative h-64 md:h-80 lg:h-[480px] w-full">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                  />
+                  {/* Tags at bottom of image */}
+                  <div className="absolute bottom-6 left-6 flex flex-wrap gap-2 z-20">
+                    <span className="bg-black/90 backdrop-blur-sm text-accent text-[10px] font-mono px-3 py-1 uppercase tracking-widest border border-white/10">
+                      SERVICES:
+                    </span>
+                    {project.tags.map((tag, i) => (
+                      <span key={i} className="bg-black/80 backdrop-blur-sm text-white text-[10px] font-mono px-3 py-1 uppercase tracking-widest border border-white/10">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          {projects.map((project, i) => (
-            <ProjectCard
-              key={project.title}
-              project={project}
-              index={i}
-              isInView={isInView}
-              onHoverStart={() => setHoveredIndex(i)}
-              onHoverEnd={() => setHoveredIndex(null)}
-            />
+              {/* Title & Play Icon */}
+              <div className="flex justify-between items-end mb-4 border-b border-white/10 pb-4">
+                <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-white flex items-center gap-4">
+                  <span className="text-accent">{project.number}</span> {project.title}
+                </h3>
+                <Play className="w-6 h-6 text-white/50 group-hover:text-accent transition-colors shrink-0" />
+              </div>
+
+              {/* Description */}
+              <p className="text-white/60 font-medium leading-relaxed mb-6 max-w-lg">
+                {project.description}
+              </p>
+
+            </Link>
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-12 md:mt-16 text-center"
-        >
-          <Link
-            to="/the-gallery-of-impact"
-            className="inline-flex items-center justify-center gap-2 text-base md:text-lg font-semibold uppercase tracking-wider text-primary-foreground hover:text-accent transition-colors group"
-          >
-            View all 9 projects
-            <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </Link>
-        </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 };
-
-const ProjectCard = ({
-  project,
-  index,
-  isInView,
-  onHoverStart,
-  onHoverEnd,
-}: {
-  project: (typeof projects)[0];
-  index: number;
-  isInView: boolean;
-  onHoverStart: () => void;
-  onHoverEnd: () => void;
-}) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [5, -5]), {
-    stiffness: 300,
-    damping: 30,
-  });
-  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-5, 5]), {
-    stiffness: 300,
-    damping: 30,
-  });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    x.set((e.clientX - centerX) / rect.width);
-    y.set((e.clientY - centerY) / rect.height);
-  };
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-    onHoverStart();
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    onHoverEnd();
-    x.set(0);
-    y.set(0);
-  };
-
-  const projectNumber = String(index + 1).padStart(2, "0");
-
-  return (
-    <motion.div
-      ref={cardRef}
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{
-        duration: 0.7,
-        delay: index * 0.1,
-        ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number],
-      }}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onMouseMove={handleMouseMove}
-      className="group cursor-pointer"
-      style={{ perspective: 1000 }}
-    >
-      {project.link ? (
-        <Link to={project.link} className="block">
-          <ProjectCardContent
-            project={project}
-            isHovered={isHovered}
-            rotateX={rotateX}
-            rotateY={rotateY}
-            projectNumber={projectNumber}
-          />
-        </Link>
-      ) : (
-        <div className="block">
-          <ProjectCardContent
-            project={project}
-            isHovered={isHovered}
-            rotateX={rotateX}
-            rotateY={rotateY}
-            projectNumber={projectNumber}
-          />
-        </div>
-      )}
-    </motion.div>
-  );
-};
-
-const ProjectCardContent = ({
-  project,
-  isHovered,
-  rotateX,
-  rotateY,
-  projectNumber
-}: {
-  project: (typeof projects)[0];
-  isHovered: boolean;
-  rotateX: MotionValue<number>;
-  rotateY: MotionValue<number>;
-  projectNumber: string;
-}) => (
-  <>
-    <motion.div
-      className="relative overflow-hidden rounded-xl md:rounded-2xl aspect-video bg-secondary"
-      style={{
-        rotateX: isHovered ? rotateX : 0,
-        rotateY: isHovered ? rotateY : 0,
-        transformStyle: "preserve-3d",
-      }}
-      animate={{
-        boxShadow: isHovered
-          ? "0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 30px rgba(var(--accent-rgb, 139, 92, 246), 0.15)"
-          : "0 10px 30px -10px rgba(0, 0, 0, 0.1)",
-      }}
-      transition={{ duration: 0.4 }}
-    >
-      <motion.img
-        src={project.image}
-        alt={project.title}
-        className="w-full h-full object-cover"
-        animate={{
-          scale: isHovered ? 1.05 : 1,
-        }}
-        transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] }}
-      />
-
-      <motion.div
-        className={`absolute inset-0 bg-gradient-to-t ${project.color} to-transparent`}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isHovered ? 1 : 0 }}
-        transition={{ duration: 0.4 }}
-      />
-
-      <motion.div
-        className="absolute inset-0 bg-black/50"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isHovered ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
-      />
-
-      <motion.div
-        className="absolute inset-0 flex flex-col justify-end p-4 md:p-6"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isHovered ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
-      >
-        <motion.p
-          className="text-white/90 text-sm leading-relaxed line-clamp-2"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{
-            y: isHovered ? 0 : 20,
-            opacity: isHovered ? 1 : 0,
-          }}
-          transition={{ duration: 0.4, delay: 0.1 }}
-        >
-          {project.description}
-        </motion.p>
-      </motion.div>
-
-      <motion.div
-        className="absolute top-3 md:top-5 right-3 md:right-5 z-20 pointer-events-auto"
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{
-          opacity: isHovered ? 1 : 0,
-          scale: isHovered ? 1 : 0.5,
-        }}
-        transition={{ duration: 0.3 }}
-      >
-        <Magnetic strength={0.4} range={45}>
-          <div className="w-10 md:w-12 h-10 md:h-12 rounded-full bg-white dark:bg-zinc-800 flex items-center justify-center shadow-lg">
-            <ArrowUpRight className="w-4 md:w-5 h-4 md:h-5 text-zinc-950 dark:text-zinc-50" />
-          </div>
-        </Magnetic>
-      </motion.div>
-
-      <motion.div
-        className="absolute top-3 md:top-5 left-3 md:left-5 flex flex-wrap gap-1.5 md:gap-2 max-w-[70%]"
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: isHovered ? 1 : 0, x: isHovered ? 0 : -20 }}
-        transition={{ duration: 0.3 }}
-      >
-        {project.tags.map((tag) => (
-          <span
-            key={tag}
-            className="text-[10px] md:text-xs font-medium tracking-wider uppercase text-white bg-white/20 backdrop-blur-sm px-2 md:px-3 py-1 rounded-full"
-          >
-            {tag}
-          </span>
-        ))}
-      </motion.div>
-
-      <motion.div
-        className="absolute bottom-0 left-0 right-0 h-1 bg-accent origin-left"
-        initial={{ scaleX: 0 }}
-        animate={{ scaleX: isHovered ? 1 : 0 }}
-        transition={{ duration: 0.4 }}
-      />
-    </motion.div>
-
-    <div className="mt-4 md:mt-6 flex items-start justify-between">
-      <div className="flex-1 pr-4">
-        <h3 className="text-xl md:text-2xl font-semibold text-primary-foreground tracking-[-0.02em]">
-          {project.title}
-        </h3>
-        <motion.div
-          className="h-[2px] bg-accent mt-2 origin-left"
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          style={{ width: "50%" }}
-        />
-      </div>
-
-      <span className="text-sm font-medium text-primary-foreground/60">
-        <span className="text-accent font-bold">{projectNumber}</span>
-      </span>
-    </div>
-
-    <p className="mt-2 md:hidden text-sm text-primary-foreground/60 line-clamp-2">
-      {project.description}
-    </p>
-  </>
-);
 
 export default FeaturedWork;
