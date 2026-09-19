@@ -40,8 +40,8 @@ const Index = () => {
         <StoryInNumbers />
         <Testimonials />
         <JourneyEndsHere />
-        <BlogSection />
         <HowWeWork />
+        <BlogSection />
         <Newsletter />
         <Contact />
         <FAQ />
