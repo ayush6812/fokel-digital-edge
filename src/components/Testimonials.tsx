@@ -62,11 +62,8 @@ const Testimonials = () => {
         {/* RIGHT COLUMN: Quote & Controls */}
         <div className="lg:col-span-7 flex flex-col min-h-[50vh] lg:min-h-[60vh]">
           
-          {/* Top Bar: Text & Navigation */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-8 border-b border-black/10 pb-8">
-            <p className="text-[10px] md:text-xs font-bold uppercase tracking-widest leading-relaxed max-w-sm">
-              <span className="opacity-50">WE LET THE</span> RESULTS SPEAK. <span className="opacity-50">BUT SOMETIMES THE PEOPLE BEHIND THEM HAVE</span> SOMETHING TO ADD.
-            </p>
+          {/* Top Bar: Navigation */}
+          <div className="flex justify-end items-center mb-16 md:mb-24 border-b border-black/10 pb-8">
             
             <div className="flex gap-2 shrink-0">
               <button 
@@ -100,12 +97,12 @@ const Testimonials = () => {
                 transition={{ duration: 0.4, ease: "easeOut" }}
                 className="flex flex-col"
               >
-                <p className="text-3xl md:text-4xl lg:text-[3.5rem] font-medium tracking-tight leading-[1.2] text-black/90">
+                <p className="text-2xl md:text-4xl lg:text-[3rem] font-medium tracking-normal leading-[1.5] text-black/90">
                   "{t.quote}"
                 </p>
                 
-                <div className="flex flex-col mt-12 pt-8 border-t border-black/5">
-                  <span className="font-bold text-xl md:text-2xl tracking-tighter uppercase">{t.name}</span>
+                <div className="flex flex-col mt-12 md:mt-16 pt-8 border-t border-black/5">
+                  <span className="font-bold text-xl md:text-2xl tracking-tight uppercase">{t.name}</span>
                   <span className="text-orange-600 font-mono text-xs uppercase tracking-widest mt-1 font-bold">{t.role}</span>
                 </div>
               </motion.div>
