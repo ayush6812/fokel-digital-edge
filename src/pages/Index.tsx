@@ -57,7 +57,7 @@ const Index = () => {
           <Testimonials />
           
           {/* Color Block Separator */}
-          <div className="w-full bg-orange-600 border-y border-black py-4 md:py-6 overflow-hidden relative z-20 flex">
+          <div className="w-full bg-orange-600 py-4 md:py-6 overflow-hidden relative z-20 flex">
             <div className="animate-marquee flex min-w-max items-center">
               <div className="flex gap-16 items-center px-8 font-mono text-xs md:text-sm font-black uppercase tracking-[0.2em] text-black">
                 <span>RESULTS SPEAK LOUDER THAN WORDS</span>
