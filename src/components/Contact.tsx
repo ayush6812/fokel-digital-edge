@@ -26,7 +26,7 @@ const Contact = () => {
               </label>
               <input 
                 type="text" 
-                placeholder="Alex Johnson" 
+                placeholder="Your Name" 
                 className="w-full bg-transparent border-b border-white/20 pb-2 text-lg md:text-xl text-white focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20"
                 required
               />
@@ -38,7 +38,7 @@ const Contact = () => {
               </label>
               <input 
                 type="email" 
-                placeholder="alex@brand.com" 
+                placeholder="Your Email" 
                 className="w-full bg-transparent border-b border-white/20 pb-2 text-lg md:text-xl text-white focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20"
                 required
               />
