@@ -45,7 +45,7 @@ const Testimonials = () => {
   const t = testimonials[currentIndex];
 
   return (
-    <section className="bg-[#f0f0f0] text-black w-full min-h-screen py-24 md:py-32 relative z-10 overflow-hidden flex flex-col justify-center border-t border-black/5">
+    <section className="bg-[#f0f0f0] text-black w-full py-16 md:py-20 relative z-10 overflow-hidden flex flex-col justify-center border-t border-black/5">
       
       {/* Film grain noise overlay */}
       <div 
@@ -67,7 +67,7 @@ const Testimonials = () => {
         </div>
 
         {/* RIGHT COLUMN: Quote & Controls */}
-        <div className="lg:col-span-7 flex flex-col min-h-[50vh] lg:min-h-[60vh]">
+        <div className="lg:col-span-7 flex flex-col">
           
           {/* Top Bar: Navigation */}
           <div className="flex justify-end items-center mb-16 md:mb-24 border-b border-black/10 pb-8">
