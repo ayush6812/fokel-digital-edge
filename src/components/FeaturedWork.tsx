@@ -55,9 +55,9 @@ const FeaturedWork = () => {
 
       {/* Projects Grid */}
       <div className="w-full">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-0">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-0 group/grid">
           {projects.map((project, idx) => (
-            <Link key={idx} to={project.link} className={`group block relative overflow-hidden ${project.className}`}>
+            <Link key={idx} to={project.link} className={`group block relative overflow-hidden ${project.className} transition-opacity duration-500 group-hover/grid:opacity-40 hover:!opacity-100`}>
               <div className="relative w-full h-[50vh] md:h-[60vh] lg:h-[70vh] bg-black">
                 {/* Image - Highlights on hover instead of blurring */}
                 <img
