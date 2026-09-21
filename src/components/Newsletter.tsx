@@ -1,70 +1,61 @@
 import { ArrowUpRight } from "lucide-react";
-import { useState } from "react";
 
 const Newsletter = () => {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      setSubmitted(true);
-      setEmail("");
-    }
-  };
-
   return (
-    <section className="bg-background py-24 md:py-32 relative overflow-hidden border-b border-white/10">
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8">
+    <section id="newsletter" className="bg-[#FF4500] text-white w-full min-h-[70vh] flex flex-col md:flex-row relative z-10 overflow-hidden">
+      
+      {/* Left Side: Copy */}
+      <div className="w-full md:w-1/2 p-8 md:p-12 lg:p-24 flex flex-col justify-between">
         
-        <div className="rounded-[3rem] border border-white/10 p-10 md:p-16 lg:p-24 grid lg:grid-cols-2 gap-12 lg:gap-24 bg-white/[0.02] items-center relative overflow-hidden group hover:border-accent/30 transition-colors duration-700">
-          
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[100px] pointer-events-none group-hover:bg-accent/10 transition-colors duration-1000" />
-          
-          <div className="relative z-10">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-white/70 font-mono text-[10px] uppercase tracking-widest mb-6">
-              STAY SHARP
-            </span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-none text-white mb-6">
-              SUBSCRIBE TO <br /> OUR <span className="text-accent italic">INSIGHTS</span>
-            </h2>
-            <p className="text-white/50 font-medium text-lg max-w-md">
-              Get the latest insights on digital strategy, branding trends, and engineering architectures delivered straight to your inbox.
-            </p>
-          </div>
-
-          <div className="relative z-10">
-            {submitted ? (
-              <div className="border border-accent/30 p-8 rounded-3xl bg-accent/5 text-center">
-                <p className="text-xl font-black uppercase text-accent mb-2">THANK YOU</p>
-                <p className="text-white/70 font-mono text-sm uppercase tracking-widest">
-                  YOU HAVE SUCCESSFULLY SUBSCRIBED.
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
-                <div className="relative flex-1">
-                  <input
-                    type="email"
-                    placeholder="ENTER YOUR EMAIL"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    className="w-full bg-white/5 border border-white/20 rounded-full px-8 py-5 text-white placeholder:text-white/30 focus:outline-none focus:border-accent focus:bg-white/10 font-mono text-sm uppercase tracking-widest transition-all duration-300"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="bg-accent text-black rounded-full py-5 px-10 shrink-0 font-mono text-sm font-bold uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(255,85,0,0.15)]"
-                >
-                  SUBSCRIBE <ArrowUpRight className="w-5 h-5" />
-                </button>
-              </form>
-            )}
-          </div>
-
+        <span className="font-mono text-xs uppercase tracking-widest block mb-12 font-bold">
+          [ INTELLIGENCE, DELIVERED ]
+        </span>
+        
+        <div className="mt-auto">
+          <h2 className="text-[clamp(4rem,8vw,10rem)] font-black uppercase tracking-tighter leading-[0.85] mb-8" style={{ fontFamily: "var(--font-heading)" }}>
+            STAY <br/>
+            SHARP.
+          </h2>
+          <p className="font-bold text-sm uppercase tracking-widest max-w-sm leading-relaxed text-white/90">
+            JOIN 5,000+ FOUNDERS AND EXECUTIVES RECEIVING OUR WEEKLY INSIGHTS ON DESIGN, ENGINEERING, AND GROWTH STRATEGY.
+          </p>
         </div>
+
       </div>
+
+      {/* Right Side: Form & Visuals */}
+      <div className="w-full md:w-1/2 p-8 md:p-12 lg:p-24 bg-[#FF4500] md:border-l border-white/20 flex flex-col justify-end relative overflow-hidden">
+        
+        {/* Massive watermark graphic */}
+        <div className="absolute top-0 right-0 translate-x-1/4 -translate-y-1/4 pointer-events-none opacity-10">
+          <svg width="400" height="400" viewBox="0 0 100 100" className="w-[150%] h-auto">
+            <path d="M50 0 L100 50 L50 100 L0 50 Z" fill="currentColor" />
+          </svg>
+        </div>
+
+        <div className="relative z-10 w-full max-w-md ml-auto">
+          <form className="flex flex-col gap-8 w-full">
+            <div className="relative group">
+              <input 
+                type="email" 
+                placeholder="ENTER YOUR EMAIL" 
+                className="w-full bg-transparent border-b-2 border-white/30 pb-4 text-2xl md:text-3xl font-black text-white focus:outline-none focus:border-white transition-colors placeholder:text-white/30 placeholder:font-black tracking-tighter uppercase"
+                style={{ fontFamily: "var(--font-heading)" }}
+              />
+            </div>
+            
+            <button className="flex items-center gap-3 bg-white text-[#FF4500] px-8 py-4 font-mono text-sm font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-colors w-fit group">
+              Subscribe
+              <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            </button>
+            <p className="font-mono text-[10px] text-white/60 uppercase tracking-widest font-bold">
+              NO SPAM. JUST PURE SIGNAL. UNSUBSCRIBE ANYTIME.
+            </p>
+          </form>
+        </div>
+
+      </div>
+
     </section>
   );
 };
