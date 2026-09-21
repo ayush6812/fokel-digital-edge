@@ -2,10 +2,10 @@ import { ArrowUpRight } from "lucide-react";
 
 const Contact = () => {
   return (
-    <section id="contact" className="w-full flex flex-col md:flex-row relative z-10 border-t-4 border-[#FF4500]">
+    <section id="contact" className="w-full flex flex-col md:flex-row relative z-10">
       
       {/* Left Side: The Work (Form) */}
-      <div className="w-full md:w-[70%] bg-[#050505] text-white p-8 md:p-12 lg:p-16 xl:p-24 relative overflow-hidden flex flex-col justify-center">
+      <div className="w-full md:w-[70%] bg-[#050505] text-white p-6 md:p-10 lg:p-12 xl:p-16 relative overflow-hidden flex flex-col justify-center">
         
         {/* Extreme Noise for texture */}
         <div className="absolute inset-0 z-0 pointer-events-none opacity-60 mix-blend-screen">
@@ -14,16 +14,11 @@ const Contact = () => {
 
         <div className="relative z-10 max-w-3xl">
           
-          {/* Badge to make heading stand out after FAQ */}
-          <div className="inline-block bg-[#FF4500] text-black font-black uppercase tracking-widest text-xs px-4 py-2 mb-6 shadow-[0_0_20px_rgba(255,69,0,0.5)]">
-            INITIATE SEQUENCE
-          </div>
-
-          <h2 className="text-5xl md:text-6xl lg:text-8xl font-black uppercase tracking-tighter mb-12 leading-[0.9]" style={{ fontFamily: "var(--font-heading)" }}>
-            START A <br /> PROJECT.
+          <h2 className="text-5xl md:text-6xl lg:text-8xl font-black uppercase tracking-tighter mb-8 leading-[0.9]" style={{ fontFamily: "var(--font-heading)" }}>
+            <span className="text-[#FF4500]">*</span> START A <br /> PROJECT.
           </h2>
 
-          <form className="flex flex-col gap-8">
+          <form className="flex flex-col gap-6">
             
             <div className="relative group">
               <label className="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-2 group-focus-within:text-[#FF4500] transition-colors">
@@ -32,7 +27,7 @@ const Contact = () => {
               <input 
                 type="text" 
                 placeholder="Alex Johnson" 
-                className="w-full bg-transparent border-b border-white/20 pb-3 text-lg md:text-xl text-white focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20"
+                className="w-full bg-transparent border-b border-white/20 pb-2 text-lg md:text-xl text-white focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20"
                 required
               />
             </div>
@@ -44,7 +39,7 @@ const Contact = () => {
               <input 
                 type="email" 
                 placeholder="alex@brand.com" 
-                className="w-full bg-transparent border-b border-white/20 pb-3 text-lg md:text-xl text-white focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20"
+                className="w-full bg-transparent border-b border-white/20 pb-2 text-lg md:text-xl text-white focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20"
                 required
               />
             </div>
@@ -55,7 +50,7 @@ const Contact = () => {
               </label>
               <div className="relative">
                 <select 
-                  className="w-full bg-transparent border-b border-white/20 pb-3 text-lg md:text-xl text-white focus:outline-none focus:border-[#FF4500] transition-colors appearance-none cursor-pointer"
+                  className="w-full bg-transparent border-b border-white/20 pb-2 text-lg md:text-xl text-white focus:outline-none focus:border-[#FF4500] transition-colors appearance-none cursor-pointer"
                   required
                   defaultValue=""
                 >
@@ -77,8 +72,8 @@ const Contact = () => {
               </label>
               <textarea 
                 placeholder="Tell us about your goals..." 
-                rows={3}
-                className="w-full bg-transparent border-b border-white/20 pb-3 text-lg md:text-xl text-white focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20 resize-none"
+                rows={2}
+                className="w-full bg-transparent border-b border-white/20 pb-2 text-lg md:text-xl text-white focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20 resize-none"
                 required
               />
             </div>
@@ -86,7 +81,7 @@ const Contact = () => {
             <div className="mt-4">
               <button 
                 type="submit" 
-                className="group flex items-center justify-between w-full max-w-sm bg-white text-black px-6 py-5 hover:bg-[#FF4500] hover:text-white transition-colors duration-300 shadow-[0_0_0_rgba(255,69,0,0)] hover:shadow-[0_0_30px_rgba(255,69,0,0.6)]"
+                className="group flex items-center justify-between w-full max-w-sm bg-white text-black px-6 py-4 hover:bg-[#FF4500] hover:text-white transition-colors duration-300 shadow-[0_0_0_rgba(255,69,0,0)] hover:shadow-[0_0_30px_rgba(255,69,0,0.6)]"
               >
                 <span className="font-black uppercase tracking-widest text-base md:text-lg">
                   REQUEST A CALLBACK
@@ -119,11 +114,12 @@ const Contact = () => {
           </h2>
         </div>
 
-        <div className="relative z-10 mt-24 border-t border-black/20 pt-8 bg-[#FF4500]/80 backdrop-blur-sm p-4 -mx-4 rounded-lg">
-          <p className="font-mono text-[10px] uppercase tracking-widest font-bold mb-4 opacity-80">
+        {/* Highlighted email box to stand out over the text pattern */}
+        <div className="relative z-10 mt-24 bg-black text-white p-6 -mx-4 rounded-xl shadow-2xl border border-white/10">
+          <p className="font-mono text-[10px] uppercase tracking-widest font-bold mb-4 opacity-60">
             OR REACH US DIRECTLY
           </p>
-          <a href="mailto:info@fokelworks.com" className="text-lg md:text-xl lg:text-2xl font-bold tracking-tight hover:text-white transition-colors flex flex-wrap items-center gap-2 break-words">
+          <a href="mailto:info@fokelworks.com" className="text-lg md:text-xl lg:text-2xl font-bold tracking-tight hover:text-[#FF4500] transition-colors flex flex-wrap items-center gap-2 break-words">
             info@fokelworks.com
             <ArrowUpRight className="w-5 h-5 flex-shrink-0" />
           </a>
