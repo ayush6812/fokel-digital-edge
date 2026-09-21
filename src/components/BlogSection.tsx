@@ -15,13 +15,6 @@ const blogs = [
     image: "/blog-eco-img1.jpg",
     span: "col-span-1 md:col-span-6",
     link: "/blog/integrated-ecosystem"
-  },
-  {
-    title: "Fokel Insider: Weekly Digital Strategy Newsletter",
-    date: "JOIN 10,000+ SUBSCRIBERS",
-    image: null,
-    span: "col-span-1 md:col-span-12 lg:col-span-4 lg:absolute lg:-right-4 lg:-top-32 lg:w-[400px]",
-    link: "#newsletter"
   }
 ];
 
@@ -53,7 +46,7 @@ const BlogSection = () => {
                 <img 
                   src={blog.image} 
                   alt={blog.title} 
-                  className="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                 />
               </div>
             )}
