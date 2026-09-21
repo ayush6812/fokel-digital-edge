@@ -1,225 +1,144 @@
-import { motion, useInView, useReducedMotion } from "framer-motion";
-import { useRef, useState } from "react";
-import { Mail, Phone, User, Loader2, FileText } from "lucide-react";
-import { toast } from "sonner";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { ArrowUpRight, Mail, Phone, MapPin } from "lucide-react";
+import logo from "@/assets/fokel-logo-white.png";
 
 const Contact = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const prefersReducedMotion = useReducedMotion();
-
-  const duration = prefersReducedMotion ? 0 : 0.8;
-  const delay = (d: number) => (prefersReducedMotion ? 0 : d);
-
-  const emailLink = `https://mail.google.com/mail/?view=cm&to=info@fokelworks.com&su=${encodeURIComponent("New Project Inquiry")}&body=${encodeURIComponent("Hi, I'd like to discuss a project.")}`;
-
-  const [isOpen, setIsOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name || !formData.email || !formData.phone) {
-      toast.error("Please fill all fields");
-      return;
-    }
-
-    setIsLoading(true);
-    try {
-      const response = await fetch("http://localhost:3001/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) throw new Error("Failed to submit form");
-
-      toast.success("Thank you! We'll be in touch soon.");
-      setIsOpen(false);
-      setFormData({ name: "", email: "", phone: "" });
-    } catch (error) {
-      console.error(error);
-      toast.error("Failed to submit the form. Please try again.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   return (
-    <section id="contact" className="relative py-32 bg-primary overflow-hidden" ref={ref}>
-      <motion.div
-        className="absolute inset-0 pointer-events-none"
-        initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : {}}
-        transition={{ duration: prefersReducedMotion ? 0 : 1.2, ease: [0.25, 0.1, 0.25, 1] }}
-        style={{
-          background: "radial-gradient(ellipse 80% 50% at 50% 100%, hsl(var(--accent) / 0.1) 0%, transparent 60%)",
-        }}
-      />
+    <section id="contact" className="bg-black text-white w-full py-24 md:py-32 px-4 md:px-8 lg:px-12 relative z-10 overflow-hidden">
+      
+      {/* Background Noise for Texture */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-20 mix-blend-overlay">
+        <div className="w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-50" />
+      </div>
 
-      <motion.div
-        className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full bg-accent/5 blur-3xl pointer-events-none"
-        animate={prefersReducedMotion ? {} : { scale: [1, 1.05, 1], y: [0, -10, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-12 text-center">
-        <div className="flex items-center justify-center gap-4 mb-6">
-          <motion.div
-            initial={{ width: 0 }}
-            animate={isInView ? { width: 40 } : {}}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="h-[2px] bg-accent"
-          />
-          <motion.p
-            initial={{ opacity: 0, x: -20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: delay(0.2) }}
-            className="text-sm font-medium tracking-[0.3em] uppercase text-accent"
-          >
-            Get In Touch
-          </motion.p>
+      <div className="max-w-[1600px] mx-auto relative z-10">
+        
+        {/* Massive Header */}
+        <div className="mb-16 md:mb-24">
+          <span className="font-mono text-[10px] md:text-xs text-[#FF4500] uppercase tracking-widest block mb-8 font-bold">
+            [ INITIATE SEQUENCE ]
+          </span>
+          <h2 className="text-[clamp(3.5rem,8vw,10rem)] font-black uppercase tracking-tighter leading-[0.85]" style={{ fontFamily: "var(--font-heading)" }}>
+            START A <br/>
+            PROJECT.
+          </h2>
         </div>
 
-        <div className="overflow-hidden mb-6">
-          <motion.h2
-            initial={{ y: "100%" }}
-            animate={isInView ? { y: 0 } : {}}
-            transition={{ duration: 0.8, delay: delay(0.1), ease: [0.25, 0.1, 0.25, 1] }}
-            className="text-4xl md:text-5xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-primary-foreground"
-            style={{ fontFamily: "var(--font-heading)" }}
-          >
-            Ready to bring
-            <br />
-            your brand into
-            <br />
-            <span className="text-accent italic font-normal">focus</span>?
-          </motion.h2>
+        {/* Premium Bento Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6">
+          
+          {/* BENTO 1: Direct Contact Info (Span 4) */}
+          <div className="lg:col-span-4 flex flex-col gap-4 md:gap-6">
+            
+            <div className="bg-[#0a0a0a] border border-white/10 p-8 md:p-12 flex flex-col justify-between h-full group hover:border-white/30 transition-colors">
+              <div>
+                <h3 className="font-mono text-[10px] uppercase tracking-widest text-white/50 mb-8 font-bold">
+                  DIRECT LINE
+                </h3>
+                <a href="mailto:hello@fokelstudio.com" className="text-2xl md:text-3xl font-bold tracking-tight block mb-4 hover:text-[#FF4500] transition-colors flex items-center gap-4">
+                  hello@fokelstudio.com
+                  <ArrowUpRight className="w-6 h-6 opacity-0 -translate-x-4 translate-y-4 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300" />
+                </a>
+                <p className="text-xl md:text-2xl font-medium text-white/80">
+                  +91 999 999 9999
+                </p>
+              </div>
+              <div className="mt-16 pt-8 border-t border-white/10">
+                <p className="font-mono text-[10px] uppercase tracking-widest leading-loose text-white/50 font-bold">
+                  WE USUALLY RESPOND TO ALL DIGITAL ENQUIRIES WITHIN 2 BUSINESS HOURS. NO PITCH DECKS, NO SALES CALLS — JUST A CLEAR NEXT STEP.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-[#FF4500] p-8 flex items-center justify-between group cursor-pointer overflow-hidden relative">
+               <div className="relative z-10">
+                 <h4 className="font-black text-2xl uppercase tracking-tighter">BOOK A CALL</h4>
+                 <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-black/60 mt-2">15 MIN DISCOVERY</p>
+               </div>
+               <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform">
+                 <ArrowUpRight className="w-6 h-6 text-white" />
+               </div>
+               <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out z-0" />
+            </div>
+
+          </div>
+
+          {/* BENTO 2: The Form (Span 8) */}
+          <div className="lg:col-span-8 bg-[#0a0a0a] border border-white/10 p-8 md:p-12 lg:p-16">
+             
+             <div className="flex justify-between items-end mb-12">
+               <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter" style={{ fontFamily: "var(--font-heading)" }}>
+                 THE BRIEF.
+               </h3>
+               <img src="/src/assets/logo-white.png" alt="Fokel" className="w-8 opacity-20" />
+             </div>
+
+             <form className="flex flex-col gap-8 md:gap-12 w-full">
+               
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                 <div className="relative group">
+                   <input 
+                     type="text" 
+                     placeholder="Alex Johnson" 
+                     className="w-full bg-transparent border-b-2 border-white/10 pb-4 text-xl md:text-2xl text-white font-bold focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20 peer"
+                   />
+                   <span className="absolute top-0 right-0 font-mono text-[10px] font-bold uppercase tracking-widest text-white/30 -translate-y-6 peer-focus:text-[#FF4500] transition-colors">
+                     Name
+                   </span>
+                 </div>
+
+                 <div className="relative group">
+                   <input 
+                     type="email" 
+                     placeholder="example@brand.com" 
+                     className="w-full bg-transparent border-b-2 border-white/10 pb-4 text-xl md:text-2xl text-white font-bold focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20 peer"
+                   />
+                   <span className="absolute top-0 right-0 font-mono text-[10px] font-bold uppercase tracking-widest text-white/30 -translate-y-6 peer-focus:text-[#FF4500] transition-colors">
+                     Email
+                   </span>
+                 </div>
+               </div>
+
+               <div className="relative group mt-4">
+                 <select className="w-full bg-transparent border-b-2 border-white/10 pb-4 text-xl md:text-2xl text-white font-bold focus:outline-none focus:border-[#FF4500] transition-colors appearance-none peer">
+                   <option value="website" className="bg-[#111111]">I need a high-performance website</option>
+                   <option value="app" className="bg-[#111111]">I need a custom web application</option>
+                   <option value="marketing" className="bg-[#111111]">I need aggressive digital marketing</option>
+                   <option value="other" className="bg-[#111111]">I have a custom requirement</option>
+                 </select>
+                 <span className="absolute top-0 right-0 font-mono text-[10px] font-bold uppercase tracking-widest text-white/30 -translate-y-6 peer-focus:text-[#FF4500] transition-colors">
+                   Project Type
+                 </span>
+                 <div className="absolute right-0 bottom-5 pointer-events-none text-white/30">
+                   ▼
+                 </div>
+               </div>
+
+               <div className="relative group mt-4">
+                 <textarea 
+                   placeholder="Tell us a bit about your goals, timeline, and current challenges..." 
+                   rows={3}
+                   className="w-full bg-transparent border-b-2 border-white/10 pb-4 text-xl text-white font-medium focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20 resize-none peer"
+                 />
+                 <span className="absolute top-0 right-0 font-mono text-[10px] font-bold uppercase tracking-widest text-white/30 -translate-y-6 peer-focus:text-[#FF4500] transition-colors">
+                   Details
+                 </span>
+               </div>
+
+               <div className="flex flex-col sm:flex-row items-center justify-between gap-8 mt-8">
+                 <button type="submit" className="bg-white text-black px-12 py-5 font-mono text-xs font-bold uppercase tracking-widest hover:bg-[#FF4500] hover:text-white transition-all duration-300 w-full sm:w-auto shadow-[0_0_0_0_rgba(255,69,0,0)] hover:shadow-[0_0_30px_0_rgba(255,69,0,0.5)]">
+                   TRANSMIT
+                 </button>
+                 <p className="font-mono text-[10px] text-white/30 uppercase tracking-widest text-center sm:text-right font-bold">
+                   SECURE & ENCRYPTED. <br/>
+                   NO SPAM EVER.
+                 </p>
+               </div>
+
+             </form>
+          </div>
+
         </div>
-
-        <motion.p
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration, delay: delay(0.25) }}
-          className="mt-6 text-lg text-primary-foreground/70 max-w-lg mx-auto leading-relaxed"
-        >
-          Let's discuss how we can transform your digital presence and make your brand the undisputed authority in your niche.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration, delay: delay(0.4) }}
-          className="mt-12 flex flex-col justify-center items-center gap-4"
-        >
-          <Dialog open={isOpen} onOpenChange={setIsOpen}>
-            <DialogTrigger asChild>
-              <Button
-                variant="outline"
-                className="w-64 h-14 inline-flex items-center justify-center gap-3 bg-transparent text-accent border-accent hover:bg-accent/10 text-sm font-semibold rounded-full transition-all"
-              >
-                <FileText className="w-4 h-4" />
-                Request a Callback
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-md bg-foreground text-background border-accent/20">
-              <DialogHeader>
-                <DialogTitle className="text-xl">Request a Callback</DialogTitle>
-                <DialogDescription className="text-background/60">
-                  Fill out the form below and we'll get back to you shortly.
-                </DialogDescription>
-              </DialogHeader>
-
-              <form onSubmit={handleSubmit} className="space-y-4 mt-4">
-                <div className="space-y-2">
-                  <Label htmlFor="name" className="text-background/80 flex items-center gap-2">
-                    <User className="w-4 h-4" /> Your Name
-                  </Label>
-                  <Input
-                    id="name"
-                    name="name"
-                    placeholder="Your Name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="bg-background/10 border-background/20 text-background placeholder:text-background/30 focus-visible:ring-accent"
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="email" className="text-background/80 flex items-center gap-2">
-                    <Mail className="w-4 h-4" /> Email
-                  </Label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="Your Email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="bg-background/10 border-background/20 text-background placeholder:text-background/30 focus-visible:ring-accent"
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="phone" className="text-background/80 flex items-center gap-2">
-                    <Phone className="w-4 h-4" /> Phone Number
-                  </Label>
-                  <Input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    placeholder="Your Phone Number"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="bg-background/10 border-background/20 text-background placeholder:text-background/30 focus-visible:ring-accent"
-                    required
-                  />
-                </div>
-                <Button
-                  type="submit"
-                  disabled={isLoading}
-                  className="w-full mt-4 bg-accent text-accent-foreground hover:bg-accent/90"
-                >
-                  {isLoading ? (
-                    <>
-                      <Loader2 className="w-4 h-4 mr-2 animate-spin" /> Submitting...
-                    </>
-                  ) : (
-                    "Send Request"
-                  )}
-                </Button>
-              </form>
-            </DialogContent>
-          </Dialog>
-
-          <motion.a
-            href={emailLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1], delay: delay(0.5) }}
-            className="w-64 h-14 inline-flex items-center justify-center gap-3 bg-accent text-accent-foreground text-sm font-semibold rounded-full hover:opacity-90 transition-opacity"
-          >
-            <Mail className="w-4 h-4" />
-            Email Us
-          </motion.a>
-        </motion.div>
       </div>
     </section>
   );
