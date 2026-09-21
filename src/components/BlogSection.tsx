@@ -28,8 +28,8 @@ const BlogSection = () => {
           SUBSCRIBE NOW
         </a>
         <h2 className="text-[clamp(3.5rem,8vw,10rem)] font-black uppercase tracking-tighter leading-[0.85] text-right mt-12 md:mt-0" style={{ fontFamily: "var(--font-heading)" }}>
-          NEWS AND <br/>
-          UPDATES.
+          ON OUR <br/>
+          MIND.
         </h2>
       </div>
 
