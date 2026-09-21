@@ -1,236 +1,98 @@
-import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
-import { DepthText } from "@/components/ui/DepthText";
-import { Link } from "react-router-dom";
+import React from "react";
+import { ArrowUpRight } from "lucide-react";
 
 const services = [
   {
     number: "01",
-    title: "Web Design & Development",
-    subtitle: "Build Experiences",
-    description:
-      "Pixel-perfect websites that marry aesthetic excellence with functional brilliance. Every interaction crafted to engage, every page designed to convert.",
-    tags: ["UI/UX", "React", "Performance", "CMS"],
-    link: null,
+    title: "WEB DESIGN & DEV",
+    description: "Pixel-perfect websites that marry aesthetic excellence with functional brilliance. Every interaction crafted to engage, every page designed to convert.",
+    tags: ["UI/UX", "REACT", "PERFORMANCE", "CMS"]
   },
   {
     number: "02",
-    title: "AI Agents",
-    subtitle: "Automate Intelligently",
-    description:
-      "Custom AI agents designed to automate workflows, engage customers, and scale operations seamlessly, unlocking new levels of efficiency.",
-    tags: ["Automation", "LLMs", "Chatbots", "Integration"],
-    link: "/services/ai-agents",
+    title: "AI AGENTS",
+    description: "Custom AI agents designed to automate workflows, engage customers, and scale operations seamlessly, unlocking new levels of efficiency.",
+    tags: ["AUTOMATION", "LLMS", "CHATBOTS", "INTEGRATION"]
   },
   {
     number: "03",
-    title: "Digital Marketing",
-    subtitle: "Drive Growth",
-    description:
-      "Performance-driven campaigns that deliver measurable ROI. From SEO to social media, we engineer digital experiences that convert browsers into loyal customers.",
-    tags: ["SEO", "Paid Ads", "Social Media", "Analytics"],
-    link: "/services/digital-marketing",
+    title: "DIGITAL MARKETING",
+    description: "Performance-driven campaigns that deliver measurable ROI. From SEO to social media, we engineer digital experiences that convert browsers into loyal customers.",
+    tags: ["SEO", "PAID ADS", "SOCIAL MEDIA", "ANALYTICS"]
   },
   {
     number: "04",
-    title: "Digital Strategy",
-    subtitle: "Define Direction",
-    description:
-      "Data-informed roadmaps that align your digital presence with business objectives. We transform market insights into actionable growth strategies.",
-    tags: ["Consulting", "Research", "Roadmapping", "KPIs"],
-    link: "/services/digital-strategy",
-  },
+    title: "DIGITAL STRATEGY",
+    description: "Data-informed roadmaps that align your digital presence with business objectives. We transform market insights into actionable growth strategies.",
+    tags: ["CONSULTING", "RESEARCH", "ROADMAPPING", "KPIS"]
+  }
 ];
 
 const Services = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
   return (
-    <section id="services" className="py-24 lg:py-36 bg-primary text-primary-foreground overflow-hidden" ref={ref}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+    <section id="services" className="relative bg-black py-24 md:py-32 overflow-hidden border-b border-white/10">
+      
+      {/* Background Image Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1965&auto=format&fit=crop" 
+          alt="Services Background" 
+          className="w-full h-full object-cover opacity-20 grayscale"
+        />
+      </div>
 
+      <div className="relative z-10 max-w-[1600px] mx-auto px-4 md:px-8">
+        
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="flex items-center gap-4 mb-6"
-        >
-          <motion.div
-            initial={{ width: 0 }}
-            animate={isInView ? { width: 40 } : {}}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="h-[2px] bg-accent"
-          />
-          <p className="section-label text-primary-foreground/60">What We Do</p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-20"
-        >
-          <h2 className="heading-section text-primary-foreground max-w-xl">
-            Crafting digital experiences that{" "}
-            <DepthText
-              text="transform"
-              className="text-accent inline-block font-semibold"
-              glowColor="rgba(255, 107, 20, 0.45)"
-            />{" "}
-            brands
+        <div className="mb-16 md:mb-24">
+          <span className="font-mono text-[10px] sm:text-xs text-accent uppercase tracking-widest mb-6 block">
+            [ 02. WHAT WE DO ]
+          </span>
+          <h2 className="text-6xl md:text-8xl lg:text-[10rem] font-black uppercase tracking-tighter leading-none text-white">
+            SERVICES
           </h2>
-          <p className="text-primary-foreground/50 max-w-md lg:text-right">
-            We combine strategic thinking with creative excellence to deliver results that exceed expectations.
-          </p>
-        </motion.div>
+        </div>
 
         {/* Services List */}
-        <div className="relative">
-          {/* Top border */}
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={isInView ? { scaleX: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-            className="h-px bg-primary-foreground/10 origin-left"
-          />
+        <div className="flex flex-col">
+          {services.map((service, idx) => (
+            <div key={idx} className="group flex flex-col lg:flex-row items-start lg:items-center gap-6 lg:gap-12 py-12 border-t border-white/10 cursor-pointer hover:bg-white/5 px-4 transition-colors">
+              
+              {/* Left: Number */}
+              <div className="w-12 lg:w-16 shrink-0">
+                <span className="font-mono text-accent text-sm md:text-base">
+                  {service.number}
+                </span>
+              </div>
 
-          {services.map((service, i) => {
-            const isHovered = hoveredIndex === i;
+              {/* Middle: Title */}
+              <div className="flex-1 flex items-center gap-4">
+                <h3 className="text-4xl md:text-6xl lg:text-[5.5rem] font-black uppercase tracking-tighter text-white leading-none">
+                  {service.title}
+                </h3>
+                <ArrowUpRight strokeWidth={3} className="w-8 h-8 md:w-12 md:h-12 text-accent opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:translate-x-2 -translate-y-2" />
+              </div>
 
-            return (
-              <motion.div
-                key={service.number}
-                initial={{ opacity: 0, y: 24 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{
-                  duration: 0.6,
-                  delay: 0.35 + i * 0.09,
-                  ease: [0.25, 0.1, 0.25, 1],
-                }}
-                onMouseEnter={() => setHoveredIndex(i)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                className={`group relative ${service.link ? "cursor-pointer" : "cursor-default"}`}
-              >
-                {/* Hover fill background */}
-                <motion.div
-                  className="absolute inset-0 bg-primary-foreground pointer-events-none"
-                  initial={{ scaleY: 0 }}
-                  animate={{ scaleY: isHovered ? 1 : 0 }}
-                  style={{ originY: "bottom" }}
-                  transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
-                />
-
-                <div className="relative z-10 flex items-center gap-6 lg:gap-8 py-8 lg:py-10 px-6 lg:px-10">
-
-                  {/* Number */}
-                  <div className="w-12 shrink-0">
-                    <motion.span
-                      animate={{ color: isHovered ? "hsl(var(--accent))" : "hsl(var(--primary-foreground) / 0.35)" }}
-                      transition={{ duration: 0.25 }}
-                      className="text-base font-mono tracking-widest"
-                    >
-                      {service.number}
-                    </motion.span>
-                  </div>
-
-                  {/* Subtitle (hidden on mobile) */}
-                  <div className="hidden lg:block w-36 shrink-0">
-                    <motion.span
-                      animate={{ color: isHovered ? "hsl(var(--accent))" : "hsl(var(--primary-foreground) / 0.4)" }}
-                      transition={{ duration: 0.25 }}
-                      className="text-[11px] font-semibold tracking-[0.22em] uppercase"
-                    >
-                      {service.subtitle}
-                    </motion.span>
-                  </div>
-
-                  {/* Title */}
-                  <div className="flex-1 lg:flex-none lg:w-64 lg:shrink-0">
-                    <motion.h3
-                      animate={{ color: isHovered ? "hsl(var(--primary))" : "hsl(var(--primary-foreground))" }}
-                      transition={{ duration: 0.25 }}
-                      className="text-2xl lg:text-3xl font-bold tracking-tight leading-snug"
-                      style={{ fontFamily: "var(--font-heading)" }}
-                    >
-                      {service.title}
-                    </motion.h3>
-                  </div>
-
-                  {/* Mobile Arrow */}
-                  <div className="shrink-0 block lg:hidden text-accent">
-                    {service.link && (
-                      <span className="text-[10px] font-bold tracking-widest uppercase whitespace-nowrap flex items-center gap-1">
-                        View <span className="text-sm leading-none">→</span>
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Description */}
-                  <div className="hidden lg:block flex-1 max-w-sm">
-                    <motion.p
-                      animate={{ color: isHovered ? "hsl(var(--primary) / 0.75)" : "hsl(var(--primary-foreground) / 0.55)" }}
-                      transition={{ duration: 0.25 }}
-                      className="text-[15px] leading-relaxed"
-                    >
-                      {service.description}
-                    </motion.p>
-                  </div>
-
-                  {/* Tags */}
-                  <div className="hidden xl:flex shrink-0 w-44 flex-wrap justify-end gap-1.5 ml-auto">
-                    {service.tags.map((tag) => (
-                      <motion.span
-                        key={tag}
-                        animate={{
-                          backgroundColor: isHovered ? "hsl(var(--accent) / 0.12)" : "hsl(var(--primary-foreground) / 0.07)",
-                          color: isHovered ? "hsl(var(--accent))" : "hsl(var(--primary-foreground) / 0.55)",
-                          borderColor: isHovered ? "hsl(var(--accent) / 0.35)" : "hsl(var(--primary-foreground) / 0.12)",
-                        }}
-                        transition={{ duration: 0.25 }}
-                        className="text-[10px] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full border"
-                      >
-                        {tag}
-                      </motion.span>
-                    ))}
-                  </div>
-
-                  {/* Arrow */}
-                  <div className="shrink-0 hidden lg:block pr-2 xl:ml-0 ml-auto">
-                    <motion.div
-                      animate={{
-                        opacity: isHovered ? 1 : 0,
-                        x: isHovered ? 0 : -10,
-                      }}
-                      transition={{ duration: 0.25 }}
-                      className="text-accent text-xl"
-                    >
-                      {service.link ? (
-                        <span className="inline-flex items-center gap-1 text-sm font-semibold whitespace-nowrap">View Page →</span>
-                      ) : (
-                        "→"
-                      )}
-                    </motion.div>
-                  </div>
+              {/* Right: Description & Tags */}
+              <div className="flex flex-col lg:items-end gap-6 w-full lg:w-[400px] shrink-0 text-left lg:text-right">
+                <p className="text-white/60 text-sm leading-relaxed font-medium">
+                  {service.description}
+                </p>
+                <div className="flex flex-wrap justify-start lg:justify-end gap-2">
+                  {service.tags.map(tag => (
+                    <span key={tag} className="font-mono text-[8px] md:text-[10px] uppercase tracking-widest text-white/40 border border-white/10 px-2 py-1">
+                      {tag}
+                    </span>
+                  ))}
                 </div>
+              </div>
 
-                {/* Bottom border */}
-                <div className="h-px bg-primary-foreground/10 relative z-10" />
-
-                {/* Clickable overlay for linked services */}
-                {service.link && (
-                  <Link
-                    to={service.link}
-                    className="absolute inset-0 z-20"
-                    aria-label={`View ${service.title} page`}
-                  />
-                )}
-              </motion.div>
-            );
-          })}
+            </div>
+          ))}
+          {/* Bottom border for the last item */}
+          <div className="border-t border-white/10"></div>
         </div>
+
       </div>
     </section>
   );
