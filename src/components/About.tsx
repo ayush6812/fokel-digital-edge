@@ -29,7 +29,7 @@ const About = () => {
           />
         </div>
         
-        <div className="relative z-10 w-full flex justify-end text-right mt-12 md:mt-16">
+        <div className="relative z-10 w-full flex justify-end text-right">
           <h2 className="text-5xl md:text-6xl lg:text-[7rem] font-black uppercase tracking-tighter leading-[0.8] text-accent flex flex-col items-end drop-shadow-2xl">
             <span>BOLD</span>
             <span>IDEAS,</span>
