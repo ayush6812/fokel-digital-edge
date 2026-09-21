@@ -44,9 +44,6 @@ const Newsletter = () => {
               Subscribe
               <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </button>
-            <p className="font-mono text-[10px] text-white/60 uppercase tracking-widest font-bold">
-              NO SPAM. JUST PURE SIGNAL. UNSUBSCRIBE ANYTIME.
-            </p>
           </form>
         </div>
 
