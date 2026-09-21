@@ -39,8 +39,8 @@ const FeaturedWork = () => {
     <section id="work" className="bg-black">
       
       {/* Massive White Header Block */}
-      <div className="bg-white w-full py-16 md:py-24 flex justify-center items-center">
-        <h2 className="text-[12vw] leading-none font-black uppercase tracking-tighter text-black text-center px-4" style={{ fontFamily: "var(--font-heading)" }}>
+      <div className="bg-white w-full py-8 md:py-12 flex justify-center items-center border-b border-black/10">
+        <h2 className="text-[8vw] leading-[0.9] font-black uppercase tracking-tighter text-black text-center px-4" style={{ fontFamily: "var(--font-heading)" }}>
           SELECTED<br/>WORK.
         </h2>
       </div>
