@@ -23,7 +23,7 @@ const Footer = () => {
       <div className="relative z-10 w-full p-8 md:p-12 lg:p-24 pointer-events-none">
         
         {/* Minimal Footer Links */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 border-t border-white/10 pt-12">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 border-t border-white/10 pt-12">
           
           <div className="md:col-span-1 pointer-events-auto">
             <div className="group cursor-pointer perspective-1000 w-16 h-16 mb-6">
@@ -57,6 +57,14 @@ const Footer = () => {
             <ul className="space-y-2 font-bold uppercase tracking-tight text-base text-white">
               <li><a href="#" className="hover:text-orange-500 transition-colors">INSTAGRAM</a></li>
               <li><a href="#" className="hover:text-orange-500 transition-colors">LINKEDIN</a></li>
+            </ul>
+          </div>
+
+          <div className="pointer-events-auto">
+            <h4 className="text-white font-mono text-[10px] uppercase tracking-widest mb-6 opacity-50">CONNECT</h4>
+            <ul className="space-y-2 font-bold uppercase tracking-tight text-base text-white">
+              <li><a href="mailto:info@fokelworks.com" className="hover:text-orange-500 transition-colors">EMAIL</a></li>
+              <li><a href="tel:+918076085566" className="hover:text-orange-500 transition-colors">WHATSAPP</a></li>
             </ul>
           </div>
 

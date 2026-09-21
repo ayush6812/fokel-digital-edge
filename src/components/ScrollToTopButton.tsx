@@ -52,6 +52,46 @@ const ScrollToTopButton = () => {
           exit={{ opacity: 0, y: 24, scale: 0.8 }}
           transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
         >
+          {/* ── Scroll to top button (JUST AN ARROW) ───────────────────────── */}
+          <div className="relative flex items-center justify-center">
+            {/* Tooltip */}
+            <AnimatePresence>
+              {hovered && (
+                <motion.span
+                  key="stt-tooltip"
+                  initial={{ opacity: 0, x: 6 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 6 }}
+                  transition={{ duration: 0.18, ease: "easeOut" }}
+                  className="absolute right-full mr-3 px-3 py-1.5 rounded-full text-xs font-medium text-white whitespace-nowrap pointer-events-none"
+                  style={{
+                    background: "rgba(15,15,15,0.82)",
+                    backdropFilter: "blur(12px)",
+                    WebkitBackdropFilter: "blur(12px)",
+                    border: "1px solid rgba(255,255,255,0.12)",
+                    boxShadow: "0 4px 16px rgba(0,0,0,0.3)",
+                  }}
+                >
+                  Scroll to top
+                </motion.span>
+              )}
+            </AnimatePresence>
+
+            <motion.button
+              onClick={scrollToTop}
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
+              aria-label="Scroll to top"
+              id="scroll-to-top-button"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.92 }}
+              className="relative flex items-center justify-center cursor-pointer text-white/50 hover:text-white transition-colors"
+              style={{ width: size, height: size }}
+            >
+              <ArrowUp className="w-8 h-8" strokeWidth={2} />
+            </motion.button>
+          </div>
+
           {/* ── WhatsApp button ──────────────────────────────────────────────── */}
           <div className="relative flex items-center justify-center">
             {/* Tooltip */}
@@ -91,92 +131,13 @@ const ScrollToTopButton = () => {
                 width: BUTTON_SIZE,
                 height: BUTTON_SIZE,
                 background: "#25D366",
-                boxShadow: "0 4px 20px rgba(37,211,102,0.45), 0 2px 8px rgba(0,0,0,0.25)",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
               }}
             >
               <WhatsAppIcon />
             </motion.a>
           </div>
 
-          {/* ── Scroll to top button ─────────────────────────────────────────── */}
-          <div className="relative flex items-center justify-center">
-            {/* Tooltip */}
-            <AnimatePresence>
-              {hovered && (
-                <motion.span
-                  key="stt-tooltip"
-                  initial={{ opacity: 0, x: 6 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 6 }}
-                  transition={{ duration: 0.18, ease: "easeOut" }}
-                  className="absolute right-full mr-3 px-3 py-1.5 rounded-full text-xs font-medium text-white whitespace-nowrap pointer-events-none"
-                  style={{
-                    background: "rgba(15,15,15,0.82)",
-                    backdropFilter: "blur(12px)",
-                    WebkitBackdropFilter: "blur(12px)",
-                    border: "1px solid rgba(255,255,255,0.12)",
-                    boxShadow: "0 4px 16px rgba(0,0,0,0.3)",
-                  }}
-                >
-                  Scroll to top
-                </motion.span>
-              )}
-            </AnimatePresence>
-
-            <motion.button
-              onClick={scrollToTop}
-              onMouseEnter={() => setHovered(true)}
-              onMouseLeave={() => setHovered(false)}
-              aria-label="Scroll to top"
-              id="scroll-to-top-button"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.92 }}
-              className="relative flex items-center justify-center cursor-pointer"
-              style={{ width: size, height: size }}
-            >
-              {/* Glassmorphism background */}
-              <span
-                className="absolute inset-0 rounded-full"
-                style={{
-                  background: "rgba(255,255,255,0.08)",
-                  backdropFilter: "blur(12px)",
-                  WebkitBackdropFilter: "blur(12px)",
-                  border: "1px solid rgba(255,255,255,0.18)",
-                  boxShadow: "0 8px 32px rgba(0,0,0,0.30)",
-                }}
-              />
-
-              {/* Circular progress ring */}
-              <svg
-                className="absolute inset-0"
-                width={size}
-                height={size}
-                viewBox={`0 0 ${size} ${size}`}
-                style={{ transform: "rotate(-90deg)" }}
-              >
-                <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="rgba(255,255,255,0.12)" strokeWidth={strokeWidth} />
-                <circle
-                  cx={size / 2} cy={size / 2} r={radius}
-                  fill="none"
-                  stroke="hsl(var(--accent))"
-                  strokeWidth={strokeWidth}
-                  strokeLinecap="round"
-                  strokeDasharray={circumference}
-                  strokeDashoffset={offset}
-                  style={{ transition: "stroke-dashoffset 0.1s linear" }}
-                />
-              </svg>
-
-              {/* Bouncing arrow */}
-              <motion.span
-                className="relative z-10 flex items-center justify-center text-white"
-                animate={{ y: [0, -2, 0] }}
-                transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <ArrowUp className="w-5 h-5" strokeWidth={2.5} />
-              </motion.span>
-            </motion.button>
-          </div>
         </motion.div>
       )}
     </AnimatePresence>
