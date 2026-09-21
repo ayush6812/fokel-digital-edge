@@ -14,17 +14,14 @@ const HowWeWork = () => {
     {
       title: "Mission Driven",
       desc: "We partner with ambitious brands to build purpose-led digital experiences that create lasting market impact.",
-      color: "group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-orange-400 group-hover:to-red-500"
     },
     {
       title: "Award Winning",
       desc: "Recognized for pushing the boundaries of digital design and uncompromising engineering excellence.",
-      color: "group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-500"
     },
     {
       title: "Fast Execution",
       desc: "Engineered for velocity. We deploy scalable solutions rapidly without compromising on precision.",
-      color: "group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-emerald-400"
     }
   ];
 
@@ -107,7 +104,7 @@ const HowWeWork = () => {
                     0{index + 1}
                   </span>
                   <div className="flex flex-col gap-1.5 z-10">
-                    <h4 className={`text-xl md:text-2xl font-black uppercase tracking-tighter transition-all duration-500 ${item.color}`} style={{ fontFamily: "var(--font-heading)" }}>
+                    <h4 className="text-xl md:text-2xl font-black uppercase tracking-tighter transition-all duration-500 group-hover:text-orange-500" style={{ fontFamily: "var(--font-heading)" }}>
                       {item.title}
                     </h4>
                     <p className="text-white/50 text-xs md:text-sm font-medium leading-snug max-w-md group-hover:text-white/90 transition-colors duration-500">
