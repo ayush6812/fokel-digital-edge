@@ -41,8 +41,11 @@ const Navbar = () => {
         
         {/* Left: Logo Area */}
         <div className="flex items-center h-full px-6 md:px-8">
-          <Link to="/" className="flex items-center group hover:opacity-80 transition-opacity">
-            <img src={logoWhite} alt="Fokel" className="h-8 md:h-9 w-auto" />
+          <Link to="/" className="flex items-center gap-4 group">
+            <img src={logoWhite} alt="Fokel" className="h-7 md:h-8 w-auto group-hover:opacity-80 transition-opacity" />
+            <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.25em] text-white/50 group-hover:text-white transition-colors">
+              FOKEL
+            </span>
           </Link>
         </div>
 
