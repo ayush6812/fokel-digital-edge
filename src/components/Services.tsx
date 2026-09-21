@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const services = [
@@ -48,18 +48,17 @@ const Services = () => {
       
       {/* Background Image Overlay */}
       <div className="absolute inset-0 z-0 bg-black">
-        <AnimatePresence mode="wait">
+        {services.map((service, idx) => (
           <motion.img 
-            key={hoveredIndex}
-            src={services[hoveredIndex].image}
+            key={idx}
+            src={service.image}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.2 }}
-            exit={{ opacity: 0 }}
+            animate={{ opacity: hoveredIndex === idx ? 0.2 : 0 }}
             transition={{ duration: 0.5 }}
             alt="Services Background" 
-            className="w-full h-full object-cover grayscale absolute inset-0"
+            className="w-full h-full object-cover grayscale absolute inset-0 pointer-events-none"
           />
-        </AnimatePresence>
+        ))}
       </div>
 
       <div className="relative z-10 max-w-[1600px] mx-auto px-4 md:px-8">
