@@ -2,10 +2,9 @@ import { ArrowUpRight } from "lucide-react";
 
 const Newsletter = () => {
   return (
-    <section id="newsletter" className="bg-[#FF4500] text-white w-full min-h-[70vh] flex flex-col md:flex-row relative z-10 overflow-hidden">
-      
+    <section id="newsletter" className="bg-[#FF4500] text-white w-full flex flex-col md:flex-row relative z-10 overflow-hidden">
       {/* Left Side: Copy */}
-      <div className="w-full md:w-1/2 p-8 md:p-12 lg:p-24 flex flex-col justify-between">
+      <div className="w-full md:w-1/2 py-12 md:py-16 px-8 md:px-12 flex flex-col justify-center">
         {/* Removed Intelligence Delivered text per user request */}
         <div className="mt-auto">
           <h2 className="text-[clamp(4rem,8vw,10rem)] font-black uppercase tracking-tighter leading-[0.85] mb-8" style={{ fontFamily: "var(--font-heading)" }}>
@@ -20,7 +19,7 @@ const Newsletter = () => {
       </div>
 
       {/* Right Side: Form & Visuals */}
-      <div className="w-full md:w-1/2 p-8 md:p-12 lg:p-24 bg-[#FF4500] md:border-l border-white/20 flex flex-col justify-end relative overflow-hidden">
+      <div className="w-full md:w-1/2 py-12 md:py-16 px-8 md:px-12 bg-[#FF4500] md:border-l border-white/20 flex flex-col justify-center relative overflow-hidden">
         
         {/* Massive watermark graphic */}
         <div className="absolute top-0 right-0 translate-x-1/4 -translate-y-1/4 pointer-events-none opacity-10">
