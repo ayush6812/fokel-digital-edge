@@ -45,12 +45,12 @@ const AnimatedNumber = ({ text }: { text: string }) => {
 
 const StoryInNumbers = () => {
   return (
-    <section className="bg-accent w-full py-24 md:py-32">
+    <section className="bg-accent w-full py-16 md:py-24">
       <div className="max-w-[1600px] mx-auto px-4 md:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-8 text-center">
           {metrics.map((metric, idx) => (
             <div key={idx} className="flex flex-col items-center justify-center space-y-4">
-              <h3 className="text-6xl md:text-7xl lg:text-[7rem] font-black text-white leading-none tracking-tighter">
+              <h3 className="text-5xl md:text-6xl lg:text-[6rem] font-black text-white leading-none tracking-tighter">
                 <AnimatedNumber text={metric.value} />
               </h3>
               <p className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-white/80 max-w-[150px] leading-relaxed">
