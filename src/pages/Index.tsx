@@ -56,13 +56,36 @@ const Index = () => {
           <HowWeWork />
           <Testimonials />
           
-          {/* Aesthetic Divider Between Light Sections */}
-          <div className="w-full bg-[#f0f0f0] flex justify-center items-center pt-8 pb-16 relative z-20">
-            <div className="w-full max-w-[1600px] h-[1px] bg-black/10 mx-6 md:mx-12 relative">
-              <div className="absolute left-1/2 -translate-x-1/2 -top-4 bg-[#f0f0f0] px-6">
-                <div className="w-8 h-8 rounded-full border border-black/10 flex items-center justify-center">
-                  <div className="w-2 h-2 rounded-full bg-orange-600" />
-                </div>
+          {/* Color Block Separator */}
+          <div className="w-full bg-orange-600 border-y border-black py-4 md:py-6 overflow-hidden relative z-20 flex">
+            <div className="animate-marquee flex min-w-max items-center">
+              <div className="flex gap-16 items-center px-8 font-mono text-xs md:text-sm font-black uppercase tracking-[0.2em] text-black">
+                <span>RESULTS SPEAK LOUDER THAN WORDS</span>
+                <span className="w-2 h-2 rounded-full bg-black"></span>
+                <span>REAL CLIENTS</span>
+                <span className="w-2 h-2 rounded-full bg-black"></span>
+                <span>PROVEN ROI</span>
+                <span className="w-2 h-2 rounded-full bg-black"></span>
+                <span>RESULTS SPEAK LOUDER THAN WORDS</span>
+                <span className="w-2 h-2 rounded-full bg-black"></span>
+                <span>REAL CLIENTS</span>
+                <span className="w-2 h-2 rounded-full bg-black"></span>
+                <span>PROVEN ROI</span>
+                <span className="w-2 h-2 rounded-full bg-black"></span>
+              </div>
+              <div className="flex gap-16 items-center px-8 font-mono text-xs md:text-sm font-black uppercase tracking-[0.2em] text-black" aria-hidden="true">
+                <span>RESULTS SPEAK LOUDER THAN WORDS</span>
+                <span className="w-2 h-2 rounded-full bg-black"></span>
+                <span>REAL CLIENTS</span>
+                <span className="w-2 h-2 rounded-full bg-black"></span>
+                <span>PROVEN ROI</span>
+                <span className="w-2 h-2 rounded-full bg-black"></span>
+                <span>RESULTS SPEAK LOUDER THAN WORDS</span>
+                <span className="w-2 h-2 rounded-full bg-black"></span>
+                <span>REAL CLIENTS</span>
+                <span className="w-2 h-2 rounded-full bg-black"></span>
+                <span>PROVEN ROI</span>
+                <span className="w-2 h-2 rounded-full bg-black"></span>
               </div>
             </div>
           </div>
