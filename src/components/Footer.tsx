@@ -56,16 +56,17 @@ const Footer = () => {
             <h4 className="text-white font-mono text-[10px] uppercase tracking-widest mb-6 opacity-50">CONNECT</h4>
             <ul className="space-y-2 font-bold uppercase tracking-tight text-base text-white">
               <li><a href="mailto:info@fokelworks.com" className="hover:text-orange-500 transition-colors">EMAIL</a></li>
-              <li><a href="tel:+918076085566" className="hover:text-orange-500 transition-colors">WHATSAPP</a></li>
+              <li><a href="tel:+918076085566" className="hover:text-orange-500 transition-colors">+91 80760 85566</a></li>
             </ul>
           </div>
 
           <div className="pointer-events-auto text-left md:text-right flex flex-col justify-between">
             <div>
               <h4 className="text-white font-mono text-[10px] uppercase tracking-widest mb-6 opacity-50">LOCATION</h4>
-              <p className="font-bold uppercase tracking-tight text-base text-white/80 leading-relaxed">
-                NEW DELHI, INDIA <br />
-                GLOBAL REACH
+              <p className="font-bold uppercase tracking-tight text-sm text-white/80 leading-relaxed">
+                A77, BASEMENT, A BLOCK, <br />
+                EAST OF KAILASH, NEW DELHI, <br />
+                DELHI 110065, INDIA
               </p>
             </div>
             

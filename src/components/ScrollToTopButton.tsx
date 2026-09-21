@@ -88,7 +88,7 @@ const ScrollToTopButton = () => {
               className="relative flex items-center justify-center cursor-pointer text-white/50 hover:text-white transition-colors"
               style={{ width: size, height: size }}
             >
-              <ArrowUp className="w-8 h-8" strokeWidth={2} />
+              <ArrowUp className="w-4 h-4" strokeWidth={2.5} />
             </motion.button>
           </div>
 
