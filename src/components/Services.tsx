@@ -29,7 +29,7 @@ const services = [
     title: "DIGITAL STRATEGY",
     description: "Data-informed roadmaps that align your digital presence with business objectives. We transform market insights into actionable growth strategies.",
     tags: ["CONSULTING", "RESEARCH", "ROADMAPPING", "KPIS"],
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop"
   }
 ];
 
