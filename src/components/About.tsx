@@ -2,7 +2,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <section id="about" className="flex flex-col md:flex-row min-h-screen">
+    <section id="about" className="flex flex-col md:flex-row min-h-[90vh]">
       {/* Left Column - Orange */}
       <div className="w-full md:w-1/2 bg-accent text-white flex flex-col justify-between p-8 md:p-12 lg:p-16">
         <div className="flex justify-between items-center font-mono text-[10px] md:text-xs uppercase tracking-widest mb-12 md:mb-16">

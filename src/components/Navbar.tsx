@@ -1,177 +1,91 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Menu, X } from "lucide-react";
-import logo from "@/assets/fokel-logo.png";
-import logoBlack from "@/assets/fokel-logo-black.png";
+import logoWhite from "@/assets/fokel-logo.png";
+import { Link, useLocation } from "react-router-dom";
 
-/* ─── Navbar ─────────────────────────────────────────────────────────────────── */
 const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Work", href: "#work" },
-  { label: "Contact", href: "#contact" },
-  { label: "Blog", href: "#blog" },
+  { label: "ABOUT", href: "/#about" },
+  { label: "SERVICES", href: "/#services" },
+  { label: "WORK", href: "/#work" },
+  { label: "CONTACT", href: "/#contact" },
+  { label: "BLOG", href: "/#blog" },
 ];
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isOverHero, setIsOverHero] = useState(true);
-  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
-
-  const [isDark, setIsDark] = useState(true);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setIsScrolled(scrollY > 50);
-      setIsOverHero(scrollY < window.innerHeight * 0.85);
-    };
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    // Theme detection for logo
-    const checkTheme = () => setIsDark(document.documentElement.classList.contains("dark"));
-    checkTheme();
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      observer.disconnect();
-    };
-  }, []);
+  const location = useLocation();
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    if (window.location.pathname !== "/") {
-      window.location.href = "/" + href;
-      return;
+    if (location.pathname !== "/" && href.startsWith("/#")) {
+      // Allow normal navigation if not on the homepage
+      return; 
     }
-    const targetId = href.replace("#", "");
-    const element = document.getElementById(targetId);
-    if (element) {
-      const navbarHeight = isScrolled ? 64 : 80;
-      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({ top: elementPosition - navbarHeight, behavior: "smooth" });
+
+    if (href.startsWith("/#")) {
+      e.preventDefault();
+      const targetId = href.replace("/#", "");
+      const element = document.getElementById(targetId);
+      if (element) {
+        const navbarHeight = 80; // h-20
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: elementPosition - navbarHeight, behavior: "smooth" });
+      }
     }
     if (isOpen) setIsOpen(false);
   };
 
-  const navBg = isOverHero
-    ? "bg-transparent border-transparent"
-    : "bg-background/30 backdrop-blur-xl border-b border-border/40 shadow-[0_4px_30px_rgba(0,0,0,0.1)]";
-
-  const linkColor = isOverHero
-    ? "text-white/90 hover:text-white"
-    : "text-foreground/80 hover:text-foreground";
-
-  const hoverBg = isOverHero ? "bg-white/10" : "bg-foreground/5";
-
-  const showWhiteLogo = isOverHero || isDark;
-
   return (
-    <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b ${navBg}`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, delay: 0.2 }}
-    >
-      {/* Hero gradient scrim */}
-      <AnimatePresence>
-        {isOverHero && (
-          <motion.div
-            key="hero-scrim"
-            className="absolute inset-0 pointer-events-none"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, transparent 100%)" }}
-          />
-        )}
-      </AnimatePresence>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a] border-b border-white/10 h-20 transition-all duration-300">
+      <div className="w-full h-full flex items-center justify-between">
+        
+        {/* Left: Logo Area */}
+        <div className="flex items-center h-full px-6 md:px-8">
+          <Link to="/" className="flex items-center gap-4 group">
+            <img src={logoWhite} alt="Fokel" className="h-6 w-auto" />
+            <span className="font-mono text-[10px] md:text-xs uppercase tracking-widest text-white/50 group-hover:text-white transition-colors">
+              FOKEL
+            </span>
+          </Link>
+        </div>
 
-      <div className={`relative max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between transition-all duration-300 ${isScrolled && !isOverHero ? "h-16" : "h-20 lg:h-24"
-        }`}>
+        {/* Middle space - grid separator */}
+        <div className="flex-1 h-full hidden lg:block border-l border-white/10"></div>
 
-        {/* Logo */}
-        <motion.a href="#" className="relative group" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-          <div className="relative h-8 md:h-9 w-auto">
-            <motion.img
-              src={logoBlack}
-              alt="Fokel"
-              className="h-8 md:h-9 w-auto absolute top-0 left-0"
-              animate={{ opacity: showWhiteLogo ? 1 : 0 }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-            />
-            <motion.img
-              src={logo}
-              alt="Fokel"
-              className="h-8 md:h-9 w-auto"
-              animate={{ opacity: showWhiteLogo ? 0 : 1 }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-            />
-          </div>
-        </motion.a>
-
-        {/* Desktop nav */}
-        <div className="hidden lg:flex items-center gap-2">
+        {/* Right: Links & CTA */}
+        <div className="hidden lg:flex h-full items-center">
           {navLinks.map((link) => (
-            <motion.a
+            <a
               key={link.label}
               href={link.href}
               onClick={(e) => scrollToSection(e, link.href)}
-              className={`relative px-5 py-2.5 text-sm font-medium transition-colors duration-300 cursor-pointer rounded-full ${linkColor}`}
-              onMouseEnter={() => setHoveredLink(link.label)}
-              onMouseLeave={() => setHoveredLink(null)}
-              whileHover={{ y: -1 }}
+              className="h-full flex items-center px-6 xl:px-8 border-l border-white/10 font-mono text-[9px] xl:text-[10px] uppercase tracking-[0.2em] text-white/50 hover:text-white hover:bg-white/5 transition-colors"
             >
-              {hoveredLink === link.label && (
-                <motion.div
-                  className={`absolute inset-0 rounded-full ${hoverBg}`}
-                  layoutId="navbar-hover"
-                  transition={{ duration: 0.2 }}
-                />
-              )}
-              <span className="relative z-10">{link.label}</span>
-            </motion.a>
+              {link.label}
+            </a>
           ))}
 
-          {/* Get in Touch CTA */}
-          <motion.a
-            href="#contact"
-            onClick={(e) => scrollToSection(e, "#contact")}
-            className="relative ml-4 bg-foreground text-background px-6 py-2.5 text-sm font-semibold rounded-full overflow-hidden group cursor-pointer"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+          {/* CTA */}
+          <a
+            href="/#contact"
+            onClick={(e) => scrollToSection(e, "/#contact")}
+            className="h-full flex items-center justify-center gap-3 px-6 xl:px-10 bg-white text-black font-mono text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-gray-200 transition-colors group border-l border-white/10"
           >
-            <span className="relative z-10 inline-flex items-center gap-2">
-              Get in Touch
-              <motion.span
-                animate={{ x: [0, 3, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <ArrowRight className="w-4 h-4" />
-              </motion.span>
-            </span>
-          </motion.a>
-
-          {/* Get in Touch CTA */}
+            START PROJECT
+            <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
+          </a>
         </div>
 
-        {/* Mobile — hamburger */}
-        <div className="lg:hidden flex items-center gap-2">
-          <motion.button
+        {/* Mobile menu button */}
+        <div className="lg:hidden h-full flex items-center px-6 border-l border-white/10">
+          <button 
             onClick={() => setIsOpen(!isOpen)}
-            className={`w-11 h-11 flex items-center justify-center rounded-full transition-colors ${isOverHero
-                ? "bg-white/15 hover:bg-white/25 text-white"
-                : "bg-secondary hover:bg-secondary/80 text-foreground"
-              }`}
-            whileTap={{ scale: 0.95 }}
+            className="text-white hover:text-white/70 transition-colors"
           >
-            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </motion.button>
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
+
       </div>
 
       {/* Mobile drawer */}
@@ -179,55 +93,35 @@ const Navbar = () => {
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
+            animate={{ opacity: 1, height: "100vh" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden bg-background border-t border-border overflow-hidden"
+            className="lg:hidden bg-[#0a0a0a] border-t border-white/10 absolute top-20 left-0 right-0 w-full flex flex-col"
           >
-            <div className="px-6 py-8 flex flex-col gap-2">
-              {navLinks.map((link, i) => (
-                <motion.a
+            <div className="flex flex-col border-b border-white/10">
+              {navLinks.map((link) => (
+                <a
                   key={link.label}
                   href={link.href}
                   onClick={(e) => scrollToSection(e, link.href)}
-                  className="text-2xl font-semibold text-foreground py-3 cursor-pointer"
-                  style={{ fontFamily: "var(--font-heading)" }}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                  whileTap={{ scale: 0.98 }}
+                  className="w-full py-6 px-8 border-b border-white/10 font-mono text-xs uppercase tracking-widest text-white/80 hover:text-white hover:bg-white/5 transition-colors"
                 >
                   {link.label}
-                </motion.a>
+                </a>
               ))}
-
-              <motion.a
-                href="#contact"
-                onClick={(e) => scrollToSection(e, "#contact")}
-                className="mt-6 btn-primary w-full justify-center"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: navLinks.length * 0.05 }}
+              <a
+                href="/#contact"
+                onClick={(e) => scrollToSection(e, "/#contact")}
+                className="w-full py-8 px-8 bg-white text-black font-mono text-xs font-bold uppercase tracking-widest flex items-center justify-between hover:bg-gray-200 transition-colors"
               >
-                Get in Touch
-                <ArrowRight className="w-4 h-4" />
-              </motion.a>
-
-              <motion.div
-                className="mt-8 pt-6 border-t border-border/50"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-              >
-                <p className="text-sm text-muted-foreground text-center">
-                  Let's create something remarkable together
-                </p>
-              </motion.div>
+                START PROJECT
+                <ArrowRight className="w-5 h-5" />
+              </a>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </nav>
   );
 };
 
