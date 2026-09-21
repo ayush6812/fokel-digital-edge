@@ -6,18 +6,14 @@ const Newsletter = () => {
       
       {/* Left Side: Copy */}
       <div className="w-full md:w-1/2 p-8 md:p-12 lg:p-24 flex flex-col justify-between">
-        
-        <span className="font-mono text-xs uppercase tracking-widest block mb-12 font-bold">
-          [ INTELLIGENCE, DELIVERED ]
-        </span>
-        
+        {/* Removed Intelligence Delivered text per user request */}
         <div className="mt-auto">
           <h2 className="text-[clamp(4rem,8vw,10rem)] font-black uppercase tracking-tighter leading-[0.85] mb-8" style={{ fontFamily: "var(--font-heading)" }}>
             STAY <br/>
             SHARP.
           </h2>
-          <p className="font-bold text-sm uppercase tracking-widest max-w-sm leading-relaxed text-white/90">
-            JOIN 5,000+ FOUNDERS AND EXECUTIVES RECEIVING OUR WEEKLY INSIGHTS ON DESIGN, ENGINEERING, AND GROWTH STRATEGY.
+          <p className="font-bold text-sm md:text-base uppercase tracking-widest max-w-sm leading-relaxed text-white/90">
+            GET THE LATEST NEWS AND UPDATES DELIVERED STRAIGHT TO YOUR INBOX.
           </p>
         </div>
 
