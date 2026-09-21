@@ -45,7 +45,7 @@ const AnimatedNumber = ({ text }: { text: string }) => {
 
 const StoryInNumbers = () => {
   return (
-    <section className="bg-accent w-full py-16 md:py-24">
+    <section className="bg-accent w-full py-10 md:py-12">
       <div className="max-w-[1600px] mx-auto px-4 md:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-8 text-center">
           {metrics.map((metric, idx) => (
