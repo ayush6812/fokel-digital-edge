@@ -3,24 +3,24 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const testimonials = [
   {
-    quote: "We launched in two weeks and had paying customers by week three. I've worked with agencies that took months to deliver half of this.",
-    name: "Sophie Andersen",
-    role: "Co-founder, Vertex Tech",
+    quote: "Fokel's team delivered a stunning website that perfectly captures our brand ethos. Their technical expertise and design sensibility are truly world-class.",
+    name: "RAHUL SHARMA",
+    role: "CEO, INVENTERON TECHNOLOGIES",
   },
   {
-    quote: "Their engineering speed is unmatched. They built our entire digital ecosystem and completely transformed our user acquisition flow.",
-    name: "Marcus Chen",
-    role: "CEO, Nexus Dynamics",
+    quote: "Working with Fokel was a game-changer for our brand. They understood our vision and translated it into a digital experience that truly resonates with our audience. The ROI has been exceptional.",
+    name: "PRIYA MENON",
+    role: "MARKETING HEAD, ONSURITY",
   },
   {
-    quote: "The perfect balance of aesthetic brilliance and robust architecture. They don't just build websites, they engineer digital products.",
-    name: "Elena Rodriguez",
-    role: "Head of Product, Shift",
+    quote: "The team at Fokel brought fresh perspective and meticulous attention to detail. Our brand has never looked better or performed stronger online. They're now our go-to digital partner.",
+    name: "ANKIT VERMA",
+    role: "FOUNDER, HMO ARCHITECTS",
   },
   {
-    quote: "Our organic traffic skyrocketed after their technical SEO and platform rebuild. They delivered beyond our highest expectations.",
-    name: "James Wallace",
-    role: "Marketing Director, Omni Corp",
+    quote: "Fokel's data-driven approach combined with creative excellence helped us achieve remarkable growth. Our digital engagement increased 3x within just six months. Highly recommended.",
+    name: "SNEHA KAPOOR",
+    role: "DIRECTOR OF GROWTH, HOMELANE",
   }
 ];
 
