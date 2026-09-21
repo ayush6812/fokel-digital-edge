@@ -7,8 +7,8 @@ const Footer = () => {
       {/* Subtle top glow separator */}
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent z-20"></div>
 
-      {/* Massive watermark to explicitly mark the footer */}
-      <div className="absolute top-8 left-0 right-0 overflow-hidden pointer-events-none select-none opacity-5 flex justify-center z-0">
+      {/* Massive watermark to explicitly mark the footer (hidden on desktop) */}
+      <div className="absolute top-8 left-0 right-0 overflow-hidden pointer-events-none select-none opacity-5 flex md:hidden justify-center z-0">
         <h1 className="text-[15vw] font-black uppercase tracking-tighter leading-none whitespace-nowrap" style={{ fontFamily: "var(--font-heading)" }}>
           FOKEL STUDIO
         </h1>
