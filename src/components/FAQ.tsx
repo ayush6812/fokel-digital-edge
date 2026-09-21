@@ -13,6 +13,14 @@ const faqs = [
   {
     question: "What industries do you work with?",
     answer: "We partner with visionary companies in technology, real estate, fashion, healthcare, and EdTech. Our framework is adaptable but our execution speed remains constant."
+  },
+  {
+    question: "How do you measure the success of your campaigns?",
+    answer: "We establish clear KPIs at the start of every engagement — from traffic and engagement metrics to conversion rates and ROI. You'll receive regular reports with actionable insights, ensuring full transparency on campaign performance."
+  },
+  {
+    question: "What makes Fokel different from other agencies?",
+    answer: "We combine data-driven strategy with bold creative execution. Our lean, senior-led team means you work directly with experts — no junior handoffs. We focus on making your brand the undisputed authority in your niche."
   }
 ];
 
