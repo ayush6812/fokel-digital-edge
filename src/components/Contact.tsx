@@ -2,77 +2,84 @@ import { ArrowUpRight } from "lucide-react";
 
 const Contact = () => {
   return (
-    <section id="contact" className="bg-black text-white w-full py-32 md:py-48 px-6 md:px-12 relative z-10 overflow-hidden flex flex-col items-center min-h-screen">
+    <section id="contact" className="bg-black text-white w-full py-32 md:py-48 px-4 md:px-8 relative z-10 overflow-hidden flex flex-col items-center justify-center min-h-[90vh]">
       
       {/* Background Noise */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-20 mix-blend-overlay">
         <div className="w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-50" />
       </div>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col">
+      <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center">
         
-        <div className="flex items-center justify-between mb-16 md:mb-24 border-b border-white/10 pb-8">
-          <span className="font-mono text-xs md:text-sm text-[#FF4500] uppercase tracking-widest font-bold">
+        <div className="flex flex-col items-center text-center mb-24">
+          <span className="font-mono text-[10px] md:text-xs text-[#FF4500] uppercase tracking-widest block mb-8 font-bold">
             [ INITIATE SEQUENCE ]
           </span>
-          <img src="/src/assets/logo-white.png" alt="Fokel" className="w-10 opacity-30" />
+          <h2 className="text-[clamp(4rem,15vw,12rem)] font-black uppercase tracking-tighter leading-[0.85]" style={{ fontFamily: "var(--font-heading)" }}>
+            LET'S <br/> TALK.
+          </h2>
         </div>
-        
-        {/* Narrative Form */}
-        <form className="w-full">
-          <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold leading-[1.6] md:leading-[1.8] tracking-tight">
-            Hello Fokel, my name is 
+
+        {/* The Clean Stack Form */}
+        <form className="w-full flex flex-col gap-12 md:gap-16">
+          
+          <div className="relative group w-full">
             <input 
               type="text" 
-              placeholder="Your Name" 
-              className="inline-block bg-transparent border-b-4 border-white/20 focus:border-[#FF4500] focus:outline-none text-center min-w-[200px] md:min-w-[300px] mx-2 md:mx-6 text-[#FF4500] placeholder:text-white/20 transition-colors"
+              placeholder="YOUR NAME" 
+              className="w-full bg-transparent border-b border-white/20 pb-6 text-2xl md:text-5xl font-black uppercase tracking-tighter text-white focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20 peer"
               required
             />
-            and I represent 
+          </div>
+
+          <div className="relative group w-full">
             <input 
-              type="text" 
-              placeholder="Your Brand" 
-              className="inline-block bg-transparent border-b-4 border-white/20 focus:border-[#FF4500] focus:outline-none text-center min-w-[200px] md:min-w-[300px] mx-2 md:mx-6 mt-4 md:mt-0 text-[#FF4500] placeholder:text-white/20 transition-colors"
+              type="email" 
+              placeholder="YOUR EMAIL" 
+              className="w-full bg-transparent border-b border-white/20 pb-6 text-2xl md:text-5xl font-black uppercase tracking-tighter text-white focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20 peer"
               required
-            />. 
-            <br className="hidden lg:block" />
-            <br className="hidden lg:block" />
-            I am looking to build 
+            />
+          </div>
+
+          <div className="relative group w-full">
             <select 
-              className="inline-block bg-transparent border-b-4 border-white/20 focus:border-[#FF4500] focus:outline-none text-center min-w-[250px] md:min-w-[400px] mx-2 md:mx-6 mt-4 lg:mt-0 text-[#FF4500] appearance-none cursor-pointer transition-colors"
+              className="w-full bg-transparent border-b border-white/20 pb-6 text-2xl md:text-5xl font-black uppercase tracking-tighter text-white focus:outline-none focus:border-[#FF4500] transition-colors appearance-none cursor-pointer peer"
               required
               defaultValue=""
             >
-              <option value="" disabled className="text-white/20 bg-black">Select project type...</option>
-              <option value="website" className="text-white bg-black">a high-performance website</option>
-              <option value="app" className="text-white bg-black">a custom web application</option>
-              <option value="marketing" className="text-white bg-black">an aggressive marketing system</option>
-              <option value="other" className="text-white bg-black">a custom digital solution</option>
-            </select>.
-            <br className="hidden lg:block" />
-            <br className="hidden lg:block" />
-            You can reach me at 
-            <input 
-              type="email" 
-              placeholder="Email Address" 
-              className="inline-block bg-transparent border-b-4 border-white/20 focus:border-[#FF4500] focus:outline-none text-center min-w-[250px] md:min-w-[400px] mx-2 md:mx-6 mt-4 lg:mt-0 text-[#FF4500] placeholder:text-white/20 transition-colors"
+              <option value="" disabled className="text-white/20 bg-black">PROJECT TYPE</option>
+              <option value="website" className="text-white bg-black">WEB DESIGN & DEV</option>
+              <option value="app" className="text-white bg-black">CUSTOM APPLICATION</option>
+              <option value="marketing" className="text-white bg-black">DIGITAL MARKETING</option>
+              <option value="other" className="text-white bg-black">OTHER INQUIRY</option>
+            </select>
+            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-white/30 peer-focus:text-[#FF4500] transition-colors">
+              ▼
+            </div>
+          </div>
+
+          <div className="relative group w-full">
+            <textarea 
+              placeholder="PROJECT DETAILS" 
+              rows={2}
+              className="w-full bg-transparent border-b border-white/20 pb-6 text-2xl md:text-5xl font-black uppercase tracking-tighter text-white focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20 resize-none peer"
               required
             />
-            to discuss this further.
-          </h2>
-          
-          <div className="mt-24 flex flex-col sm:flex-row items-center gap-8 border-t border-white/10 pt-16">
+          </div>
+
+          <div className="mt-12 flex flex-col items-center">
             <button 
               type="submit" 
-              className="bg-[#FF4500] text-white px-12 py-6 rounded-full font-black uppercase tracking-widest text-sm md:text-base flex items-center justify-center gap-3 hover:bg-white hover:text-black transition-all duration-500 w-full sm:w-auto shadow-[0_0_0_0_rgba(255,69,0,0)] hover:shadow-[0_0_40px_0_rgba(255,69,0,0.6)] hover:scale-105"
+              className="bg-[#FF4500] text-white w-full py-8 md:py-10 font-black text-2xl md:text-4xl uppercase tracking-tighter hover:bg-white hover:text-black transition-all duration-500 shadow-[0_0_0_0_rgba(255,69,0,0)] hover:shadow-[0_0_50px_0_rgba(255,69,0,0.6)] flex items-center justify-center gap-4"
             >
-              TRANSMIT MESSAGE
-              <ArrowUpRight className="w-6 h-6" />
+              REQUEST A CALLBACK
+              <ArrowUpRight className="w-8 h-8 md:w-10 md:h-10" />
             </button>
-            <p className="font-mono text-[10px] md:text-xs uppercase tracking-widest text-white/40 font-bold text-center sm:text-left leading-relaxed max-w-xs">
-              SECURE & ENCRYPTED. NO SALES PITCHES. JUST A CLEAR NEXT STEP.
+            <p className="font-mono text-[10px] md:text-xs uppercase tracking-widest text-white/30 font-bold mt-8 text-center">
+              SECURE & ENCRYPTED. WE WILL BE IN TOUCH SHORTLY.
             </p>
           </div>
+
         </form>
 
       </div>
