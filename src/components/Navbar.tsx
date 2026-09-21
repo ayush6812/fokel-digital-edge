@@ -69,7 +69,7 @@ const Navbar = () => {
           <a
             href="/#contact"
             onClick={(e) => scrollToSection(e, "/#contact")}
-            className="h-full flex items-center justify-center gap-3 px-6 xl:px-10 bg-white text-black font-mono text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-gray-200 transition-colors group border-l border-white/10"
+            className="h-full flex items-center justify-center gap-3 px-6 xl:px-10 bg-white text-black font-mono text-[9px] xl:text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-accent hover:text-white transition-colors group border-l border-white/10"
           >
             START PROJECT
             <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
@@ -112,7 +112,7 @@ const Navbar = () => {
               <a
                 href="/#contact"
                 onClick={(e) => scrollToSection(e, "/#contact")}
-                className="w-full py-8 px-8 bg-white text-black font-mono text-xs font-bold uppercase tracking-widest flex items-center justify-between hover:bg-gray-200 transition-colors"
+                className="w-full py-8 px-8 bg-white text-black font-mono text-xs font-bold uppercase tracking-widest flex items-center justify-between hover:bg-accent hover:text-white transition-colors"
               >
                 START PROJECT
                 <ArrowRight className="w-5 h-5" />
