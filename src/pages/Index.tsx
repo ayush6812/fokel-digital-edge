@@ -17,10 +17,12 @@ import SEO from "@/components/SEO";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import NeuralNetworkCanvas from "@/components/ui/NeuralNetworkCanvas";
 import GlassLensCursor from "@/components/ui/GlassLensCursor";
+import Preloader from "@/components/Preloader";
 
 const Index = () => {
   return (
     <>
+      <Preloader />
       <SEO
         title="Fokel — Digital Studio | We Bring Your Brand Into Focus"
         description="Fokel is a digital studio that brings your business into market focus with bold, disruptive strategies. We specialize in digital marketing, web design, SEO, and branding that drives measurable results for B2B companies."
@@ -28,86 +30,47 @@ const Index = () => {
         url="https://www.fokelworks.com"
         type="website"
       />
-      <div className="bg-background relative">
+      <div className="bg-[#111111] min-h-screen relative text-white antialiased overflow-x-hidden">
+        <div className="global-noise" />
         <GlassLensCursor />
         
-        {/* Navbar */}
-        <Navbar />
-        
-        {/* Original Hero */}
-        <Hero />
+        {/* Master Container - No longer artificially boxing in the content */}
+        <div className="w-full flex flex-col">
+          {/* Navbar */}
+          <Navbar />
+          
+          {/* Hero - Full Bleed Mattis Style */}
+          <Hero />
 
-        {/* Brutalist sections wrapped in Dark Mode and Inter font for accuracy */}
-        <div className="dark bg-background text-foreground" style={{ fontFamily: "'Inter', sans-serif" }}>
-          
-          <style>{`
-            .dark h2, .dark h3, .dark h4 {
-              font-family: 'Inter', sans-serif;
-            }
-            .dark .font-mono {
-              font-family: 'JetBrains Mono', monospace;
-            }
-            .dark .btn-primary {
-              display: inline-flex;
-              align-items: center;
-              justify-content: center;
-              gap: 0.5rem;
-              background-color: hsl(var(--accent));
-              color: black;
-              padding: 1rem 1.5rem;
-              font-size: 0.75rem;
-              font-family: 'JetBrains Mono', monospace;
-              font-weight: 700;
-              text-transform: uppercase;
-              letter-spacing: 0.1em;
-              border: 1px solid hsl(var(--accent));
-              transition: all 0.3s ease;
-            }
-            .dark .btn-primary:hover {
-              background-color: white;
-              color: black;
-              border-color: white;
-            }
-            .dark .btn-secondary {
-              display: inline-flex;
-              align-items: center;
-              justify-content: center;
-              gap: 0.5rem;
-              background-color: transparent;
-              color: white;
-              border: 1px solid rgba(255,255,255,0.2);
-              padding: 1rem 1.5rem;
-              font-size: 0.75rem;
-              font-family: 'JetBrains Mono', monospace;
-              font-weight: 700;
-              text-transform: uppercase;
-              letter-spacing: 0.1em;
-              transition: all 0.3s ease;
-            }
-            .dark .btn-secondary:hover {
-              background-color: white;
-              color: black;
-            }
-          `}</style>
-          
           <Marquee />
+
+          {/* About - Full Bleed Split Screen */}
           <About />
-        </div>
 
-        {/* Original Services */}
-        <Services />
+          {/* Services (Now above FeaturedWork) */}
+          <Services />
 
-        {/* Continue Brutalist sections */}
-        <div className="dark bg-background text-foreground" style={{ fontFamily: "'Inter', sans-serif" }}>
+          {/* FeaturedWork - Full Bleed Cinematic */}
           <FeaturedWork />
           <StoryInNumbers />
           <HowWeWork />
           <Testimonials />
+          
+          {/* Aesthetic Divider Between Light Sections */}
+          <div className="w-full bg-[#f0f0f0] flex justify-center items-center pt-8 pb-16 relative z-20">
+            <div className="w-full max-w-[1600px] h-[1px] bg-black/10 mx-6 md:mx-12 relative">
+              <div className="absolute left-1/2 -translate-x-1/2 -top-4 bg-[#f0f0f0] px-6">
+                <div className="w-8 h-8 rounded-full border border-black/10 flex items-center justify-center">
+                  <div className="w-2 h-2 rounded-full bg-orange-600" />
+                </div>
+              </div>
+            </div>
+          </div>
+
           <BlogSection />
           <Newsletter />
           <FAQ />
           <Contact />
-          <JourneyEndsHere />
           <Footer />
         </div>
         
