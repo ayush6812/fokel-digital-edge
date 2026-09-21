@@ -35,90 +35,79 @@ const Testimonials = () => {
   }, []);
 
   return (
-    <section className="bg-[#0a0a0a] text-white w-full py-24 md:py-32 relative z-10 overflow-hidden border-t border-white/5">
+    <section className="bg-[#f0f0f0] text-black w-full min-h-screen flex flex-col md:flex-row relative z-10 overflow-hidden">
       
-      {/* Background Tech Image */}
-      <div className="absolute inset-0 z-0 opacity-20">
-        <img 
-          src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop" 
-          alt="Abstract Tech" 
-          className="w-full h-full object-cover grayscale mix-blend-luminosity"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]" />
+      {/* Left Side: Header & Tech Image */}
+      <div className="w-full md:w-[45%] p-8 md:p-12 lg:p-24 flex flex-col justify-between border-r border-black/5">
+        
+        <div>
+          <span className="font-mono text-xs md:text-sm text-orange-600 uppercase tracking-widest font-bold mb-4 block">
+            [ 05. TESTIMONIALS ]
+          </span>
+          <h2 className="text-[clamp(4rem,8vw,10rem)] font-black uppercase tracking-tighter leading-[0.85]" style={{ fontFamily: "var(--font-heading)" }}>
+            PROVEN <br/>
+            RESULTS.
+          </h2>
+          <p className="mt-8 text-xs font-bold uppercase tracking-widest leading-relaxed max-w-sm text-black/60">
+            WE LET THE WORK SPEAK FOR ITSELF. BUT SOMETIMES THE PEOPLE BEHIND THE METRICS HAVE SOMETHING TO ADD.
+          </p>
+        </div>
+
+        {/* Aesthetic Tech Image */}
+        <div className="w-full aspect-[4/3] bg-black/5 mt-16 md:mt-auto overflow-hidden rounded-xl relative group">
+          <img 
+            src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop"
+            alt="Aesthetic Circuit Board"
+            className="w-full h-full object-cover grayscale contrast-125 mix-blend-multiply group-hover:scale-105 transition-transform duration-700"
+          />
+          <div className="absolute inset-0 bg-orange-500/5 mix-blend-overlay" />
+        </div>
+
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
+      {/* Right Side: Rotating Testimonials */}
+      <div className="w-full md:w-[55%] p-8 md:p-12 lg:p-24 flex flex-col justify-center relative">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          
-          {/* Header & Controls */}
-          <div className="lg:col-span-5 flex flex-col justify-center">
-            <span className="font-mono text-xs md:text-sm text-orange-500 uppercase tracking-widest font-bold mb-6">
-              [ 05. TESTIMONIALS ]
-            </span>
-            <h2 
-              className="text-[clamp(3.5rem,8vw,7rem)] font-black uppercase tracking-tighter leading-[0.9] mb-8" 
-              style={{ fontFamily: "var(--font-heading)" }}
+        <span className="text-[15rem] lg:text-[25rem] text-black/5 absolute -top-12 md:top-0 left-4 md:left-12 leading-none font-serif select-none pointer-events-none">
+          "
+        </span>
+
+        <div className="relative min-h-[350px] md:min-h-[400px] flex flex-col justify-center z-10 w-full max-w-3xl">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="w-full"
             >
-              PROVEN <br />
-              <span className="text-white/30">RESULTS.</span>
-            </h2>
-            <p className="text-white/50 max-w-sm font-mono text-[10px] md:text-xs uppercase tracking-widest leading-relaxed mb-12">
-              WE LET THE WORK SPEAK FOR ITSELF. BUT SOMETIMES THE PEOPLE BEHIND THE METRICS HAVE SOMETHING TO ADD.
-            </p>
-
-            {/* Pagination Lines */}
-            <div className="flex gap-3">
-              {testimonials.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentIndex(idx)}
-                  className={`h-1 transition-all duration-500 ${
-                    currentIndex === idx ? "w-12 bg-orange-500" : "w-4 bg-white/20 hover:bg-white/40"
-                  }`}
-                  aria-label={`Go to slide ${idx + 1}`}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Rotating Testimonials */}
-          <div className="lg:col-span-7 relative min-h-[400px] md:min-h-[350px] flex items-center">
-            
-            {/* Massive decorative quote mark */}
-            <span className="absolute -top-10 md:-top-20 -left-6 md:-left-12 text-[15rem] md:text-[20rem] text-white/[0.03] font-serif leading-none select-none">
-              "
-            </span>
-
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                exit={{ opacity: 0, y: -20, filter: "blur(10px)" }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="relative z-10 w-full"
-              >
-                <h3 className="text-2xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-[1.3] mb-12 text-white/90">
-                  "{testimonials[currentIndex].quote}"
-                </h3>
-                
-                <div className="flex items-center gap-6 border-t border-white/10 pt-6">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-orange-500 to-purple-500 flex items-center justify-center font-bold text-lg">
-                    {testimonials[currentIndex].name.charAt(0)}
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="font-bold text-lg tracking-wide uppercase">{testimonials[currentIndex].name}</span>
-                    <span className="text-orange-500 font-mono text-[10px] uppercase tracking-widest">{testimonials[currentIndex].role}</span>
-                  </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-
-          </div>
-
+              <h3 className="text-3xl md:text-5xl lg:text-[3.5rem] font-medium tracking-tight leading-[1.1] mb-12 md:mb-16 text-black/90">
+                "{testimonials[currentIndex].quote}"
+              </h3>
+              
+              <div className="flex flex-col items-start w-full border-t border-black/10 pt-8">
+                <span className="font-bold text-xl md:text-2xl uppercase tracking-tighter">{testimonials[currentIndex].name}</span>
+                <span className="text-orange-600 font-mono text-[10px] md:text-xs uppercase tracking-widest mt-2">{testimonials[currentIndex].role}</span>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
+        
+        {/* Controls */}
+        <div className="flex gap-3 mt-16 md:mt-24 z-10">
+          {testimonials.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrentIndex(idx)}
+              className={`h-1.5 transition-all duration-500 rounded-full ${
+                currentIndex === idx ? "w-16 bg-orange-600" : "w-6 bg-black/15 hover:bg-black/30"
+              }`}
+              aria-label={`Go to testimonial ${idx + 1}`}
+            />
+          ))}
+        </div>
+
       </div>
     </section>
   );
