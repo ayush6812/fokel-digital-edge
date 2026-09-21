@@ -20,10 +20,10 @@ const blogs = [
 
 const BlogSection = () => {
   return (
-    <section id="blog" className="bg-[#f0f0f0] text-black w-full min-h-screen p-8 md:p-12 lg:p-24 relative z-10 overflow-hidden">
+    <section id="blog" className="bg-[#f0f0f0] text-black w-full py-16 md:py-20 px-6 md:px-12 lg:px-24 relative z-10 overflow-hidden">
       
       {/* Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start mb-16 md:mb-32">
+      <div className="flex flex-col md:flex-row justify-between items-start mb-16 md:mb-20 max-w-[1600px] mx-auto w-full">
         <a href="#newsletter" className="bg-black text-white font-mono text-[10px] font-bold uppercase tracking-widest px-4 py-2 hover:bg-[#FF4500] transition-colors">
           SUBSCRIBE NOW
         </a>
@@ -34,7 +34,7 @@ const BlogSection = () => {
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 relative">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 relative max-w-[1600px] mx-auto w-full">
         {blogs.map((blog, i) => (
           <a 
             key={i} 
