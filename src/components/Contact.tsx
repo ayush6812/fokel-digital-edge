@@ -15,42 +15,42 @@ const Contact = () => {
         <div className="relative z-10 max-w-3xl">
           
           <h2 className="text-5xl md:text-6xl lg:text-8xl font-black uppercase tracking-tighter mb-8 leading-[0.9]" style={{ fontFamily: "var(--font-heading)" }}>
-            <span className="text-[#FF4500]">*</span> START A <br /> PROJECT.
+            <span className="text-accent">*</span> START A <br /> PROJECT.
           </h2>
 
           <form className="flex flex-col gap-6">
             
             <div className="relative group">
-              <label className="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-2 group-focus-within:text-[#FF4500] transition-colors">
+              <label className="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-2 group-focus-within:text-accent transition-colors">
                 Name
               </label>
               <input 
                 type="text" 
                 placeholder="Your Name" 
-                className="w-full bg-transparent border-b border-white/20 pb-2 text-lg md:text-xl text-white focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20"
+                className="w-full bg-transparent border-b border-white/20 pb-2 text-lg md:text-xl text-white focus:outline-none focus:border-accent transition-colors placeholder:text-white/20"
                 required
               />
             </div>
 
             <div className="relative group">
-              <label className="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-2 group-focus-within:text-[#FF4500] transition-colors">
+              <label className="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-2 group-focus-within:text-accent transition-colors">
                 Email Address
               </label>
               <input 
                 type="email" 
                 placeholder="Your Email" 
-                className="w-full bg-transparent border-b border-white/20 pb-2 text-lg md:text-xl text-white focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20"
+                className="w-full bg-transparent border-b border-white/20 pb-2 text-lg md:text-xl text-white focus:outline-none focus:border-accent transition-colors placeholder:text-white/20"
                 required
               />
             </div>
 
             <div className="relative group">
-              <label className="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-2 group-focus-within:text-[#FF4500] transition-colors">
+              <label className="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-2 group-focus-within:text-accent transition-colors">
                 Project Type
               </label>
               <div className="relative">
                 <select 
-                  className="w-full bg-transparent border-b border-white/20 pb-2 text-lg md:text-xl text-white focus:outline-none focus:border-[#FF4500] transition-colors appearance-none cursor-pointer"
+                  className="w-full bg-transparent border-b border-white/20 pb-2 text-lg md:text-xl text-white focus:outline-none focus:border-accent transition-colors appearance-none cursor-pointer"
                   required
                   defaultValue=""
                 >
@@ -60,20 +60,20 @@ const Contact = () => {
                   <option value="marketing" className="text-white bg-black">Digital Marketing</option>
                   <option value="other" className="text-white bg-black">Other Inquiry</option>
                 </select>
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-white/30 group-focus-within:text-[#FF4500] transition-colors">
+                <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-white/30 group-focus-within:text-accent transition-colors">
                   ▼
                 </div>
               </div>
             </div>
 
             <div className="relative group">
-              <label className="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-2 group-focus-within:text-[#FF4500] transition-colors">
+              <label className="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-2 group-focus-within:text-accent transition-colors">
                 Message
               </label>
               <textarea 
                 placeholder="Tell us about your goals..." 
                 rows={2}
-                className="w-full bg-transparent border-b border-white/20 pb-2 text-lg md:text-xl text-white focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20 resize-none"
+                className="w-full bg-transparent border-b border-white/20 pb-2 text-lg md:text-xl text-white focus:outline-none focus:border-accent transition-colors placeholder:text-white/20 resize-none"
                 required
               />
             </div>
@@ -81,7 +81,7 @@ const Contact = () => {
             <div className="mt-4">
               <button 
                 type="submit" 
-                className="group flex items-center justify-between w-full max-w-sm bg-white text-black px-6 py-4 hover:bg-[#FF4500] hover:text-white transition-colors duration-300 shadow-[0_0_0_rgba(255,69,0,0)] hover:shadow-[0_0_30px_rgba(255,69,0,0.6)]"
+                className="group flex items-center justify-between w-full max-w-sm bg-white text-black px-6 py-4 hover:bg-accent hover:text-white transition-colors duration-300 shadow-[0_0_0_transparent] hover:shadow-[0_0_30px_hsl(var(--accent)/0.6)]"
               >
                 <span className="font-black uppercase tracking-widest text-base md:text-lg">
                   REQUEST A CALLBACK
@@ -97,7 +97,7 @@ const Contact = () => {
       </div>
 
       {/* Right Side: The Action (Massive Typography to fill space) */}
-      <div className="w-full md:w-[30%] bg-[#FF4500] text-black p-8 md:p-12 lg:p-16 flex flex-col justify-between overflow-hidden relative">
+      <div className="w-full md:w-[30%] bg-accent text-black p-8 md:p-12 lg:p-16 flex flex-col justify-between overflow-hidden relative">
         
         {/* Massive repeating text to completely kill negative space */}
         <div className="absolute inset-0 z-0 opacity-10 pointer-events-none overflow-hidden flex flex-col justify-center">
@@ -119,7 +119,7 @@ const Contact = () => {
           <p className="font-mono text-[10px] uppercase tracking-widest font-bold mb-4 opacity-60">
             OR REACH US DIRECTLY
           </p>
-          <a href="mailto:info@fokelworks.com" className="text-lg md:text-xl lg:text-2xl font-bold tracking-tight hover:text-[#FF4500] transition-colors flex flex-wrap items-center gap-2 break-words">
+          <a href="mailto:info@fokelworks.com" className="text-lg md:text-xl lg:text-2xl font-bold tracking-tight hover:text-accent transition-colors flex flex-wrap items-center gap-2 break-words">
             info@fokelworks.com
             <ArrowUpRight className="w-5 h-5 flex-shrink-0" />
           </a>
