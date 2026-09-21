@@ -1,102 +1,127 @@
-import { ArrowRight } from "lucide-react";
-import workHomelane from "@/assets/work-homelane.png";
-import workWtc from "@/assets/work-wtc.png";
-import workGenes from "@/assets/work-genes.png";
-
-const approaches = [
-  {
-    number: "01",
-    title: "LEAD THROUGH HIGH-PERFORMING CRAFT",
-    description: "We build outside the templates. Our digital products merge aesthetic mastery with high-performance engineering.",
-    link: "EXPLORE METHODOLOGY",
-    image: workHomelane,
-    span: "md:col-span-8",
-  },
-  {
-    number: "02",
-    title: "ENGINEERED FOR VELOCITY",
-    description: "Modular architectures for rapid iteration and continuous deployment.",
-    link: "EXPLORE ENGINEERING",
-    image: workWtc,
-    span: "md:col-span-4",
-  },
-  {
-    number: "03",
-    title: "INTELLIGENCE BUILT-IN",
-    description: "Agentic workflows and autonomous logic. We build software that thinks.",
-    link: "EXPLORE AI",
-    image: workGenes,
-    span: "md:col-span-12",
-  },
-];
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const HowWeWork = () => {
-  return (
-    <section className="bg-background py-24 md:py-32 relative overflow-hidden">
-      {/* Subtle background glow */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/3" />
+  const containerRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
 
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8 relative z-10">
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+
+  const points = [
+    {
+      title: "Mission Driven",
+      desc: "We partner with ambitious brands to build purpose-led digital experiences that create lasting market impact.",
+      color: "group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-orange-400 group-hover:to-red-500"
+    },
+    {
+      title: "Award Winning",
+      desc: "Recognized for pushing the boundaries of digital design and uncompromising engineering excellence.",
+      color: "group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-500"
+    },
+    {
+      title: "Fast Execution",
+      desc: "Engineered for velocity. We deploy scalable solutions rapidly without compromising on precision.",
+      color: "group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-emerald-400"
+    }
+  ];
+
+  return (
+    <section ref={containerRef} className="bg-[#050505] text-white w-full py-16 md:py-20 relative overflow-hidden z-10 border-t border-white/10">
+      
+      {/* Background Noise & Colored Glows */}
+      <div className="absolute inset-0 bg-[#050505] z-0" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-orange-600/10 blur-[140px] pointer-events-none z-0" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-purple-600/10 blur-[130px] pointer-events-none z-0" />
+      
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-20 mix-blend-overlay">
+        <div className="w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+      </div>
+
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
         
-        {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 gap-8 border-b border-white/10 pb-8">
-          <div>
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-accent/30 bg-accent/10 text-accent font-mono text-[10px] uppercase tracking-widest mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-              METHODOLOGY
+        {/* Section Header */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 md:mb-14">
+          <div className="flex flex-col">
+            <span className="font-mono text-xs md:text-sm text-orange-500 uppercase tracking-widest font-bold mb-4">
+              [ 04. HOW WE WORK ]
             </span>
-            <h2 className="text-5xl md:text-7xl lg:text-[7rem] font-black uppercase tracking-tighter leading-[0.9] text-white">
-              INVENTING <br/> <span className="text-accent italic pr-4">VELOCITY</span>
+            <h2 
+              className="text-[clamp(3rem,8vw,7rem)] font-black uppercase tracking-tighter leading-[0.9]" 
+              style={{ fontFamily: "var(--font-heading)" }}
+            >
+              INVENTING <br className="hidden md:block" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-red-500 to-purple-500">VELOCITY.</span>
             </h2>
           </div>
-          <p className="text-white/50 max-w-sm font-medium leading-relaxed">
-            We don't just build websites. We architect growth engines designed to dominate markets. Speed, precision, and aesthetics.
+          
+          <p className="text-white/50 max-w-xs font-mono text-[10px] md:text-xs uppercase tracking-widest leading-relaxed lg:pb-2">
+            WE DON'T JUST BUILD WEBSITES. WE ARCHITECT GROWTH ENGINES DESIGNED TO DOMINATE MARKETS. <br/><br/><span className="text-orange-400 font-bold">SPEED, PRECISION, AND AESTHETICS.</span>
           </p>
         </div>
 
-        {/* Bento Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8">
-          {approaches.map((item, index) => (
-            <div 
-              key={item.number} 
-              className={`group relative overflow-hidden rounded-3xl bg-white/[0.02] border border-white/10 hover:border-accent/50 transition-all duration-500 ${item.span} flex flex-col`}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/0 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-
-              <div className="p-8 md:p-12 z-10 flex flex-col flex-grow">
-                <div className="flex justify-between items-start mb-12">
-                  <span className="text-5xl font-black text-white/10 group-hover:text-accent/20 transition-colors">
-                    {item.number}
-                  </span>
-                  <button className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-accent group-hover:border-accent group-hover:text-black transition-all duration-300">
-                    <ArrowRight className="w-5 h-5 group-hover:-rotate-45 transition-transform duration-300" />
-                  </button>
-                </div>
-                
-                <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tighter leading-none text-white mb-6">
-                  {item.title}
-                </h3>
-                
-                <p className="text-white/50 font-medium text-lg leading-relaxed max-w-md">
-                  {item.description}
-                </p>
+        {/* Content Area */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          {/* Parallax Image Container */}
+          <div className="lg:col-span-5 relative w-full h-[40vh] md:h-[45vh] lg:h-[55vh] rounded-2xl overflow-hidden border border-white/10 group shadow-[0_0_50px_rgba(249,115,22,0.05)]">
+            <div className="absolute inset-0 bg-gradient-to-tr from-orange-500/20 to-purple-500/20 mix-blend-overlay z-10 transition-opacity duration-500 group-hover:opacity-0" />
+            <motion.img 
+              style={{ y }}
+              src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" 
+              alt="Advanced Tech Architecture" 
+              className="absolute -top-[15%] left-0 w-full h-[130%] object-cover grayscale mix-blend-luminosity brightness-[0.7] group-hover:brightness-100 group-hover:grayscale-0 transition-all duration-700"
+            />
+            
+            <div className="absolute bottom-4 left-4 z-20">
+              <div className="bg-black/60 backdrop-blur-md border border-white/10 px-3 py-1.5 font-mono text-[10px] text-white uppercase tracking-widest group-hover:border-orange-500/50 transition-colors duration-500">
+                MODULAR ARCHITECTURES
               </div>
-
-              {/* Decorative Image Mask */}
-              <div className={`relative w-full overflow-hidden ${item.span === 'md:col-span-12' ? 'h-64 md:h-96' : 'h-48 md:h-72 mt-auto'}`}>
-                <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent z-10" />
-                <img 
-                  src={item.image} 
-                  alt={item.title} 
-                  className="w-full h-full object-cover opacity-30 group-hover:opacity-70 group-hover:scale-105 transition-all duration-700 grayscale group-hover:grayscale-0"
-                />
-              </div>
-
             </div>
-          ))}
-        </div>
+          </div>
 
+          {/* Interactive Points */}
+          <div className="lg:col-span-7 flex flex-col justify-center">
+            <motion.div 
+              className="flex flex-col w-full border-t border-white/10"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={{
+                visible: { transition: { staggerChildren: 0.1 } }
+              }}
+            >
+              {points.map((item, index) => (
+                <motion.div 
+                  key={index}
+                  variants={{
+                    hidden: { opacity: 0, x: -20 },
+                    visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } }
+                  }}
+                  className="group flex flex-col md:flex-row md:items-center gap-4 md:gap-8 p-6 md:p-8 border-b border-white/10 hover:bg-white/[0.03] transition-colors duration-500 cursor-default relative overflow-hidden"
+                >
+                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-current to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <span className="font-mono text-xl md:text-2xl font-bold text-white/20 transition-colors duration-500">
+                    0{index + 1}
+                  </span>
+                  <div className="flex flex-col gap-1.5 z-10">
+                    <h4 className={`text-xl md:text-2xl font-black uppercase tracking-tighter transition-all duration-500 ${item.color}`} style={{ fontFamily: "var(--font-heading)" }}>
+                      {item.title}
+                    </h4>
+                    <p className="text-white/50 text-xs md:text-sm font-medium leading-snug max-w-md group-hover:text-white/90 transition-colors duration-500">
+                      {item.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+
+        </div>
       </div>
+
     </section>
   );
 };
