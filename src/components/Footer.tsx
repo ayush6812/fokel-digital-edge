@@ -56,7 +56,7 @@ const Footer = () => {
             <h4 className="text-white font-mono text-[10px] uppercase tracking-widest mb-6 opacity-50">CONNECT</h4>
             <ul className="space-y-2 font-bold uppercase tracking-tight text-base text-white">
               <li><a href="mailto:info@fokelworks.com" className="hover:text-orange-500 transition-colors">EMAIL</a></li>
-              <li><a href="tel:+918076085566" className="hover:text-orange-500 transition-colors">+91 80760 85566</a></li>
+              <li><a href="tel:+919289539957" className="hover:text-orange-500 transition-colors">+91 92895 39957</a></li>
             </ul>
           </div>
 
