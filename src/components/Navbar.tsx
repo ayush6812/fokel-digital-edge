@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Menu, X } from "lucide-react";
-import logoWhite from "@/assets/fokel-logo.png";
 import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [
@@ -42,8 +41,10 @@ const Navbar = () => {
         {/* Left: Logo Area */}
         <div className="flex items-center h-full px-6 md:px-8">
           <Link to="/" className="flex items-center gap-4 group">
-            <img src={logoWhite} alt="Fokel" className="h-7 md:h-8 w-auto group-hover:opacity-80 transition-opacity" />
-            <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.25em] text-white/50 group-hover:text-white transition-colors">
+            <span className="text-2xl md:text-3xl font-bold tracking-tighter text-white group-hover:opacity-80 transition-opacity" style={{ fontFamily: "var(--font-heading)" }}>
+              fokel
+            </span>
+            <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.25em] text-white/50 group-hover:text-white transition-colors mt-1">
               FOKEL
             </span>
           </Link>
