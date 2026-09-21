@@ -53,7 +53,7 @@ const HowWeWork = () => {
               style={{ fontFamily: "var(--font-heading)" }}
             >
               INVENTING <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-red-500 to-purple-500">VELOCITY.</span>
+              VELOCITY.
             </h2>
           </div>
           
