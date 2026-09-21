@@ -3,7 +3,7 @@ import { CanvasLogoGrid } from "./CanvasLogoGrid";
 
 const Footer = () => {
   return (
-    <footer className="relative bg-[#111111] text-white overflow-hidden z-10 w-full min-h-[60vh] flex flex-col justify-end">
+    <footer className="relative bg-black text-white overflow-hidden z-10 w-full min-h-[60vh] flex flex-col justify-end">
       
       {/* Interactive Physics Canvas Background */}
       <CanvasLogoGrid />
@@ -33,27 +33,27 @@ const Footer = () => {
 
           <div className="pointer-events-auto">
             <h4 className="text-white font-mono text-[10px] uppercase tracking-widest mb-6 opacity-50">NAVIGATION</h4>
-            <ul className="space-y-2 font-bold uppercase tracking-tight text-sm text-white">
+            <ul className="space-y-2 font-bold uppercase tracking-tight text-base text-white">
+              <li><a href="#about" className="hover:text-orange-500 transition-colors">ABOUT</a></li>
               <li><a href="#services" className="hover:text-orange-500 transition-colors">SERVICES</a></li>
               <li><a href="#work" className="hover:text-orange-500 transition-colors">WORK</a></li>
-              <li><a href="#about" className="hover:text-orange-500 transition-colors">APPROACH</a></li>
-              <li><a href="#blog" className="hover:text-orange-500 transition-colors">INSIGHTS</a></li>
+              <li><a href="#contact" className="hover:text-orange-500 transition-colors">CONTACT</a></li>
+              <li><a href="#blog" className="hover:text-orange-500 transition-colors">BLOG</a></li>
             </ul>
           </div>
 
           <div className="pointer-events-auto">
             <h4 className="text-white font-mono text-[10px] uppercase tracking-widest mb-6 opacity-50">SOCIALS</h4>
-            <ul className="space-y-2 font-bold uppercase tracking-tight text-sm text-white">
+            <ul className="space-y-2 font-bold uppercase tracking-tight text-base text-white">
               <li><a href="#" className="hover:text-orange-500 transition-colors">INSTAGRAM</a></li>
               <li><a href="#" className="hover:text-orange-500 transition-colors">LINKEDIN</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">TWITTER</a></li>
             </ul>
           </div>
 
           <div className="pointer-events-auto text-left md:text-right flex flex-col justify-between">
             <div>
               <h4 className="text-white font-mono text-[10px] uppercase tracking-widest mb-6 opacity-50">LOCATION</h4>
-              <p className="font-mono text-[10px] uppercase tracking-widest text-white/80 leading-loose font-bold">
+              <p className="font-bold uppercase tracking-tight text-base text-white/80 leading-relaxed">
                 NEW DELHI, INDIA <br />
                 GLOBAL REACH
               </p>
