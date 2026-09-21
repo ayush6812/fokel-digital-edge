@@ -1,9 +1,8 @@
 import { ArrowUpRight } from "lucide-react";
-import { CanvasLogoGrid } from "./CanvasLogoGrid";
 
 const Footer = () => {
   return (
-    <footer className="relative bg-black text-white overflow-hidden z-10 w-full min-h-[60vh] flex flex-col justify-end mt-12">
+    <footer className="relative bg-black text-white overflow-hidden z-10 w-full flex flex-col justify-end">
       
       {/* Subtle top glow separator */}
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent z-20"></div>
@@ -15,17 +14,13 @@ const Footer = () => {
         </h1>
       </div>
 
-      {/* Interactive Physics Canvas Background */}
-      <CanvasLogoGrid />
-      
-      {/* Foreground Content - Pointer events none on wrapper so mouse reaches canvas, 
-          pointer events auto on links so they are clickable */}
-      <div className="relative z-10 w-full p-8 md:p-12 lg:p-24 pointer-events-none">
+      {/* Foreground Content */}
+      <div className="relative z-10 w-full p-8 md:p-12 lg:p-24 pointer-events-auto">
         
         {/* Minimal Footer Links */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 border-t border-white/10 pt-12">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 border-t border-white/10 pt-12 mt-24">
           
-          <div className="md:col-span-1 pointer-events-auto">
+          <div className="md:col-span-1">
             <div className="group cursor-pointer perspective-1000 w-16 h-16 mb-6">
               <div className="relative w-full h-full transition-transform duration-700 transform-style-3d group-hover:rotate-y-180">
                 <div className="absolute inset-0 backface-hidden">
@@ -36,9 +31,6 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            <p className="text-white/50 font-medium text-xs leading-relaxed max-w-[200px]">
-              A premier digital studio focusing on high-performing design and custom engineering.
-            </p>
           </div>
 
           <div className="pointer-events-auto">
