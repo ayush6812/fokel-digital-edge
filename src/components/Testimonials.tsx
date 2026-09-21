@@ -46,7 +46,14 @@ const Testimonials = () => {
 
   return (
     <section className="bg-[#f0f0f0] text-black w-full min-h-screen py-24 md:py-32 relative z-10 overflow-hidden flex flex-col justify-center border-t border-black/5">
-      <div className="max-w-[1600px] mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+      
+      {/* Film grain noise overlay */}
+      <div 
+        className="absolute inset-0 z-0 opacity-[0.35] mix-blend-overlay pointer-events-none" 
+        style={{ backgroundImage: 'url("https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Dissolve_Noise_Texture.png")', backgroundSize: '100px' }} 
+      />
+
+      <div className="max-w-[1600px] mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start relative z-10">
         
         {/* LEFT COLUMN: Header */}
         <div className="lg:col-span-5 flex flex-col">
