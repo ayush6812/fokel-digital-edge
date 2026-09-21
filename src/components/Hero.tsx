@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import bgVideo from "@/assets/bg-video.mp4";
 import { Magnetic } from "@/components/ui/Magnetic";
 import { Tilt } from "@/components/ui/Tilt";
@@ -87,15 +87,6 @@ const Hero = () => {
       <div className="relative max-w-7xl mx-auto w-full px-6 lg:px-12 pt-28 lg:pt-40 pb-16 min-h-screen flex items-center justify-center" style={{ zIndex: 2 }}>
         <div className="w-full flex flex-col items-center justify-center">
           <div className="flex flex-col gap-6 md:gap-10 items-center">
-            <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-6"
-          >
-            <Sparkles className="w-4 h-4 text-accent" />
-            <span className="text-xs font-medium tracking-wide text-accent">Premium Tech Partner</span>
-          </motion.div>
 
             <h1
               className="text-[clamp(3rem,7vw,6rem)] font-bold leading-[0.95] tracking-[-0.03em] text-white text-center"
