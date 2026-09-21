@@ -2,25 +2,22 @@ import { ArrowUpRight } from "lucide-react";
 
 const Contact = () => {
   return (
-    <section id="contact" className="w-full flex flex-col md:flex-row relative z-10 min-h-screen">
+    <section id="contact" className="w-full flex flex-col md:flex-row relative z-10">
       
       {/* Left Side: The Work (Form) */}
-      <div className="w-full md:w-[60%] bg-black text-white p-8 md:p-16 lg:p-24 relative overflow-hidden flex flex-col justify-center">
+      <div className="w-full md:w-[60%] bg-black text-white p-8 md:p-12 lg:p-16 relative overflow-hidden flex flex-col justify-center">
         
-        {/* Subtle Noise for texture */}
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-20 mix-blend-overlay">
-          <div className="w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-50" />
+        {/* Visible Noise for texture */}
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
+          <div className="w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-60" />
         </div>
 
         <div className="relative z-10 max-w-2xl">
-          <span className="font-mono text-xs text-[#FF4500] uppercase tracking-widest block mb-6 font-bold">
-            [ INITIATE SEQUENCE ]
-          </span>
-          <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-16" style={{ fontFamily: "var(--font-heading)" }}>
-            PROJECT DETAILS.
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter mb-12" style={{ fontFamily: "var(--font-heading)" }}>
+            START A PROJECT.
           </h2>
 
-          <form className="flex flex-col gap-10">
+          <form className="flex flex-col gap-8">
             
             <div className="relative group">
               <label className="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-2 group-focus-within:text-[#FF4500] transition-colors">
@@ -29,7 +26,7 @@ const Contact = () => {
               <input 
                 type="text" 
                 placeholder="Alex Johnson" 
-                className="w-full bg-transparent border-b border-white/20 pb-4 text-xl text-white focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20"
+                className="w-full bg-transparent border-b border-white/20 pb-3 text-lg md:text-xl text-white focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20"
                 required
               />
             </div>
@@ -41,7 +38,7 @@ const Contact = () => {
               <input 
                 type="email" 
                 placeholder="alex@brand.com" 
-                className="w-full bg-transparent border-b border-white/20 pb-4 text-xl text-white focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20"
+                className="w-full bg-transparent border-b border-white/20 pb-3 text-lg md:text-xl text-white focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20"
                 required
               />
             </div>
@@ -52,7 +49,7 @@ const Contact = () => {
               </label>
               <div className="relative">
                 <select 
-                  className="w-full bg-transparent border-b border-white/20 pb-4 text-xl text-white focus:outline-none focus:border-[#FF4500] transition-colors appearance-none cursor-pointer"
+                  className="w-full bg-transparent border-b border-white/20 pb-3 text-lg md:text-xl text-white focus:outline-none focus:border-[#FF4500] transition-colors appearance-none cursor-pointer"
                   required
                   defaultValue=""
                 >
@@ -74,8 +71,8 @@ const Contact = () => {
               </label>
               <textarea 
                 placeholder="Tell us about your goals..." 
-                rows={4}
-                className="w-full bg-transparent border-b border-white/20 pb-4 text-xl text-white focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20 resize-none"
+                rows={3}
+                className="w-full bg-transparent border-b border-white/20 pb-3 text-lg md:text-xl text-white focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20 resize-none"
                 required
               />
             </div>
@@ -85,37 +82,33 @@ const Contact = () => {
       </div>
 
       {/* Right Side: The Action (Highlight Zone) */}
-      <div className="w-full md:w-[40%] bg-[#FF4500] text-black p-8 md:p-16 lg:p-24 flex flex-col justify-between">
+      <div className="w-full md:w-[40%] bg-[#FF4500] text-black p-8 md:p-12 lg:p-16 flex flex-col justify-between">
         
-        <div className="mt-8 md:mt-24">
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.85] mb-12" style={{ fontFamily: "var(--font-heading)" }}>
+        <div className="mt-4 md:mt-12">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.85] mb-8" style={{ fontFamily: "var(--font-heading)" }}>
             LET'S <br/> TALK.
           </h2>
           
           <button 
             type="submit" 
-            className="group flex items-center justify-between w-full bg-black text-white px-8 py-6 rounded-none hover:bg-white hover:text-black transition-colors duration-300"
+            className="group flex items-center justify-between w-full bg-black text-white px-6 py-5 hover:bg-white hover:text-black transition-colors duration-300"
           >
-            <span className="font-black uppercase tracking-widest text-lg md:text-xl">
+            <span className="font-black uppercase tracking-widest text-base md:text-lg">
               REQUEST A CALLBACK
             </span>
-            <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-black/10 transition-colors">
-              <ArrowUpRight className="w-6 h-6" />
+            <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-black/10 transition-colors">
+              <ArrowUpRight className="w-5 h-5" />
             </div>
           </button>
-          
-          <p className="font-mono text-[10px] md:text-xs uppercase tracking-widest font-bold mt-6 opacity-60">
-            SECURE & ENCRYPTED. WE RESPOND WITHIN 2 HOURS.
-          </p>
         </div>
 
-        <div className="mt-24 border-t border-black/20 pt-12">
+        <div className="mt-16 md:mt-24 border-t border-black/20 pt-8">
           <p className="font-mono text-[10px] uppercase tracking-widest font-bold mb-4 opacity-60">
             OR REACH US DIRECTLY
           </p>
-          <a href="mailto:hello@fokelstudio.com" className="text-2xl md:text-3xl font-bold tracking-tight hover:opacity-70 transition-opacity flex items-center gap-4">
-            hello@fokelstudio.com
-            <ArrowUpRight className="w-6 h-6" />
+          <a href="mailto:info@fokelworks.com" className="text-xl md:text-2xl font-bold tracking-tight hover:opacity-70 transition-opacity flex items-center gap-4 break-words">
+            info@fokelworks.com
+            <ArrowUpRight className="w-5 h-5 flex-shrink-0" />
           </a>
         </div>
         
