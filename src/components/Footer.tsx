@@ -3,8 +3,18 @@ import { CanvasLogoGrid } from "./CanvasLogoGrid";
 
 const Footer = () => {
   return (
-    <footer className="relative bg-black text-white overflow-hidden z-10 w-full min-h-[60vh] flex flex-col justify-end">
+    <footer className="relative bg-black text-white overflow-hidden z-10 w-full min-h-[60vh] flex flex-col justify-end mt-12">
       
+      {/* Subtle top glow separator */}
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent z-20"></div>
+
+      {/* Massive watermark to explicitly mark the footer */}
+      <div className="absolute top-8 left-0 right-0 overflow-hidden pointer-events-none select-none opacity-5 flex justify-center z-0">
+        <h1 className="text-[15vw] font-black uppercase tracking-tighter leading-none whitespace-nowrap" style={{ fontFamily: "var(--font-heading)" }}>
+          FOKEL STUDIO
+        </h1>
+      </div>
+
       {/* Interactive Physics Canvas Background */}
       <CanvasLogoGrid />
       
