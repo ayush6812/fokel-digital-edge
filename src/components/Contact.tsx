@@ -2,87 +2,125 @@ import { ArrowUpRight } from "lucide-react";
 
 const Contact = () => {
   return (
-    <section id="contact" className="bg-black text-white w-full py-32 md:py-48 px-4 md:px-8 relative z-10 overflow-hidden flex flex-col items-center justify-center min-h-[90vh]">
+    <section id="contact" className="w-full flex flex-col md:flex-row relative z-10 min-h-screen">
       
-      {/* Background Noise */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-20 mix-blend-overlay">
-        <div className="w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-50" />
-      </div>
-
-      <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center">
+      {/* Left Side: The Work (Form) */}
+      <div className="w-full md:w-[60%] bg-black text-white p-8 md:p-16 lg:p-24 relative overflow-hidden flex flex-col justify-center">
         
-        <div className="flex flex-col items-center text-center mb-24">
-          <span className="font-mono text-[10px] md:text-xs text-[#FF4500] uppercase tracking-widest block mb-8 font-bold">
-            [ INITIATE SEQUENCE ]
-          </span>
-          <h2 className="text-[clamp(4rem,15vw,12rem)] font-black uppercase tracking-tighter leading-[0.85]" style={{ fontFamily: "var(--font-heading)" }}>
-            LET'S <br/> TALK.
-          </h2>
+        {/* Subtle Noise for texture */}
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-20 mix-blend-overlay">
+          <div className="w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-50" />
         </div>
 
-        {/* The Clean Stack Form */}
-        <form className="w-full flex flex-col gap-12 md:gap-16">
-          
-          <div className="relative group w-full">
-            <input 
-              type="text" 
-              placeholder="YOUR NAME" 
-              className="w-full bg-transparent border-b border-white/20 pb-6 text-2xl md:text-5xl font-black uppercase tracking-tighter text-white focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20 peer"
-              required
-            />
-          </div>
+        <div className="relative z-10 max-w-2xl">
+          <span className="font-mono text-xs text-[#FF4500] uppercase tracking-widest block mb-6 font-bold">
+            [ INITIATE SEQUENCE ]
+          </span>
+          <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-16" style={{ fontFamily: "var(--font-heading)" }}>
+            PROJECT DETAILS.
+          </h2>
 
-          <div className="relative group w-full">
-            <input 
-              type="email" 
-              placeholder="YOUR EMAIL" 
-              className="w-full bg-transparent border-b border-white/20 pb-6 text-2xl md:text-5xl font-black uppercase tracking-tighter text-white focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20 peer"
-              required
-            />
-          </div>
-
-          <div className="relative group w-full">
-            <select 
-              className="w-full bg-transparent border-b border-white/20 pb-6 text-2xl md:text-5xl font-black uppercase tracking-tighter text-white focus:outline-none focus:border-[#FF4500] transition-colors appearance-none cursor-pointer peer"
-              required
-              defaultValue=""
-            >
-              <option value="" disabled className="text-white/20 bg-black">PROJECT TYPE</option>
-              <option value="website" className="text-white bg-black">WEB DESIGN & DEV</option>
-              <option value="app" className="text-white bg-black">CUSTOM APPLICATION</option>
-              <option value="marketing" className="text-white bg-black">DIGITAL MARKETING</option>
-              <option value="other" className="text-white bg-black">OTHER INQUIRY</option>
-            </select>
-            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-white/30 peer-focus:text-[#FF4500] transition-colors">
-              ▼
+          <form className="flex flex-col gap-10">
+            
+            <div className="relative group">
+              <label className="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-2 group-focus-within:text-[#FF4500] transition-colors">
+                Name
+              </label>
+              <input 
+                type="text" 
+                placeholder="Alex Johnson" 
+                className="w-full bg-transparent border-b border-white/20 pb-4 text-xl text-white focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20"
+                required
+              />
             </div>
-          </div>
 
-          <div className="relative group w-full">
-            <textarea 
-              placeholder="PROJECT DETAILS" 
-              rows={2}
-              className="w-full bg-transparent border-b border-white/20 pb-6 text-2xl md:text-5xl font-black uppercase tracking-tighter text-white focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20 resize-none peer"
-              required
-            />
-          </div>
+            <div className="relative group">
+              <label className="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-2 group-focus-within:text-[#FF4500] transition-colors">
+                Email Address
+              </label>
+              <input 
+                type="email" 
+                placeholder="alex@brand.com" 
+                className="w-full bg-transparent border-b border-white/20 pb-4 text-xl text-white focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20"
+                required
+              />
+            </div>
 
-          <div className="mt-12 flex flex-col items-center">
-            <button 
-              type="submit" 
-              className="bg-[#FF4500] text-white w-full py-8 md:py-10 font-black text-2xl md:text-4xl uppercase tracking-tighter hover:bg-white hover:text-black transition-all duration-500 shadow-[0_0_0_0_rgba(255,69,0,0)] hover:shadow-[0_0_50px_0_rgba(255,69,0,0.6)] flex items-center justify-center gap-4"
-            >
-              REQUEST A CALLBACK
-              <ArrowUpRight className="w-8 h-8 md:w-10 md:h-10" />
-            </button>
-            <p className="font-mono text-[10px] md:text-xs uppercase tracking-widest text-white/30 font-bold mt-8 text-center">
-              SECURE & ENCRYPTED. WE WILL BE IN TOUCH SHORTLY.
-            </p>
-          </div>
+            <div className="relative group">
+              <label className="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-2 group-focus-within:text-[#FF4500] transition-colors">
+                Project Type
+              </label>
+              <div className="relative">
+                <select 
+                  className="w-full bg-transparent border-b border-white/20 pb-4 text-xl text-white focus:outline-none focus:border-[#FF4500] transition-colors appearance-none cursor-pointer"
+                  required
+                  defaultValue=""
+                >
+                  <option value="" disabled className="text-white/20 bg-black">Select an option...</option>
+                  <option value="website" className="text-white bg-black">Web Design & Development</option>
+                  <option value="app" className="text-white bg-black">Custom Application</option>
+                  <option value="marketing" className="text-white bg-black">Digital Marketing</option>
+                  <option value="other" className="text-white bg-black">Other Inquiry</option>
+                </select>
+                <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-white/30 group-focus-within:text-[#FF4500] transition-colors">
+                  ▼
+                </div>
+              </div>
+            </div>
 
-        </form>
+            <div className="relative group">
+              <label className="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-2 group-focus-within:text-[#FF4500] transition-colors">
+                Message
+              </label>
+              <textarea 
+                placeholder="Tell us about your goals..." 
+                rows={4}
+                className="w-full bg-transparent border-b border-white/20 pb-4 text-xl text-white focus:outline-none focus:border-[#FF4500] transition-colors placeholder:text-white/20 resize-none"
+                required
+              />
+            </div>
 
+          </form>
+        </div>
       </div>
+
+      {/* Right Side: The Action (Highlight Zone) */}
+      <div className="w-full md:w-[40%] bg-[#FF4500] text-black p-8 md:p-16 lg:p-24 flex flex-col justify-between">
+        
+        <div className="mt-8 md:mt-24">
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.85] mb-12" style={{ fontFamily: "var(--font-heading)" }}>
+            LET'S <br/> TALK.
+          </h2>
+          
+          <button 
+            type="submit" 
+            className="group flex items-center justify-between w-full bg-black text-white px-8 py-6 rounded-none hover:bg-white hover:text-black transition-colors duration-300"
+          >
+            <span className="font-black uppercase tracking-widest text-lg md:text-xl">
+              REQUEST A CALLBACK
+            </span>
+            <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-black/10 transition-colors">
+              <ArrowUpRight className="w-6 h-6" />
+            </div>
+          </button>
+          
+          <p className="font-mono text-[10px] md:text-xs uppercase tracking-widest font-bold mt-6 opacity-60">
+            SECURE & ENCRYPTED. WE RESPOND WITHIN 2 HOURS.
+          </p>
+        </div>
+
+        <div className="mt-24 border-t border-black/20 pt-12">
+          <p className="font-mono text-[10px] uppercase tracking-widest font-bold mb-4 opacity-60">
+            OR REACH US DIRECTLY
+          </p>
+          <a href="mailto:hello@fokelstudio.com" className="text-2xl md:text-3xl font-bold tracking-tight hover:opacity-70 transition-opacity flex items-center gap-4">
+            hello@fokelstudio.com
+            <ArrowUpRight className="w-6 h-6" />
+          </a>
+        </div>
+        
+      </div>
+
     </section>
   );
 };
