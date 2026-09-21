@@ -2,19 +2,25 @@ import { ArrowUpRight } from "lucide-react";
 
 const Contact = () => {
   return (
-    <section id="contact" className="w-full flex flex-col md:flex-row relative z-10">
+    <section id="contact" className="w-full flex flex-col md:flex-row relative z-10 border-t-4 border-[#FF4500]">
       
       {/* Left Side: The Work (Form) */}
-      <div className="w-full md:w-[70%] bg-black text-white p-8 md:p-12 lg:p-16 xl:p-24 relative overflow-hidden flex flex-col justify-center">
+      <div className="w-full md:w-[70%] bg-[#050505] text-white p-8 md:p-12 lg:p-16 xl:p-24 relative overflow-hidden flex flex-col justify-center">
         
-        {/* Visible Noise for texture */}
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
-          <div className="w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-60" />
+        {/* Extreme Noise for texture */}
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-60 mix-blend-screen">
+          <div className="w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-100" />
         </div>
 
         <div className="relative z-10 max-w-3xl">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter mb-12" style={{ fontFamily: "var(--font-heading)" }}>
-            START A PROJECT.
+          
+          {/* Badge to make heading stand out after FAQ */}
+          <div className="inline-block bg-[#FF4500] text-black font-black uppercase tracking-widest text-xs px-4 py-2 mb-6 shadow-[0_0_20px_rgba(255,69,0,0.5)]">
+            INITIATE SEQUENCE
+          </div>
+
+          <h2 className="text-5xl md:text-6xl lg:text-8xl font-black uppercase tracking-tighter mb-12 leading-[0.9]" style={{ fontFamily: "var(--font-heading)" }}>
+            START A <br /> PROJECT.
           </h2>
 
           <form className="flex flex-col gap-8">
@@ -77,11 +83,10 @@ const Contact = () => {
               />
             </div>
 
-            {/* Submit Button Moved Here */}
             <div className="mt-4">
               <button 
                 type="submit" 
-                className="group flex items-center justify-between w-full max-w-sm bg-white text-black px-6 py-5 hover:bg-[#FF4500] hover:text-white transition-colors duration-300"
+                className="group flex items-center justify-between w-full max-w-sm bg-white text-black px-6 py-5 hover:bg-[#FF4500] hover:text-white transition-colors duration-300 shadow-[0_0_0_rgba(255,69,0,0)] hover:shadow-[0_0_30px_rgba(255,69,0,0.6)]"
               >
                 <span className="font-black uppercase tracking-widest text-base md:text-lg">
                   REQUEST A CALLBACK
@@ -96,20 +101,29 @@ const Contact = () => {
         </div>
       </div>
 
-      {/* Right Side: The Action (Highlight Zone shrunk horizontally) */}
-      <div className="w-full md:w-[30%] bg-[#FF4500] text-black p-8 md:p-12 lg:p-16 flex flex-col justify-between">
+      {/* Right Side: The Action (Massive Typography to fill space) */}
+      <div className="w-full md:w-[30%] bg-[#FF4500] text-black p-8 md:p-12 lg:p-16 flex flex-col justify-between overflow-hidden relative">
         
-        <div className="mt-4 md:mt-12">
-          <h2 className="text-4xl md:text-5xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.85]" style={{ fontFamily: "var(--font-heading)" }}>
+        {/* Massive repeating text to completely kill negative space */}
+        <div className="absolute inset-0 z-0 opacity-10 pointer-events-none overflow-hidden flex flex-col justify-center">
+          {[...Array(6)].map((_, i) => (
+            <h2 key={i} className="text-[12rem] font-black uppercase tracking-tighter leading-[0.8] whitespace-nowrap -ml-12" style={{ fontFamily: "var(--font-heading)" }}>
+              TALK TALK TALK
+            </h2>
+          ))}
+        </div>
+
+        <div className="relative z-10 mt-4 md:mt-12">
+          <h2 className="text-[clamp(4rem,8vw,10rem)] font-black uppercase tracking-tighter leading-[0.8]" style={{ fontFamily: "var(--font-heading)" }}>
             LET'S <br/> TALK.
           </h2>
         </div>
 
-        <div className="mt-16 md:mt-24 border-t border-black/20 pt-8">
-          <p className="font-mono text-[10px] uppercase tracking-widest font-bold mb-4 opacity-60">
+        <div className="relative z-10 mt-24 border-t border-black/20 pt-8 bg-[#FF4500]/80 backdrop-blur-sm p-4 -mx-4 rounded-lg">
+          <p className="font-mono text-[10px] uppercase tracking-widest font-bold mb-4 opacity-80">
             OR REACH US DIRECTLY
           </p>
-          <a href="mailto:info@fokelworks.com" className="text-lg md:text-xl lg:text-2xl font-bold tracking-tight hover:opacity-70 transition-opacity flex flex-wrap items-center gap-2 break-words">
+          <a href="mailto:info@fokelworks.com" className="text-lg md:text-xl lg:text-2xl font-bold tracking-tight hover:text-white transition-colors flex flex-wrap items-center gap-2 break-words">
             info@fokelworks.com
             <ArrowUpRight className="w-5 h-5 flex-shrink-0" />
           </a>
