@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
 
 import workHomelane from "@/assets/work-homelane.png";
 import workWtc from "@/assets/work-wtc.png";
@@ -47,10 +47,16 @@ const FeaturedWork = () => {
     <section id="work" className="bg-black">
       
       {/* Massive White Header Block */}
-      <div className="bg-white w-full py-8 md:py-12 flex justify-center items-center border-b border-black/10">
+      <div className="bg-white w-full py-8 md:py-16 flex flex-col justify-center items-center border-b border-black/10 relative">
         <h2 className="text-[8vw] leading-[0.9] font-black uppercase tracking-tighter text-black text-center px-4" style={{ fontFamily: "var(--font-heading)" }}>
           SELECTED<br/>WORK.
         </h2>
+        <div className="mt-8 md:mt-0 md:absolute md:right-12 md:bottom-12 z-10">
+          <Link to="/work" className="group flex items-center gap-2 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold text-black/60 hover:text-accent transition-colors">
+            <span>VIEW ALL PROJECTS</span>
+            <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
       </div>
 
       {/* Projects Grid */}

@@ -19,6 +19,9 @@ const clients = [
 const Marquee = () => {
   return (
     <section className="bg-background border-b border-white/10 overflow-hidden py-12">
+      <div className="text-center font-mono text-[10px] md:text-xs text-white/50 uppercase tracking-[0.2em] mb-8">
+        Trusted By
+      </div>
       <div className="relative overflow-hidden">
         <div className="animate-marquee py-2 flex min-w-max">
           <div className="flex gap-20 md:gap-32 items-center pr-8 md:pr-12">
