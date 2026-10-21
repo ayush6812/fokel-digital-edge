@@ -1,140 +1,78 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { DepthText } from "@/components/ui/DepthText";
+import { ArrowUpRight } from "lucide-react";
 
 const blogs = [
   {
-    title: "Why Your Brand Needs a Strategic Digital Partner, Not Just a Vendor",
-    description:
-      "In today's hyper-competitive digital landscape, the brands that truly break through the noise are those that find a partner, not just a vendor.",
-    link: "/blog/strategic-partner",
-    date: "June 25, 2026",
-    category: "Strategy",
-    image: "/blog-strategy-hero.jpg",
-    imageAlt: "Strategic business growth with chess piece on bar chart",
-    readTime: "6 min read",
+    title: "Why Your Brand Needs a Strategic Digital Partner",
+    date: "LATEST BLOG",
+    image: "/blog-strat-chart.jpg",
+    span: "col-span-1 md:col-span-6",
+    link: "/blog/strategic-partner"
   },
   {
-    title: "The Future of Brand Growth: Why an Integrated Digital Ecosystem Beats One-Off Tactics",
-    description:
-      "The brands that win are those that build an integrated digital ecosystem where every element works together to create a seamless, compelling brand experience.",
-    link: "/blog/integrated-ecosystem",
-    date: "June 30, 2026",
-    category: "Digital Growth",
-    image: "/blog-ecosystem-hero.jpg",
-    imageAlt: "Integrated digital ecosystem vs broken silos diagram",
-    readTime: "8 min read",
-  },
+    title: "The Future of Brand Growth: Integrated Ecosystems",
+    date: "FEATURED POST",
+    image: "/blog-eco-img1.jpg",
+    span: "col-span-1 md:col-span-6",
+    link: "/blog/integrated-ecosystem"
+  }
 ];
 
 const BlogSection = () => {
-  const ref = useRef(null);
-  useInView(ref, { once: true, margin: "-100px" });
-
   return (
-    <section id="blog" className="relative py-16 md:py-24 overflow-hidden bg-primary text-primary-foreground" ref={ref}>
-      <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="flex items-center gap-4 mb-6"
-        >
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: 40 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="h-[2px] bg-accent"
-          />
-          <p className="text-sm font-medium tracking-[0.3em] uppercase text-accent">
-            Insights & Ideas
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-12 md:mb-16 -ml-2"
-        >
-          <DepthText
-            text="BEYOND"
-            glowColor="hsl(var(--muted))"
-            className="text-primary-foreground text-4xl md:text-7xl lg:text-8xl font-black"
-          />
-          {" "}
-          <DepthText
-            text="THE BRIEF"
-            glowColor="hsla(var(--accent), 0.5)"
-            className="text-accent text-4xl md:text-7xl lg:text-8xl font-black"
-          />
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-          {blogs.map((blog, idx) => (
-            <motion.div
-              key={blog.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 + idx * 0.1 }}
-              className="group relative flex flex-col h-full bg-card text-card-foreground rounded-2xl overflow-hidden border border-border/50 hover:border-accent/50 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10 hover:-translate-y-1"
-            >
-              <Link to={blog.link} className="flex flex-col h-full">
-                {/* Hero Image */}
-                <div className="relative w-full h-56 md:h-64 overflow-hidden">
-                  <img
-                    src={blog.image}
-                    alt={blog.imageAlt}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent" />
-                  {/* Category badge over image */}
-                  <div className="absolute top-4 left-4">
-                    <span className="text-xs font-bold px-3 py-1.5 bg-accent text-white rounded-full tracking-wider uppercase shadow-lg">
-                      {blog.category}
-                    </span>
-                  </div>
-                  {/* Arrow button */}
-                  <div className="absolute top-4 right-4">
-                    <div className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center border border-white/20 group-hover:bg-accent group-hover:border-accent transition-all duration-300">
-                      <ArrowUpRight className="w-5 h-5 text-white" />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card Content */}
-                <div className="flex flex-col flex-grow p-6 md:p-8">
-                  <div className="flex items-center gap-3 mb-4 text-xs text-muted-foreground">
-                    <span>{blog.date}</span>
-                    <span className="w-1 h-1 rounded-full bg-muted-foreground/50" />
-                    <span>{blog.readTime}</span>
-                  </div>
-
-                  <h3 className="text-xl md:text-2xl font-bold mb-3 text-foreground group-hover:text-accent transition-colors duration-300 leading-snug">
-                    {blog.title}
-                  </h3>
-
-                  <p className="text-muted-foreground text-base mb-6 flex-grow leading-relaxed">
-                    {blog.description}
-                  </p>
-
-                  <div className="mt-auto flex items-center gap-2 text-sm font-semibold text-foreground group-hover:text-accent transition-colors duration-300">
-                    <span>Read Article</span>
-                    <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </div>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
+    <section id="blog" className="bg-[#f0f0f0] text-black w-full py-16 md:py-20 px-6 md:px-12 lg:px-24 relative z-10 overflow-hidden">
+      
+      {/* Header */}
+      <div className="flex flex-col md:flex-row justify-between items-start mb-16 md:mb-20 max-w-[1600px] mx-auto w-full">
+        <a href="#newsletter" className="bg-black text-white font-mono text-[10px] font-bold uppercase tracking-widest px-4 py-2 hover:bg-[#FF4500] transition-colors">
+          SUBSCRIBE NOW
+        </a>
+        <h2 className="text-[clamp(3.5rem,8vw,10rem)] font-black uppercase tracking-tighter leading-[0.85] text-right mt-12 md:mt-0" style={{ fontFamily: "var(--font-heading)" }}>
+          ON OUR <br/>
+          MIND.
+        </h2>
       </div>
+
+      {/* Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 relative max-w-[1600px] mx-auto w-full">
+        {blogs.map((blog, i) => (
+          <a 
+            key={i} 
+            href={blog.link}
+            className={`group flex flex-col ${blog.span} ${!blog.image ? 'bg-white p-8 border border-black/5 shadow-xl hover:shadow-2xl transition-shadow' : ''}`}
+          >
+            {blog.image && (
+              <div className="w-full aspect-[4/3] mb-6 overflow-hidden bg-black/5 relative">
+                <img 
+                  src={blog.image} 
+                  alt={blog.title} 
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                />
+              </div>
+            )}
+            
+            {!blog.image && (
+              <div className="flex justify-between items-start mb-12">
+                <div className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center">
+                   <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                   </svg>
+                </div>
+                <ArrowUpRight className="w-6 h-6 text-black/30 group-hover:text-black transition-colors" />
+              </div>
+            )}
+
+            <h3 className={`text-2xl md:text-3xl font-bold tracking-tight leading-tight mb-6 group-hover:text-[#FF4500] transition-colors ${!blog.image ? 'mt-auto' : ''}`}>
+              {blog.title}
+            </h3>
+            <span className="font-mono text-[10px] uppercase tracking-widest text-black/50 font-bold mt-auto">
+              {blog.date}
+            </span>
+
+          </a>
+        ))}
+      </div>
+
     </section>
   );
 };

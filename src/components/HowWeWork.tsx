@@ -1,255 +1,126 @@
-import { useState, useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { Link } from "react-router-dom";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
-const SPRING = "cubic-bezier(0.16,1,0.3,1)";
-const DUR = "0.42s";
-const ORANGE = "#E05A28";
+const HowWeWork = () => {
+  const containerRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
 
-const rows = [
-  {
-    step: "01",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" style={{ width: 28, height: 28 }}>
-        <circle cx="12" cy="12" r="10" />
-        <circle cx="12" cy="12" r="6" />
-        <circle cx="12" cy="12" r="2" />
-      </svg>
-    ),
-    title: "Mission-Driven",
-    description:
-      "Every project starts with a deep understanding of your purpose. We align strategies with your core mission to create authentic, impactful digital experiences.",
-    linkLabel: "↗ Built for Impact",
-    linkHref: "/built-for-impact",
-  },
-  {
-    step: "02",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" style={{ width: 28, height: 28 }}>
-        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-      </svg>
-    ),
-    title: "Fast Execution",
-    description:
-      "Speed without compromise. Our agile workflows and streamlined processes ensure rapid delivery while maintaining the highest standards of quality.",
-    linkLabel: "↗ The Execution Engine",
-    linkHref: "/the-execution-engine",
-  },
-  {
-    step: "03",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" style={{ width: 28, height: 28 }}>
-        <circle cx="12" cy="8" r="6" />
-        <path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12" />
-      </svg>
-    ),
-    title: "Award-Winning Quality",
-    description:
-      "Excellence is non-negotiable. Our work consistently earns recognition for its creativity, innovation, and measurable impact on business growth.",
-    linkLabel: "↗ The Gallery of Impact",
-    linkHref: "/the-gallery-of-impact",
-  },
-];
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
 
-export default function HowWeWork() {
-  const [hovered, setHovered] = useState<number | null>(null);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const points = [
+    {
+      title: "Mission Driven",
+      desc: "We partner with ambitious brands to build purpose-led digital experiences that create lasting market impact.",
+    },
+    {
+      title: "Award Winning",
+      desc: "Recognized for pushing the boundaries of digital design and uncompromising engineering excellence.",
+    },
+    {
+      title: "Fast Execution",
+      desc: "Engineered for velocity. We deploy scalable solutions rapidly without compromising on precision.",
+    }
+  ];
 
   return (
-    <section
-      ref={ref}
-      style={{
-        background: "#141414",
-        padding: "48px 0 80px",
-        overflow: "hidden",
-      }}
-    >
-      {/* Mobile-only: always show the link tags */}
-      <style>{`
-        @media (max-width: 767px) {
-          .howwework-link {
-            opacity: 1 !important;
-            transform: translateY(0px) !important;
-            pointer-events: auto !important;
-          }
-        }
-      `}</style>
-
-      <div className="max-w-[1280px] mx-auto px-6 md:px-12">
-
-        {/* Eyebrow */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 28 }}
-        >
-          <motion.div
-            initial={{ width: 0 }}
-            animate={isInView ? { width: 28 } : {}}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            style={{ height: 2, background: ORANGE, borderRadius: 2, flexShrink: 0 }}
-          />
-          <span className="section-label">
-            Our Approach
-          </span>
-        </motion.div>
-
-        {/* Heading */}
-        <motion.h2
-          className="heading-section text-white mb-10 md:mb-[72px]"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.15 }}
-        >
-          How we <span className="text-accent">work</span>
-        </motion.h2>
-
-        {/* Top border */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.25 }}
-          style={{ width: "100%", height: "0.5px", background: "rgba(255,255,255,0.12)" }}
-        />
-
-        {/* Rows */}
-        {rows.map((row, i) => {
-          const isHovered = hovered === i;
-          const isDimmed = hovered !== null && !isHovered;
-
-          return (
-            <div key={row.step}>
-              <motion.div
-                onMouseEnter={() => setHovered(i)}
-                onMouseLeave={() => setHovered(null)}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: isDimmed ? 0.3 : 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{
-                  duration: 0.6,
-                  delay: 0.3 + i * 0.08,
-                }}
-                className="grid grid-cols-[48px_1fr] md:grid-cols-[64px_1fr_1fr] items-start md:items-center gap-x-4 gap-y-8 md:gap-[40px] py-8 md:py-10 cursor-default"
-                style={{
-                  transform: isHovered
-                    ? "translateX(6px) scaleY(1)"
-                    : isDimmed
-                      ? "translateX(0px) scaleY(0.97)"
-                      : "translateX(0px) scaleY(1)",
-                  transition: `transform ${DUR} ${SPRING}, opacity ${DUR} ${SPRING}`,
-                  transformOrigin: "center",
-                }}
-              >
-                {/* Col 1 — Step number */}
-                <div
-                  style={{
-                    fontSize: 13,
-                    fontWeight: 700,
-                    letterSpacing: "0.1em",
-                    color: isHovered ? ORANGE : "rgba(255,255,255,0.22)",
-                    transition: `color ${DUR} ${SPRING}`,
-                    fontVariantNumeric: "tabular-nums",
-                  }}
-                >
-                  {row.step}
-                </div>
-
-                {/* Col 2 — Icon + underline + title */}
-                <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                  {/* Icon */}
-                  <div
-                    style={{
-                      color: isHovered ? ORANGE : "rgba(255,255,255,0.55)",
-                      transform: isHovered ? "rotate(12deg) scale(1.18)" : "rotate(0deg) scale(1)",
-                      transition: `color ${DUR} ${SPRING}, transform ${DUR} ${SPRING}`,
-                      display: "inline-flex",
-                      width: "fit-content",
-                    }}
-                  >
-                    {row.icon}
-                  </div>
-
-                  {/* Animated orange underline bar */}
-                  <div
-                    style={{
-                      height: 2,
-                      background: ORANGE,
-                      borderRadius: 2,
-                      width: isHovered ? "100%" : 24,
-                      transition: `width ${DUR} ${SPRING}`,
-                    }}
-                  />
-
-                  {/* Title */}
-                  <h3
-                    style={{
-                      fontSize: "clamp(1.25rem, 2.2vw, 1.6rem)",
-                      fontWeight: 700,
-                      letterSpacing: "-0.02em",
-                      color: isHovered ? ORANGE : "#ffffff",
-                      transition: `color ${DUR} ${SPRING}`,
-                      margin: 0,
-                      fontFamily: "var(--font-heading, inherit)",
-                      lineHeight: 1.2,
-                    }}
-                  >
-                    {row.title}
-                  </h3>
-                </div>
-
-                {/* Col 3 — Description + link */}
-                <div className="col-span-2 md:col-span-1 flex flex-col gap-5">
-                  <p
-                    style={{
-                      fontSize: 15,
-                      lineHeight: 1.7,
-                      color: isHovered ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.45)",
-                      transition: `color ${DUR} ${SPRING}`,
-                      margin: 0,
-                      maxWidth: 440,
-                    }}
-                  >
-                    {row.description}
-                  </p>
-
-                  {/* Link tag — hidden on desktop until hover, always visible on mobile */}
-                  <Link
-                    to={row.linkHref}
-                    className="howwework-link"
-                    style={{
-                      fontSize: 11,
-                      fontWeight: 700,
-                      letterSpacing: "0.1em",
-                      textTransform: "uppercase",
-                      color: ORANGE,
-                      textDecoration: "none",
-                      opacity: isHovered ? 1 : 0,
-                      transform: isHovered ? "translateY(0px)" : "translateY(4px)",
-                      transition: `opacity ${DUR} ${SPRING}, transform ${DUR} ${SPRING}`,
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: 4,
-                      width: "fit-content",
-                      pointerEvents: isHovered ? "auto" : "none",
-                    }}
-                  >
-                    {row.linkLabel}
-                  </Link>
-                </div>
-              </motion.div>
-
-              {/* Hairline border */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : {}}
-                transition={{ duration: 0.6, delay: 0.3 + i * 0.08 }}
-                style={{ width: "100%", height: "0.5px", background: "rgba(255,255,255,0.12)" }}
-              />
-            </div>
-          );
-        })}
+    <section ref={containerRef} className="bg-[#050505] text-white w-full py-16 md:py-20 relative overflow-hidden z-10 border-t border-white/10">
+      
+      {/* Background Noise & Colored Glows */}
+      <div className="absolute inset-0 bg-[#050505] z-0" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-orange-600/10 blur-[140px] pointer-events-none z-0" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-purple-600/10 blur-[130px] pointer-events-none z-0" />
+      
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-20 mix-blend-overlay">
+        <div className="w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
       </div>
+
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
+        
+        {/* Section Header */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 md:mb-14">
+          <div className="flex flex-col">
+            <span className="font-mono text-xs md:text-sm text-orange-500 uppercase tracking-widest font-bold mb-4">
+              [ 04. HOW WE WORK ]
+            </span>
+            <h2 
+              className="text-[clamp(3rem,8vw,7rem)] font-black uppercase tracking-tighter leading-[0.9]" 
+              style={{ fontFamily: "var(--font-heading)" }}
+            >
+              INVENTING <br className="hidden md:block" />
+              VELOCITY.
+            </h2>
+          </div>
+          
+          <p className="text-white/50 max-w-xs font-mono text-[10px] md:text-xs uppercase tracking-widest leading-relaxed lg:pb-2">
+            WE DON'T JUST BUILD WEBSITES. WE ARCHITECT GROWTH ENGINES DESIGNED TO DOMINATE MARKETS. <br/><br/><span className="text-orange-400 font-bold">SPEED, PRECISION, AND AESTHETICS.</span>
+          </p>
+        </div>
+
+        {/* Content Area */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          {/* Parallax Image Container */}
+          <div className="lg:col-span-5 relative w-full h-[40vh] md:h-[45vh] lg:h-[55vh] rounded-2xl overflow-hidden border border-white/10 group shadow-[0_0_50px_rgba(249,115,22,0.05)]">
+            <div className="absolute inset-0 bg-gradient-to-tr from-orange-500/20 to-purple-500/20 mix-blend-overlay z-10 transition-opacity duration-500 group-hover:opacity-0" />
+            <motion.img 
+              style={{ y }}
+              src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" 
+              alt="Advanced Tech Architecture" 
+              className="absolute -top-[15%] left-0 w-full h-[130%] object-cover grayscale mix-blend-luminosity brightness-[0.7] group-hover:brightness-100 group-hover:grayscale-0 transition-all duration-700"
+            />
+            
+            <div className="absolute bottom-4 left-4 z-20">
+              <div className="bg-black/60 backdrop-blur-md border border-white/10 px-3 py-1.5 font-mono text-[10px] text-white uppercase tracking-widest group-hover:border-orange-500/50 transition-colors duration-500">
+                MODULAR ARCHITECTURES
+              </div>
+            </div>
+          </div>
+
+          {/* Interactive Points */}
+          <div className="lg:col-span-7 flex flex-col justify-center">
+            <motion.div 
+              className="flex flex-col w-full border-t border-white/10"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={{
+                visible: { transition: { staggerChildren: 0.1 } }
+              }}
+            >
+              {points.map((item, index) => (
+                <motion.div 
+                  key={index}
+                  variants={{
+                    hidden: { opacity: 0, x: -20 },
+                    visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } }
+                  }}
+                  className="group flex flex-col md:flex-row md:items-center gap-4 md:gap-8 p-6 md:p-8 border-b border-white/10 hover:bg-white/[0.03] transition-colors duration-500 cursor-default relative overflow-hidden"
+                >
+                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-current to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <span className="font-mono text-xl md:text-2xl font-bold text-white/20 transition-colors duration-500">
+                    0{index + 1}
+                  </span>
+                  <div className="flex flex-col gap-1.5 z-10">
+                    <h4 className="text-xl md:text-2xl font-black uppercase tracking-tighter transition-all duration-500 group-hover:text-orange-500" style={{ fontFamily: "var(--font-heading)" }}>
+                      {item.title}
+                    </h4>
+                    <p className="text-white/50 text-xs md:text-sm font-medium leading-snug max-w-md group-hover:text-white/90 transition-colors duration-500">
+                      {item.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+
+        </div>
+      </div>
+
     </section>
   );
-}
+};
+
+export default HowWeWork;

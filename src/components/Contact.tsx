@@ -1,226 +1,132 @@
-import { motion, useInView, useReducedMotion } from "framer-motion";
-import { useRef, useState } from "react";
-import { Mail, Phone, User, Loader2, FileText } from "lucide-react";
-import { toast } from "sonner";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
+import { ArrowUpRight } from "lucide-react";
 
 const Contact = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const prefersReducedMotion = useReducedMotion();
-
-  const duration = prefersReducedMotion ? 0 : 0.8;
-  const delay = (d: number) => (prefersReducedMotion ? 0 : d);
-
-  const emailLink = `https://mail.google.com/mail/?view=cm&to=info@fokelworks.com&su=${encodeURIComponent("New Project Inquiry")}&body=${encodeURIComponent("Hi, I'd like to discuss a project.")}`;
-
-  const [isOpen, setIsOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name || !formData.email || !formData.phone) {
-      toast.error("Please fill all fields");
-      return;
-    }
-
-    setIsLoading(true);
-    try {
-      const response = await fetch("http://localhost:3001/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) throw new Error("Failed to submit form");
-
-      toast.success("Thank you! We'll be in touch soon.");
-      setIsOpen(false);
-      setFormData({ name: "", email: "", phone: "" });
-    } catch (error) {
-      console.error(error);
-      toast.error("Failed to submit the form. Please try again.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   return (
-    <section id="contact" className="relative py-32 bg-primary overflow-hidden" ref={ref}>
-      <motion.div
-        className="absolute inset-0 pointer-events-none"
-        initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : {}}
-        transition={{ duration: prefersReducedMotion ? 0 : 1.2, ease: [0.25, 0.1, 0.25, 1] }}
-        style={{
-          background: "radial-gradient(ellipse 80% 50% at 50% 100%, hsl(var(--accent) / 0.1) 0%, transparent 60%)",
-        }}
-      />
-
-      <motion.div
-        className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full bg-accent/5 blur-3xl pointer-events-none"
-        animate={prefersReducedMotion ? {} : { scale: [1, 1.05, 1], y: [0, -10, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-12 text-center">
-        <div className="flex items-center justify-center gap-4 mb-6">
-          <motion.div
-            initial={{ width: 0 }}
-            animate={isInView ? { width: 40 } : {}}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="h-[2px] bg-accent"
-          />
-          <motion.p
-            initial={{ opacity: 0, x: -20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: delay(0.2) }}
-            className="text-sm font-medium tracking-[0.3em] uppercase text-accent"
-          >
-            Get In Touch
-          </motion.p>
+    <section id="contact" className="w-full flex flex-col md:flex-row relative z-10">
+      
+      {/* Left Side: The Work (Form) */}
+      <div className="w-full md:w-[70%] bg-[#050505] text-white p-6 md:p-10 lg:p-12 xl:p-16 relative overflow-hidden flex flex-col justify-center">
+        
+        {/* Extreme Noise for texture */}
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-60 mix-blend-screen">
+          <div className="w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-100" />
         </div>
 
-        <div className="overflow-hidden mb-6">
-          <motion.h2
-            initial={{ y: "100%" }}
-            animate={isInView ? { y: 0 } : {}}
-            transition={{ duration: 0.8, delay: delay(0.1), ease: [0.25, 0.1, 0.25, 1] }}
-            className="text-4xl md:text-5xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-primary-foreground"
-            style={{ fontFamily: "var(--font-heading)" }}
-          >
-            Ready to bring
-            <br />
-            your brand into
-            <br />
-            <span className="text-accent italic font-normal">focus</span>?
-          </motion.h2>
-        </div>
+        <div className="relative z-10 max-w-3xl">
+          
+          <h2 className="text-5xl md:text-6xl lg:text-8xl font-black uppercase tracking-tighter mb-8 leading-[0.9]" style={{ fontFamily: "var(--font-heading)" }}>
+            <span className="text-accent">*</span> START A <br /> PROJECT.
+          </h2>
 
-        <motion.p
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration, delay: delay(0.25) }}
-          className="mt-6 text-lg text-primary-foreground/70 max-w-lg mx-auto leading-relaxed"
-        >
-          Let's discuss how we can transform your digital presence and make your brand the undisputed authority in your niche.
-        </motion.p>
+          <form className="flex flex-col gap-6">
+            
+            <div className="relative group">
+              <label className="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-2 group-focus-within:text-accent transition-colors">
+                Name
+              </label>
+              <input 
+                type="text" 
+                placeholder="Your Name" 
+                className="w-full bg-transparent border-b border-white/20 pb-2 text-lg md:text-xl text-white focus:outline-none focus:border-accent transition-colors placeholder:text-white/20"
+                required
+              />
+            </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration, delay: delay(0.4) }}
-          className="mt-12 flex flex-col justify-center items-center gap-4"
-        >
-          <Dialog open={isOpen} onOpenChange={setIsOpen}>
-            <DialogTrigger asChild>
-              <Button
-                variant="outline"
-                className="w-64 h-14 inline-flex items-center justify-center gap-3 bg-transparent text-accent border-accent hover:bg-accent/10 text-sm font-semibold rounded-full transition-all"
-              >
-                <FileText className="w-4 h-4" />
-                Request a Callback
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-md bg-foreground text-background border-accent/20">
-              <DialogHeader>
-                <DialogTitle className="text-xl">Request a Callback</DialogTitle>
-                <DialogDescription className="text-background/60">
-                  Fill out the form below and we'll get back to you shortly.
-                </DialogDescription>
-              </DialogHeader>
+            <div className="relative group">
+              <label className="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-2 group-focus-within:text-accent transition-colors">
+                Email Address
+              </label>
+              <input 
+                type="email" 
+                placeholder="Your Email" 
+                className="w-full bg-transparent border-b border-white/20 pb-2 text-lg md:text-xl text-white focus:outline-none focus:border-accent transition-colors placeholder:text-white/20"
+                required
+              />
+            </div>
 
-              <form onSubmit={handleSubmit} className="space-y-4 mt-4">
-                <div className="space-y-2">
-                  <Label htmlFor="name" className="text-background/80 flex items-center gap-2">
-                    <User className="w-4 h-4" /> Your Name
-                  </Label>
-                  <Input
-                    id="name"
-                    name="name"
-                    placeholder="Your Name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="bg-background/10 border-background/20 text-background placeholder:text-background/30 focus-visible:ring-accent"
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="email" className="text-background/80 flex items-center gap-2">
-                    <Mail className="w-4 h-4" /> Email
-                  </Label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="Your Email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="bg-background/10 border-background/20 text-background placeholder:text-background/30 focus-visible:ring-accent"
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="phone" className="text-background/80 flex items-center gap-2">
-                    <Phone className="w-4 h-4" /> Phone Number
-                  </Label>
-                  <Input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    placeholder="Your Phone Number"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="bg-background/10 border-background/20 text-background placeholder:text-background/30 focus-visible:ring-accent"
-                    required
-                  />
-                </div>
-                <Button
-                  type="submit"
-                  disabled={isLoading}
-                  className="w-full mt-4 bg-accent text-accent-foreground hover:bg-accent/90"
+            <div className="relative group">
+              <label className="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-2 group-focus-within:text-accent transition-colors">
+                Project Type
+              </label>
+              <div className="relative">
+                <select 
+                  className="w-full bg-transparent border-b border-white/20 pb-2 text-lg md:text-xl text-white focus:outline-none focus:border-accent transition-colors appearance-none cursor-pointer"
+                  required
+                  defaultValue=""
                 >
-                  {isLoading ? (
-                    <>
-                      <Loader2 className="w-4 h-4 mr-2 animate-spin" /> Submitting...
-                    </>
-                  ) : (
-                    "Send Request"
-                  )}
-                </Button>
-              </form>
-            </DialogContent>
-          </Dialog>
+                  <option value="" disabled className="text-white/20 bg-black">Select an option...</option>
+                  <option value="website" className="text-white bg-black">Web Design & Development</option>
+                  <option value="app" className="text-white bg-black">Custom Application</option>
+                  <option value="marketing" className="text-white bg-black">Digital Marketing</option>
+                  <option value="other" className="text-white bg-black">Other Inquiry</option>
+                </select>
+                <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-white/30 group-focus-within:text-accent transition-colors">
+                  ▼
+                </div>
+              </div>
+            </div>
 
-          <motion.a
-            href={emailLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1], delay: delay(0.5) }}
-            className="w-64 h-14 inline-flex items-center justify-center gap-3 bg-accent text-accent-foreground text-sm font-semibold rounded-full hover:opacity-90 transition-opacity"
-          >
-            <Mail className="w-4 h-4" />
-            Email Us
-          </motion.a>
-        </motion.div>
+            <div className="relative group">
+              <label className="font-mono text-[10px] uppercase tracking-widest text-white/50 block mb-2 group-focus-within:text-accent transition-colors">
+                Message
+              </label>
+              <textarea 
+                placeholder="Tell us about your goals..." 
+                rows={2}
+                className="w-full bg-transparent border-b border-white/20 pb-2 text-lg md:text-xl text-white focus:outline-none focus:border-accent transition-colors placeholder:text-white/20 resize-none"
+                required
+              />
+            </div>
+
+            <div className="mt-4">
+              <button 
+                type="submit" 
+                className="group flex items-center justify-between w-full max-w-sm bg-white text-black px-6 py-4 hover:bg-accent hover:text-white transition-colors duration-300 shadow-[0_0_0_transparent] hover:shadow-[0_0_30px_hsl(var(--accent)/0.6)]"
+              >
+                <span className="font-black uppercase tracking-widest text-base md:text-lg">
+                  REQUEST A CALLBACK
+                </span>
+                <div className="w-10 h-10 bg-black/10 rounded-full flex items-center justify-center group-hover:bg-white/20 transition-colors">
+                  <ArrowUpRight className="w-5 h-5" />
+                </div>
+              </button>
+            </div>
+
+          </form>
+        </div>
       </div>
+
+      {/* Right Side: The Action (Massive Typography to fill space) */}
+      <div className="w-full md:w-[30%] bg-accent text-black p-8 md:p-12 lg:p-16 flex flex-col justify-between overflow-hidden relative">
+        
+        {/* Massive repeating text to completely kill negative space */}
+        <div className="absolute inset-0 z-0 opacity-10 pointer-events-none overflow-hidden flex flex-col justify-center">
+          {[...Array(6)].map((_, i) => (
+            <h2 key={i} className="text-[12rem] font-black uppercase tracking-tighter leading-[0.8] whitespace-nowrap -ml-12" style={{ fontFamily: "var(--font-heading)" }}>
+              TALK TALK TALK
+            </h2>
+          ))}
+        </div>
+
+        <div className="relative z-10 mt-4 md:mt-12">
+          <h2 className="text-[clamp(4rem,8vw,10rem)] font-black uppercase tracking-tighter leading-[0.8]" style={{ fontFamily: "var(--font-heading)" }}>
+            LET'S <br/> TALK.
+          </h2>
+        </div>
+
+        {/* Highlighted email box to stand out over the text pattern */}
+        <div className="relative z-10 mt-24 bg-black text-white p-6 -mx-4 rounded-xl shadow-2xl border border-white/10">
+          <p className="font-mono text-[10px] uppercase tracking-widest font-bold mb-4 opacity-60">
+            OR REACH US DIRECTLY
+          </p>
+          <a href="mailto:info@fokelworks.com" className="text-lg md:text-xl lg:text-2xl font-bold tracking-tight hover:text-accent transition-colors flex flex-wrap items-center gap-2 break-words">
+            info@fokelworks.com
+            <ArrowUpRight className="w-5 h-5 flex-shrink-0" />
+          </a>
+        </div>
+        
+      </div>
+
     </section>
   );
 };

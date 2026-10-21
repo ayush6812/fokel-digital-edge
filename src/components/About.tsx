@@ -1,67 +1,50 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import React from "react";
 
 const About = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
-    <section id="about" className="py-24 lg:py-32 bg-background text-foreground overflow-hidden" ref={ref}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="flex items-center gap-4 mb-6"
-        >
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: 40 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="h-[2px] bg-accent"
+    <section id="about" className="flex flex-col md:flex-row min-h-[90vh]">
+      {/* Left Column - Orange */}
+      <div className="w-full md:w-1/2 bg-accent text-white flex flex-col justify-between p-8 md:p-12 lg:p-16">
+        <div className="flex justify-between items-center font-mono text-[10px] md:text-xs uppercase tracking-widest mb-12 md:mb-16">
+          <span>WHO WE ARE</span>
+          <span>A DELHI-BASED AGENCY</span>
+        </div>
+        
+        <p className="text-xl md:text-2xl lg:text-3xl font-bold uppercase tracking-tight leading-snug mb-12 md:mb-16 max-w-2xl mt-12 md:mt-0">
+          A DELHI-BASED CREATIVE AGENCY, FOKEL PARTNERS WITH AMBITIOUS BRANDS ACROSS INDIA TO BUILD DIGITAL PRESENCE THAT COMPOUNDS OVER TIME — COMBINING STRATEGIC BRAND IDENTITY, SEO, PERFORMANCE MARKETING, AND WEB DEVELOPMENT INTO A SINGLE, INTEGRATED GROWTH SYSTEM.
+        </p>
+        
+        <div className="font-mono text-[10px] md:text-xs uppercase tracking-widest text-white/70">
+          FOKEL DIGITAL STUDIO
+        </div>
+      </div>
+
+      {/* Right Column - Blueprint Background with Huge Orange Text */}
+      <div className="w-full md:w-1/2 relative bg-black flex flex-col justify-start p-8 md:p-12 lg:p-16 overflow-hidden min-h-[50vh]">
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <img 
+            src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop" 
+            alt="Futuristic Computer Tech" 
+            className="w-full h-full object-cover grayscale contrast-125 brightness-[0.4] scale-125"
           />
-          <p className="section-label">Who We Are</p>
-        </motion.div>
+        </div>
+        
+        <div className="relative z-10 w-full flex justify-end text-right">
+          <h2 className="text-5xl md:text-6xl lg:text-[7rem] font-black uppercase tracking-tighter leading-[0.8] text-accent flex flex-col items-end drop-shadow-2xl">
+            <span>BOLD</span>
+            <span>IDEAS,</span>
+            <span>DISRUPTIVE</span>
+            <span>EXECUTION.</span>
+          </h2>
+        </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="mb-12 lg:mb-0"
-          >
-            <h2 className="heading-section text-foreground leading-tight">
-              Bold ideas,<br />
-              <span className="text-accent">disruptive</span><br />
-              execution
-            </h2>
-            <p className="mt-8 text-lg md:text-xl text-muted-foreground leading-relaxed">
-              A Delhi-based creative agency, Fokel partners with ambitious brands across India to build digital presence that compounds over time — combining strategic brand identity, SEO, performance marketing, and web development into a single, integrated growth system.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.25 }}
-            className="flex flex-col gap-8"
-          >
-            <div className="relative pl-6 border-l-2 border-accent/30">
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                We've spent years in the trenches of Indian digital marketing — navigating everything from luxury fashion to grid construction.
-              </p>
-            </div>
-            
-            <div className="relative pl-6 border-l-2 border-accent/30">
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                Our work doesn't just look good in a presentation. It shows up in your analytics. We don't just create—we <span className="text-accent font-medium">execute</span>.
-              </p>
-            </div>
-          </motion.div>
+        {/* Bottom right floating box */}
+        <div className="absolute bottom-8 right-8 z-40 hidden md:block max-w-[280px]">
+          <div className="bg-[#111111]/90 backdrop-blur-sm text-white p-6 font-mono text-[10px] md:text-xs uppercase tracking-widest border border-white/20 leading-loose text-left">
+            Our work doesn't just look good in a presentation. <br/>
+            It shows up in your analytics. <br/>
+            <span className="text-accent">We don't just create—we execute.</span>
+          </div>
         </div>
       </div>
     </section>

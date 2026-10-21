@@ -1,223 +1,123 @@
-import { motion, useInView, AnimatePresence } from "framer-motion";
-import { useRef, useState, useEffect, useCallback } from "react";
-import { ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const testimonials = [
   {
-    quote:
-      "Fokel transformed our digital presence completely. Their strategic approach to branding and marketing delivered results that exceeded our expectations. We've seen a 3x increase in qualified leads.",
-    name: "Rahul Sharma",
-    role: "CEO, Inventeron Technologies",
-    initials: "RS",
+    quote: "Fokel's team delivered a stunning website that perfectly captures our brand ethos. Their technical expertise and design sensibility are truly world-class.",
+    name: "RAHUL SHARMA",
+    role: "CEO, INVENTERON",
   },
   {
-    quote:
-      "Working with Fokel was a game-changer for our brand. They understood our vision and translated it into a digital experience that truly resonates with our audience. The ROI has been exceptional.",
-    name: "Priya Menon",
-    role: "Marketing Head, Onsurity",
-    initials: "PM",
+    quote: "Working with Fokel was a game-changer for our brand. They understood our vision and translated it into a digital experience that truly resonates with our audience.",
+    name: "PRIYA MENON",
+    role: "MARKETING HEAD, ONSURITY",
   },
   {
-    quote:
-      "The team at Fokel brought fresh perspective and meticulous attention to detail. Our brand has never looked better or performed stronger online. They're now our go-to digital partner.",
-    name: "Ankit Verma",
-    role: "Founder, HMO Architects",
-    initials: "AV",
+    quote: "The team at Fokel brought fresh perspective and meticulous attention to detail. Our brand has never looked better or performed stronger online.",
+    name: "ANKIT VERMA",
+    role: "FOUNDER, HMO ARCHITECTS",
   },
   {
-    quote:
-      "Fokel's data-driven approach combined with creative excellence helped us achieve remarkable growth. Our digital engagement increased 3x within just six months. Highly recommended.",
-    name: "Sneha Kapoor",
-    role: "Director of Growth, HomeLane",
-    initials: "SK",
-  },
+    quote: "Fokel's data-driven approach combined with creative excellence helped us achieve remarkable growth. Our digital engagement increased 3x within just six months.",
+    name: "SNEHA KAPOOR",
+    role: "DIRECTOR OF GROWTH",
+  }
 ];
 
-const slideVariants = {
-  enter: (direction: number) => ({
-    x: direction > 0 ? 50 : -50,
-    opacity: 0,
-    scale: 0.98,
-  }),
-  center: {
-    x: 0,
-    opacity: 1,
-    scale: 1,
-  },
-  exit: (direction: number) => ({
-    x: direction < 0 ? 50 : -50,
-    opacity: 0,
-    scale: 0.98,
-  }),
-};
-
-const AUTO_PLAY_INTERVAL = 6000;
-
 const Testimonials = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [current, setCurrent] = useState(0);
-  const [[page, direction], setPage] = useState([0, 0]);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-
-  const paginate = useCallback((newDirection: number) => {
-    const newIndex = current + newDirection;
-    if (newIndex < 0) {
-      setCurrent(testimonials.length - 1);
-      setPage([testimonials.length - 1, newDirection]);
-    } else if (newIndex >= testimonials.length) {
-      setCurrent(0);
-      setPage([0, newDirection]);
-    } else {
-      setCurrent(newIndex);
-      setPage([newIndex, newDirection]);
-    }
-  }, [current]);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    if (!isAutoPlaying) return;
-    
-    const slideInterval = setInterval(() => {
-      paginate(1);
-    }, AUTO_PLAY_INTERVAL);
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
 
-    return () => clearInterval(slideInterval);
-  }, [isAutoPlaying, paginate]);
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const t = testimonials[currentIndex];
 
   return (
-    <section className="py-24 lg:py-32 relative overflow-hidden" ref={ref}>
-      {/* Background ambient glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
+    <section className="bg-[#f0f0f0] text-black w-full py-16 md:py-20 relative z-10 overflow-hidden flex flex-col justify-center border-t border-black/5">
+      
+      {/* Film grain noise overlay */}
+      <div 
+        className="absolute inset-0 z-0 opacity-[0.35] mix-blend-overlay pointer-events-none" 
+        style={{ backgroundImage: 'url("https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Dissolve_Noise_Texture.png")', backgroundSize: '100px' }} 
+      />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="flex flex-col items-center text-center mb-16 lg:mb-24"
-        >
-          <div className="flex items-center gap-4 mb-6">
-            <div className="h-[2px] w-8 bg-accent rounded-full" />
-            <p className="section-label tracking-[0.2em]">Client Stories</p>
-            <div className="h-[2px] w-8 bg-accent rounded-full" />
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground max-w-3xl font-heading">
-            Voices of <span className="text-accent italic">impact</span>
+      <div className="max-w-[1600px] mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start relative z-10">
+        
+        {/* LEFT COLUMN: Header */}
+        <div className="lg:col-span-5 flex flex-col">
+          <span className="font-mono text-xs md:text-sm text-orange-600 uppercase tracking-widest font-bold mb-6 block">
+            [ 05. TESTIMONIALS ]
+          </span>
+          <h2 className="text-[clamp(4.5rem,8vw,12rem)] font-black uppercase tracking-tighter leading-[0.85] text-black" style={{ fontFamily: "var(--font-heading)" }}>
+            PROVEN <br />
+            RESULTS.
           </h2>
-        </motion.div>
+        </div>
 
-        {/* Carousel Container */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative max-w-5xl mx-auto"
-          onMouseEnter={() => setIsAutoPlaying(false)}
-          onMouseLeave={() => setIsAutoPlaying(true)}
-        >
-          {/* Main Card */}
-          <div className="relative bg-secondary/40 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-14 lg:p-20 shadow-2xl border border-white/5 overflow-hidden group">
+        {/* RIGHT COLUMN: Quote & Controls */}
+        <div className="lg:col-span-7 flex flex-col">
+          
+          {/* Top Bar: Navigation */}
+          <div className="flex justify-end items-center mb-16 md:mb-24 border-b border-black/10 pb-8">
             
-            {/* Elegant large quote watermark */}
-            <div className="absolute -top-6 right-8 md:right-16 text-[12rem] md:text-[18rem] leading-none font-serif text-accent/10 pointer-events-none select-none transition-transform duration-700 group-hover:scale-110 group-hover:rotate-6">
-              &rdquo;
-            </div>
-            
-            {/* Bottom glow accent inside card */}
-            <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-accent/15 rounded-full blur-[80px] pointer-events-none" />
-
-            <div className="relative z-10">
-              <AnimatePresence initial={false} custom={direction} mode="wait">
-                <motion.div
-                  key={current}
-                  custom={direction}
-                  variants={slideVariants}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  transition={{
-                    x: { type: "spring", stiffness: 300, damping: 30 },
-                    opacity: { duration: 0.4 },
-                    scale: { duration: 0.4 }
-                  }}
-                  className="flex flex-col"
-                >
-                  {/* Star Rating */}
-                  <div className="flex items-center gap-1.5 mb-8 md:mb-10">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 md:w-6 md:h-6 fill-accent text-accent drop-shadow-[0_0_8px_rgba(249,115,22,0.4)]" />
-                    ))}
-                  </div>
-
-                  {/* Quote text */}
-                  <p className="text-xl md:text-3xl lg:text-4xl font-medium leading-[1.4] tracking-tight text-foreground/95 text-balance font-heading mb-12">
-                    "{testimonials[current].quote}"
-                  </p>
-                  
-                  {/* Author Profile */}
-                  <div className="flex items-center gap-5 mt-auto">
-                    <div className="w-14 h-14 md:w-16 md:h-16 flex-shrink-0 rounded-full bg-gradient-to-br from-accent to-accent/60 flex items-center justify-center shadow-lg shadow-accent/20 border border-accent/20">
-                      <span className="text-white font-bold text-lg md:text-xl tracking-wider">
-                        {testimonials[current].initials}
-                      </span>
-                    </div>
-                    <div className="flex flex-col">
-                      <p className="text-lg md:text-xl font-bold text-foreground tracking-tight">
-                        {testimonials[current].name}
-                      </p>
-                      <p className="text-sm md:text-base text-accent font-medium mt-0.5">
-                        {testimonials[current].role}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
+            <div className="flex gap-2 shrink-0">
+              <button 
+                onClick={handlePrev}
+                className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center text-black hover:bg-black hover:text-white transition-colors duration-300"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
+              </button>
+              <button 
+                onClick={handleNext}
+                className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center bg-black text-white hover:bg-transparent hover:text-black transition-colors duration-300"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
             </div>
           </div>
 
-          {/* Navigation Controls */}
-          <div className="flex items-center justify-between mt-10 md:mt-12 px-4 md:px-8">
-            <div className="flex items-center gap-4">
-              <button
-                onClick={() => paginate(-1)}
-                className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-border flex items-center justify-center hover:border-accent hover:bg-accent hover:text-white transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-accent/25 hover:-translate-y-0.5"
-                aria-label="Previous testimonial"
-              >
-                <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
-              </button>
-              <button
-                onClick={() => paginate(1)}
-                className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-border flex items-center justify-center hover:border-accent hover:bg-accent hover:text-white transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-accent/25 hover:-translate-y-0.5"
-                aria-label="Next testimonial"
-              >
-                <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
-              </button>
-            </div>
+          {/* Quote Block */}
+          <div className="relative w-full mt-auto">
+            {/* SVG Quote Icon */}
+            <svg className="w-16 h-16 md:w-24 md:h-24 text-black/10 mb-8" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+            </svg>
 
-            {/* Dots */}
-            <div className="flex items-center gap-2.5">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => {
-                    const newDirection = index > current ? 1 : -1;
-                    setCurrent(index);
-                    setPage([index, newDirection]);
-                  }}
-                  className={`h-2.5 rounded-full transition-all duration-500 ${
-                    index === current 
-                      ? "bg-accent w-10 shadow-[0_0_10px_rgba(249,115,22,0.4)]" 
-                      : "bg-border w-2.5 hover:bg-foreground/40"
-                  }`}
-                  aria-label={`Go to testimonial ${index + 1}`}
-                />
-              ))}
-            </div>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="flex flex-col"
+              >
+                <p className="text-2xl md:text-4xl lg:text-[3rem] font-medium tracking-normal leading-[1.5] text-black/90">
+                  "{t.quote}"
+                </p>
+                
+                <div className="flex flex-col mt-12 md:mt-16 pt-8 border-t border-black/5">
+                  <span className="font-bold text-xl md:text-2xl tracking-tight uppercase">{t.name}</span>
+                  <span className="text-orange-600 font-mono text-xs uppercase tracking-widest mt-1 font-bold">{t.role}</span>
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
-        </motion.div>
+          
+        </div>
+
       </div>
     </section>
   );
