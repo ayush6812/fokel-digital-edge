@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import HomelaneCaseStudy from "./pages/HomelaneCaseStudy";
@@ -47,6 +47,7 @@ const App = () => (
           <Route path="/built-for-impact" element={<BuiltForImpact />} />
           <Route path="/the-execution-engine" element={<TheExecutionEngine />} />
           <Route path="/the-gallery-of-impact" element={<TheGalleryOfImpact />} />
+          <Route path="/work" element={<Navigate to="/the-gallery-of-impact" replace />} />
           <Route path="/work/22workspace" element={<Workspace22CaseStudy />} />
           <Route path="/work/corporate-buildcon" element={<CorporateBuildconCaseStudy />} />
           <Route path="/work/homeshark" element={<HomesharkCaseStudy />} />

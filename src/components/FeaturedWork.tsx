@@ -52,7 +52,7 @@ const FeaturedWork = () => {
           SELECTED<br/>WORK.
         </h2>
         <div className="mt-8 md:mt-0 md:absolute md:right-12 md:bottom-12 z-10">
-          <Link to="/work" className="group flex items-center gap-2 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold text-black/60 hover:text-accent transition-colors">
+          <Link to="/the-gallery-of-impact" className="group flex items-center gap-2 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold text-black/60 hover:text-accent transition-colors">
             <span>VIEW ALL PROJECTS</span>
             <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
           </Link>
