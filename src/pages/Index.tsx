@@ -50,7 +50,7 @@ const Index = () => {
           {/* Services (Now above FeaturedWork) */}
           <Services />
 
-          {/* FeaturedWork - Full Bleed Cinematic */}
+          {/* FeaturedWork - Selected Work grid */}
           <FeaturedWork />
           <StoryInNumbers />
           <HowWeWork />
