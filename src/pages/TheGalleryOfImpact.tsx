@@ -4,6 +4,7 @@ import { ArrowRight, ArrowUpRight, Trophy, Star, Zap, Users, TrendingUp } from "
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import StartProjectCTA from "@/components/StartProjectCTA";
 import SEO from "@/components/SEO";
 
 // Assets
@@ -25,6 +26,8 @@ import aurumEducationLogo from "@/assets/clients/aurum-education.svg";
 import aurumEducationBanner from "@/assets/clients/Aurum Education banner.png";
 import prithiviGridLogo from "@/assets/clients/prithvilogo.png";
 import prithiviGridBanner from "@/assets/clients/prithvigridbanner.avif";
+import codingalLogo from "@/assets/codingal/logo.svg";
+import codingalBanner from "@/assets/codingal/hero-banner.png";
 
 const projects = [
   {
@@ -225,6 +228,61 @@ const projects = [
       "In infrastructure, credibility wins contracts. Fokel gave us the digital presence to walk into any boardroom with confidence. Our RFPs have tripled.",
     quotePerson: "Managing Director, Prithivi Grid Construction",
   },
+  {
+    id: "codingal",
+    client: "Codingal",
+    logo: codingalLogo,
+    image: codingalBanner,
+    industry: "EdTech / Y Combinator-Backed",
+    accentColor: "#FF5A43",
+    tags: ["Mobile App", "Web Platform", "SEO"],
+    link: "/work/codingal",
+    challenge:
+      "Codingal teaches AI and coding to kids and teens through live, 1:1 online classes with expert instructors, serving families across 135 countries. The experience had to make it effortless for parents to book classes, follow progress and stay connected with the learning team.",
+    solution:
+      "We delivered the app experience that lets families book a free trial, attend live 1:1 classes, track assignments and certificates through a parent dashboard, and join coding competitions, shipped as an Android app on Google Play alongside the web platform and its SEO.",
+    results: [
+      { stat: "1M+", label: "Students Registered" },
+      { stat: "135", label: "Countries" },
+      { stat: "4.6/5", label: "Trustpilot Rating" },
+    ],
+  },
+  {
+    id: "care24",
+    client: "Care24",
+    image: "https://images.unsplash.com/photo-1765896387387-0538bc9f997e?auto=format&fit=crop&w=1200&q=80",
+    industry: "Home Healthcare",
+    accentColor: "#FF5A1F",
+    tags: ["SaaS Platform", "SEO"],
+    link: "/work/care24",
+    challenge:
+      "Care24 is a leading home healthcare provider that connects families with verified nurses, patient attendants, physiotherapists and baby-care professionals across 10+ cities.",
+    solution:
+      "Fokel supported the platform with SEO and the operations technology that keeps bookings, caregivers and schedules running smoothly across cities, from patient booking and care plans to an admin dashboard for operations.",
+    results: [
+      { stat: "2,000+", label: "Caregiver & Nurse Profiles" },
+      { stat: "10+", label: "Cities Served" },
+      { stat: "4.1/5", label: "Google Rating" },
+    ],
+  },
+  {
+    id: "invoid",
+    client: "Invoid",
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
+    industry: "FinTech / Invoice Automation SaaS",
+    accentColor: "#FF5A1F",
+    tags: ["FinTech SaaS", "OCR", "AP Automation"],
+    link: "/work/invoid",
+    challenge:
+      "Invoid is an invoice automation platform built to take the manual work out of accounts payable.",
+    solution:
+      "It captures invoices with OCR, routes them through multi-step approvals and gives finance teams one place to manage vendors, with role-based access, background job queues and cloud hosting on AWS.",
+    results: [
+      { stat: "OCR", label: "Automated Data Capture" },
+      { stat: "AP", label: "Payables Automation" },
+      { stat: "4", label: "Core Modules" },
+    ],
+  },
 ];
 
 const impactStats = [
@@ -293,16 +351,22 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
               className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center p-2 shrink-0 shadow-lg overflow-hidden"
               style={{ boxShadow: `0 4px 20px ${project.accentColor}30` }}
             >
-              <img
-                src={project.logo}
-                alt={`${project.client} logo`}
-                className={`w-full h-full object-contain ${project.id === "22workspace"
-                    ? "scale-150"
-                    : project.id === "prithivi-grid"
-                      ? "scale-[1.4]"
-                      : ""
-                  }`}
-              />
+              {project.logo ? (
+                <img
+                  src={project.logo}
+                  alt={`${project.client} logo`}
+                  className={`w-full h-full object-contain ${project.id === "22workspace"
+                      ? "scale-150"
+                      : project.id === "prithivi-grid"
+                        ? "scale-[1.4]"
+                        : ""
+                    }`}
+                />
+              ) : (
+                <span className="text-2xl font-black" style={{ color: project.accentColor }}>
+                  {project.client.charAt(0)}
+                </span>
+              )}
             </div>
             <div>
               <h3 className="text-xl md:text-2xl font-bold tracking-tight">{project.client}</h3>
@@ -378,10 +442,12 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
         </div>
 
         {/* Quote */}
-        <blockquote className="border-l-2 pl-4" style={{ borderColor: `${project.accentColor}60` }}>
-          <p className="text-sm italic text-foreground/80 leading-relaxed mb-2">"{project.quote}"</p>
-          <cite className="text-xs text-muted-foreground not-italic font-semibold">— {project.quotePerson}</cite>
-        </blockquote>
+        {project.quote && (
+          <blockquote className="border-l-2 pl-4" style={{ borderColor: `${project.accentColor}60` }}>
+            <p className="text-sm italic text-foreground/80 leading-relaxed mb-2">"{project.quote}"</p>
+            <cite className="text-xs text-muted-foreground not-italic font-semibold">— {project.quotePerson}</cite>
+          </blockquote>
+        )}
       </div>
     </motion.div>
   );
@@ -515,41 +581,9 @@ const TheGalleryOfImpact = () => {
         </section>
 
 
-        {/* ── CTA ── */}
-        <section className="px-6 lg:px-12 max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="bg-primary text-primary-foreground rounded-[2.5rem] md:rounded-[3.5rem] p-10 md:p-20 text-center relative overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-accent/25 via-transparent to-transparent" />
-            <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-accent/10 blur-3xl" />
-            <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-accent/8 blur-3xl" />
-
-            <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/20 border border-accent/30 text-accent text-sm font-semibold mb-8">
-                <Trophy className="w-4 h-4" />
-                Ready to create something award-worthy?
-              </div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-8 font-heading text-balance">
-                Your brand deserves excellence.
-              </h2>
-              <p className="text-lg md:text-xl text-primary-foreground/70 mb-10 max-w-xl text-balance">
-                Let's talk about how we can bring your vision to life with the same creativity, innovation, and impact that defines our best work.
-              </p>
-              <Link
-                to="/#contact"
-                className="btn-primary inline-flex items-center gap-2 text-lg px-8 py-4 shadow-xl shadow-accent/20 hover:scale-105 transition-transform"
-              >
-                Let's Talk
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </div>
-          </motion.div>
-        </section>
       </main>
+
+      <StartProjectCTA />
 
       <Footer />
     </div>
