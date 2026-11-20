@@ -1,84 +1,96 @@
-import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
+
+const navLinks = [
+  { label: "About", href: "/#about" },
+  { label: "Services", href: "/#services" },
+  { label: "Work", href: "/#work" },
+  { label: "Contact", href: "/#contact" },
+  { label: "Blog", href: "/#blog" },
+];
+
+const socialLinks = [
+  { label: "Instagram", href: "#" },
+  { label: "LinkedIn", href: "#" },
+];
+
+const linkClass = "hover:text-accent transition-colors";
+
+const Column = ({ title, children }: { title: string; children: React.ReactNode }) => (
+  <div>
+    <h4 className="font-mono text-[10px] uppercase tracking-widest text-white/40 mb-6">{title}</h4>
+    <ul className="space-y-3 font-bold uppercase tracking-tight text-base text-white">{children}</ul>
+  </div>
+);
 
 const Footer = () => {
   return (
-    <footer className="relative bg-black text-white overflow-hidden z-10 w-full flex flex-col justify-end">
-      
-      {/* Subtle top glow separator */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent z-20"></div>
+    <footer className="relative bg-black text-white overflow-hidden z-10 w-full">
+      {/* Subtle top separator */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-      {/* Massive watermark to explicitly mark the footer (hidden on desktop) */}
-      <div className="absolute top-8 left-0 right-0 overflow-hidden pointer-events-none select-none opacity-5 flex md:hidden justify-center z-0">
-        <h1 className="text-[15vw] font-black uppercase tracking-tighter leading-none whitespace-nowrap" style={{ fontFamily: "var(--font-heading)" }}>
-          FOKEL STUDIO
-        </h1>
-      </div>
-
-      {/* Foreground Content */}
-      <div className="relative z-10 w-full p-8 md:p-12 lg:p-24 pointer-events-auto">
-        
-        {/* Minimal Footer Links */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 border-t border-white/10 pt-12 mt-24">
-          
-          <div className="md:col-span-1">
-            <div className="group cursor-pointer perspective-1000 w-16 h-16 mb-6">
-              <div className="relative w-full h-full transition-transform duration-700 transform-style-3d group-hover:rotate-y-180">
-                <div className="absolute inset-0 backface-hidden">
-                  <img src="/src/assets/logo-white.png" alt="Fokel" className="w-full h-full object-contain" />
-                </div>
-                <div className="absolute inset-0 backface-hidden rotate-y-180">
-                  <img src="/src/assets/logo-white.png" alt="Fokel" className="w-full h-full object-contain" />
-                </div>
-              </div>
-            </div>
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 pt-16 md:pt-24 pb-10">
+        <div className="grid grid-cols-2 md:grid-cols-12 gap-x-8 gap-y-12">
+          {/* Brand — same wordmark as the navbar */}
+          <div className="col-span-2 md:col-span-4">
+            <Link to="/" className="inline-block group">
+              <span
+                className="text-2xl md:text-3xl font-bold tracking-tighter text-white group-hover:opacity-80 transition-opacity"
+                style={{ fontFamily: "var(--font-heading)" }}
+              >
+                f<span className="text-accent">o</span>kel
+              </span>
+            </Link>
           </div>
 
-          <div className="pointer-events-auto">
-            <h4 className="text-white font-mono text-[10px] uppercase tracking-widest mb-6 opacity-50">NAVIGATION</h4>
-            <ul className="space-y-2 font-bold uppercase tracking-tight text-base text-white">
-              <li><a href="#about" className="hover:text-orange-500 transition-colors">ABOUT</a></li>
-              <li><a href="#services" className="hover:text-orange-500 transition-colors">SERVICES</a></li>
-              <li><a href="#work" className="hover:text-orange-500 transition-colors">WORK</a></li>
-              <li><a href="#contact" className="hover:text-orange-500 transition-colors">CONTACT</a></li>
-              <li><a href="#blog" className="hover:text-orange-500 transition-colors">BLOG</a></li>
-            </ul>
+          <div className="md:col-span-2">
+            <Column title="Navigation">
+              {navLinks.map((l) => (
+                <li key={l.label}>
+                  <a href={l.href} className={linkClass}>{l.label}</a>
+                </li>
+              ))}
+            </Column>
           </div>
 
-          <div className="pointer-events-auto">
-            <h4 className="text-white font-mono text-[10px] uppercase tracking-widest mb-6 opacity-50">SOCIALS</h4>
-            <ul className="space-y-2 font-bold uppercase tracking-tight text-base text-white">
-              <li><a href="#" className="hover:text-orange-500 transition-colors">INSTAGRAM</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">LINKEDIN</a></li>
-            </ul>
+          <div className="md:col-span-2">
+            <Column title="Socials">
+              {socialLinks.map((l) => (
+                <li key={l.label}>
+                  <a href={l.href} className={linkClass}>{l.label}</a>
+                </li>
+              ))}
+            </Column>
           </div>
 
-          <div className="pointer-events-auto">
-            <h4 className="text-white font-mono text-[10px] uppercase tracking-widest mb-6 opacity-50">CONNECT</h4>
-            <ul className="space-y-2 font-bold uppercase tracking-tight text-base text-white">
-              <li><a href="mailto:info@fokelworks.com" className="hover:text-orange-500 transition-colors lowercase font-sans font-medium text-sm">info@fokelworks.com</a></li>
-              <li><a href="tel:+919289539957" className="hover:text-orange-500 transition-colors">+91 92895 39957</a></li>
-            </ul>
+          <div className="col-span-2 md:col-span-2">
+            <Column title="Connect">
+              <li>
+                <a href="mailto:info@fokelworks.com" className={`${linkClass} normal-case`}>info@fokelworks.com</a>
+              </li>
+              <li>
+                <a href="tel:+919289539957" className={linkClass}>+91 92895 39957</a>
+              </li>
+            </Column>
           </div>
 
-          <div className="pointer-events-auto text-left md:text-right flex flex-col justify-between">
-            <div>
-              <h4 className="text-white font-mono text-[10px] uppercase tracking-widest mb-6 opacity-50">LOCATION</h4>
-              <p className="font-bold uppercase tracking-tight text-sm text-white/80 leading-relaxed">
-                A77, BASEMENT, A BLOCK, <br />
-                EAST OF KAILASH, NEW DELHI, <br />
-                DELHI 110065, INDIA
-              </p>
-            </div>
-            
-            <p className="text-white/30 font-mono text-[10px] uppercase tracking-widest mt-12 md:mt-0">
-              &copy; {new Date().getFullYear()} FOKEL DIGITAL STUDIO.
-            </p>
+          <div className="col-span-2 md:col-span-2">
+            <Column title="Location">
+              <li className="leading-snug">
+                A77, Basement, A Block,
+                <br />
+                East of Kailash,
+                <br />
+                New Delhi 110065, India
+              </li>
+            </Column>
           </div>
-
         </div>
 
+        {/* Bottom bar */}
+        <div className="mt-16 md:mt-20 pt-8 border-t border-white/10 font-mono text-[10px] uppercase tracking-widest text-white/40">
+          &copy; {new Date().getFullYear()} Fokel Digital Studio.
+        </div>
       </div>
-
     </footer>
   );
 };
