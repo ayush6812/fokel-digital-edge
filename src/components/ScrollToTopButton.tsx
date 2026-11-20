@@ -85,8 +85,16 @@ const ScrollToTopButton = () => {
               id="scroll-to-top-button"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.92 }}
-              className="relative flex items-center justify-center cursor-pointer text-white/50 hover:text-white transition-colors"
-              style={{ width: size, height: size }}
+              className="relative flex items-center justify-center rounded-full cursor-pointer text-white/70 hover:text-white transition-colors"
+              style={{
+                width: BUTTON_SIZE,
+                height: BUTTON_SIZE,
+                background: "rgba(15,15,15,0.82)",
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+                border: "1px solid rgba(255,255,255,0.12)",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+              }}
             >
               <ArrowUp className="w-4 h-4" strokeWidth={2.5} />
             </motion.button>
