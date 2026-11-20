@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ArrowRight, ArrowUpRight, Trophy, Star, Zap, Users, TrendingUp } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -286,223 +286,172 @@ const projects = [
 ];
 
 const impactStats = [
-  { icon: TrendingUp, value: "60%", label: "Average Organic Traffic Growth" },
-  { icon: Zap, value: "2.5×", label: "Average ROAS for Clients" },
-  { icon: Users, value: "40+", label: "Countries Reached" },
-  { icon: Star, value: "95%", label: "Client Retention Rate" },
+  { value: "60%", label: "Average Organic Traffic Growth" },
+  { value: "2.5×", label: "Average ROAS for Clients" },
+  { value: "40+", label: "Countries Reached" },
+  { value: "95%", label: "Client Retention Rate" },
 ];
 
-const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
+const principles = [
+  { title: "Creativity That Resonates", desc: "We don't follow trends—we set them. Our designs are distinctive, memorable, and deeply aligned with your brand's purpose." },
+  { title: "Innovation That Differentiates", desc: "We push boundaries and embrace new technologies to create experiences that stand out in crowded markets." },
+  { title: "Impact That Matters", desc: "Our work isn't just about looking good—it's about driving real, measurable results for your business." },
+];
+
+const marqueeItems = ["Selected Work", "Real Clients", "Measurable Results", "Built To Perform"];
+
+const headingFont = { fontFamily: "var(--font-heading)" };
+
+const MonoLabel = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
+  <span className={`font-mono text-xs md:text-sm text-accent uppercase tracking-widest font-bold block ${className}`}>{children}</span>
+);
+
+const ProjectCard = ({ project, index }: { project: (typeof projects)[0]; index: number }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <motion.div
+    <motion.article
       ref={ref}
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, delay: 0.1 }}
-      className="group relative bg-secondary/40 border border-border/50 rounded-3xl overflow-hidden hover:border-border transition-all duration-500"
+      transition={{ duration: 0.7, delay: (index % 2) * 0.1 }}
+      className="group border border-white/10 hover:border-white/25 bg-[#0a0a0a] transition-colors duration-500 flex flex-col"
     >
-      {/* Project image if available */}
-      {project.image && (
-        <div className="relative h-64 md:h-80 overflow-hidden">
-          <img
-            src={project.image}
-            alt={project.client}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-          {/* Multi-stop gradient for clean fade into card */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
-          {/* Accent color tint at top */}
-          <div
-            className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent"
-          />
-          {/* Left vignette for depth */}
-          <div className="absolute inset-0 bg-gradient-to-r from-background/30 via-transparent to-transparent" />
-          {/* Accent glow at bottom edge */}
-          <div
-            className="absolute bottom-0 left-0 right-0 h-1"
-            style={{ background: `linear-gradient(90deg, transparent, ${project.accentColor}60, transparent)` }}
-          />
-          <div className="absolute top-4 left-4 flex gap-2 flex-wrap">
-            {project.tags.map((tag) => (
-              <span
-                key={tag}
-                className="text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-md border"
-                style={{
-                  color: project.accentColor,
-                  borderColor: `${project.accentColor}50`,
-                  background: `${project.accentColor}18`,
-                }}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
-      )}
+      {/* Image */}
+      <Link to={project.link} className="relative block aspect-[16/10] overflow-hidden bg-black">
+        <img
+          src={project.image}
+          alt={project.client}
+          loading="lazy"
+          className="absolute inset-0 w-full h-full object-cover md:grayscale md:brightness-[0.7] group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-[1.03] transition-all duration-700"
+        />
+        <span className="absolute top-4 left-4 bg-black/60 backdrop-blur-md border border-white/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+        <span className="absolute bottom-4 right-4 w-12 h-12 rounded-full bg-accent text-white flex items-center justify-center shadow-xl shadow-black/40 md:scale-0 group-hover:scale-100 transition-transform duration-500">
+          <ArrowUpRight className="w-5 h-5" strokeWidth={2.5} />
+        </span>
+      </Link>
 
-      <div className="p-6 md:p-10">
+      <div className="p-6 md:p-8 lg:p-10 flex flex-col flex-1">
         {/* Header */}
         <div className="flex items-start justify-between gap-4 mb-6">
-          <div className="flex items-center gap-4">
-            <div
-              className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center p-2 shrink-0 shadow-lg overflow-hidden"
-              style={{ boxShadow: `0 4px 20px ${project.accentColor}30` }}
-            >
-              {project.logo ? (
-                <img
-                  src={project.logo}
-                  alt={`${project.client} logo`}
-                  className={`w-full h-full object-contain ${project.id === "22workspace"
-                      ? "scale-150"
-                      : project.id === "prithivi-grid"
-                        ? "scale-[1.4]"
-                        : ""
-                    }`}
-                />
-              ) : (
-                <span className="text-2xl font-black" style={{ color: project.accentColor }}>
-                  {project.client.charAt(0)}
-                </span>
-              )}
-            </div>
-            <div>
-              <h3 className="text-xl md:text-2xl font-bold tracking-tight">{project.client}</h3>
-              <p className="text-sm text-muted-foreground mt-0.5">{project.industry}</p>
-            </div>
+          <div className="min-w-0">
+            <span className="font-mono text-[10px] uppercase tracking-widest text-white/40 block mb-3">{project.industry}</span>
+            <Link to={project.link}>
+              <h3
+                className="text-3xl md:text-4xl font-black uppercase tracking-tighter leading-[0.95] group-hover:text-accent transition-colors duration-500"
+                style={headingFont}
+              >
+                {project.client}
+              </h3>
+            </Link>
           </div>
-          <Link
-            to={project.link}
-            className="shrink-0 w-10 h-10 rounded-full flex items-center justify-center border border-border/50 hover:border-accent/50 text-muted-foreground hover:text-accent transition-all duration-300 hover:scale-110"
-          >
-            <ArrowUpRight className="w-4 h-4" />
-          </Link>
+          {project.logo && (
+            <div className="w-12 h-12 shrink-0 bg-white flex items-center justify-center p-2 overflow-hidden">
+              <img
+                src={project.logo}
+                alt={`${project.client} logo`}
+                className={`w-full h-full object-contain ${
+                  project.id === "22workspace" ? "scale-150" : project.id === "prithivi-grid" ? "scale-[1.4]" : ""
+                }`}
+              />
+            </div>
+          )}
         </div>
 
-        {/* Tags if no image */}
-        {!project.image && (
-          <div className="flex flex-wrap gap-2 mb-6">
-            {project.tags.map((tag) => (
-              <span
-                key={tag}
-                className="text-xs font-semibold px-3 py-1 rounded-full border"
-                style={{
-                  color: project.accentColor,
-                  borderColor: `${project.accentColor}50`,
-                  background: `${project.accentColor}18`,
-                }}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2 mb-8">
+          {project.tags.map((tag) => (
+            <span key={tag} className="border border-white/15 px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest text-white/60">
+              {tag}
+            </span>
+          ))}
+        </div>
 
         {/* Challenge / Solution */}
-        <div className="grid sm:grid-cols-2 gap-6 mb-8">
+        <div className="grid sm:grid-cols-2 gap-6 md:gap-8 mb-8">
           <div>
-            <h4 className="text-xs uppercase tracking-widest font-bold mb-2 flex items-center gap-2" style={{ color: project.accentColor }}>
-              <div className="w-1.5 h-1.5 rounded-full" style={{ background: project.accentColor }} />
-              The Challenge
-            </h4>
-            <p className="text-muted-foreground text-sm leading-relaxed">{project.challenge}</p>
+            <h4 className="font-mono text-[10px] uppercase tracking-widest text-accent font-bold mb-3">The Challenge</h4>
+            <p className="text-white/60 text-sm leading-relaxed">{project.challenge}</p>
           </div>
           <div>
-            <h4 className="text-xs uppercase tracking-widest font-bold mb-2 flex items-center gap-2" style={{ color: project.accentColor }}>
-              <div className="w-1.5 h-1.5 rounded-full" style={{ background: project.accentColor }} />
-              Our Solution
-            </h4>
-            <p className="text-muted-foreground text-sm leading-relaxed">{project.solution}</p>
+            <h4 className="font-mono text-[10px] uppercase tracking-widest text-accent font-bold mb-3">Our Solution</h4>
+            <p className="text-white/60 text-sm leading-relaxed">{project.solution}</p>
           </div>
         </div>
 
         {/* Results */}
-        <div
-          className="rounded-2xl p-5 mb-6 border"
-          style={{
-            background: `${project.accentColor}0a`,
-            borderColor: `${project.accentColor}30`,
-          }}
-        >
-          <h4 className="text-xs uppercase tracking-widest font-bold mb-4" style={{ color: project.accentColor }}>
-            The Results
-          </h4>
-          <div className="grid grid-cols-3 gap-4">
-            {project.results.map((r) => (
-              <div key={r.label} className="text-center">
-                <p className="text-2xl md:text-3xl font-black tracking-tight" style={{ color: project.accentColor }}>
-                  {r.stat}
-                </p>
-                <p className="text-xs text-muted-foreground mt-1 leading-tight">{r.label}</p>
-              </div>
-            ))}
-          </div>
+        <div className="mt-auto border-t border-white/10 grid grid-cols-3 divide-x divide-white/10">
+          {project.results.map((r) => (
+            <div key={r.label} className="pt-6 px-3 first:pl-0 last:pr-0">
+              <p className="text-2xl md:text-3xl font-black tracking-tighter text-white" style={headingFont}>
+                {r.stat}
+              </p>
+              <p className="font-mono text-[9px] md:text-[10px] uppercase tracking-widest text-white/40 mt-2 leading-snug">{r.label}</p>
+            </div>
+          ))}
         </div>
 
         {/* Quote */}
         {project.quote && (
-          <blockquote className="border-l-2 pl-4" style={{ borderColor: `${project.accentColor}60` }}>
-            <p className="text-sm italic text-foreground/80 leading-relaxed mb-2">"{project.quote}"</p>
-            <cite className="text-xs text-muted-foreground not-italic font-semibold">— {project.quotePerson}</cite>
+          <blockquote className="border-l-2 border-accent pl-4 mt-8">
+            <p className="text-sm text-white/70 leading-relaxed mb-2">"{project.quote}"</p>
+            <cite className="font-mono text-[10px] uppercase tracking-widest text-white/40 not-italic">— {project.quotePerson}</cite>
           </blockquote>
         )}
       </div>
-    </motion.div>
+    </motion.article>
   );
 };
 
 const TheGalleryOfImpact = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-[#111111] text-white antialiased overflow-x-clip">
       <SEO
         title="The Gallery of Impact | Fokel Creative Agency"
         description="Award-winning quality that delivers real, measurable results. Explore Fokel's portfolio of work across real estate, fashion, events, and more."
       />
       <Navbar />
 
-      <main className="pt-32 lg:pt-40 pb-20 lg:pb-32 overflow-hidden">
-
+      <main>
         {/* ── Hero ── */}
-        <section className="px-6 lg:px-12 max-w-7xl mx-auto mb-20 lg:mb-32">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex items-center gap-4 mb-8"
-          >
-            <div className="h-[2px] w-8 lg:w-12 bg-accent rounded-full" />
-            <span className="text-sm font-medium tracking-[0.3em] uppercase text-accent">Our Work</span>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-[-0.03em] mb-10 font-heading"
-          >
-            The Gallery of <span className="text-accent italic">Impact</span>
-          </motion.h1>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="max-w-3xl"
-          >
-            <p className="text-xl md:text-2xl text-foreground/80 leading-relaxed mb-6 font-medium">
-              We don't just build digital experiences—we craft them with precision, creativity, and an unwavering commitment to excellence.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              "Award-Winning Quality" isn't just a badge we wear; it's the standard we hold ourselves to on every single project, no matter the size or scope. This is what happens when purpose meets precision.
-            </p>
-          </motion.div>
+        <section className="pt-36 md:pt-48 pb-20 md:pb-28 border-b border-white/10">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:items-end">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="lg:col-span-8"
+            >
+              <MonoLabel className="mb-6">Our Work — ({String(projects.length).padStart(2, "0")})</MonoLabel>
+              <h1 className="text-[clamp(3.5rem,9vw,8.5rem)] font-black uppercase tracking-tighter leading-[0.85]" style={headingFont}>
+                The Gallery <br />
+                of Impact<span className="text-accent">.</span>
+              </h1>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="lg:col-span-4 flex flex-col gap-6 lg:pb-3"
+            >
+              <p className="font-mono text-[10px] md:text-xs uppercase tracking-widest leading-[2] text-white/50">
+                We don't just build digital experiences—we craft them with{" "}
+                <span className="text-white/90">precision, creativity, and an unwavering commitment to excellence.</span>
+              </p>
+              <p className="text-white/50 text-sm leading-relaxed">
+                "Award-Winning Quality" isn't just a badge we wear; it's the standard we hold ourselves to on every single project, no matter
+                the size or scope.
+              </p>
+            </motion.div>
+          </div>
         </section>
 
-        {/* ── Impact Stats Bar ── */}
-        <section className="px-6 lg:px-12 max-w-7xl mx-auto mb-20 lg:mb-32">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* ── Impact Stats ── */}
+        <section className="border-b border-white/10">
+          <div className="max-w-[1400px] mx-auto grid grid-cols-2 lg:grid-cols-4">
             {impactStats.map((stat, i) => (
               <motion.div
                 key={stat.label}
@@ -510,77 +459,106 @@ const TheGalleryOfImpact = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-secondary/50 border border-border/50 rounded-2xl p-6 text-center"
+                className={`px-6 md:px-12 py-10 md:py-14 border-white/10 ${i % 2 === 0 ? "border-r" : ""} ${i < 2 ? "border-b lg:border-b-0" : ""} ${
+                  i === 1 ? "lg:border-r" : ""
+                }`}
               >
-                <stat.icon className="w-6 h-6 text-accent mx-auto mb-3" />
-                <p className="text-3xl md:text-4xl font-black text-accent mb-1">{stat.value}</p>
-                <p className="text-sm text-muted-foreground">{stat.label}</p>
+                <p className="text-5xl md:text-6xl font-black tracking-tighter mb-3" style={headingFont}>
+                  {stat.value}
+                </p>
+                <p className="font-mono text-[10px] uppercase tracking-widest text-white/40">{stat.label}</p>
               </motion.div>
             ))}
           </div>
         </section>
 
         {/* ── What Sets Our Work Apart ── */}
-        <section className="px-6 lg:px-12 max-w-7xl mx-auto mb-20 lg:mb-28">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="bg-secondary/40 border border-border/50 rounded-3xl p-8 md:p-14"
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <Trophy className="w-6 h-6 text-accent" />
-              <span className="text-sm uppercase tracking-widest font-bold text-accent">What Sets Our Work Apart</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight">
-              Excellence is <span className="text-accent italic">non-negotiable</span>
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-10 max-w-3xl">
-              Every project we undertake is approached with the same level of dedication, craftsmanship, and attention to detail. Whether we're building a bold new brand identity, designing a high-performance website, or crafting a digital experience that captivates audiences, we never settle for "good enough."
-            </p>
-            <div className="grid sm:grid-cols-3 gap-6">
-              {[
-                { title: "Creativity That Resonates", desc: "We don't follow trends—we set them. Our designs are distinctive, memorable, and deeply aligned with your brand's purpose." },
-                { title: "Innovation That Differentiates", desc: "We push boundaries and embrace new technologies to create experiences that stand out in crowded markets." },
-                { title: "Impact That Matters", desc: "Our work isn't just about looking good—it's about driving real, measurable results for your business." },
-              ].map((item) => (
-                <div key={item.title} className="flex flex-col gap-3">
-                  <div className="w-2 h-2 rounded-full bg-accent" />
-                  <h3 className="font-bold text-base">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-                </div>
+        <section className="py-24 md:py-32 border-b border-white/10">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="lg:col-span-5"
+            >
+              <MonoLabel className="mb-6">What Sets Our Work Apart</MonoLabel>
+              <h2 className="text-5xl md:text-6xl font-black uppercase tracking-tighter leading-[0.9] mb-8" style={headingFont}>
+                Excellence is non-negotiable<span className="text-accent">.</span>
+              </h2>
+              <p className="text-white/50 leading-relaxed">
+                Every project we undertake is approached with the same level of dedication, craftsmanship, and attention to detail. Whether
+                we're building a bold new brand identity, designing a high-performance website, or crafting a digital experience that
+                captivates audiences, we never settle for "good enough."
+              </p>
+            </motion.div>
+            <div className="lg:col-span-7 lg:col-start-6 border-t border-white/10">
+              {principles.map((item, i) => (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className="grid grid-cols-[3rem_1fr] md:grid-cols-[5rem_1fr] gap-4 py-8 border-b border-white/10"
+                >
+                  <span className="font-mono text-xs text-accent font-bold pt-1">{String(i + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h3 className="text-xl md:text-2xl font-black uppercase tracking-tighter mb-3" style={headingFont}>
+                      {item.title}
+                    </h3>
+                    <p className="text-white/50 text-sm md:text-base leading-relaxed">{item.desc}</p>
+                  </div>
+                </motion.div>
               ))}
             </div>
-          </motion.div>
-        </section>
-
-        {/* ── Featured Projects ── */}
-        <section className="px-6 lg:px-12 max-w-7xl mx-auto mb-20 lg:mb-32">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="mb-12"
-          >
-            <div className="flex items-center gap-4 mb-4">
-              <div className="h-[2px] w-8 bg-accent rounded-full" />
-              <span className="text-sm font-medium tracking-[0.3em] uppercase text-accent">Featured Projects</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight font-heading">
-              Work that <span className="text-accent italic">moves the needle</span>
-            </h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-            {projects.map((project, index) => (
-              <ProjectCard key={project.id} project={project} index={index} />
-            ))}
           </div>
         </section>
 
+        {/* Marquee strip */}
+        <div className="w-full bg-orange-600 py-4 md:py-6 overflow-hidden flex">
+          <div className="animate-marquee flex min-w-max items-center">
+            {[0, 1].map((copy) => (
+              <div
+                key={copy}
+                className="flex gap-16 items-center px-8 font-mono text-xs md:text-sm font-black uppercase tracking-[0.2em] text-black"
+                aria-hidden={copy === 1 ? "true" : undefined}
+              >
+                {[...marqueeItems, ...marqueeItems].map((item, i) => (
+                  <span key={i} className="flex items-center gap-16">
+                    <span>{item}</span>
+                    <span className="w-2 h-2 rounded-full bg-black" />
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
 
+        {/* ── Featured Projects ── */}
+        <section className="py-24 md:py-32">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="mb-16 md:mb-20"
+            >
+              <MonoLabel className="mb-6">Featured Projects</MonoLabel>
+              <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9]" style={headingFont}>
+                Work that moves <br className="hidden md:block" />
+                the needle<span className="text-accent">.</span>
+              </h2>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+              {projects.map((project, index) => (
+                <ProjectCard key={project.id} project={project} index={index} />
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
 
       <StartProjectCTA />
