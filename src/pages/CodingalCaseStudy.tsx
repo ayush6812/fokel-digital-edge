@@ -1,4 +1,4 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useSpring, useTransform } from "framer-motion";
 import { ArrowLeft, ArrowRight, ArrowUpRight, CalendarCheck, LayoutDashboard, Smartphone, Search } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useRef, useState } from "react";
@@ -212,6 +212,58 @@ const ReviewsCarousel = () => {
         ))}
       </div>
     </>
+  );
+};
+
+// Original zig-zag timeline; the path fills and glows as you scroll through it
+const DevelopmentTimeline = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 75%", "end 55%"] });
+  const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
+  const headTop = useTransform(progress, (v) => `${v * 100}%`);
+
+  return (
+    <div ref={ref} className="relative">
+      {/* Track */}
+      <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-white/10 md:-translate-x-1/2" />
+      {/* Glowing fill, driven by scroll */}
+      <motion.div
+        style={{ scaleY: progress }}
+        className="absolute left-[15px] md:left-[calc(50%-1px)] top-0 bottom-0 w-[2px] origin-top bg-accent shadow-[0_0_12px_2px_rgba(255,91,15,0.07),0_0_32px_6px_rgba(255,91,15,0.035)]"
+      />
+      {/* Glow head travelling with the fill */}
+      <motion.span
+        style={{ top: headTop }}
+        className="absolute left-4 md:left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-accent shadow-[0_0_16px_6px_rgba(255,91,15,0.09)] pointer-events-none"
+      />
+
+      <div className="space-y-12 md:space-y-4">
+        {phases.map((phase, i) => (
+          <motion.div
+            key={phase.title}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            custom={0}
+            className={`relative pl-14 md:pl-0 md:w-1/2 ${i % 2 === 0 ? "md:pr-16 md:text-right" : "md:ml-auto md:pl-16"}`}
+          >
+            <span
+              className={`absolute top-2 left-4 -translate-x-1/2 w-4 h-4 rounded-full bg-accent ring-4 ring-[#111111] ${
+                i % 2 === 0 ? "md:left-auto md:right-0 md:translate-x-1/2" : "md:left-0"
+              }`}
+            />
+            <span className="font-mono text-[10px] md:text-xs uppercase tracking-widest text-accent font-bold block mb-3">
+              Phase {String(i + 1).padStart(2, "0")}
+            </span>
+            <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tighter mb-3" style={{ fontFamily: "var(--font-heading)" }}>
+              {phase.title}
+            </h3>
+            <p className="text-white/50 leading-relaxed">{phase.desc}</p>
+          </motion.div>
+        ))}
+      </div>
+    </div>
   );
 };
 
@@ -544,33 +596,7 @@ const CodingalCaseStudy = () => {
                 </h2>
               </div>
             </div>
-            <div className="relative">
-              <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-white/10 md:-translate-x-1/2" />
-              <div className="space-y-12 md:space-y-4">
-                {phases.map((phase, i) => (
-                  <motion.div
-                    key={phase.title}
-                    variants={fadeUp}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    custom={0}
-                    className={`relative pl-14 md:pl-0 md:w-1/2 ${i % 2 === 0 ? "md:pr-16 md:text-right" : "md:ml-auto md:pl-16"}`}
-                  >
-                    <span
-                      className={`absolute top-2 left-4 md:left-auto -translate-x-1/2 md:translate-x-0 w-4 h-4 rounded-full bg-accent ring-4 ring-[#111111] ${i % 2 === 0 ? "md:-right-2" : "md:-left-2"}`}
-                    />
-                    <span className="font-mono text-[10px] md:text-xs uppercase tracking-widest text-accent font-bold block mb-3">
-                      Phase {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tighter mb-3" style={{ fontFamily: "var(--font-heading)" }}>
-                      {phase.title}
-                    </h3>
-                    <p className="text-white/50 leading-relaxed">{phase.desc}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
+            <DevelopmentTimeline />
           </div>
         </section>
 
