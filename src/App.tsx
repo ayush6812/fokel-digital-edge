@@ -21,6 +21,9 @@ import CorporateBuildconCaseStudy from "./pages/CorporateBuildconCaseStudy";
 import HomesharkCaseStudy from "./pages/HomesharkCaseStudy";
 import AurumEducationCaseStudy from "./pages/AurumEducationCaseStudy";
 import PrithiviGridCaseStudy from "./pages/PrithiviGridCaseStudy";
+import CodingalCaseStudy from "./pages/CodingalCaseStudy";
+import Care24CaseStudy from "./pages/Care24CaseStudy";
+import InvoidCaseStudy from "./pages/InvoidCaseStudy";
 import AiAgents from "./pages/AiAgents";
 import DigitalMarketing from "./pages/DigitalMarketing";
 import DigitalStrategy from "./pages/DigitalStrategy";
@@ -53,6 +56,9 @@ const App = () => (
           <Route path="/work/homeshark" element={<HomesharkCaseStudy />} />
           <Route path="/work/aurum-education" element={<AurumEducationCaseStudy />} />
           <Route path="/work/prithivi-grid" element={<PrithiviGridCaseStudy />} />
+          <Route path="/work/codingal" element={<CodingalCaseStudy />} />
+          <Route path="/work/care24" element={<Care24CaseStudy />} />
+          <Route path="/work/invoid" element={<InvoidCaseStudy />} />
           <Route path="/services/ai-agents" element={<AiAgents />} />
           <Route path="/services/digital-marketing" element={<DigitalMarketing />} />
           <Route path="/services/digital-strategy" element={<DigitalStrategy />} />
